@@ -12,8 +12,6 @@ namespace SN_WebMVC.Controllers
 {
     public class AccountController : Controller
     {
-        static readonly HttpClient client = new HttpClient();
-
         //Get: Account/Register
         public ActionResult Register()
         {
