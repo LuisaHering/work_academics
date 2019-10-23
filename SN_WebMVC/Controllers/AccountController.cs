@@ -12,6 +12,8 @@ namespace SN_WebMVC.Controllers
 {
     public class AccountController : Controller
     {
+        static readonly HttpClient client = new HttpClient();
+
         //Get: Account/Register
         public ActionResult Register()
         {
@@ -25,21 +27,47 @@ namespace SN_WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                using(var client = new HttpClient())
+                //using(var client = new HttpClient())
+                //{
+                //    client.BaseAddress = new Uri("http://localhost:56435/");
+
+                //    var response = await client.PostAsync("Api/Account/Register");
+                //        //client.PostAsJsonAsync("Api/Account/Register", model);
+                //    if (response.IsSucessStatusCode)
+                //    {
+                //        return RedirectToAction("Login");
+                //    }
+                //    else
+                //    {
+                //        return View("Error");
+                //    }
+                //}
+
+                var data = new Dictionary<string, string> {
+                    { "grant_type", "password" },
+                    { "ConfirmPassword", model.Password },
+                    { "Password", model.Password }
+                };
+
+                using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://localhost:56435/");
+                    client.BaseAddress = new Uri("http://localhost:56435");
 
-                    var response = await client
+                    using (var requestContent = new FormUrlEncodedContent(data))
+                    {
+                        var response = await client.PostAsync("Api/Account/Register", requestContent);
 
-                    if (response.IsSucessStatusCode)
-                    {
-                        return RedirectToAction("Login");
-                    }
-                    else
-                    {
-                        return View("Error");
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return RedirectToAction("Login");
+                        }
+                        else
+                        {
+                            return View("Error");
+                        }
                     }
                 }
+
             }
 
             return View();
