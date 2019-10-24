@@ -167,6 +167,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\RecuperarSenha.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\RecuperarSenha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

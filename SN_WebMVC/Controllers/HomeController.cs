@@ -12,15 +12,5 @@ namespace SN_WebMVC.Controllers
         {
             return View();
         }
-
-        public ActionResult RecuperarSenha()
-        {
-            return View();
-        }
-
-        public bool TrocaSenha()
-        {
-            return true;
-        }
     }
 }

@@ -12,6 +12,18 @@ namespace SN_WebMVC.Controllers
 {
     public class AccountController : Controller
     {
+        // get Account/RecuperarSenha
+        public ActionResult RecuperarSenha()
+        {
+            return View();
+        }
+
+        // post
+        public bool TrocaSenha()
+        {
+            return true;
+        }
+
         //Get: Account/Register
         public ActionResult Register()
         {
