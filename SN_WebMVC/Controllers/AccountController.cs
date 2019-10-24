@@ -25,21 +25,6 @@ namespace SN_WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                //using(var client = new HttpClient())
-                //{
-                //    client.BaseAddress = new Uri("http://localhost:56435/");
-
-                //    var response = await client.PostAsync("Api/Account/Register");
-                //        //client.PostAsJsonAsync("Api/Account/Register", model);
-                //    if (response.IsSucessStatusCode)
-                //    {
-                //        return RedirectToAction("Login");
-                //    }
-                //    else
-                //    {
-                //        return View("Error");
-                //    }
-                //}
 
                 var data = new Dictionary<string, string> {
                     { "grant_type", "password" },
