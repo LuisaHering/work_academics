@@ -25,11 +25,10 @@ namespace SN_WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var data = new Dictionary<string, string> {
-                    { "grant_type", "password" },
-                    { "ConfirmPassword", model.Password },
-                    { "Password", model.Password }
+                    { "grant_type", "password" },                    
+                    { "Password", model.Password },
+                    { "ConfirmPassword", model.ConfirmPassword }
                 };
 
                 using (var client = new HttpClient())
