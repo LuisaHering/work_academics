@@ -12,5 +12,11 @@ namespace SN_WebMVC.Models
         public string Universidade { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
+        public string Picture { get; set; }
+        public string Name { get; set; }
+        public DateTime Nascimento { get; set; }
+        public string Curso { get; set; }
+        public string Biografia { get; set; }
+
     }
 }
