@@ -58,6 +58,8 @@ namespace SN_WebApi.Models {
         public string ConfirmPassword {
             get; set;
         }
+
+
     }
 
     public class RegisterExternalBindingModel {
