@@ -1,4 +1,5 @@
-﻿@model SN_WebMVC.Models.LoginViewModel
+﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
+@model SN_WebMVC.Models.LoginViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -9,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>LoginViewModel</h4>
         <hr />
