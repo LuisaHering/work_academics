@@ -23,12 +23,30 @@
     padding: 0 10px;
 }
 
+.btn {
+    font-size: 16px; /*overwrite*/
+}
+
+.wa-titulo {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wa-box {
+    border-radius: 8px;
+    box-shadow: 8px 8px 20px #C2C2C2;
+    border: .5px solid #c2c2c2;
+    margin: 40px;
+    padding: 20px 50px;
+}
+
 .wa-form-control {
     display: block;
     width: 100%;
-    height: 42px; 
+    height: 42px;
     padding: 0px 20px;
-    font-size: 16px; 
+    font-size: 16px;
     line-height: 1.42857143;
     color: #555555;
     background-color: #fff;
