@@ -10,17 +10,23 @@
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("Work Academics", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+
+            <div class="navbar-header navbar-brand">Work Academics</div>
+
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                </ul>
+                @if (true)
+                {
+                    <button class="btn btn-default navbar-btn navbar-right">Logout</button>
+                }
             </div>
-            <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Link</a></li>
-            </ul>
-            @if (true)
-            {
-                <button class="btn btn-default navbar-btn navbar-right">Logout</button>
-            }
         </div>
     </div>
     <div class="container body-content">

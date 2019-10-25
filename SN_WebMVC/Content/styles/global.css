@@ -14,7 +14,6 @@
 .wa-form {
     width: 100%;
     min-width: 300px;
-    max-width: 400px;
     padding: 0 10px;
 }
 
@@ -62,4 +61,13 @@
     transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+
+@media (max-width: 400px){
+    .wa-box {
+        max-width: 340px;
+        padding: 20px 30px;
+        box-shadow: 4px 4px 20px #C2C2C2;
+    }
+    /*navbar responsive*/
 }
