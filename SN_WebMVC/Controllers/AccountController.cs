@@ -16,8 +16,8 @@ namespace SN_WebMVC.Controllers {
         }
 
         // post
-        public bool TrocaSenha() {
-            return true;
+        public ActionResult TrocaSenha() {
+            return View();
         }
 
         //Get: Account/Register

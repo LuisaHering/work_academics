@@ -1,51 +1,52 @@
-﻿@model SN_WebMVC.Models.RegisterViewModel
+﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
+@model SN_WebMVC.Models.RegisterViewModel
 
-@{
-    ViewBag.Title = "Cadastrar";
-}
+    @{
+        ViewBag.Title = "Cadastrar";
+    }
 
-<h2>Cadastrar</h2>
+    <div class="wa-container">
+        <div class="wa-box">
+            <h2 class="wa-titulo">Cadastrar</h2>
 
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="wa-form">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "wa-form-control", @placeholder = "Email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="wa-form">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "wa-form-control", @type = "password", @placeholder = "Senha" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="wa-form">
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "wa-form-control", @type = "password", @placeholder = "Confirmar senha" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="wa-btn-group">
+                            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                            <button class="btn btn-link btn-block">@Html.ActionLink("Já possui cadastro?", "Login", "Account")</button>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Password, "Senha", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ConfirmPassword, "Confirmar senha", htmlAttributes: new { @class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Cadastrar" class="btn btn-primary" />
-            <button class="btn btn-link">@Html.ActionLink("Já possui cadastro?", "Login", "Account")</button>
-        </div>
-    </div>
-</div>
-}
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

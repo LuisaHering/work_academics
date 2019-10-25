@@ -1,0 +1,73 @@
+﻿.wa-botao-violet {
+    background-color: #5f4b8b;
+    color: white;
+}
+
+.wa-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wa-form {
+    width: 100%;
+    min-width: 300px;
+    padding: 0 10px;
+}
+
+.wa-btn-group {
+    width: 100%;
+    padding: 0 10px !important;
+    margin-top: 15px;
+}
+
+.wa-btn-group .btn {
+    font-size: 16px; /*overwrite*/
+}
+
+.wa-titulo {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wa-box {
+    border-radius: 8px;
+    box-shadow: 8px 8px 20px #C2C2C2;
+    border: .5px solid #c2c2c2;
+    margin: 40px;
+    padding: 20px 50px;
+}
+
+.wa-form-control {
+    display: block;
+    width: 100%;
+    height: 42px;
+    padding: 0px 20px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+
+@media (max-width: 400px){
+    .wa-box {
+        max-width: 340px;
+        padding: 20px 30px;
+        box-shadow: 4px 4px 20px #C2C2C2;
+    }
+    /*navbar responsive*/
+}

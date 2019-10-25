@@ -1,9 +1,25 @@
-﻿
+﻿@model SN_WebMVC.Models.LoginViewModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Home</h2>
 
-<h4>logado</h4>
+<div>
+    <hr />
 
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+    </dl>
+</div>
+<button class = "btn btn-link">
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })
+</button>

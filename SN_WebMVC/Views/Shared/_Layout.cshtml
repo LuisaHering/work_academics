@@ -8,10 +8,27 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("Work Academics", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+
+            <div class="navbar-header navbar-brand">Work Academics</div>
+
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="nav-item">@Html.ActionLink("Login", "Login", "Account")</li>
+                    <li class="nav-item">@Html.ActionLink("Cadastro", "Register", "Account")</li>
+                    <li class="nav-item">@Html.ActionLink("Recuperação de senha", "RecuperarSenha", "Account")</li>
+
+                </ul>
+                @if (ViewBag.Title != "Login")
+                {
+                    <button class="btn btn-default navbar-btn navbar-right">Logout</button>
+                }
             </div>
         </div>
     </div>
@@ -19,7 +36,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Work Academics</p>
         </footer>
     </div>
 
