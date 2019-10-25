@@ -330,7 +330,13 @@ namespace SN_WebApi.Controllers
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            IdentityResult result = null;
+            try {
+                result = await UserManager.CreateAsync(user, model.Password);
+
+            } catch(Exception e) {
+                Console.WriteLine(e.Message);
+            }
 
             if (!result.Succeeded)
             {

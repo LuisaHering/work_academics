@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using System.Xml.Linq;
+//using System.Xml.Linq;
 using Newtonsoft.Json;
 
 namespace SN_WebApi.Areas.HelpPage
@@ -392,8 +392,8 @@ namespace SN_WebApi.Areas.HelpPage
         {
             try
             {
-                XDocument xml = XDocument.Parse(str);
-                return xml.ToString();
+                //XDocument xml = XDocument.Parse(str);
+                return null;
             }
             catch
             {
