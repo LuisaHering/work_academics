@@ -61,8 +61,7 @@ namespace SN_WebMVC.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model) {
             if(ModelState.IsValid) {
-                var data = new Dictionary<string, string>
-                {
+                var data = new Dictionary<string, string> {
                     { "grant_type", "password" },
                     { "username", model.Username },
                     { "password", model.Password }
@@ -74,6 +73,7 @@ namespace SN_WebMVC.Controllers {
 
                     using(var requestContent = new FormUrlEncodedContent(data)) {
                         var response = await client.PostAsync("/Token", requestContent);
+
                         if(response.IsSuccessStatusCode) {
                             var responseContent = await response.Content.ReadAsStringAsync();
                             var tokenData = JObject.Parse(responseContent);
