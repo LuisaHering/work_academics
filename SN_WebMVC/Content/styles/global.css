@@ -18,12 +18,13 @@
     padding: 0 10px;
 }
 
-.wa-btn-login {
+.wa-btn-group {
     width: 100%;
     padding: 0 10px !important;
+    margin-top: 15px;
 }
 
-.btn {
+.wa-btn-group .btn {
     font-size: 16px; /*overwrite*/
 }
 
