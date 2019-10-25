@@ -17,14 +17,14 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     <div class="wa-form">
-                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "wa-form-control", @placeholder = "Nome de usuário" } })
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "wa-form-control", @placeholder = "Nome de usuário", @required = true} })
                         @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="wa-form">
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "wa-form-control", @type = "password", @placeholder = "Senha" } })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "wa-form-control", @type = "password", @placeholder = "Senha", @required = true } })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>

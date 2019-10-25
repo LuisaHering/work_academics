@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Work Academics</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -20,12 +20,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav">
                     <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="nav-item">@Html.ActionLink("Login", "Login", "Account")</li>
-                    <li class="nav-item">@Html.ActionLink("Cadastro", "Register", "Account")</li>
-                    <li class="nav-item">@Html.ActionLink("Recuperação de senha", "RecuperarSenha", "Account")</li>
-
                 </ul>
-                @if (ViewBag.Title != "Login")
+                @if (ViewBag.Title != "Login" || ViewBag.Title != "Cadastrar")
                 {
                     <button class="btn btn-default navbar-btn navbar-right">Logout</button>
                 }
