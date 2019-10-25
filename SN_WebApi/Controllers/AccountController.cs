@@ -328,7 +328,11 @@ namespace SN_WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() {
+                UserName = model.Email,
+                Email = model.Email,
+                Name =  model.Name,
+            };
 
             IdentityResult result = null;
             try {
