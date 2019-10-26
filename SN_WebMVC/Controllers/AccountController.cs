@@ -29,20 +29,25 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model) {
+
             if(ModelState.IsValid) {
+
                 var data = new Dictionary<string, string> {
+
                     { "grant_type", "password" },
                     { "Password", model.Password },
-                    {  "Email", model.Email},
+                    { "Email", model.Email},
                     { "ConfirmPassword", model.ConfirmPassword },
                     { "Name", model.Nome },
                     { "Unersity", model.Universidade }
                 };
 
                 using(var client = new HttpClient()) {
+
                     client.BaseAddress = new Uri("http://localhost:56435");
 
                     using(var requestContent = new FormUrlEncodedContent(data)) {
+
                         var response = await client.PostAsync("Api/Account/Register", requestContent);
 
                         if(response.IsSuccessStatusCode) {
@@ -62,6 +67,7 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model) {
+
             if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
                     { "grant_type", "password" },
@@ -78,8 +84,11 @@ namespace SN_WebMVC.Controllers {
 
                         if(response.IsSuccessStatusCode) {
                             var responseContent = await response.Content.ReadAsStringAsync();
+
                             var tokenData = JObject.Parse(responseContent);
+
                             Session.Add("acess_Token", tokenData["acess_token"]);
+
                             return RedirectToAction("Index", "Home");
                         }
 

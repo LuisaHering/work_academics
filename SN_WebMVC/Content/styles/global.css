@@ -39,14 +39,13 @@
 .wa-logo-header {
     width: 300px;
     height: auto;
-    padding: 10px;
+    padding: 5px;
     margin: 0px;
 }
 
 .wa-logo-footer {
-    max-width: 300px;
+    width: 350px;
     height: auto;
-    padding: 5px;
 }
 
 .wa-form-control {
