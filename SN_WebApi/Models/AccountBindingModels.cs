@@ -35,6 +35,12 @@ namespace SN_WebApi.Models {
         public string ConfirmPassword {
             get; set;
         }
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string Name {
+            get; set;
+        }
     }
 
     public class RegisterBindingModel {
@@ -59,7 +65,26 @@ namespace SN_WebApi.Models {
             get; set;
         }
 
+        [Required]
+        [DataType(DataType.Text)]      
+        public string Name {
+            get; set;
+        }
 
+        [DataType(DataType.Text)]
+        public string University {
+            get; set;
+        }
+
+        [DataType(DataType.Text)]
+        public string Biography {
+            get; set;
+        }
+
+        [DataType(DataType.Text)]
+        public DateTime StartDate {
+            get; set;
+        }
     }
 
     public class RegisterExternalBindingModel {

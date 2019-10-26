@@ -283,6 +283,9 @@ namespace SN_WebApi.Controllers {
                 UserName = model.Email,
                 Email = model.Email,
                 Name = model.Name,
+                University = model.University,
+                Biography = null,
+                StartDate = DateTime.Now
             };
 
             IdentityResult result = null;
