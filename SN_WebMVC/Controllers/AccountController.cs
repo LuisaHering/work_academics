@@ -57,7 +57,6 @@ namespace SN_WebMVC.Controllers {
                         }
                     }
                 }
-
             }
 
             return View();
@@ -73,7 +72,6 @@ namespace SN_WebMVC.Controllers {
                     { "grant_type", "password" },
                     { "username", model.Username },
                     { "password", model.Password }
-
                 };
 
                 using(var client = new HttpClient()) {
