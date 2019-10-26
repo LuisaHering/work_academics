@@ -1,4 +1,5 @@
-﻿@model SN_WebMVC.Models.ProfileViewModel
+﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
+@model SN_WebMVC.Models.ProfileViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -9,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
