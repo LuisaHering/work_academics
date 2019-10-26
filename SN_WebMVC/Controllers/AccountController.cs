@@ -8,59 +8,51 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SN_WebMVC.Controllers
-{
-    public class AccountController : Controller
-    {
+namespace SN_WebMVC.Controllers {
+    public class AccountController : Controller {
+        // get Account/RecuperarSenha
+        public ActionResult RecuperarSenha() {
+            return View();
+        }
+
+        // post
+        public ActionResult TrocaSenha() {
+            return View();
+        }
+
         //Get: Account/Register
-        public ActionResult Register()
-        {
+        public ActionResult Register() {
             return View();
         }
 
         //Post: Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                //using(var client = new HttpClient())
-                //{
-                //    client.BaseAddress = new Uri("http://localhost:56435/");
+        public async Task<ActionResult> Register(RegisterViewModel model) {
 
-                //    var response = await client.PostAsync("Api/Account/Register");
-                //        //client.PostAsJsonAsync("Api/Account/Register", model);
-                //    if (response.IsSucessStatusCode)
-                //    {
-                //        return RedirectToAction("Login");
-                //    }
-                //    else
-                //    {
-                //        return View("Error");
-                //    }
-                //}
+            if(ModelState.IsValid) {
 
                 var data = new Dictionary<string, string> {
+
                     { "grant_type", "password" },
-                    { "ConfirmPassword", model.Password },
-                    { "Password", model.Password }
+                    { "Password", model.Password },
+                    { "Email", model.Email},
+                    { "ConfirmPassword", model.ConfirmPassword },
+                    { "Name", model.Nome },
+                    { "Unersity", model.Universidade }
                 };
 
-                using (var client = new HttpClient())
-                {
+                using(var client = new HttpClient()) {
+
                     client.BaseAddress = new Uri("http://localhost:56435");
 
-                    using (var requestContent = new FormUrlEncodedContent(data))
-                    {
+                    using(var requestContent = new FormUrlEncodedContent(data)) {
+
                         var response = await client.PostAsync("Api/Account/Register", requestContent);
 
-                        if (response.IsSuccessStatusCode)
-                        {
+                        if(response.IsSuccessStatusCode) {
                             return RedirectToAction("Login");
-                        }
-                        else
-                        {
+                        } else {
                             return View("Error");
                         }
                     }
@@ -74,30 +66,29 @@ namespace SN_WebMVC.Controllers
         //POST: Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var data = new Dictionary<string, string>
-                {
+        public async Task<ActionResult> Login(LoginViewModel model) {
+
+            if(ModelState.IsValid) {
+                var data = new Dictionary<string, string> {
                     { "grant_type", "password" },
                     { "username", model.Username },
                     { "password", model.Password }
 
                 };
 
-                using (var client = new HttpClient())
-                {
+                using(var client = new HttpClient()) {
                     client.BaseAddress = new Uri("http://localhost:56435");
 
-                    using (var requestContent = new FormUrlEncodedContent(data))
-                    {
+                    using(var requestContent = new FormUrlEncodedContent(data)) {
                         var response = await client.PostAsync("/Token", requestContent);
-                        if (response.IsSuccessStatusCode)
-                        {
+
+                        if(response.IsSuccessStatusCode) {
                             var responseContent = await response.Content.ReadAsStringAsync();
+
                             var tokenData = JObject.Parse(responseContent);
+
                             Session.Add("acess_Token", tokenData["acess_token"]);
+
                             return RedirectToAction("Index", "Home");
                         }
 
@@ -109,8 +100,7 @@ namespace SN_WebMVC.Controllers
         }
 
         // GET: Account
-        public ActionResult Login()
-        {
+        public ActionResult Login() {
 
             return View();
         }

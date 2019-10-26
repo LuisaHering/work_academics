@@ -1,5 +1,4 @@
-﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
-@model SN_WebMVC.Models.ProfileViewModel
+﻿@model SN_WebMVC.Models.ProfileViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -116,6 +115,7 @@
 
     </dl>
 </div>
-<button class="btn btn-link">
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })
-</button>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
