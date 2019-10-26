@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -12,15 +13,16 @@
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
 
-            <div class="navbar-header navbar-brand"><img src="../Content/images/wa-logo-inline-azul.jpeg" alt="logo" /></div>
-            
+            <div class="navbar-header">
+                <img src="../Content/images/wa-logo-inline.jpeg" alt="logo" class="wa-logo-header" />
+            </div>
+
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")</li>
                 </ul>
                 @if (ViewBag.Title != "Login")
                 {
@@ -33,7 +35,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Work Academics</p>
+            <img src="../Content/images/wa-logo-inline-azul.jpeg" alt="logo" class="wa-logo-footer" />
         </footer>
     </div>
 

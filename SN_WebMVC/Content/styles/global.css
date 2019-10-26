@@ -1,9 +1,4 @@
-﻿.wa-botao-violet {
-    background-color: #5f4b8b;
-    color: white;
-}
-
-.wa-container {
+﻿.wa-container {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -39,6 +34,19 @@
     border: .5px solid #c2c2c2;
     margin: 40px;
     padding: 20px 50px;
+}
+
+.wa-logo-header {
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    margin: 0px;
+}
+
+.wa-logo-footer {
+    max-width: 300px;
+    height: auto;
+    padding: 5px;
 }
 
 .wa-form-control {

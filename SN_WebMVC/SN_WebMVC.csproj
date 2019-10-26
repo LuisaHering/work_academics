@@ -133,6 +133,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\wa-design.jpeg" />
+    <Content Include="Content\images\wa-logo-full.jpeg" />
+    <Content Include="Content\images\wa-logo-inline-azul.jpeg" />
+    <Content Include="Content\images\wa-logo-inline.jpeg" />
+    <Content Include="Content\images\wa-logo.jpeg" />
     <Content Include="Content\styles\global.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
