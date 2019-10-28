@@ -1,4 +1,5 @@
 ﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
+@model SN_WebMVC.Models.ProfileViewModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,14 +23,33 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
                 @if (ViewBag.Title != "Login")
                 {
                     <button class="btn btn-default navbar-btn navbar-right">Logout</button>
                 }
             </div>
         </div>
+    </div>
+    <div class="wa-sidebar">
+        <ul class="nav flex-sm-column">
+            <li class="nav-item">
+                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayFor(model => model.Nome)
+            </li>
+            <li class="nav-item">
+                Email
+                @Html.DisplayFor(model => model.Email)
+            </li>
+            <li class="nav-item">
+                Universidade
+                @Html.DisplayFor(model => model.Universidade)
+            </li>
+            <li class="nav-item">
+                Curso
+                @Html.DisplayFor(model => model.CursoEmAndamento)
+            </li>
+        </ul>
     </div>
     <div class="container body-content">
         @RenderBody()
