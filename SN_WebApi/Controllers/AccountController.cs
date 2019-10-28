@@ -368,13 +368,7 @@ namespace SN_WebApi.Controllers
         [Route("User")]
         public async Task<IHttpActionResult> GetUser(string email)
         {
-            ApplicationUser a = new ApplicationUser();
-            a.Email = "teste@teste.com";
-            a.Id = "1";
-            a.Name = "Gabi gol";
-            a.University = "Infnet";
-            a.Biography = "Eu sou porra louca";
-            a.StartDate = DateTime.Now;
+            
             return Ok(a);
         }
 
