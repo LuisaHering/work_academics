@@ -9,6 +9,7 @@ namespace SN_Core.Interface
 {
     public interface IUser
     {
-        ApplicationUser findUserByEmail(string email); 
+        ApplicationUser findUserByEmail(string email);
+
     }
 }
