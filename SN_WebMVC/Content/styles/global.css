@@ -48,6 +48,18 @@
     height: auto;
 }
 
+.wa-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.wa-sidebar{
+    margin-left: 0;
+    padding: 10px;
+}
+
+
 .wa-form-control {
     display: block;
     width: 100%;

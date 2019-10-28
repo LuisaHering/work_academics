@@ -7,114 +7,60 @@
 
 <h2>Index</h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
-
-        <dt>
+<div class="wa-sidebar">
+    <ul class="nav flex-sm-column">
+        <li class="nav-item">
             @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
+        </li>
+        <li class="nav-item">
+            Email
             @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Universidade)
-        </dt>
-
-        <dd>
+        </li>
+        <li class="nav-item">
+            Universidade
             @Html.DisplayFor(model => model.Universidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ConfirmPassword)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ConfirmPassword)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Biografia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Biografia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GrauAcademico)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GrauAcademico)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CursoEmAndamento)
-        </dt>
-
-        <dd>
+        </li>
+        <li class="nav-item">
+            Curso
             @Html.DisplayFor(model => model.CursoEmAndamento)
-        </dd>
+        </li>
+    </ul>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataInicioCurso)
-        </dt>
+    @*<ul class="wa-list">
+        <li>
+            @Html.DisplayNameFor(model => model.Nome)
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataInicioCurso)
-        </dd>
+        <li>
+            @Html.DisplayFor(model => model.Nome)
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Laboratorios)
-        </dt>
+        <li>
+            @Html.DisplayNameFor(model => model.Email)
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Laboratorios)
-        </dd>
+        <li>
+            @Html.DisplayFor(model => model.Email)
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjetoEmAndamento)
-        </dt>
+        <li>
+            @Html.DisplayNameFor(model => model.Universidade)
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProjetoEmAndamento)
-        </dd>
+        <li>
+            @Html.DisplayFor(model => model.Universidade)
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjetosConcluidos)
-        </dt>
+        <li>
+            @Html.DisplayNameFor(model => model.CursoEmAndamento)
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProjetosConcluidos)
-        </dd>
+        <li>
+            @Html.DisplayFor(model => model.CursoEmAndamento)
+        </li>
 
-    </dl>
+    </ul>*@
 </div>
 <button class="btn btn-link">
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })
