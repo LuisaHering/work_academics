@@ -9,6 +9,7 @@
 
 .wa-nav-container{
     margin-left: 12em;
+    padding: 10px;
 }
 
 .wa-center {
@@ -39,8 +40,8 @@
 
 .wa-box {
     border-radius: 8px;
-    box-shadow: 8px 8px 20px #C2C2C2;
-    border: .5px solid #c2c2c2;
+    box-shadow: 10px 10px 35px #C2C2C2;
+    /*border: .5px solid #c2c2c2;*/
     margin: 40px;
     padding: 20px 50px;
 }
