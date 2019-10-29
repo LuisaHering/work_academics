@@ -4,9 +4,13 @@
 @{
     ViewBag.Title = "Login";
 }
-<div class="wa-center">
+<div class="wa-entrada">
 
-    <div class="wa-box">
+    <div class="wa-logo-entrada">
+        <img src="../Content/images/wa-logo-full.jpeg" alt="Work Academics' Logo" class="wa-logo-entrada" />
+    </div>
+
+    <div class="wa-entrada-box">
         <h2 class="wa-titulo">Login</h2>
 
         @using (Html.BeginForm())
@@ -17,7 +21,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     <div class="wa-form">
-                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "wa-form-control", @placeholder = "Email", @required = true} })
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "wa-form-control", @placeholder = "Email", @required = true } })
                         @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -39,7 +43,7 @@
             </div>
         }
     </div>
-    
+
 
 </div>
 

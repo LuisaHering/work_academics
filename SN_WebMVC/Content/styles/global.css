@@ -7,17 +7,31 @@
 }
 /*fim-overwrite*/
 
-.wa-nav-container{
+.wa-nav-container {
     margin-left: 12em;
     padding: 10px;
 }
 
-.wa-center {
+.wa-logo-entrada {
+    margin: 10px;
+    width: 500px;
+    height: auto;
+}
+
+.wa-entrada {
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.wa-entrada-box {
+    /*border: .5px solid #c2c2c2;*/
+    border-radius: 8px;
+    box-shadow: 10px 10px 35px #C2C2C2;
+    margin: 10px;
+    padding: 20px 50px;
 }
 
 .wa-form {
@@ -32,18 +46,28 @@
     margin-top: 15px;
 }
 
+  /*SIDEBAR*/
+.wa-sidebar {
+    position: fixed;
+    left: 0;
+    padding: 20px;
+    width: 12em;
+    border-right: 1px solid #ccc;
+    height: 100%;
+}
+
+.wa-profile-pic {
+    width: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    margin-bottom: 50px;
+}
+ /*FIM SIDEBAR*/
+
 .wa-titulo {
     font-size: 36px;
     text-align: center;
     margin-bottom: 30px;
-}
-
-.wa-box {
-    border-radius: 8px;
-    box-shadow: 10px 10px 35px #C2C2C2;
-    /*border: .5px solid #c2c2c2;*/
-    margin: 40px;
-    padding: 20px 50px;
 }
 
 .wa-logo-header {
@@ -64,21 +88,6 @@
     list-style: none;
 }
 
-.wa-sidebar{
-    position: fixed;
-    left: 0;
-    padding: 20px;
-    width: 12em;
-    border-right: 1px solid #ccc;
-    height: 100%;
-}
-
-.wa-profile-pic {
-    width: 100px;
-    border-radius: 50%;
-    margin: 10px;
-    margin-bottom: 50px;
-}
 
 .wa-form-control {
     display: block;
