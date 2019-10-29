@@ -24,35 +24,38 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav"></ul>
-                @if (Session.SessionID != null)
+                @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
                 {
                     <button class="btn btn-default navbar-btn navbar-right">Logout</button>
                 }
             </div>
         </div>
     </div>
-    <div class="wa-sidebar">
-        <img src="..\Content\images\pic.png" alt="default-picture" class="wa-profile-pic" />
-        <ul class="nav nav-stacked">
-            <li class="nav-item">
-                <a href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Meus projetos</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Conexões</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Calendário</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Explorar</a>
-            </li>
-        </ul>
-        <hr />
-        <button class="btn btn-link" href="#">@Html.ActionLink("Editar perfil", "Edit", "Home")</button>
-    </div>
+    @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
+    {
+        <div class="wa-sidebar">
+            <img src="..\Content\images\pic.png" alt="default-picture" class="wa-profile-pic" />
+            <ul class="nav nav-stacked">
+                <li class="nav-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Meus projetos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Conexões</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Calendário</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Explorar</a>
+                </li>
+            </ul>
+            <hr />
+            <button class="btn btn-link" href="#">@Html.ActionLink("Editar perfil", "Edit", "Home")</button>
+        </div>
+    }
     <div class="container body-content">
         @RenderBody()
         <hr />
