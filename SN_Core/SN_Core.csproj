@@ -45,15 +45,5 @@
     <Compile Include="Interface\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SN_WebApi\SN_WebApi.csproj">
-      <Project>{203CBDDB-B013-4BAA-9A41-A2612CDE8E7E}</Project>
-      <Name>SN_WebApi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SN_WebMVC\SN_WebMVC.csproj">
-      <Project>{81e9cfa7-3b14-4ed8-b0ef-86ec7f595c87}</Project>
-      <Name>SN_WebMVC</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

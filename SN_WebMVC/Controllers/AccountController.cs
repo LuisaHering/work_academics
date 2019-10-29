@@ -86,8 +86,7 @@ namespace SN_WebMVC.Controllers {
                             var tokenData = JObject.Parse(responseContent);
 
                             Session.Add("acess_Token", tokenData["acess_token"]);
-                            Session.Add("user_name", model.Username);
-                            //Session.Add("user_")
+                            Session.Add("user_name", model.Username);                            
 
                             return RedirectToAction("Index", "Home");
                         }

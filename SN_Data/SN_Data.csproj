@@ -59,21 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SN_Core\SN_Core.csproj">
-      <Project>{53661eb4-19cb-45d5-80ac-66cb1bc81c5b}</Project>
-      <Name>SN_Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SN_WebApi\SN_WebApi.csproj">
-      <Project>{203cbddb-b013-4baa-9a41-a2612cde8e7e}</Project>
-      <Name>SN_WebApi</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
