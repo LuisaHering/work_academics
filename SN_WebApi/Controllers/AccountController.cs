@@ -59,7 +59,7 @@ namespace SN_WebApi.Controllers
         }
 
         // GET api/Account/UserInfo
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
         {
@@ -361,14 +361,6 @@ namespace SN_WebApi.Controllers
                 return GetErrorResult(result);
             }
 
-            return Ok();
-        }
-
-        [AllowAnonymous]
-        [Route("User")]
-        public async Task<IHttpActionResult> GetUser(string email)
-        {
-            
             return Ok();
         }
 
