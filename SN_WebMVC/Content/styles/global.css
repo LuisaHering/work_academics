@@ -1,4 +1,11 @@
-﻿.wa-container {
+﻿/*overwrite*/
+.wa-btn-group .btn {
+    font-size: 16px; 
+}
+
+/*fim-overwrite*/
+
+.wa-container {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -16,10 +23,6 @@
     width: 100%;
     padding: 0 10px !important;
     margin-top: 15px;
-}
-
-.wa-btn-group .btn {
-    font-size: 16px; /*overwrite*/
 }
 
 .wa-titulo {
@@ -57,11 +60,18 @@
 .wa-sidebar{
     position: fixed;
     left: 0;
-    z-index: 1031;
-    padding: 10px;
-    width: 150px;
+    padding: 20px;
+    width: 12em;
+    border-right: 1px solid #ccc;
+    height: 100%;
 }
 
+.wa-profile-pic {
+    width: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    margin-bottom: 50px;
+}
 
 .wa-form-control {
     display: block;

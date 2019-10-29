@@ -24,7 +24,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav"></ul>
-                @if (ViewBag.Title != "Login")
+                @if (Session.SessionID != null)
                 {
                     <button class="btn btn-default navbar-btn navbar-right">Logout</button>
                 }
@@ -32,24 +32,26 @@
         </div>
     </div>
     <div class="wa-sidebar">
-        <ul class="nav flex-sm-column">
+        <img src="..\Content\images\pic.png" alt="default-picture" class="wa-profile-pic" />
+        <ul class="nav nav-stacked">
             <li class="nav-item">
-                @Html.DisplayNameFor(model => model.Nome)
-                @Html.DisplayFor(model => model.Nome)
+                <a href="#">Home</a>
             </li>
             <li class="nav-item">
-                Email
-                @Html.DisplayFor(model => model.Email)
+                <a href="#">Meus projetos</a>
             </li>
             <li class="nav-item">
-                Universidade
-                @Html.DisplayFor(model => model.Universidade)
+                <a href="#">Conexões</a>
             </li>
             <li class="nav-item">
-                Curso
-                @Html.DisplayFor(model => model.CursoEmAndamento)
+                <a href="#">Calendário</a>
+            </li>
+            <li class="nav-item">
+                <a href="#">Explorar</a>
             </li>
         </ul>
+        <hr />
+        <button class="btn btn-link" href="#">@Html.ActionLink("Editar perfil", "Edit", "Home")</button>
     </div>
     <div class="container body-content">
         @RenderBody()
