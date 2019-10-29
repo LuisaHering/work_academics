@@ -369,7 +369,7 @@ namespace SN_WebApi.Controllers
         public async Task<IHttpActionResult> GetUser(string email)
         {
             
-            return Ok(a);
+            return Ok();
         }
 
 
