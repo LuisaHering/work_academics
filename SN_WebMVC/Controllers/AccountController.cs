@@ -11,7 +11,6 @@ using System.Web.Mvc;
 namespace SN_WebMVC.Controllers {
     public class AccountController : Controller {
 
-        
         // get Account/RecuperarSenha
         public ActionResult RecuperarSenha() {
             return View();
@@ -107,12 +106,5 @@ namespace SN_WebMVC.Controllers {
 
             return View();
         }
-
-
-        //colar code john
-
-
-
-
     }
 }
