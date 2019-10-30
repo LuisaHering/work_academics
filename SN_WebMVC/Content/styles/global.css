@@ -9,7 +9,7 @@
 
 .wa-nav-container {
     margin-left: 12em;
-    padding: 10px;
+    padding: 5px;
 }
 
 .wa-logo-entrada {
@@ -50,7 +50,7 @@
 .wa-sidebar {
     position: fixed;
     left: 0;
-    padding: 20px;
+    padding: 40px 20px;
     width: 12em;
     border-right: 1px solid #ccc;
     height: 100%;
