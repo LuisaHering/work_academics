@@ -31,6 +31,10 @@ namespace SN_WebApi.Models {
             // Add custom user claims here
             return userIdentity;
         }
+
+        public static implicit operator IdentityResult(ApplicationUser v) {
+            throw new NotImplementedException();
+        }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser> {
