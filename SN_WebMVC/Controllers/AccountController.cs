@@ -12,7 +12,7 @@ using System.Web.Mvc;
 namespace SN_WebMVC.Controllers {
     public class AccountController : Controller {
 
-        private static string base_url = "http://localhost:56435/api/";
+        private static string base_url = "http://localhost:56435";
 
         // get Account/RecuperarSenha
         public ActionResult RecuperarSenha() {
@@ -78,19 +78,17 @@ namespace SN_WebMVC.Controllers {
 
             using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
+                
                 //cliente.DefaultRequestHeaders.Accept.Clear();
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
-                //var response = await cliente.GetAsync("/Account/Logout");
+                var response = await cliente.GetAsync("/api/Account/Logout");
 
-                
-
-            }
-
-            if(true) {
-                return RedirectToAction("Login", "Account");
-            }
-            return RedirectToAction("Login", "Account");
+                if(response.IsSuccessStatusCode) {
+                    return RedirectToAction("Login", "Account");
+                }
+            }            
+            return RedirectToAction("Error", "Shared");
 
         }
 
