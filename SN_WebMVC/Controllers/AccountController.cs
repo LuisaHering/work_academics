@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -78,7 +79,7 @@ namespace SN_WebMVC.Controllers {
             using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
                 //cliente.DefaultRequestHeaders.Accept.Clear();
-                cliente.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{access_token}");
+                cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 //var response = await cliente.GetAsync("/Account/Logout");
 
