@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace SN_WebMVC.Controllers {
     public class HomeController : Controller {
+
         // GET: Home
         public ActionResult Index() {
             return View();
@@ -13,6 +14,9 @@ namespace SN_WebMVC.Controllers {
 
         // GET: Home/Edit/
         public ActionResult Edit() {
+
+            var access_token = Session["user_name"];
+
             return View();
         }
 
@@ -20,8 +24,7 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection) {
             try {
-                // TODO: Add update logic here
-
+                
                 return RedirectToAction("Index");
             } catch {
                 return View();

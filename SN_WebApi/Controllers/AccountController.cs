@@ -26,6 +26,8 @@ namespace SN_WebApi.Controllers {
 
         private ApplicationUserManager _userManager;
 
+        private DatabaseContext db = new DatabaseContext();
+
         public AccountController() {
         }
 
@@ -127,19 +129,11 @@ namespace SN_WebApi.Controllers {
 
         [AllowAnonymous]
         [Route("FindUser")]
+        [HttpGet]
         public async Task<IHttpActionResult> findUserByEmail(string email) {
-            IdentityResult result = null;
+            var t = db.ApplicationUser.Find("");
 
-            try {
-                result = await UserManager.FindByEmailAsync(email);
-            } catch(Exception e) {
-                Console.WriteLine(e.Message);
-            }
-
-            if(!result.Succeeded) {
-                return GetErrorResult(result);
-            }
-            return Ok(result);
+            return Ok();
         }
 
         // POST api/Account/Register

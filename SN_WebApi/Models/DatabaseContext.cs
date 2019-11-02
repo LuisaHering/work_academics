@@ -8,7 +8,7 @@ namespace SN_WebApi.Models
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<ApplicationUser> applicationUser
+        public DbSet<ApplicationUser> ApplicationUser
         {
             get; set;
         }
