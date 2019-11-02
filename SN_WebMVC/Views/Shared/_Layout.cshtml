@@ -32,11 +32,6 @@
         </div>
     </div>
 
-    @if(ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
-    {
-        Html.RenderPartial("_SideBar");
-    }
-
     <div class="container body-content">
         @RenderBody()
         <hr />
