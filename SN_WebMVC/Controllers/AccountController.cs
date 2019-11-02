@@ -11,6 +11,8 @@ using System.Web.Mvc;
 namespace SN_WebMVC.Controllers {
     public class AccountController : Controller {
 
+        private static string base_url = "http://localhost:56435/api/";
+
         // get Account/RecuperarSenha
         public ActionResult RecuperarSenha() {
             return View();
@@ -63,10 +65,35 @@ namespace SN_WebMVC.Controllers {
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Logout() {
+
+            var access_token = Session["access_token"];
+
+            var data = new Dictionary<string, string> {
+                
+            };
+
+            using(var cliente = new HttpClient()) {
+                cliente.BaseAddress = new Uri(base_url);
+                //cliente.DefaultRequestHeaders.Accept.Clear();
+                cliente.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                //var response = await cliente.GetAsync("/Account/Logout");
+
+                return RedirectToAction("Login", "Account");
+
+            }
+
+            return null;
+        }
+
         //POST: Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model) {
+
 
             if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
@@ -86,8 +113,8 @@ namespace SN_WebMVC.Controllers {
 
                             var tokenData = JObject.Parse(responseContent);
 
-                            Session.Add("acess_Token", tokenData["acess_token"]);
-                            Session.Add("user_name", model.Username);                            
+                            Session.Add("access_token", tokenData["access_token"]);
+                            Session.Add("user_name", model.Username);
 
                             return RedirectToAction("Index", "Home");
                         }

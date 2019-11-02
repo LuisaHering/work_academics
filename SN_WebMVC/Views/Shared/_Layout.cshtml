@@ -24,9 +24,12 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav"></ul>
-                @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
-                {
-                    <button class="btn btn-default navbar-btn navbar-right">Logout</button>
+                @if(ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar") {
+
+                    <form action="/Account/Logout" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-default navbar-btn navbar-right">Logout</button>
+                    </form>
                 }
             </div>
         </div>
