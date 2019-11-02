@@ -82,11 +82,15 @@ namespace SN_WebMVC.Controllers {
 
                 //var response = await cliente.GetAsync("/Account/Logout");
 
-                return RedirectToAction("Login", "Account");
+                
 
             }
 
-            return null;
+            if(true) {
+                return RedirectToAction("Login", "Account");
+            }
+            return RedirectToAction("Login", "Account");
+
         }
 
         //POST: Account/Login
