@@ -1,7 +1,7 @@
 ﻿<div class="wa-sidebar">
 
     <img src="..\Content\images\pic.png" alt="default-picture" class="wa-profile-pic" />
-    
+
     <ul class="nav nav-stacked">
 
         <li class="nav-item">
@@ -19,10 +19,12 @@
         <li class="nav-item">
             <a href="#">Explorar</a>
         </li>
-    
+
     </ul>
-    
+
     <hr />
-    
-    <button class="btn btn-link" href="#">@Html.ActionLink("Editar perfil", "Edit", "Home")</button>
+
+    <form action="/Home/Edit" method="get">
+        <button type="submit" class="btn btn-link">Editar perfil</button>
+    </form>
 </div>
