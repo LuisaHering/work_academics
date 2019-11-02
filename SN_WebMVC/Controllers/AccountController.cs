@@ -72,14 +72,9 @@ namespace SN_WebMVC.Controllers {
 
             var access_token = Session["access_token"];
 
-            var data = new Dictionary<string, string> {
-                
-            };
-
             using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
-                
-                //cliente.DefaultRequestHeaders.Accept.Clear();
+
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 var response = await cliente.GetAsync("/api/Account/Logout");
@@ -87,9 +82,8 @@ namespace SN_WebMVC.Controllers {
                 if(response.IsSuccessStatusCode) {
                     return RedirectToAction("Login", "Account");
                 }
-            }            
+            }
             return RedirectToAction("Error", "Shared");
-
         }
 
         //POST: Account/Login
