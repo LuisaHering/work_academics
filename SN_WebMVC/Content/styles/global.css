@@ -10,6 +10,9 @@
 .wa-nav-container {
     margin-left: 12em;
     padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .wa-logo-entrada {
@@ -111,11 +114,22 @@
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 }
 
-@media (max-width: 400px){
-    .wa-box {
+@media screen and (max-width: 400px), screen and (max-height: 500px){
+    .wa-entrada-box {
         max-width: 340px;
         padding: 20px 30px;
         box-shadow: 4px 4px 20px #C2C2C2;
     }
+  
     /*navbar responsive*/
+}
+
+@media (max-width: 800px){
+    .wa-logo-entrada{
+        display: none;
+    }
+    .body-content {
+        margin-right: auto;
+    }
+ 
 }
