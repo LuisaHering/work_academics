@@ -183,10 +183,9 @@ namespace SN_WebApi.Controllers {
             return Ok();
         }
 
-        [AllowAnonymous]
         [Route("update")]
         [HttpPut]
-        public async Task<IHttpActionResult> Update(UpdateBindingModel model) {
+        public IHttpActionResult Update(UpdateBindingModel model) {
 
             var updatedUser = new User() {
                 Biografia = model.Biografia,
