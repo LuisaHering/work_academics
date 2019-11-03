@@ -163,13 +163,13 @@ namespace SN_WebApi.Controllers {
                 Nome = model.Name,
                 Email = model.Email,
                 DataInicio = DateTime.Now,
-                Nascimento = DateTime.Now                           
+                Nascimento = DateTime.Now
             };
 
             IdentityResult result = null;
             bool created = false;
-            try {                
-                result = await UserManager.CreateAsync(user, model.Password);                
+            try {
+                result = await UserManager.CreateAsync(user, model.Password);
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
             }
@@ -188,8 +188,7 @@ namespace SN_WebApi.Controllers {
         [HttpPut]
         public async Task<IHttpActionResult> Update(UpdateBindingModel model) {
 
-            var updatedUser = new User()
-            {
+            var updatedUser = new User() {
                 Biografia = model.Biografia,
                 Email = model.Email,
                 Nome = model.Nome,
@@ -197,7 +196,10 @@ namespace SN_WebApi.Controllers {
 
             var updated = UsersService.Update(updatedUser);
 
-            return null;
+            if(!updated) {
+                return BadRequest("Erro ao atualizar os dados do usuario");
+            }
+            return Ok("Atualizado com sucesso");
         }
 
         protected override void Dispose(bool disposing) {
