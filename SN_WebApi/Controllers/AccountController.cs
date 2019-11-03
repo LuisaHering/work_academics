@@ -183,6 +183,14 @@ namespace SN_WebApi.Controllers {
             return Ok();
         }
 
+        [Route("update")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Update(RegisterBindingModel model) {
+
+
+            return null;
+        }
+
         protected override void Dispose(bool disposing) {
             if(disposing && _userManager != null) {
                 _userManager.Dispose();

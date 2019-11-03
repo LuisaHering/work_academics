@@ -11,5 +11,7 @@ namespace Core.Services {
         User FindByEmail(string email);
 
         bool Create(User user);
+
+        bool Update(User user);
     }
 }
