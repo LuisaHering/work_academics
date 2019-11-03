@@ -26,21 +26,39 @@ namespace Data.Services {
             return false;
         }
 
-        public User FindByEmail(string email) {         
+        public User FindByEmail(string email) {
             return database.Users.Where(x => x.Email == email).FirstOrDefault();
         }
 
-        public bool Update(User user)
-        {
-            var oldUser = FindByEmail(user.Email);
-            //database.Users.Attach(user);
-            //database.Entry(user).State = EntityState.Modified;
-            //database.SaveChangesAsync;
-            oldUser.Biografia = user.Biografia;
-            oldUser.Email = user.Email;
-            oldUser.Nome = user.Nome;
+        public bool Update(User user) {
 
-            return true;
+            /*
+                Converte data tipo datetime c# para date do tipo sql
+             */
+            string inicio = $"{user.DataInicio.Day}-{user.DataInicio.Month}-{user.DataInicio.Year}";
+            string nascimento = $"{user.Nascimento.Day}-{user.Nascimento.Month}-{user.Nascimento.Year}";
+
+            /*
+                Query de atualização
+             */
+            string query = $"Update dbo.Users Set " +
+                            $"Nome = '{user.Nome}', " +
+                            $"Foto = '{user.Foto}', " +
+                            $"Email = '{user.Email}', " +
+                            $"Nascimento = {nascimento}, " +
+                            $"DataInicio = {inicio}, " +
+                            $"Biografia = '{user.Biografia}' " +
+                            $"where Email = '{user.Email}' ";
+
+            try {
+                database
+                    .Database
+                    .ExecuteSqlCommand(query);
+                return true;
+            } catch(Exception e) {
+                Console.WriteLine(e.Message);
+            }
+            return false;
         }
     }
 }
