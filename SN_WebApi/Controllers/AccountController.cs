@@ -139,7 +139,11 @@ namespace SN_WebApi.Controllers {
         public IHttpActionResult FindUserByEmail(string email) {
             var Usuario = UsersService.FindByEmail(email);
 
-            return Ok();
+            if(Usuario == null) {
+                return BadRequest("Usuário não localizado");
+            }
+
+            return Ok(Usuario);
         }
 
         // POST api/Account/Register

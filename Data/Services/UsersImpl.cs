@@ -25,13 +25,8 @@ namespace Data.Services {
             return false;
         }
 
-        public User FindByEmail(string email) {
-            try {
-                var obj = database.Users.Where(x => x.Email == email);
-            } catch(Exception e) {
-                Console.WriteLine(e.Message);
-            }
-            return null;
+        public User FindByEmail(string email) {         
+            return database.Users.Where(x => x.Email == email).FirstOrDefault();
         }
     }
 }
