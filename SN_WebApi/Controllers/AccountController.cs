@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using Core.Services;
+using Data.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -17,6 +19,7 @@ using Microsoft.Owin.Security.OAuth;
 using SN_WebApi.Models;
 using SN_WebApi.Providers;
 using SN_WebApi.Results;
+using SN_WebApi.Service;
 
 namespace SN_WebApi.Controllers {
     [Authorize]
@@ -27,7 +30,12 @@ namespace SN_WebApi.Controllers {
 
         private ApplicationUserManager _userManager;
 
-        private DatabaseContext db = new DatabaseContext();
+        //private DatabaseContext db = new DatabaseContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
+        private UserContextex db = new UserContextex();
+
+        private IAspNetUsers UsersService = ServiceLocator.GetInstanceOf<AspNetUsersImpl>();
+
 
         public AccountController() {
         }
@@ -131,8 +139,9 @@ namespace SN_WebApi.Controllers {
         [AllowAnonymous]
         [Route("FindUser")]
         [HttpGet]
-        public async Task<IHttpActionResult> findUserByEmail(string email) {
-            var t = db.ApplicationUser.Where(u => u.Email == email);
+        public IHttpActionResult FindUserByEmail(string email) {
+            var Usuario = UsersService.FindByEmail(email);
+            //var t = db.User.Where(x => x.Email == email);
 
             return Ok();
         }

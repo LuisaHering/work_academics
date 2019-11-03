@@ -4,12 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace SN_WebApi.Models
-{
-    public class DatabaseContext : DbContext
-    {
-        public DbSet<ApplicationUser> ApplicationUser
-        {
+namespace SN_WebApi.Models {
+    public class UserContextex : DbContext {
+        public DbSet<ApplicationUser> User {
             get; set;
         }
     }
