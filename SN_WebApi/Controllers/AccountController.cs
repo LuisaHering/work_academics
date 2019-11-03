@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using Core.Models;
 using Core.Services;
 using Data.Services;
 using Microsoft.AspNet.Identity;
@@ -30,11 +31,7 @@ namespace SN_WebApi.Controllers {
 
         private ApplicationUserManager _userManager;
 
-        //private DatabaseContext db = new DatabaseContext();
-        //private ApplicationDbContext db = new ApplicationDbContext();
-        private UserContextex db = new UserContextex();
-
-        private IAspNetUsers UsersService = ServiceLocator.GetInstanceOf<AspNetUsersImpl>();
+        private IUsers UsersService = ServiceLocator.GetInstanceOf<UsersImpl>();
 
 
         public AccountController() {
@@ -141,7 +138,6 @@ namespace SN_WebApi.Controllers {
         [HttpGet]
         public IHttpActionResult FindUserByEmail(string email) {
             var Usuario = UsersService.FindByEmail(email);
-            //var t = db.User.Where(x => x.Email == email);
 
             return Ok();
         }
@@ -156,22 +152,27 @@ namespace SN_WebApi.Controllers {
 
             var user = new ApplicationUser() {
                 UserName = model.Email,
+                Email = model.Email
+            };
+
+            var usuario = new User() {
+                Nome = model.Name,
                 Email = model.Email,
-                Name = model.Name,
-                University = model.University,
-                Biography = null,
-                StartDate = DateTime.Now
+                DataInicio = DateTime.Now,
+                Nascimento = DateTime.Now                           
             };
 
             IdentityResult result = null;
-            try {
-                result = await UserManager.CreateAsync(user, model.Password);
-
+            bool created = false;
+            try {                
+                result = await UserManager.CreateAsync(user, model.Password);                
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
             }
 
-            if(!result.Succeeded) {
+            created = UsersService.Create(usuario);
+
+            if(!result.Succeeded || !created) {
                 return GetErrorResult(result);
             }
 

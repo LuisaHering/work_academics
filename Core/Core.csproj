@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AspNetUsers.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IAspNetUsers.cs" />
+    <Compile Include="Services\IUsers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

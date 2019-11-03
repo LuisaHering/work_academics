@@ -8,7 +8,7 @@ using System.Web;
 namespace SN_WebApi.Service {
     public class ServiceLocator {
         private static Dictionary<Type, Type> Usuario = new Dictionary<Type, Type> {
-            [typeof(IAspNetUsers)] = typeof(AspNetUsersImpl)
+            [typeof(IUsers)] = typeof(UsersImpl)
         };
 
         internal static T GetInstanceOf<T>() {

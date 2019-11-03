@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace Data.Context {
     public class DatabaseContext : DbContext {
-        public DbSet<AspNetUsers> Users {
+        public DbSet<User> Users {
             get; set;
+        }
+
+        public DatabaseContext() : base("DefaultConnection") {
+        }
+
+        public static DatabaseContext Create() {
+            return new DatabaseContext();
         }
     }
 }

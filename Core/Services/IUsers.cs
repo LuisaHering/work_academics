@@ -6,8 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Services {
-    public interface IAspNetUsers {
+    public interface IUsers {
 
-        AspNetUsers FindByEmail(string email);
+        User FindByEmail(string email);
+
+        bool Create(User user);
     }
 }
