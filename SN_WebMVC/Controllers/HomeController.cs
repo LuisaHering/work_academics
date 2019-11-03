@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace SN_WebMVC.Controllers {
     public class HomeController : Controller {
+
+        private static string base_url = "http://localhost:56435";
 
         // GET: Home
         public ActionResult Index() {
@@ -19,9 +24,22 @@ namespace SN_WebMVC.Controllers {
         }
 
         // GET: Home/Edit/
-        public ActionResult Edit() {
+        public async Task<ActionResult> Edit() {
+            var access_email = Session["user_name"];
+            var access_token = Session["access_token"];
 
-            var access_token = Session["user_name"];
+            using(var cliente = new HttpClient()) {
+                cliente.BaseAddress = new Uri(base_url);
+
+                cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                var response = await cliente.GetAsync($"/api/account/findUser?email={access_email}");
+
+                if(response.IsSuccessStatusCode) {
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
 
             return View();
         }

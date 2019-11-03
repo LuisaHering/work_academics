@@ -115,19 +115,15 @@ namespace SN_WebMVC.Controllers {
 
                             return RedirectToAction("Index", "Home");
                         }
-
                         return View("Error");
                     }
                 }
-
-
             }
             return View();
         }
 
         // GET: Account
         public ActionResult Login() {
-
             return View();
         }
     }
