@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -131,7 +132,7 @@ namespace SN_WebApi.Controllers {
         [Route("FindUser")]
         [HttpGet]
         public async Task<IHttpActionResult> findUserByEmail(string email) {
-            var t = db.ApplicationUser.Find("");
+            var t = db.ApplicationUser.Where(u => u.Email == email);
 
             return Ok();
         }

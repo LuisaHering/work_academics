@@ -1,0 +1,93 @@
+﻿@model SN_WebMVC.Models.ProfileViewModel
+
+<div>
+    <h4>ProfileViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Universidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Universidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Biografia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Biografia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrauAcademico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrauAcademico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CursoEmAndamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CursoEmAndamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInicioCurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInicioCurso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Laboratorios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Laboratorios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjetoEmAndamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjetoEmAndamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjetosConcluidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjetosConcluidos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

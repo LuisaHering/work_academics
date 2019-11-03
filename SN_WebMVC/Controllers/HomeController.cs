@@ -12,6 +12,12 @@ namespace SN_WebMVC.Controllers {
             return View();
         }
 
+        //get
+        public ActionResult Perfil()
+        {
+            return View();
+        }
+
         // GET: Home/Edit/
         public ActionResult Edit() {
 
