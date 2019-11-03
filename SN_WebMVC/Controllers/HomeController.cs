@@ -47,16 +47,21 @@ namespace SN_WebMVC.Controllers {
                     return View(profileView);
                 }
             }
-
-
             return View();
         }
 
         // POST: Home/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection) {
-            try {
-                
+
+            // Criar obj do tipo esperado pelo endpoint
+            // adicionar o token no headers
+            // chamar requisicao
+            // verificar status da requisicao
+            // retornar para sucesso em caso de sucesso
+            // retornar para erro em caso de erro
+
+            try {                
                 return RedirectToAction("Index");
             } catch {
                 return View();
