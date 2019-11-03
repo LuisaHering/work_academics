@@ -19,9 +19,6 @@ namespace Core.Models {
             get; set;
         }
 
-        public string IdFoto {
-            get; set;
-        }
         public string Foto {
             get; set;
         }

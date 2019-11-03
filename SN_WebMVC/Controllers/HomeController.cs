@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SN_WebMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -28,6 +30,8 @@ namespace SN_WebMVC.Controllers {
             var access_email = Session["user_name"];
             var access_token = Session["access_token"];
 
+            ProfileViewModel profileView = new ProfileViewModel();
+
             using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
 
@@ -36,7 +40,11 @@ namespace SN_WebMVC.Controllers {
                 var response = await cliente.GetAsync($"/api/account/findUser?email={access_email}");
 
                 if(response.IsSuccessStatusCode) {
-                    return RedirectToAction("Login", "Account");
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
+
+                    return View(profileView);
                 }
             }
 
