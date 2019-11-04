@@ -20,23 +20,20 @@ namespace SN_WebMVC.Controllers {
         }
 
         //get home/perfil
-        public async Task<ActionResult> Perfil()
-        {
+        public async Task<ActionResult> Perfil() {
             var access_email = Session["user_name"];
             var access_token = Session["access_token"];
 
             ProfileViewModel profileView = new ProfileViewModel();
 
-            using (var cliente = new HttpClient())
-            {
+            using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
 
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 var response = await cliente.GetAsync($"/api/account/findUser?email={access_email}");
 
-                if (response.IsSuccessStatusCode)
-                {
+                if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
 
                     profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
@@ -79,8 +76,7 @@ namespace SN_WebMVC.Controllers {
 
             var access_token = Session["access_token"];
 
-            if (ModelState.IsValid)
-            {
+            if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
 
                     { "grant_type", "password" },
@@ -91,28 +87,23 @@ namespace SN_WebMVC.Controllers {
                     { "Biografia", collection["Biografia"] },
                 };
 
-                using (var client = new HttpClient())
-                {
+                using(var client = new HttpClient()) {
 
                     client.BaseAddress = new Uri("http://localhost:56435");
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
-                    using (var requestContent = new FormUrlEncodedContent(data))
-                    {
+                    using(var requestContent = new FormUrlEncodedContent(data)) {
                         var response = await client.PutAsync("Api/Account/update", requestContent);
-                        
-                        if (response.IsSuccessStatusCode)
-                        {
+
+                        if(response.IsSuccessStatusCode) {
                             return RedirectToAction("Perfil");
-                        }
-                        else
-                        {
+                        } else {
                             return View("Error");
                         }
                     }
                 }
             }
-           return View();
+            return View();
 
         }
 
