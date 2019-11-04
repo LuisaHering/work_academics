@@ -1,7 +1,13 @@
 ﻿@model SN_WebMVC.Models.ProfileViewModel
 
-<div>
-    <h4>ProfileViewModel</h4>
+@{
+    ViewBag.Title = "Perfil";
+
+}
+<div >
+
+    <h2>Perfil</h2>
+
     <hr />
     <dl class="dl-horizontal">
 
@@ -31,7 +37,7 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Voltar", "Index")
-</p>
+<div style="display:flex;flex-direction:row;">
+    <button class="btn btn-default">@Html.ActionLink("Editar perfil", "Edit", new { /* id = Model.PrimaryKey */ })</button>
+    <button class="btn btn-link">@Html.ActionLink("Voltar", "Index")</button>
+</div>
