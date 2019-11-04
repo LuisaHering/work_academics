@@ -113,12 +113,6 @@ namespace SN_WebMVC.Controllers {
                 }
             }
 
-            try
-            {                
-                return RedirectToAction("Index");
-            } catch {
-                return View();
-            }
         }
 
 
