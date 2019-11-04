@@ -26,6 +26,16 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        public string Universidade
+        {
+            get; set;
+        }
+
+        public string Curso
+        {
+            get; set;
+        }
+
         public string DataInicio {
             get; set;
         }
