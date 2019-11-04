@@ -1,59 +1,64 @@
-﻿@model SN_WebMVC.Models.ProfileViewModel
+﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
+@model SN_WebMVC.Models.ProfileViewModel
 
 @{
     ViewBag.Title = "Perfil";
 
 }
-<div >
+<div style="margin:40px 0;">
 
     <h2>Perfil</h2>
 
-    <hr />
-    <dl style="display:flex;flex-direction:column;">
+    <ul class="wa-list">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+        <li class="wa-perfil-label">
+            Nome
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+        <li class="wa-perfil-info">
+            Gabriel Couto
+            @*@Html.DisplayFor(model => model.Nome)*@
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+        <li class="wa-perfil-label">
+            Email
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+        <li class="wa-perfil-info">
+            testando@teste.com
+            @*@Html.DisplayFor(model => model.Email)*@
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Universidade)
-        </dt>
+        <li class="wa-perfil-label">
+            Universidade
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Universidade)
-        </dd>
+        <li class="wa-perfil-info">
+            Instituto Infnet
+            @*@Html.DisplayFor(model => model.Universidade)*@
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Curso)
-        </dt>
+        <li class="wa-perfil-label">
+            Curso
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Curso)
-        </dd>
+        <li class="wa-perfil-info">
+            Engenharia de Software
+            @*@Html.DisplayFor(model => model.Curso)*@
+        </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Biografia)
-        </dt>
+        <li class="wa-perfil-label">
+            Biografia
+        </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Biografia)
-        </dd>
+        <li class="wa-perfil-info">
+            Apenas um cara
+            @*@Html.DisplayFor(model => model.Biografia)*@
+        </li>
 
-    </dl>
+    </ul>
 </div>
-<div style="display:flex;flex-direction:row;">
+<div style="display:flex;flex-direction:row;margin:20px 0;">
     <button class="btn btn-default">@Html.ActionLink("Editar perfil", "Edit", new { /* id = Model.PrimaryKey */ })</button>
     <button class="btn btn-link">@Html.ActionLink("Voltar", "Index")</button>
 </div>
