@@ -196,7 +196,7 @@ namespace SN_WebApi.Controllers {
                 Curso = model.Curso
             };
 
-            var updated = UsersService.Update(updatedUser);
+            var updated = UsersService.UpdateEF2(updatedUser);
 
             if(!updated) {
                 return BadRequest("Erro ao atualizar os dados do usuario");

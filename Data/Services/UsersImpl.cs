@@ -31,7 +31,7 @@ namespace Data.Services {
         }
 
         public bool UpdateEF1(User user) {
-            var originalUser = database.Users.Find(user.Id);
+            var originalUser = FindByEmail(user.Email);
             if(originalUser == null)
                 return false;
             database.Users.Remove(originalUser);
@@ -40,12 +40,18 @@ namespace Data.Services {
         }
 
         public bool UpdateEF2(User user) {
-            database.Entry<User>(user).State = EntityState.Modified;
-            database.SaveChanges();
-            return true;
+            try {
+                database.Entry<User>(user).State = EntityState.Modified;
+                database.SaveChanges();
+                return true;
+            } catch(Exception e) {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                return false;
+            }
         }
 
-        public bool UpdateEF3(User updatedUser) {
+        private bool UpdateEF3(User updatedUser) {
             var originalUser = database.Users.Find(updatedUser.Id);
             //AutoMapper
             originalUser.Nome = updatedUser.Nome;
