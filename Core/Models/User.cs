@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SN_WebMVC.Models {
-    public class ProfileViewModel {
+namespace Core.Models {
+    public class User {
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id {
             get; set;
         }
@@ -22,10 +27,6 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
-        public DateTime Nascimento {
-            get; set;
-        }
-
         public string Universidade
         {
             get; set;
@@ -36,12 +37,20 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
-        public string DataInicio {
+        public DateTime Nascimento {
+            get; set;
+        }
+
+        public DateTime DataInicio {
             get; set;
         }
 
         public string Biografia {
             get; set;
+        }
+
+        public User() {
+
         }
     }
 }

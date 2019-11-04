@@ -1,9 +1,44 @@
-﻿.wa-container {
+﻿/*overwrite*/
+.wa-btn-group .btn {
+    font-size: 16px; 
+}
+.body-content{
+    margin-left: 12em;
+}
+.navbar-right{
+    margin-right: 10px;
+}
+/*fim-overwrite*/
+
+.wa-container{
+    margin-top: 40px;
+}
+
+.wa-nav-container {
+    margin-left: 12em;
+    padding: 5px;
+}
+
+.wa-logo-entrada {
+    margin: 10px;
+    width: 500px;
+    height: auto;
+}
+
+.wa-entrada {
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.wa-entrada-box {
+    /*border: .5px solid #c2c2c2;*/
+    border-radius: 8px;
+    box-shadow: 10px 10px 35px #C2C2C2;
+    margin: 10px;
+    padding: 20px 50px;
 }
 
 .wa-form {
@@ -18,22 +53,28 @@
     margin-top: 15px;
 }
 
-.wa-btn-group .btn {
-    font-size: 16px; /*overwrite*/
+  /*SIDEBAR*/
+.wa-sidebar {
+    position: fixed;
+    left: 0;
+    padding: 40px 20px;
+    width: 12em;
+    border-right: 1px solid #ccc;
+    height: 100%;
 }
+
+.wa-profile-pic {
+    width: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    margin-bottom: 50px;
+}
+ /*FIM SIDEBAR*/
 
 .wa-titulo {
     font-size: 36px;
     text-align: center;
     margin-bottom: 30px;
-}
-
-.wa-box {
-    border-radius: 8px;
-    box-shadow: 8px 8px 20px #C2C2C2;
-    border: .5px solid #c2c2c2;
-    margin: 40px;
-    padding: 20px 50px;
 }
 
 .wa-logo-header {
@@ -47,6 +88,24 @@
     width: 350px;
     height: auto;
 }
+
+.wa-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.wa-perfil-info {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.wa-perfil-label{
+    padding: 5px 0;
+    font-weight: 600;
+}
+
 
 .wa-form-control {
     display: block;
@@ -70,11 +129,39 @@
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 }
 
-@media (max-width: 400px){
-    .wa-box {
-        max-width: 340px;
-        padding: 20px 30px;
+@media screen and (max-width: 400px){
+    .wa-entrada-box {
+        max-width: 310px;
+        padding: 20px;
         box-shadow: 4px 4px 20px #C2C2C2;
     }
+    .body-content {
+        margin-left: 2em;
+    }
+    .wa-nav-container{
+        margin-left: 2em;
+    }
     /*navbar responsive*/
+}
+
+@media (max-width: 800px){
+    .body-content {
+        margin-left: 6em;
+    }
+    .wa-logo-entrada {
+        display: none;
+    }
+    .wa-nav-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 6em;;
+    }
+    .navbar-toggle{
+        margin-right: 0px;
+    }
+    .wa-entrada{
+        justify-content: center;
+    }
+ 
 }

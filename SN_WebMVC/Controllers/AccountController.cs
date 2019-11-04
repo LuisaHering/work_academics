@@ -4,12 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace SN_WebMVC.Controllers {
     public class AccountController : Controller {
+
+        private static string base_url = "http://localhost:56435";
+
         // get Account/RecuperarSenha
         public ActionResult RecuperarSenha() {
             return View();
@@ -39,7 +43,7 @@ namespace SN_WebMVC.Controllers {
                     { "Email", model.Email},
                     { "ConfirmPassword", model.ConfirmPassword },
                     { "Name", model.Nome },
-                    { "Unersity", model.Universidade }
+                    { "University", model.Universidade },
                 };
 
                 using(var client = new HttpClient()) {
@@ -57,10 +61,29 @@ namespace SN_WebMVC.Controllers {
                         }
                     }
                 }
-
             }
 
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Logout() {
+
+            var access_token = Session["access_token"];
+
+            using(var cliente = new HttpClient()) {
+                cliente.BaseAddress = new Uri(base_url);
+
+                cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                var response = await cliente.GetAsync("/api/Account/Logout");
+
+                if(response.IsSuccessStatusCode) {
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+            return RedirectToAction("Error", "Shared");
         }
 
         //POST: Account/Login
@@ -68,12 +91,12 @@ namespace SN_WebMVC.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model) {
 
+
             if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
                     { "grant_type", "password" },
                     { "username", model.Username },
                     { "password", model.Password }
-
                 };
 
                 using(var client = new HttpClient()) {
@@ -87,11 +110,11 @@ namespace SN_WebMVC.Controllers {
 
                             var tokenData = JObject.Parse(responseContent);
 
-                            Session.Add("acess_Token", tokenData["acess_token"]);
+                            Session.Add("access_token", tokenData["access_token"]);
+                            Session.Add("user_name", model.Username);
 
                             return RedirectToAction("Index", "Home");
                         }
-
                         return View("Error");
                     }
                 }
@@ -101,15 +124,7 @@ namespace SN_WebMVC.Controllers {
 
         // GET: Account
         public ActionResult Login() {
-
             return View();
         }
-
-
-        //colar code john
-
-
-
-
     }
 }

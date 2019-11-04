@@ -1,0 +1,65 @@
+﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
+@model SN_WebMVC.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "Perfil";
+
+}
+<div class="wa-container">
+
+    <h2>Perfil</h2>
+    <hr />
+
+    <ul class="wa-list">
+        <img src="..\Content\images\pic.png" alt="default-picture" style="width:150px;height:150px;margin-bottom:40px ;" />
+
+        <li class="wa-perfil-label">
+            Nome
+        </li>
+
+        <li class="wa-perfil-info">
+            @Html.DisplayFor(model => model.Nome)
+        </li>
+
+        <li class="wa-perfil-label">
+            Email
+        </li>
+
+        <li class="wa-perfil-info">
+            @Html.DisplayFor(model => model.Email)
+        </li>
+
+        <li class="wa-perfil-label">
+            Universidade
+        </li>
+
+        <li class="wa-perfil-info">
+            @Html.DisplayFor(model => model.Universidade)
+        </li>
+
+        <li class="wa-perfil-label">
+            Curso
+        </li>
+
+        <li class="wa-perfil-info">
+            @Html.DisplayFor(model => model.Curso)
+        </li>
+
+        <li class="wa-perfil-label">
+            Biografia
+        </li>
+
+        <li class="wa-perfil-info">
+            @Html.DisplayFor(model => model.Biografia)
+        </li>
+
+        <div style="display:flex;flex-direction:row;margin:40px 0;">
+            <form action="/Home/Edit" method="get">
+                <button class="btn btn-primary">Editar perfil</button>
+            </form>
+            <button class="btn btn-link" style="margin-bottom:1em;">@Html.ActionLink("Voltar", "Index")</button>
+        </div>
+    </ul>
+    
+</div>
+
