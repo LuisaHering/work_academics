@@ -10,9 +10,8 @@
     <h2>Perfil</h2>
     <hr />
 
-
     <ul class="wa-list">
-        <img src="..\Content\images\pic.png" alt="default-picture" style="width:150px;height:150px;margin-bottom: 40px ;" />
+        <img src="..\Content\images\pic.png" alt="default-picture" style="width:150px;height:150px;margin-bottom:40px ;" />
 
         <li class="wa-perfil-label">
             Nome
@@ -54,12 +53,13 @@
             @Html.DisplayFor(model => model.Biografia)
         </li>
 
+        <div style="display:flex;flex-direction:row;margin:40px 0;">
+            <form action="/Home/Edit" method="get">
+                <button class="btn btn-primary">Editar perfil</button>
+            </form>
+            <button class="btn btn-link" style="margin-bottom:1em;">@Html.ActionLink("Voltar", "Index")</button>
+        </div>
     </ul>
-
-    <div style="display:flex;flex-direction:row;margin:40px 0;">
-        <button class="btn btn-link">@Html.ActionLink("Editar perfil", "Edit", new { /* id = Model.PrimaryKey */ })</button>
-        <button class="btn btn-link">@Html.ActionLink("Voltar", "Index")</button>
-    </div>
-
+    
 </div>
 
