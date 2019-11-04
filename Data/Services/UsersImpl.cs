@@ -45,6 +45,8 @@ namespace Data.Services {
                             $"Nome = '{user.Nome}', " +
                             $"Foto = '{user.Foto}', " +
                             $"Email = '{user.Email}', " +
+                            $"Universidade = '{user.Universidade}', " +
+                            $"Curso = '{user.Curso}', " +
                             $"Nascimento = {nascimento}, " +
                             $"DataInicio = {inicio}, " +
                             $"Biografia = '{user.Biografia}' " +

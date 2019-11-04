@@ -43,7 +43,7 @@ namespace SN_WebMVC.Controllers {
                     { "Email", model.Email},
                     { "ConfirmPassword", model.ConfirmPassword },
                     { "Name", model.Nome },
-                    { "Unersity", model.Universidade }
+                    { "University", model.Universidade },
                 };
 
                 using(var client = new HttpClient()) {

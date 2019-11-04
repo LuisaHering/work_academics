@@ -10,5 +10,7 @@ namespace SN_WebApi.Models
         public string Email { get; set; }
         public string Nome { get; set; }
         public string Biografia { get; set; }
+        public string Universidade { get; set; }
+        public string Curso { get; set; }
     }
 }

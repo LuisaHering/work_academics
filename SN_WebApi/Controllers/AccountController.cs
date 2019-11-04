@@ -163,7 +163,8 @@ namespace SN_WebApi.Controllers {
                 Nome = model.Name,
                 Email = model.Email,
                 DataInicio = DateTime.Now,
-                Nascimento = DateTime.Now
+                Nascimento = DateTime.Now,
+                Universidade = model.University
             };
 
             IdentityResult result = null;
@@ -191,6 +192,8 @@ namespace SN_WebApi.Controllers {
                 Biografia = model.Biografia,
                 Email = model.Email,
                 Nome = model.Nome,
+                Universidade = model.Universidade,
+                Curso = model.Curso
             };
 
             var updated = UsersService.Update(updatedUser);

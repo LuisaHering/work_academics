@@ -27,6 +27,16 @@ namespace Core.Models {
             get; set;
         }
 
+        public string Universidade
+        {
+            get; set;
+        }
+
+        public string Curso
+        {
+            get; set;
+        }
+
         public DateTime Nascimento {
             get; set;
         }
