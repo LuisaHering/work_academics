@@ -30,6 +30,32 @@ namespace Data.Services {
             return database.Users.Where(x => x.Email == email).FirstOrDefault();
         }
 
+        public bool UpdateEF1(User user) {
+            var originalUser = database.Users.Find(user.Id);
+            if(originalUser == null)
+                return false;
+            database.Users.Remove(originalUser);
+            Create(user);
+            return true;
+        }
+
+        public bool UpdateEF2(User user) {
+            database.Entry<User>(user).State = EntityState.Modified;
+            database.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateEF3(User updatedUser) {
+            var originalUser = database.Users.Find(updatedUser.Id);
+            //AutoMapper
+            originalUser.Nome = updatedUser.Nome;
+            //...
+            //----------
+            database.Entry<User>(originalUser).State = EntityState.Modified;
+            database.SaveChanges();
+            return true;
+        }
+
         public bool Update(User user) {
 
             /*
