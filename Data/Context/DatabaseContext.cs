@@ -12,6 +12,10 @@ namespace Data.Context {
             get; set;
         }
 
+        public DbSet<Laboratory> Laboratories {
+            get; set;
+        }
+
         public DatabaseContext() : base("DefaultConnection") {
         }
 

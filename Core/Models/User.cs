@@ -27,13 +27,11 @@ namespace Core.Models {
             get; set;
         }
 
-        public string Universidade
-        {
+        public string Universidade {
             get; set;
         }
 
-        public string Curso
-        {
+        public string Curso {
             get; set;
         }
 
@@ -46,6 +44,10 @@ namespace Core.Models {
         }
 
         public string Biografia {
+            get; set;
+        }
+
+        public virtual ICollection<Laboratory> Laboratories {
             get; set;
         }
 
