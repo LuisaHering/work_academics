@@ -1,11 +1,11 @@
-﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
-@model SN_WebMVC.Models.ProfileViewModel
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Work Academics</title>
+
+    <link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -15,7 +15,16 @@
         <div class="wa-nav-container container">
 
             <div class="navbar-header">
-                <img src="../Content/images/wa-logo-inline.jpeg" alt="logo" class="wa-logo-header" />
+                @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
+                {
+                    <a href="/Home/Index">
+                        <img src="../Content/images/wa-logo-inline.jpeg" alt="logo" class="wa-logo-header" />
+                    </a>
+                }
+                else
+                {
+                    <img src="../Content/images/wa-logo-inline.jpeg" alt="logo" class="wa-logo-header" />
+                }
             </div>
 
             <button class="btn navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
