@@ -188,15 +188,21 @@ namespace SN_WebApi.Controllers {
         [HttpPut]
         public IHttpActionResult Update(UpdateBindingModel model) {
 
-            var updatedUser = new User() {
-                Biografia = model.Biografia,
-                Email = model.Email,
-                Nome = model.Nome,
-                Universidade = model.Universidade,
-                Curso = model.Curso
-            };
+            //var updatedUser = new User() {
+            //    Biografia = model.Biografia,
+            //    Email = model.Email,
+            //    Nome = model.Nome,
+            //    Universidade = model.Universidade,
+            //    Curso = model.Curso
+            //};
 
-            var updated = UsersService.Update(updatedUser);
+            var updatedUser = UsersService.FindByEmail(model.Email);
+            updatedUser.Biografia = model.Biografia;
+            updatedUser.Nome = model.Nome;
+            updatedUser.Universidade = model.Universidade;
+            updatedUser.Curso = model.Curso;
+            
+            var updated = UsersService.UpdateEF2(updatedUser);
 
             if(!updated) {
                 return BadRequest("Erro ao atualizar os dados do usuario");
