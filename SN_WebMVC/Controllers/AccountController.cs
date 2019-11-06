@@ -55,6 +55,7 @@ namespace SN_WebMVC.Controllers {
                         var verificaEmail = await client.GetAsync($"/api/account/findUser?email={model.Email}");
                         if(verificaEmail.ReasonPhrase != "Bad Request")
                         {
+                            ViewBag.Error = "Este email já está sendo usado.";
                             return View("Error");
                         }
 
