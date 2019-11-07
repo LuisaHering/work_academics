@@ -30,15 +30,6 @@ namespace Data.Services {
             return database.Users.Where(x => x.Email == email).FirstOrDefault();
         }
 
-        public bool UpdateEF1(User user) {
-            var originalUser = FindByEmail(user.Email);
-            if(originalUser == null)
-                return false;
-            database.Users.Remove(originalUser);
-            Create(user);
-            return true;
-        }
-
         public bool UpdateEF2(User user) {
             try {
                 database.Entry<User>(user).State = EntityState.Modified;
@@ -49,17 +40,6 @@ namespace Data.Services {
                 Console.WriteLine(e.StackTrace);
                 return false;
             }
-        }
-
-        private bool UpdateEF3(User updatedUser) {
-            var originalUser = database.Users.Find(updatedUser.Id);
-            //AutoMapper
-            originalUser.Nome = updatedUser.Nome;
-            //...
-            //----------
-            database.Entry<User>(originalUser).State = EntityState.Modified;
-            database.SaveChanges();
-            return true;
         }
 
         public bool Update(User user) {

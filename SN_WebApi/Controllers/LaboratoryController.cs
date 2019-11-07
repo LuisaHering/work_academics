@@ -27,11 +27,25 @@ namespace SN_WebApi.Controllers {
     [RoutePrefix("api/Laboratory")]
     public class LaboratoryController : ApiController {
 
+        private IUsers GetUsers = ServiceLocator.GetInstanceOf<UsersImpl>();
+        private ILaboratory GetLaboratory = ServiceLocator.GetInstanceOf<LaboratoryImpl>();
+
         [HttpPost]
         [Route("create")]
-        public IHttpActionResult Create() {
+        public IHttpActionResult Create(LaboratoryBindingModel bindingModel) {
 
-            Console.WriteLine();
+            User u = GetUsers.FindByEmail(bindingModel.EmailUsuario);
+
+            Laboratory l = new Laboratory();
+            l.User = u;
+            l.Descricao = bindingModel.Descricao;
+
+            u.Laboratories.Add(l);
+
+            GetLaboratory.Create(l);
+
+
+           
 
             return null;
         }
