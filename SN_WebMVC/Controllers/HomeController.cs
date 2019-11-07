@@ -42,6 +42,9 @@ namespace SN_WebMVC.Controllers {
                 }
             }
 
+            Session.Add("access_token", access_token);
+            Session.Add("access_email", access_email);
+
             return View();
         }
 
@@ -67,6 +70,10 @@ namespace SN_WebMVC.Controllers {
                     return View(profileView);
                 }
             }
+
+            Session.Add("access_token", access_token);
+            Session.Add("access_email", access_email);
+
             return View();
         }
 
@@ -75,6 +82,7 @@ namespace SN_WebMVC.Controllers {
         public async Task<ActionResult> Edit(FormCollection collection) {
 
             var access_token = Session["access_token"];
+            var access_email = Session["user_name"];
 
             if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
@@ -103,6 +111,11 @@ namespace SN_WebMVC.Controllers {
                     }
                 }
             }
+
+            Session.Add("access_token", access_token);
+            Session.Add("access_email", access_email);
+
+
             return View();
 
         }
