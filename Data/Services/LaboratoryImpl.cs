@@ -14,9 +14,16 @@ namespace Data.Services {
 
 
         public bool Create(Laboratory laboratory) {
-            
 
-            throw new NotImplementedException();
+            try {
+                database.Laboratories.Add(laboratory);
+                database.SaveChanges();
+
+            } catch(Exception e) {
+                Console.WriteLine(e.Message);
+            }
+
+            return false;
         }
     }
 }

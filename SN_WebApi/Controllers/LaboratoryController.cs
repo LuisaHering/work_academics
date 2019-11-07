@@ -38,9 +38,12 @@ namespace SN_WebApi.Controllers {
 
             Laboratory l = new Laboratory();
             l.User = u;
+            l.IdUser = u.Id;
             l.Descricao = bindingModel.Descricao;
+            
 
             u.Laboratories.Add(l);
+
 
             GetLaboratory.Create(l);
 
