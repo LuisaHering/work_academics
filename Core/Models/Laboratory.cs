@@ -20,7 +20,7 @@ namespace Core.Models {
         }
 
         [ForeignKey("User")]
-        public int IdUser {
+        public Guid IdUser {
             get; set;
         }
 

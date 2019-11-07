@@ -171,6 +171,7 @@ namespace SN_WebApi.Controllers {
             bool created = false;
             try {
                 result = await UserManager.CreateAsync(user, model.Password);
+                usuario.Id = new Guid(user.Id);
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
             }

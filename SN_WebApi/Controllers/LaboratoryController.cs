@@ -38,7 +38,7 @@ namespace SN_WebApi.Controllers {
 
             Laboratory l = new Laboratory();
             l.User = u;
-            l.IdUser = u.Id;
+            //l.IdUser = u.Id;
             l.Descricao = bindingModel.Descricao;
             
 

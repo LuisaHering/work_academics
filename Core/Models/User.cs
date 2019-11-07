@@ -10,8 +10,7 @@ namespace Core.Models {
     public class User {
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id {
+        public Guid Id {
             get; set;
         }
 
