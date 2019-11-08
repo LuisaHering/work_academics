@@ -74,5 +74,18 @@ namespace Data.Services {
             }
             return false;
         }
+
+        public bool Create(Laboratory laboratory) {
+
+            try {
+                database.Laboratories.Add(laboratory);
+                database.SaveChanges();
+                return true;
+            } catch(Exception e) {
+                Console.WriteLine(e.Message);
+            }
+
+            return false;
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace SN_WebApi.Controllers {
     public class LaboratoryController : ApiController {
 
         private IUsers GetUsers = ServiceLocator.GetInstanceOf<UsersImpl>();
-        private ILaboratory GetLaboratory = ServiceLocator.GetInstanceOf<LaboratoryImpl>();
+        //private ILaboratory GetLaboratory = ServiceLocator.GetInstanceOf<LaboratoryImpl>();
 
         [HttpPost]
         [Route("create")]
@@ -44,9 +44,13 @@ namespace SN_WebApi.Controllers {
 
             oldUser.Laboratories.Add(laboratory);
 
-            GetLaboratory.Create(laboratory);
+            var criouLab = GetUsers.Create(laboratory);
+            var novoUsuario = GetUsers.UpdateEF2(oldUser);
 
-            return null;
+            if(!criouLab || !novoUsuario) {
+                return BadRequest("Erro interno");
+            }
+            return Ok(oldUser);
         }
     }
 }
