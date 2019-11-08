@@ -34,21 +34,17 @@ namespace SN_WebApi.Controllers {
         [Route("create")]
         public IHttpActionResult Create(LaboratoryBindingModel bindingModel) {
 
-            User u = GetUsers.FindByEmail(bindingModel.EmailUsuario);
+            User oldUser = GetUsers.FindByEmail(bindingModel.EmailUsuario);
 
-            Laboratory l = new Laboratory();
-            l.User = u;
-            //l.IdUser = u.Id;
-            l.Descricao = bindingModel.Descricao;
-            
+            Laboratory laboratory = new Laboratory() {
+                User = oldUser,
+                IdUser = oldUser.Id,
+                Descricao = bindingModel.Descricao
+            };
 
-            u.Laboratories.Add(l);
+            oldUser.Laboratories.Add(laboratory);
 
-
-            GetLaboratory.Create(l);
-
-
-           
+            GetLaboratory.Create(laboratory);
 
             return null;
         }

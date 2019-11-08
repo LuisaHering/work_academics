@@ -35,13 +35,13 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         public async System.Threading.Tasks.Task<ActionResult> Create(FormCollection collection) {
 
-            var laboratory_name = collection["Descricao"];
+            var Descricao = collection["Descricao"];
             var access_token = (Session["access_token"]);
-            var user_name = (Session["user_name"]);
+            var EmailUsuario = (Session["user_name"]).ToString();
 
             var data = new Dictionary<string, string> {
-                { "laboratory_name", laboratory_name },
-                { "user_name", laboratory_name }
+                { "Descricao", Descricao },
+                { "EmailUsuario", EmailUsuario }
             };
 
             using(var cliente = new HttpClient()) {

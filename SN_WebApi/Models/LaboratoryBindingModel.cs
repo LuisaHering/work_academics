@@ -12,5 +12,6 @@ namespace SN_WebApi.Models {
         public string EmailUsuario {
             get; set;
         }
+
     }
 }
