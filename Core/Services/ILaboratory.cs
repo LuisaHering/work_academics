@@ -8,5 +8,7 @@ using System.Threading.Tasks;
 namespace Core.Services {
     public interface ILaboratory {
         bool Create(Laboratory laboratory);
+
+        List<Laboratory> FindAll(string userEmail);
     }
 }

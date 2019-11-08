@@ -12,7 +12,6 @@ namespace Data.Services {
 
         private DatabaseContext database = new DatabaseContext();
 
-
         public bool Create(Laboratory laboratory) {
 
             try {
@@ -26,6 +25,10 @@ namespace Data.Services {
             return false;
         }
 
-
+        public List<Laboratory> FindAll(string userEmail) {
+            List<Laboratory> list = new List<Laboratory>();
+            list.AddRange(database.Laboratories.ToList().Where(x => x.User.Email == userEmail));
+            return list;
+        }
     }
 }

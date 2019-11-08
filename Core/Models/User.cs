@@ -53,5 +53,9 @@ namespace Core.Models {
         public User() {
 
         }
+
+        public void Adiciona(Laboratory lab) {
+            this.Laboratories.Add(lab);
+        }
     }
 }

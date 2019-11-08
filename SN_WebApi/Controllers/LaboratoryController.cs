@@ -17,6 +17,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json;
 using SN_WebApi.Models;
 using SN_WebApi.Providers;
 using SN_WebApi.Results;
@@ -28,7 +29,7 @@ namespace SN_WebApi.Controllers {
     public class LaboratoryController : ApiController {
 
         private IUsers GetUsers = ServiceLocator.GetInstanceOf<UsersImpl>();
-        //private ILaboratory GetLaboratory = ServiceLocator.GetInstanceOf<LaboratoryImpl>();
+        private ILaboratory GetLaboratory = ServiceLocator.GetInstanceOf<LaboratoryImpl>();
 
         [HttpPost]
         [Route("create")]
@@ -42,7 +43,7 @@ namespace SN_WebApi.Controllers {
                 Descricao = bindingModel.Descricao
             };
 
-            oldUser.Laboratories.Add(laboratory);
+            oldUser.Adiciona(laboratory);
 
             var criouLab = GetUsers.Create(laboratory);
             var novoUsuario = GetUsers.UpdateEF2(oldUser);
@@ -51,6 +52,15 @@ namespace SN_WebApi.Controllers {
                 return BadRequest("Erro interno");
             }
             return Ok(oldUser);
+        }
+
+        [HttpGet]
+        [Route("busca")]
+        public IHttpActionResult FindLabs(FindLaboratoryModels findLaboratory) {
+            List<Laboratory> labs = GetLaboratory.FindAll(findLaboratory.Email);
+            var aux = new LaboratoryReturnBindingModels();
+            var result = aux.convert(labs);
+            return Ok(result);
         }
     }
 }
