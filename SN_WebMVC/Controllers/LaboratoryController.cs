@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace SN_WebMVC.Controllers {
     public class LaboratoryController : Controller {
@@ -13,18 +15,22 @@ namespace SN_WebMVC.Controllers {
         private static string base_url = "http://localhost:56435";
 
         // Deve buscar os laboratorios do usuario logado
-        public ActionResult Index() {
-            List<LaboratoryViewModel> laboratories = new List<LaboratoryViewModel>();
+        public async Task<ActionResult> Index() {
+            var laboratories = new List<LaboratoryViewModel>();
 
-            var l = new LaboratoryViewModel() {
-                Id = 1,
-                Descricao = "LAB_INF"
-            };
+            var access_token = (Session["access_token"]);
+            var email = (Session["user_name"]).ToString();
 
-            laboratories.Add(l);
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/Laboratory/busca?email={email}");
 
+                if(response.IsSuccessStatusCode) {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    laboratories = JsonConvert.DeserializeObject<List<LaboratoryViewModel>>(responseContent);
+                }
+            }
             IEnumerable<LaboratoryViewModel> lista = laboratories;
-
             return View(lista);
         }
 
@@ -34,7 +40,6 @@ namespace SN_WebMVC.Controllers {
 
         [HttpPost]
         public async System.Threading.Tasks.Task<ActionResult> Create(FormCollection collection) {
-
             var Descricao = collection["Descricao"];
             var access_token = (Session["access_token"]);
             var EmailUsuario = (Session["user_name"]).ToString();
@@ -50,10 +55,8 @@ namespace SN_WebMVC.Controllers {
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
                     var response = await cliente.PostAsync("api/Laboratory/create", requestContent);
-
                 }
             }
-
             return RedirectToAction("Index");
         }
     }
