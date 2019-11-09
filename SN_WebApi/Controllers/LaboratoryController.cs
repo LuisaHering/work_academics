@@ -45,7 +45,6 @@ namespace SN_WebApi.Controllers {
 
             oldUser.Adiciona(laboratory);
 
-            //var criouLab = GetUsers.Create(laboratory);
             var criouLab = GetLaboratory.Create(laboratory);
             var novoUsuario = GetUsers.UpdateEF2(oldUser);
 

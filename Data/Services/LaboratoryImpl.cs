@@ -10,24 +10,20 @@ using System.Threading.Tasks;
 namespace Data.Services {
     public class LaboratoryImpl : ILaboratory {
 
-        private DatabaseContext database = new DatabaseContext();
-
         public bool Create(Laboratory laboratory) {
-
             try {
-                database.Laboratories.Add(laboratory);
-                database.SaveChanges();
-
+                Database.GetInstance.Laboratories.Add(laboratory);
+                Database.GetInstance.SaveChanges();
+                return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
             }
-
             return false;
         }
 
         public List<Laboratory> FindAll(string userEmail) {
             List<Laboratory> list = new List<Laboratory>();
-            list.AddRange(database.Laboratories.ToList().Where(x => x.User.Email == userEmail));
+            list.AddRange(Database.GetInstance.Laboratories.ToList().Where(x => x.User.Email == userEmail));
             return list;
         }
     }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Data.Context {
-    public class Teste {
-        public static DatabaseContext db = new DatabaseContext();
+    public class Database {
+        public static DatabaseContext GetInstance = new DatabaseContext();
     }
 }

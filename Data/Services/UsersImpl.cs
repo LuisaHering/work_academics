@@ -1,23 +1,21 @@
 ﻿using Core.Models;
 using Core.Services;
-using Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Database = Data.Context.Database;
 
 namespace Data.Services {
     public class UsersImpl : IUsers {
 
         public bool Create(User user) {
 
-            try {
-                Teste.db.Users.Add(user);
-                Teste.db.SaveChangesAsync();
-                //database.Users.Add(user);
-                //database.SaveChangesAsync();
+            try {                
+                Database.GetInstance.Users.Add(user);
+                Context.Database.GetInstance.SaveChangesAsync();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
@@ -27,16 +25,14 @@ namespace Data.Services {
         }
 
         public User FindByEmail(string email) {
-            return Teste.db.Users.Where(x => x.Email == email).FirstOrDefault();
+            return Database.GetInstance.Users.Where(x => x.Email == email).FirstOrDefault();
             //return database.Users.Where(x => x.Email == email).FirstOrDefault();
         }
 
         public bool UpdateEF2(User user) {
             try {
-                Teste.db.Entry<User>(user).State = EntityState.Modified;
-                Teste.db.SaveChangesAsync();
-                //database.Entry<User>(user).State = EntityState.Modified;
-                //database.SaveChanges();
+                Database.GetInstance.Entry<User>(user).State = EntityState.Modified;
+                Database.GetInstance.SaveChangesAsync();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
@@ -68,9 +64,8 @@ namespace Data.Services {
                             $"where Email = '{user.Email}' ";
 
             try {
-                Teste
-                    .db
-                //database
+                Database
+                    .GetInstance
                     .Database
                     .ExecuteSqlCommand(query);
                 return true;
@@ -80,16 +75,5 @@ namespace Data.Services {
             return false;
         }
 
-        //public bool Create(Laboratory laboratory) {
-        //    try {
-        //        //database.Laboratories.Add(laboratory);
-        //        database.SaveChanges();
-        //        return true;
-        //    } catch(Exception e) {
-        //        Console.WriteLine(e.Message);
-        //    }
-
-        //    return false;
-        //}
     }
 }
