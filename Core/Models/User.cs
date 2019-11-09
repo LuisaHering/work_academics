@@ -54,8 +54,13 @@ namespace Core.Models {
 
         }
 
-        public void Adiciona(Laboratory lab) {
-            this.Laboratories.Add(lab);
+        public void Adiciona(Laboratory laboratory) {
+            if(this.Laboratories == null) {
+                ICollection<Laboratory> l = new List<Laboratory>();
+                l.Add(laboratory);
+            } else {
+                this.Laboratories.Add(laboratory);
+            }
         }
     }
 }
