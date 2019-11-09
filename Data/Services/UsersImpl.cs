@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 namespace Data.Services {
     public class UsersImpl : IUsers {
 
-        private DatabaseContext database = new DatabaseContext();
-
         public bool Create(User user) {
 
             try {
-                database.Users.Add(user);
-                database.SaveChangesAsync();
+                Teste.db.Users.Add(user);
+                Teste.db.SaveChangesAsync();
+                //database.Users.Add(user);
+                //database.SaveChangesAsync();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
@@ -27,13 +27,16 @@ namespace Data.Services {
         }
 
         public User FindByEmail(string email) {
-            return database.Users.Where(x => x.Email == email).FirstOrDefault();
+            return Teste.db.Users.Where(x => x.Email == email).FirstOrDefault();
+            //return database.Users.Where(x => x.Email == email).FirstOrDefault();
         }
 
         public bool UpdateEF2(User user) {
             try {
-                database.Entry<User>(user).State = EntityState.Modified;
-                database.SaveChanges();
+                Teste.db.Entry<User>(user).State = EntityState.Modified;
+                Teste.db.SaveChangesAsync();
+                //database.Entry<User>(user).State = EntityState.Modified;
+                //database.SaveChanges();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
@@ -65,7 +68,9 @@ namespace Data.Services {
                             $"where Email = '{user.Email}' ";
 
             try {
-                database
+                Teste
+                    .db
+                //database
                     .Database
                     .ExecuteSqlCommand(query);
                 return true;
@@ -75,17 +80,16 @@ namespace Data.Services {
             return false;
         }
 
-        public bool Create(Laboratory laboratory) {
+        //public bool Create(Laboratory laboratory) {
+        //    try {
+        //        //database.Laboratories.Add(laboratory);
+        //        database.SaveChanges();
+        //        return true;
+        //    } catch(Exception e) {
+        //        Console.WriteLine(e.Message);
+        //    }
 
-            try {
-                database.Laboratories.Add(laboratory);
-                database.SaveChanges();
-                return true;
-            } catch(Exception e) {
-                Console.WriteLine(e.Message);
-            }
-
-            return false;
-        }
+        //    return false;
+        //}
     }
 }

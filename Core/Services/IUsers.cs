@@ -16,6 +16,6 @@ namespace Core.Services {
 
         bool UpdateEF2(User user);
 
-        bool Create(Laboratory laboratory);
+       // bool Create(Laboratory laboratory);
     }
 }

@@ -22,5 +22,6 @@ namespace Data.Context {
         public static DatabaseContext Create() {
             return new DatabaseContext();
         }
+        
     }
 }
