@@ -5,11 +5,11 @@
 ``` script
 
 insert 
-into		dbo.Roles   (Descricao)
-values				    ('ADMIN'),
-						('COORDENADOR'),
-						('DOUTORANDO'),
-						('MESTRANDO'),
-						('IC')
+into		dbo.Roles   	(Descricao)
+values				('ADMIN'),
+				('COORDENADOR'),
+				('DOUTORANDO'),
+				('MESTRANDO'),
+				('IC')
 
 ```
