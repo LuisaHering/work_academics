@@ -10,8 +10,7 @@ namespace Core.Models {
     public class User {
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id {
+        public Guid Id {
             get; set;
         }
 
@@ -27,13 +26,11 @@ namespace Core.Models {
             get; set;
         }
 
-        public string Universidade
-        {
+        public string Universidade {
             get; set;
         }
 
-        public string Curso
-        {
+        public string Curso {
             get; set;
         }
 
@@ -49,8 +46,21 @@ namespace Core.Models {
             get; set;
         }
 
+        public virtual ICollection<Laboratory> Laboratories {
+            get; set;
+        }
+
         public User() {
 
+        }
+
+        public void Adiciona(Laboratory laboratory) {
+            if(this.Laboratories == null) {
+                ICollection<Laboratory> l = new List<Laboratory>();
+                l.Add(laboratory);
+            } else {
+                this.Laboratories.Add(laboratory);
+            }
         }
     }
 }

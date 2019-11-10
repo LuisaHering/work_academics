@@ -98,7 +98,6 @@ namespace SN_WebMVC.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model) {
 
-
             if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
                     { "grant_type", "password" },

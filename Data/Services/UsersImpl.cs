@@ -1,23 +1,21 @@
 ﻿using Core.Models;
 using Core.Services;
-using Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Database = Data.Context.Database;
 
 namespace Data.Services {
     public class UsersImpl : IUsers {
 
-        private DatabaseContext database = new DatabaseContext();
-
         public bool Create(User user) {
 
-            try {
-                database.Users.Add(user);
-                database.SaveChangesAsync();
+            try {                
+                Database.GetInstance.Users.Add(user);
+                Context.Database.GetInstance.SaveChangesAsync();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
@@ -27,39 +25,20 @@ namespace Data.Services {
         }
 
         public User FindByEmail(string email) {
-            return database.Users.Where(x => x.Email == email).FirstOrDefault();
-        }
-
-        public bool UpdateEF1(User user) {
-            var originalUser = FindByEmail(user.Email);
-            if(originalUser == null)
-                return false;
-            database.Users.Remove(originalUser);
-            Create(user);
-            return true;
+            return Database.GetInstance.Users.Where(x => x.Email == email).FirstOrDefault();
+            //return database.Users.Where(x => x.Email == email).FirstOrDefault();
         }
 
         public bool UpdateEF2(User user) {
             try {
-                database.Entry<User>(user).State = EntityState.Modified;
-                database.SaveChanges();
+                Database.GetInstance.Entry<User>(user).State = EntityState.Modified;
+                Database.GetInstance.SaveChangesAsync();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
                 Console.WriteLine(e.StackTrace);
                 return false;
             }
-        }
-
-        private bool UpdateEF3(User updatedUser) {
-            var originalUser = database.Users.Find(updatedUser.Id);
-            //AutoMapper
-            originalUser.Nome = updatedUser.Nome;
-            //...
-            //----------
-            database.Entry<User>(originalUser).State = EntityState.Modified;
-            database.SaveChanges();
-            return true;
         }
 
         public bool Update(User user) {
@@ -85,7 +64,8 @@ namespace Data.Services {
                             $"where Email = '{user.Email}' ";
 
             try {
-                database
+                Database
+                    .GetInstance
                     .Database
                     .ExecuteSqlCommand(query);
                 return true;
@@ -94,5 +74,6 @@ namespace Data.Services {
             }
             return false;
         }
+
     }
 }
