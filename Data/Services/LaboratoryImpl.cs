@@ -22,9 +22,19 @@ namespace Data.Services {
         }
 
         public List<Laboratory> FindAll(string userEmail) {
-            List<Laboratory> list = new List<Laboratory>();
-            //list.AddRange(Database.GetInstance.Laboratories.ToList().Where(x => x.User.Email == userEmail));
-            return list;
+            List<Laboratory> labs = new List<Laboratory>();
+            List<Laboratory> myLabs = new List<Laboratory>();
+
+            labs.AddRange(Database.GetInstance.Laboratories.ToList());
+
+            foreach(Laboratory lab in labs) {
+                foreach(User user in lab.Users) {
+                    if(user.Email == userEmail) {
+                        myLabs.Add(lab);
+                    }
+                }
+            }
+            return myLabs;
         }
     }
 }
