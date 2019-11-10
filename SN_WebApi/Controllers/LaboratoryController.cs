@@ -38,10 +38,9 @@ namespace SN_WebApi.Controllers {
             User oldUser = GetUsers.FindByEmail(bindingModel.EmailUsuario);
 
             Laboratory laboratory = new Laboratory() {
-                User = oldUser,
-                IdUser = oldUser.Id,
-                Descricao = bindingModel.Descricao
+                Descricao = bindingModel.Descricao,                
             };
+            laboratory.Adiciona(oldUser);
 
             oldUser.Adiciona(laboratory);
 

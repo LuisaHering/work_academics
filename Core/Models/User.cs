@@ -55,16 +55,11 @@ namespace Core.Models {
         }
 
         public User() {
-
+            Laboratories = new HashSet<Laboratory>();
         }
 
         public void Adiciona(Laboratory laboratory) {
-            if(this.Laboratories == null) {
-                ICollection<Laboratory> l = new List<Laboratory>();
-                l.Add(laboratory);
-            } else {
-                this.Laboratories.Add(laboratory);
-            }
+            this.Laboratories.Add(laboratory);
         }
 
         public bool haveRole() {

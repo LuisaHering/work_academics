@@ -23,7 +23,7 @@ namespace Data.Services {
 
         public List<Laboratory> FindAll(string userEmail) {
             List<Laboratory> list = new List<Laboratory>();
-            list.AddRange(Database.GetInstance.Laboratories.ToList().Where(x => x.User.Email == userEmail));
+            //list.AddRange(Database.GetInstance.Laboratories.ToList().Where(x => x.User.Email == userEmail));
             return list;
         }
     }

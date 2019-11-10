@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Models {
-    public class Laboratory {
+    public class UserHasLaboratory {
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,20 +15,21 @@ namespace Core.Models {
             get; set;
         }
 
-        public string Descricao {
+        public int UserId {
             get; set;
         }
 
-        public virtual ICollection<User> Users {
+        public virtual User User {
             get; set;
         }
 
-        public Laboratory() {
-            Users = new HashSet<User>();   
+        public int LaboratoryId {
+            get; set;
         }
 
-        public void Adiciona(User user) {            
-            this.Users.Add(user);                
+
+        public virtual Laboratory Laboratory {
+            get; set;
         }
     }
 }

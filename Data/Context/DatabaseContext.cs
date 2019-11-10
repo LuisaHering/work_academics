@@ -20,7 +20,13 @@ namespace Data.Context {
             get; set;
         }
 
+        //public DbSet<UserHasLaboratory> UserHasLaboratories {
+        //    get; set;
+        //}
+
         public DatabaseContext() : base("DefaultConnection") {
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;            
         }
 
         public static DatabaseContext Create() {
