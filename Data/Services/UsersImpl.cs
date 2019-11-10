@@ -13,7 +13,7 @@ namespace Data.Services {
 
         public bool Create(User user) {
 
-            try {                
+            try {
                 Database.GetInstance.Users.Add(user);
                 Context.Database.GetInstance.SaveChangesAsync();
                 return true;
@@ -24,9 +24,14 @@ namespace Data.Services {
             return false;
         }
 
-        public User FindByEmail(string email) {
-            return Database.GetInstance.Users.Where(x => x.Email == email).FirstOrDefault();
-            //return database.Users.Where(x => x.Email == email).FirstOrDefault();
+        public User FindByEmail(string Email) {
+            List<User> aux = Database.GetInstance.Users.ToList();
+
+            if(aux.Count > 0) {
+                return (User)aux.Where(x => x.Email == Email).FirstOrDefault();
+            }
+            //.Where(x => x.Email == email);
+            return null;
         }
 
         public bool UpdateEF2(User user) {

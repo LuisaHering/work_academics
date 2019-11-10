@@ -50,6 +50,10 @@ namespace Core.Models {
             get; set;
         }
 
+        public virtual Role Role {
+            get; set;
+        }
+
         public User() {
 
         }
@@ -61,6 +65,10 @@ namespace Core.Models {
             } else {
                 this.Laboratories.Add(laboratory);
             }
+        }
+
+        public bool haveRole() {
+            return this.Role != null;
         }
     }
 }

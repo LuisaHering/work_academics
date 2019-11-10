@@ -46,9 +46,18 @@ namespace SN_WebApi.Controllers {
             oldUser.Adiciona(laboratory);
 
             var criouLab = GetLaboratory.Create(laboratory);
-            var novoUsuario = GetUsers.UpdateEF2(oldUser);
 
-            if(!criouLab || !novoUsuario) {
+            if(!oldUser.haveRole()) {
+                Role coordenador = new Role() {
+                    Id = 2,
+                    Descricao = "COORDENADOR"
+                };
+                oldUser.Role = coordenador;
+            }
+
+            var atualizado = GetUsers.UpdateEF2(oldUser);
+
+            if(!criouLab || !atualizado) {
                 return BadRequest("Erro interno");
             }
             return Ok(oldUser);

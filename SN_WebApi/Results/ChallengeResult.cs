@@ -7,21 +7,21 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace SN_WebApi.Results
-{
-    public class ChallengeResult : IHttpActionResult
-    {
-        public ChallengeResult(string loginProvider, ApiController controller)
-        {
+namespace SN_WebApi.Results {
+    public class ChallengeResult : IHttpActionResult {
+        public ChallengeResult(string loginProvider, ApiController controller) {
             LoginProvider = loginProvider;
             Request = controller.Request;
         }
 
-        public string LoginProvider { get; set; }
-        public HttpRequestMessage Request { get; set; }
+        public string LoginProvider {
+            get; set;
+        }
+        public HttpRequestMessage Request {
+            get; set;
+        }
 
-        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
-        {
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken) {
             Request.GetOwinContext().Authentication.Challenge(LoginProvider);
 
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Unauthorized);

@@ -16,6 +16,10 @@ namespace Data.Context {
             get; set;
         }
 
+        public DbSet<Role> Role {
+            get; set;
+        }
+
         public DatabaseContext() : base("DefaultConnection") {
         }
 
