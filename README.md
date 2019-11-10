@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-### Work Academics
-=======
 ## Work Academics
->>>>>>> auxiliar
+
+## Popular tabela `ROLE`
