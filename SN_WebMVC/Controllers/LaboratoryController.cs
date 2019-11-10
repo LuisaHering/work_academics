@@ -14,7 +14,6 @@ namespace SN_WebMVC.Controllers {
 
         private static string base_url = "http://localhost:56435";
 
-        // Deve buscar os laboratorios do usuario logado
         public async Task<ActionResult> Index() {
             var laboratories = new List<LaboratoryViewModel>();
 
@@ -59,5 +58,7 @@ namespace SN_WebMVC.Controllers {
             }
             return RedirectToAction("Index");
         }
+
+
     }
 }
