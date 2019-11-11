@@ -187,11 +187,7 @@
     <Content Include="Views\Home\Perfil.cshtml" />
     <Content Include="Views\Laboratory\Index.cshtml" />
     <Content Include="Views\Laboratory\Create.cshtml" />
-    <Content Include="Views\ProjectViewModels\Create.cshtml" />
-    <Content Include="Views\ProjectViewModels\Delete.cshtml" />
-    <Content Include="Views\ProjectViewModels\Details.cshtml" />
-    <Content Include="Views\ProjectViewModels\Edit.cshtml" />
-    <Content Include="Views\ProjectViewModels\Index.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
