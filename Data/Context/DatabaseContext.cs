@@ -20,6 +20,10 @@ namespace Data.Context {
             get; set;
         }
 
+        public DbSet<Project> Project {
+            get; set; 
+        }
+
         public DatabaseContext() : base("DefaultConnection") {
             Configuration.LazyLoadingEnabled = true;
             Configuration.ProxyCreationEnabled = true;            
