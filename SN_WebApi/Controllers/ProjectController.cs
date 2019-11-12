@@ -30,6 +30,9 @@ namespace SN_WebApi.Controllers {
         [HttpGet]
         [Route("busca")]
         public IHttpActionResult Index(string email) {
+            // criar interface
+            // criar impl interface
+            // criar  ServiceLocator para interface
             return Ok();
         }
     }
