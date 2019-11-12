@@ -10,7 +10,7 @@ using System.Web.Mvc;
 using SN_WebMVC.Models;
 
 namespace SN_WebMVC.Controllers {
-    public class ProjectViewModelsController : Controller {
+    public class ProjectController : Controller {
 
         public async Task<ActionResult> Index() {
             List<ProjectViewModel> l = new List<ProjectViewModel>();
