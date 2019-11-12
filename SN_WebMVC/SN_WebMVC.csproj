@@ -134,6 +134,7 @@
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProjectViewModel.cs" />
+    <Compile Include="Models\RecoverPassword.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\SN_WebMVCContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -179,7 +180,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\RecuperarSenha.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Shared\_SideBar.cshtml" />
@@ -189,6 +189,7 @@
     <Content Include="Views\Laboratory\Index.cshtml" />
     <Content Include="Views\Laboratory\Create.cshtml" />
     <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Account\RecuperarSenha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

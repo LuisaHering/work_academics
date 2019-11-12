@@ -186,8 +186,6 @@ namespace SN_WebApi.Controllers {
             return Ok();
         }
 
-        // BUG email novo email com email antigo
-        // o metodo utiliza o email antigo para buscar os dados do usuario
         [Route("update")]
         [HttpPut]
         public IHttpActionResult Update(UpdateBindingModel model) {

@@ -17,8 +17,9 @@ namespace SN_WebMVC.Controllers {
         public ActionResult RecuperarSenha() {
             return View();
         }
-
-        public ActionResult TrocaSenha() {
+        
+        [HttpPost]
+        public ActionResult RecuperarSenha(RecoverPassword model) {
             return View();
         }
 
@@ -26,7 +27,6 @@ namespace SN_WebMVC.Controllers {
             return View();
         }
 
-        //Post: Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model) {
