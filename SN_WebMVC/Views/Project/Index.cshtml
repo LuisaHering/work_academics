@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<SN_WebMVC.Models.ProjectViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projeto";
+    Html.RenderPartial("_SideBar");
 }
 
-<h2>Index</h2>
+<h2>Meus projetos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo projeto", "Create")
 </p>
 <table class="table">
     <tr>
