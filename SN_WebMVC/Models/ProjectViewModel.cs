@@ -22,8 +22,5 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
-        public string Finalidade {
-            get; set;
-        }
     }
 }
