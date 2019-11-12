@@ -137,13 +137,14 @@ namespace SN_WebApi.Controllers {
         [Route("FindUser")]
         [HttpGet]
         public IHttpActionResult FindUserByEmail(string email) {
-            var Usuario = UsersService.FindByEmail(email);
+            UserBindModel usuario = new UserBindModel();
+            usuario.Convert(UsersService.FindByEmail(email)); 
 
-            if(Usuario == null) {
+            if(usuario == null) {
                 return BadRequest("Usuário não localizado");
             }
 
-            return Ok(Usuario);
+            return Ok(usuario);
         }
 
         // POST api/Account/Register
@@ -185,25 +186,23 @@ namespace SN_WebApi.Controllers {
             return Ok();
         }
 
+        // BUG email novo email com email antigo
+        // o metodo utiliza o email antigo para buscar os dados do usuario
         [Route("update")]
         [HttpPut]
         public IHttpActionResult Update(UpdateBindingModel model) {
 
-            //var updatedUser = new User() {
-            //    Biografia = model.Biografia,
-            //    Email = model.Email,
-            //    Nome = model.Nome,
-            //    Universidade = model.Universidade,
-            //    Curso = model.Curso
-            //};
-
             var updatedUser = UsersService.FindByEmail(model.Email);
-            updatedUser.Biografia = model.Biografia;
-            updatedUser.Nome = model.Nome;
-            updatedUser.Universidade = model.Universidade;
-            updatedUser.Curso = model.Curso;
-            
-            var updated = UsersService.UpdateEF2(updatedUser);
+            var updated = false;
+
+            if(updatedUser != null) {
+                updatedUser.Biografia = model.Biografia;
+                updatedUser.Nome = model.Nome;
+                updatedUser.Universidade = model.Universidade;
+                updatedUser.Curso = model.Curso;
+
+                updated = UsersService.UpdateEF2(updatedUser);
+            }
 
             if(!updated) {
                 return BadRequest("Erro ao atualizar os dados do usuario");

@@ -17,7 +17,6 @@ namespace SN_WebMVC.Controllers {
             ProjectViewModel p1 = new ProjectViewModel() {
                 Id = 1,
                 Descricao = "PROJETO 1",
-                Finalidade = "PROJETO 1",
                 Titulo = "PROJETO 1",
                 DataCriacao = DateTime.Now
             };
@@ -26,5 +25,10 @@ namespace SN_WebMVC.Controllers {
             IEnumerable<ProjectViewModel> lista = l;
             return View(lista);
         }
+
+        public ActionResult Create() {
+            return View();
+        }
+
     }
 }

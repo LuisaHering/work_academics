@@ -25,13 +25,22 @@ namespace Data.Services {
         }
 
         public User FindByEmail(string Email) {
-            List<User> aux = Database.GetInstance.Users.ToList();
+            List<User> usuarios = Database.GetInstance.Users.ToList();
+            User localizado = null;
 
-            if(aux.Count > 0) {
-                return (User)aux.Where(x => x.Email == Email).FirstOrDefault();
+
+            if(usuarios.Count > 0) {
+                foreach(User u in usuarios) {
+                    if(u.Email == Email) {
+                        localizado = u;
+                        break;
+                    }
+                }
+
+                //return (User)usuarios.Where(x => x.Email == Email).FirstOrDefault();
             }
             //.Where(x => x.Email == email);
-            return null;
+            return localizado;
         }
 
         public bool UpdateEF2(User user) {

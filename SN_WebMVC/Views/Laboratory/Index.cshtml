@@ -1,25 +1,20 @@
-﻿@model IEnumerable<SN_WebMVC.Models.ProjectViewModel>
+﻿@model IEnumerable<SN_WebMVC.Models.LaboratoryViewModel>
 
 @{
-    ViewBag.Title = "Projeto";
+    ViewBag.Title = "laboratórios";
     Html.RenderPartial("_SideBar");
 }
 
-<h2>Meus projetos</h2>
+<h2>Meus laboratórios</h2>
 
 <p>
-    @Html.ActionLink("Novo projeto", "Create")
+    @Html.ActionLink("Novo laboratório", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataCriacao)
         </th>
         <th></th>
     </tr>
@@ -27,13 +22,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataCriacao)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
