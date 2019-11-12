@@ -14,12 +14,10 @@ namespace SN_WebMVC.Controllers {
 
         private static string base_url = "http://localhost:56435";
 
-        // GET: Home
         public ActionResult Index() {
             return View();
         }
 
-        //get home/perfil
         public async Task<ActionResult> Perfil() {
             var access_email = Session["user_name"];
             var access_token = Session["access_token"];
@@ -44,11 +42,9 @@ namespace SN_WebMVC.Controllers {
 
             Session.Add("access_token", access_token);
             Session.Add("access_email", access_email);
-
             return View();
         }
 
-        // GET: Home/Edit/
         public async Task<ActionResult> Edit() {
             var access_email = Session["user_name"];
             var access_token = Session["access_token"];
@@ -77,7 +73,6 @@ namespace SN_WebMVC.Controllers {
             return View();
         }
 
-        // POST: Home/Edit/5
         [HttpPost]
         public async Task<ActionResult> Edit(FormCollection collection) {
 
@@ -114,7 +109,6 @@ namespace SN_WebMVC.Controllers {
 
             Session.Add("access_token", access_token);
             Session.Add("access_email", access_email);
-
 
             return View();
 

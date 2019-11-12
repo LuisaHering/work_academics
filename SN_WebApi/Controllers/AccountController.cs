@@ -137,13 +137,14 @@ namespace SN_WebApi.Controllers {
         [Route("FindUser")]
         [HttpGet]
         public IHttpActionResult FindUserByEmail(string email) {
-            var Usuario = UsersService.FindByEmail(email);
+            UserBindModel usuario = new UserBindModel();
+            usuario.Convert(UsersService.FindByEmail(email)); 
 
-            if(Usuario == null) {
+            if(usuario == null) {
                 return BadRequest("Usuário não localizado");
             }
 
-            return Ok(Usuario);
+            return Ok(usuario);
         }
 
         // POST api/Account/Register

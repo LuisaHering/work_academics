@@ -14,17 +14,14 @@ namespace SN_WebMVC.Controllers {
 
         private static string base_url = "http://localhost:56435";
 
-        // get Account/RecuperarSenha
         public ActionResult RecuperarSenha() {
             return View();
         }
 
-        // post
         public ActionResult TrocaSenha() {
             return View();
         }
 
-        //Get: Account/Register
         public ActionResult Register() {
             return View();
         }
@@ -93,7 +90,6 @@ namespace SN_WebMVC.Controllers {
             return RedirectToAction("Error", "Shared");
         }
 
-        //POST: Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model) {
@@ -128,7 +124,6 @@ namespace SN_WebMVC.Controllers {
             return View();
         }
 
-        // GET: Account
         public ActionResult Login() {
             return View();
         }
