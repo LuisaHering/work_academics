@@ -193,18 +193,25 @@ namespace SN_WebApi.Controllers {
         public IHttpActionResult Update(UpdateBindingModel model) {
 
             var updatedUser = UsersService.FindByEmail(model.Email);
-            var updated = false;
+            ApplicationUser applicationUser = UserManager.FindByName(model.Email);
+            var usuarioAux = false;
 
             if(updatedUser != null) {
                 updatedUser.Biografia = model.Biografia;
                 updatedUser.Nome = model.Nome;
                 updatedUser.Universidade = model.Universidade;
                 updatedUser.Curso = model.Curso;
-
-                updated = UsersService.UpdateEF2(updatedUser);
+                usuarioAux = UsersService.UpdateEF2(updatedUser);
+                /////////////////////////////////////////////////
+                applicationUser.Email = model.Email;
+                applicationUser.UserName = model.Email;
+            } else {
+                return BadRequest("Erro ao atualizar os dados do usuario");
             }
 
-            if(!updated) {
+            var usuarioReal = UserManager.Update(applicationUser);
+
+            if(!usuarioAux || !usuarioReal.Succeeded) {
                 return BadRequest("Erro ao atualizar os dados do usuario");
             }
             return Ok("Atualizado com sucesso");
