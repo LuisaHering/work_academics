@@ -206,18 +206,20 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LaboratoryController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Laboratory\FindLaboratoryModels.cs" />
+    <Compile Include="Models\Laboratorio\FindLaboratoryModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Laboratory\LaboratoryBindingModel.cs" />
-    <Compile Include="Models\Laboratory\LaboratoryReturnBindingModels.cs" />
-    <Compile Include="Models\Project\ProjectBindingModel.cs" />
-    <Compile Include="Models\User\UpdateBindingModel.cs" />
-    <Compile Include="Models\User\UserBindModel.cs" />
+    <Compile Include="Models\Laboratorio\LaboratoryBindingModel.cs" />
+    <Compile Include="Models\Laboratorio\LaboratoryReturnBindingModels.cs" />
+    <Compile Include="Models\Projeto\ProjectCreateBindingModel.cs" />
+    <Compile Include="Models\Projeto\ProjectReturnBindingModel.cs" />
+    <Compile Include="Models\Usuario\UpdateBindingModel.cs" />
+    <Compile Include="Models\Usuario\UserBindModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -288,6 +290,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Laboratory\" />
+    <Folder Include="Views\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
