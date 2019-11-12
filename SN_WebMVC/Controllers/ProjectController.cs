@@ -25,5 +25,10 @@ namespace SN_WebMVC.Controllers {
             IEnumerable<ProjectViewModel> lista = l;
             return View(lista);
         }
+
+        public ActionResult Create() {
+            return View();
+        }
+
     }
 }
