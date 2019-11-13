@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using SN_WebApi.ServicosExternos;
 using SN_WebMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -17,9 +16,9 @@ namespace SN_WebMVC.Controllers {
 
         public void UploadDeFoto(HttpPostedFileBase foto)
         {
-            ServidorDeArquivos servidorDeArquivos = new ServidorDeArquivos();
+            //ServidorDeArquivos servidorDeArquivos = new ServidorDeArquivos();
 
-            servidorDeArquivos.UploadDeArquivo(foto.InputStream, foto.FileName);
+            //servidorDeArquivos.UploadDeArquivo(foto.InputStream, foto.FileName);
 
             //if (ModelState.IsValid)
             //{
