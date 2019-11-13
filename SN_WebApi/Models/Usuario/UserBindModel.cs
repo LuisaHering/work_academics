@@ -48,17 +48,20 @@ namespace SN_WebApi.Models {
         }
 
         public UserBindModel Convert(User user) {
-            UserBindModel convertido = new UserBindModel();
-            this.Id = user.Id;
-            this.Nome = user.Nome;
-            this.Foto = user.Foto;
-            this.Email = user.Email;
-            this.Universidade = user.Universidade;
-            this.Curso = user.Curso;
-            this.Nascimento = user.Nascimento;
-            this.DataInicio = user.DataInicio;
-            this.Biografia = user.Biografia;
-            return convertido;
+            if(user != null) {
+                UserBindModel convertido = new UserBindModel();
+                convertido.Id = user.Id;
+                convertido.Nome = user.Nome;
+                convertido.Foto = user.Foto;
+                convertido.Email = user.Email;
+                convertido.Universidade = user.Universidade;
+                convertido.Curso = user.Curso;
+                convertido.Nascimento = user.Nascimento;
+                convertido.DataInicio = user.DataInicio;
+                convertido.Biografia = user.Biografia;
+                return convertido;
+            }
+            return null;
         }
     }
 }
