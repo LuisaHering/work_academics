@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SN_WebApi.ServicosExternos;
 using SN_WebMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,22 @@ namespace SN_WebMVC.Controllers {
     public class HomeController : Controller {
 
         private static string base_url = "http://localhost:56435";
+
+        public void UploadDeFoto(HttpPostedFileBase foto)
+        {
+            ServidorDeArquivos servidorDeArquivos = new ServidorDeArquivos();
+
+            servidorDeArquivos.UploadDeArquivo(foto.InputStream, foto.FileName);
+
+            //if (ModelState.IsValid)
+            //{
+            //    db.Pessoas.Add(pessoa);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //return View(pessoa);
+        }
 
         public ActionResult Index() {
             return View();

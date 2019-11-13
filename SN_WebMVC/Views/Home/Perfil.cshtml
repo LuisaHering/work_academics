@@ -10,7 +10,13 @@
     <hr />
 
     <ul class="wa-list">
-        <img src=@Html.DisplayFor(model => model.Foto) alt="default-picture" style="width:150px;height:150px;margin-bottom:40px ;" />
+        <li style="display:flex;flex-direction:column;margin-bottom:30px;">
+            <img src=@Html.DisplayFor(model => model.Foto) alt="default-picture" style="width:150px;height:150px;margin-bottom:10px;" />
+
+            <form action="/home/perfil" method="post" enctype="multipart/form-data">
+                <input type="file" name="foto" value="Escolha uma foto" />
+            </form>
+        </li>
 
         <li class="wa-perfil-label">
             Nome
