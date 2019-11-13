@@ -50,12 +50,18 @@ namespace Core.Models {
             get; set;
         }
 
+        public virtual ICollection<Picture> Pictures
+        {
+            get; set;
+        }
+
         public virtual Role Role {
             get; set;
         }
 
         public User() {
             Laboratories = new HashSet<Laboratory>();
+            Pictures = new HashSet<Picture>();
         }
 
         public void Adiciona(Laboratory laboratory) {
