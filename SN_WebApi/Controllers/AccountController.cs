@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using System.Web.UI.WebControls;
 using Core.Models;
 using Core.Services;
 using Data.Services;
@@ -18,6 +19,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using SN_WebApi.Models;
+using SN_WebApi.Models.Usuario;
 using SN_WebApi.Providers;
 using SN_WebApi.Results;
 using SN_WebApi.Service;
@@ -56,19 +58,6 @@ namespace SN_WebApi.Controllers {
             get; private set;
         }
 
-        // GET api/Account/UserInfo
-        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("UserInfo")]
-        public UserInfoViewModel GetUserInfo() {
-            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-
-            return new UserInfoViewModel {
-                Email = User.Identity.GetUserName(),
-                HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
-            };
-        }
-
         // POST api/Account/Logout
         [Route("Logout")]
         [HttpGet]
@@ -77,24 +66,31 @@ namespace SN_WebApi.Controllers {
             return Ok();
         }
 
-        // POST api/Account/ChangePassword
-        [Route("ChangePassword")]
-        public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model) {
-            if(!ModelState.IsValid) {
-                return BadRequest(ModelState);
-            }
+        //// POST api/Account/ChangePassword
+        //[Route("ChangePassword")]
+        //public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model) {
+        //    if(!ModelState.IsValid) {
+        //        return BadRequest(ModelState);
+        //    }
 
-            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
-                model.NewPassword);
+        //    IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
+        //        model.NewPassword);
 
-            if(!result.Succeeded) {
-                return GetErrorResult(result);
-            }
+        //    if(!result.Succeeded) {
+        //        return GetErrorResult(result);
+        //    }
 
-            return Ok();
+        //    return Ok();
+        //}
+
+        [Route("change")]
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> ChangePassword(UserChangePassword changePassword) {
+
+            return null;
         }
-
-        // POST api/Account/SetPassword
+        
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model) {
             if(!ModelState.IsValid) {

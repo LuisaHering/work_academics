@@ -218,6 +218,7 @@
     <Compile Include="Models\Laboratorio\LaboratoryReturnBindingModels.cs" />
     <Compile Include="Models\Projeto\ProjectCreateBindingModel.cs" />
     <Compile Include="Models\Projeto\ProjectReturnBindingModel.cs" />
+    <Compile Include="Models\Usuario\UserChangePassword.cs" />
     <Compile Include="Models\Usuario\UpdateBindingModel.cs" />
     <Compile Include="Models\Usuario\UserBindModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

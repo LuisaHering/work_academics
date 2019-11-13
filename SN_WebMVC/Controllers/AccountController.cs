@@ -20,6 +20,14 @@ namespace SN_WebMVC.Controllers {
         
         [HttpPost]
         public ActionResult RecuperarSenha(RecoverPassword model) {
+
+            if(!model.Senha.Equals(model.ConfirmarSenha)) {
+                ViewBag.Error = "Senhas não conferem";
+                return View("Error");
+            }
+
+
+
             return View();
         }
 
