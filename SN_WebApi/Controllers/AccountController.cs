@@ -58,7 +58,6 @@ namespace SN_WebApi.Controllers {
             get; private set;
         }
 
-        // POST api/Account/Logout
         [Route("Logout")]
         [HttpGet]
         public IHttpActionResult Logout() {
@@ -83,21 +82,6 @@ namespace SN_WebApi.Controllers {
             return BadRequest("Erro interno");
         }
 
-        [Route("SetPassword")]
-        public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model) {
-            if(!ModelState.IsValid) {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
-
-            if(!result.Succeeded) {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
-
         [AllowAnonymous]
         [Route("FindUser")]
         [HttpGet]
@@ -112,7 +96,6 @@ namespace SN_WebApi.Controllers {
             return Ok(usuario);
         }
 
-        // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model) {
@@ -164,6 +147,7 @@ namespace SN_WebApi.Controllers {
                 updatedUser.Nome = model.Nome;
                 updatedUser.Universidade = model.Universidade;
                 updatedUser.Curso = model.Curso;
+                updatedUser.Email = model.Email;
                 usuarioAux = UsersService.UpdateEF2(updatedUser);
                 /////////////////////////////////////////////////
                 applicationUser.Email = model.Email;
@@ -210,7 +194,6 @@ namespace SN_WebApi.Controllers {
                 }
 
                 if(ModelState.IsValid) {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
                     return BadRequest();
                 }
 
@@ -219,71 +202,6 @@ namespace SN_WebApi.Controllers {
 
             return null;
         }
-
-        private class ExternalLoginData {
-            public string LoginProvider {
-                get; set;
-            }
-            public string ProviderKey {
-                get; set;
-            }
-            public string UserName {
-                get; set;
-            }
-
-            public IList<Claim> GetClaims() {
-                IList<Claim> claims = new List<Claim>();
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, ProviderKey, null, LoginProvider));
-
-                if(UserName != null) {
-                    claims.Add(new Claim(ClaimTypes.Name, UserName, null, LoginProvider));
-                }
-
-                return claims;
-            }
-
-            public static ExternalLoginData FromIdentity(ClaimsIdentity identity) {
-                if(identity == null) {
-                    return null;
-                }
-
-                Claim providerKeyClaim = identity.FindFirst(ClaimTypes.NameIdentifier);
-
-                if(providerKeyClaim == null || String.IsNullOrEmpty(providerKeyClaim.Issuer)
-                    || String.IsNullOrEmpty(providerKeyClaim.Value)) {
-                    return null;
-                }
-
-                if(providerKeyClaim.Issuer == ClaimsIdentity.DefaultIssuer) {
-                    return null;
-                }
-
-                return new ExternalLoginData {
-                    LoginProvider = providerKeyClaim.Issuer,
-                    ProviderKey = providerKeyClaim.Value,
-                    UserName = identity.FindFirstValue(ClaimTypes.Name)
-                };
-            }
-        }
-
-        private static class RandomOAuthStateGenerator {
-            private static RandomNumberGenerator _random = new RNGCryptoServiceProvider();
-
-            public static string Generate(int strengthInBits) {
-                const int bitsPerByte = 8;
-
-                if(strengthInBits % bitsPerByte != 0) {
-                    throw new ArgumentException("strengthInBits must be evenly divisible by 8.", "strengthInBits");
-                }
-
-                int strengthInBytes = strengthInBits / bitsPerByte;
-
-                byte[] data = new byte[strengthInBytes];
-                _random.GetBytes(data);
-                return HttpServerUtility.UrlTokenEncode(data);
-            }
-        }
-
         #endregion
     }
 }
