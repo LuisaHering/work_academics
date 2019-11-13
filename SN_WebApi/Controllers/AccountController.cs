@@ -88,6 +88,13 @@ namespace SN_WebApi.Controllers {
         [AllowAnonymous]
         public async Task<IHttpActionResult> ChangePassword(UserChangePassword changePassword) {
 
+            ApplicationUser applicationUser = UserManager.FindByName(changePassword.Email);
+
+            //var oldpass = UserManager.RemovePassword(applicationUser.Id);
+
+            //var teste = UserManager.ChangePassword(applicationUser.Id, applicationUser.PasswordHash, changePassword.Password);]]
+            IdentityResult result = await UserManager.ChangePasswordAsync(applicationUser.Id, applicationUser.PasswordHash, changePassword.Password);
+
             return null;
         }
         
@@ -98,29 +105,6 @@ namespace SN_WebApi.Controllers {
             }
 
             IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
-
-            if(!result.Succeeded) {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
-        }
-
-        // POST api/Account/RemoveLogin
-        [Route("RemoveLogin")]
-        public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model) {
-            if(!ModelState.IsValid) {
-                return BadRequest(ModelState);
-            }
-
-            IdentityResult result;
-
-            if(model.LoginProvider == LocalLoginProvider) {
-                result = await UserManager.RemovePasswordAsync(User.Identity.GetUserId());
-            } else {
-                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
-                    new UserLoginInfo(model.LoginProvider, model.ProviderKey));
-            }
 
             if(!result.Succeeded) {
                 return GetErrorResult(result);

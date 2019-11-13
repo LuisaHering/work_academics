@@ -43,6 +43,10 @@ namespace SN_WebApi.Models {
             get; set;
         }
 
+        public UserBindModel() {
+
+        }
+
         public UserBindModel Convert(User user) {
             UserBindModel convertido = new UserBindModel();
             this.Id = user.Id;
