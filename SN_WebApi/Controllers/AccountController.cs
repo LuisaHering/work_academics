@@ -66,38 +66,23 @@ namespace SN_WebApi.Controllers {
             return Ok();
         }
 
-        //// POST api/Account/ChangePassword
-        //[Route("ChangePassword")]
-        //public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model) {
-        //    if(!ModelState.IsValid) {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
-        //        model.NewPassword);
-
-        //    if(!result.Succeeded) {
-        //        return GetErrorResult(result);
-        //    }
-
-        //    return Ok();
-        //}
-
         [Route("change")]
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IHttpActionResult> ChangePassword(UserChangePassword changePassword) {
-
+        public IHttpActionResult ChangePassword(UserChangePassword changePassword) {
             ApplicationUser applicationUser = UserManager.FindByName(changePassword.Email);
 
-            //var oldpass = UserManager.RemovePassword(applicationUser.Id);
+            if(applicationUser != null) {
+                UserManager.RemovePassword(applicationUser.Id);
+                var result = UserManager.AddPassword(applicationUser.Id, changePassword.Password);
 
-            //var teste = UserManager.ChangePassword(applicationUser.Id, applicationUser.PasswordHash, changePassword.Password);]]
-            IdentityResult result = await UserManager.ChangePasswordAsync(applicationUser.Id, applicationUser.PasswordHash, changePassword.Password);
-
-            return null;
+                if(result.Succeeded) {
+                    return Ok();
+                }
+            }
+            return BadRequest("Erro interno");
         }
-        
+
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model) {
             if(!ModelState.IsValid) {
@@ -118,7 +103,7 @@ namespace SN_WebApi.Controllers {
         [HttpGet]
         public IHttpActionResult FindUserByEmail(string email) {
             UserBindModel usuario = new UserBindModel();
-            usuario.Convert(UsersService.FindByEmail(email)); 
+            usuario.Convert(UsersService.FindByEmail(email));
 
             if(usuario == null) {
                 return BadRequest("Usuário não localizado");
