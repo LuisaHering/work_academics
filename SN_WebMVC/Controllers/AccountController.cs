@@ -17,18 +17,34 @@ namespace SN_WebMVC.Controllers {
         public ActionResult RecuperarSenha() {
             return View();
         }
-        
+
         [HttpPost]
-        public ActionResult RecuperarSenha(RecoverPassword model) {
+        public async Task<ActionResult> RecuperarSenha(RecoverPassword model) {
 
             if(!model.Senha.Equals(model.ConfirmarSenha)) {
                 ViewBag.Error = "Senhas não conferem";
                 return View("Error");
             }
 
+            var data = new Dictionary<string, string> {
+                { "Email", model.Email },
+                { "Password", model.Senha },
+                { "ConfirmPassword", model.ConfirmarSenha }
+            };
 
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(base_url);
 
-            return View();
+                using(var requestContent = new FormUrlEncodedContent(data)) {
+                    var response = await client.PostAsync("/api/Account/change", requestContent);
+
+                    if(response.IsSuccessStatusCode) {
+                        return RedirectToAction("Login", "Account");
+                    }
+
+                    return View("Error");
+                }
+            }
         }
 
         public ActionResult Register() {
@@ -74,7 +90,6 @@ namespace SN_WebMVC.Controllers {
                     }
                 }
             }
-
             return View();
         }
 
