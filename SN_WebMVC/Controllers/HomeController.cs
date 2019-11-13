@@ -15,7 +15,7 @@ namespace SN_WebMVC.Controllers {
 
         private static string base_url = "http://localhost:56435";
 
-        public ActionResult UploadDeFoto(HttpPostedFileBase foto)
+        public void UploadDeFoto(HttpPostedFileBase foto)
         {
             ServidorDeArquivos servidorDeArquivos = new ServidorDeArquivos();
 
