@@ -32,7 +32,7 @@ namespace Data.Services {
             if(usuarios.Count > 0) {
                 foreach(User u in usuarios) {
                     if(u.Email == Email) {
-                        localizado = u;
+                        localizado = u; 
                         break;
                     }
                 }
