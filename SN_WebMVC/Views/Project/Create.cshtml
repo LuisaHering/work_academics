@@ -1,5 +1,4 @@
 ﻿@model SN_WebMVC.Models.ProjectViewModel
-IEnumerable<SN_WebMVC.Models.ProjectViewModel>
 
 @{
     ViewBag.Title = "Create";
@@ -32,8 +31,8 @@ IEnumerable<SN_WebMVC.Models.ProjectViewModel>
         </div>
 
         <div class="form-group">
-            <div>
-                @Html.Label("Laboratório", htmlAttributes: new { @class = "control-label col-md-2"})
+            @Html.Label("Laboratório", htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
                 @Html.DropDownList("Id", String.Empty)
             </div>
         </div>
