@@ -85,9 +85,9 @@ namespace SN_WebApi.Controllers {
         [AllowAnonymous]
         [Route("FindUser")]
         [HttpGet]
-        public IHttpActionResult FindUserByEmail(string email) {
+        public async Task<IHttpActionResult> FindUserByEmailAsync(string email) {
             //UserBindModel usuario = new UserBindModel(); 
-            var usuario = UsersService.FindByEmail(email);
+            var usuario = await UsersService.FindByEmail(email);
 
             if(usuario == null) {
                 return BadRequest("Usuário não localizado");
@@ -140,9 +140,9 @@ namespace SN_WebApi.Controllers {
 
         [Route("update")]
         [HttpPut]
-        public IHttpActionResult Update(UpdateBindingModel model) {
+        public async Task<IHttpActionResult> UpdateAsync(UpdateBindingModel model) {
 
-            var updatedUser = UsersService.FindByEmail(model.Email);
+            var updatedUser = await UsersService.FindByEmail(model.Email);
             ApplicationUser applicationUser = UserManager.FindByName(model.Email);
             var usuarioAux = false;
 

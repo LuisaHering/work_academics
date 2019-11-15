@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Core.Services {
     public interface IUsers {
 
-        User FindByEmail(string email);
+        Task<User> FindByEmail(string email);
 
         bool Create(User user);
 
@@ -16,6 +16,5 @@ namespace Core.Services {
 
         bool UpdateEF2(User user);
 
-       // bool Create(Laboratory laboratory);
     }
 }

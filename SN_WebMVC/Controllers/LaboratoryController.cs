@@ -38,7 +38,7 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection) {
+        public async Task<ActionResult> Create(FormCollection collection) {
             var Descricao = collection["Descricao"];
             var access_token = (Session["access_token"]);
             var EmailUsuario = (Session["user_name"]).ToString();
@@ -53,10 +53,14 @@ namespace SN_WebMVC.Controllers {
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
-                    var response = cliente.PostAsync("api/Laboratory/create", requestContent);
+                    var response = await cliente.PostAsync("api/Laboratory/create", requestContent);
+
+                    if(response.IsSuccessStatusCode) {
+                        return RedirectToAction("Index");
+                    }
                 }
             }
-            return RedirectToAction("Index");
+            return View();
         }
 
         public ActionResult Search() {

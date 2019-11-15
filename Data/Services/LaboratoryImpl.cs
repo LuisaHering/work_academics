@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Data.Services {
     public class LaboratoryImpl : ILaboratory {
 
-        public bool Create(Laboratory laboratory) {
+        public async Task<bool> Create(Laboratory laboratory) {
             try {
                 Database.GetInstance.Laboratories.Add(laboratory);
-                Database.GetInstance.SaveChangesAsync();
+                int id = await Database.GetInstance.SaveChangesAsync();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);

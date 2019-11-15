@@ -33,9 +33,9 @@ namespace SN_WebApi.Controllers {
 
         [HttpPost]
         [Route("create")]
-        public IHttpActionResult Create(LaboratoryBindingModel bindingModel) {
+        public async Task<IHttpActionResult> CreateAsync(LaboratoryBindingModel bindingModel) {
 
-            User oldUser = GetUsers.FindByEmail(bindingModel.EmailUsuario);
+            User oldUser = await GetUsers.FindByEmail(bindingModel.EmailUsuario);
 
             Laboratory laboratory = new Laboratory() {
                 Descricao = bindingModel.Descricao,                
@@ -45,7 +45,7 @@ namespace SN_WebApi.Controllers {
 
             oldUser.Adiciona(laboratory);
 
-            var criouLab = GetLaboratory.Create(laboratory);
+            var criouLab = await GetLaboratory.Create(laboratory);
 
             if(!oldUser.haveRole()) {
                 Role coordenador = new Role() {
@@ -60,7 +60,8 @@ namespace SN_WebApi.Controllers {
             if(!criouLab || !atualizado) {
                 return BadRequest("Erro interno");
             }
-            return Ok(oldUser);
+
+            return Ok();
         }
 
         [HttpGet]
