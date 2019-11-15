@@ -18,6 +18,7 @@ namespace SN_WebApi.Controllers
     public class UploadController : ApiController
     {
         private IUsers UsersService = ServiceLocator.GetInstanceOf<UsersImpl>();
+        readonly string url = "https://gabrielcouto26.blob.core.windows.net/teste/";
 
         [HttpPost]
         [Route("foto")]
@@ -30,7 +31,7 @@ namespace SN_WebApi.Controllers
             var usuario = UsersService.FindByEmail(email);
 
             PictureBindingModel fotoUsuario = new PictureBindingModel();
-            fotoUsuario.Url = "https://gabrielcouto26.blob.core.windows.net/teste/"+$"{foto.FileName}";
+            fotoUsuario.Url = $"{url}+{foto.FileName}";
             fotoUsuario.User = usuario;
 
             usuario.Foto = fotoUsuario.Url;

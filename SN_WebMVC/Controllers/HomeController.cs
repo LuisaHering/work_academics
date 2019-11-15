@@ -15,6 +15,11 @@ namespace SN_WebMVC.Controllers {
 
         private static string base_url = "http://localhost:56435";
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public async Task<ActionResult> UploadDeFoto(PictureViewModel foto)
         {
             var access_email = Session["user_name"];
@@ -41,10 +46,6 @@ namespace SN_WebMVC.Controllers {
                     return View("Edit");
                 }
             }
-        }
-
-        public ActionResult Index() {
-            return View();
         }
 
         public async Task<ActionResult> Perfil() {
