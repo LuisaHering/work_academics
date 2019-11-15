@@ -13,7 +13,7 @@ namespace Data.Services {
         public bool Create(Laboratory laboratory) {
             try {
                 Database.GetInstance.Laboratories.Add(laboratory);
-                Database.GetInstance.SaveChanges();
+                Database.GetInstance.SaveChangesAsync();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
