@@ -218,6 +218,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Laboratorio\FindLaboratories.cs" />
     <Compile Include="Models\Laboratorio\FindLaboratoryModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Laboratorio\LaboratoryBindingModel.cs" />

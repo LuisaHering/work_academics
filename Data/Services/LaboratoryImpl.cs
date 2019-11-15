@@ -21,7 +21,7 @@ namespace Data.Services {
             return false;
         }
 
-        public List<Laboratory> FindAll(string userEmail) {
+        public List<Laboratory> FindByEmail(string userEmail) {
             List<Laboratory> labs = new List<Laboratory>();
             List<Laboratory> myLabs = new List<Laboratory>();
 
@@ -35,6 +35,19 @@ namespace Data.Services {
                 }
             }
             return myLabs;
+        }
+
+        public List<Laboratory> SearchLaboratoryBy(string description) {
+            List<Laboratory> labs = new List<Laboratory>();
+            var matches = Database.GetInstance.Laboratories.ToList();
+
+            foreach(Laboratory lab in matches) {
+                if(lab.Descricao.Contains(description)) {
+                    labs.Add(lab);
+                }
+            }
+
+            return labs;
         }
     }
 }

@@ -59,6 +59,26 @@ namespace SN_WebMVC.Controllers {
             return RedirectToAction("Index");
         }
 
+        public ActionResult Search() {
+            ICollection<LaboratoryViewModel> laboratorios = new List<LaboratoryViewModel>();
+            return View(laboratorios);
+        }
 
+        [HttpPost]
+        public async Task<ActionResult> Search(string description) {
+            var laboratorios = new List<LaboratoryViewModel>();
+
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/Laboratory/search?description={ description }");
+
+                if(response.IsSuccessStatusCode) {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    laboratorios = JsonConvert.DeserializeObject<List<LaboratoryViewModel>>(responseContent);
+                }
+            }
+
+            return View(laboratorios);
+        }
     }
 }
