@@ -13,5 +13,9 @@ namespace SN_WebMVC.Models {
         public string Descricao {
             get; set;
         }
+
+        public LaboratoryViewModel() {
+
+        }
     }
 }

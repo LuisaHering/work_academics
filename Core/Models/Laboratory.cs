@@ -23,8 +23,13 @@ namespace Core.Models {
             get; set;
         }
 
+        public virtual ICollection<Project> Projects {
+            get; set;
+        }
+
         public Laboratory() {
-            Users = new HashSet<User>();   
+            Users = new HashSet<User>();
+            Projects = new HashSet<Project>();
         }
 
         public void Adiciona(User user) {            

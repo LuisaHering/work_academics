@@ -23,10 +23,23 @@ namespace SN_WebMVC.Controllers {
 
             l.Add(p1);
             IEnumerable<ProjectViewModel> lista = l;
+
             return View(lista);
         }
 
         public ActionResult Create() {
+
+            var list = new List < LaboratoryViewModel > {
+                new LaboratoryViewModel { Id = 1, Descricao = "Codigods avancados C#" },
+                new LaboratoryViewModel { Id = 1, Descricao = "Codigods avancados python" },
+            };
+
+            ViewBag.Id = new SelectList(
+                list,
+                "Id",
+                "Descricao"
+            );
+
             return View();
         }
 
