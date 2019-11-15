@@ -14,20 +14,9 @@ namespace SN_WebMVC.Controllers {
 
         private static string base_url = "http://localhost:56435";
 
-        public void UploadDeFoto(HttpPostedFileBase foto)
+        public Task<ActionResult> UploadDeFoto()
         {
-            //ServidorDeArquivos servidorDeArquivos = new ServidorDeArquivos();
-
-            //servidorDeArquivos.UploadDeArquivo(foto.InputStream, foto.FileName);
-
-            //if (ModelState.IsValid)
-            //{
-            //    db.Pessoas.Add(pessoa);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(pessoa);
+            return null;
         }
 
         public ActionResult Index() {
