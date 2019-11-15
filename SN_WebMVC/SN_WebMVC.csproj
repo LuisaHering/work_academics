@@ -131,6 +131,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LaboratoryViewModel.cs" />
+    <Compile Include="Models\PictureViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProjectViewModel.cs" />
@@ -208,6 +209,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{107BCDC3-A5C5-453E-8A6C-63362E5B2549}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SN_WebApi\SN_WebApi.csproj">
       <Project>{203CBDDB-B013-4BAA-9A41-A2612CDE8E7E}</Project>
       <Name>SN_WebApi</Name>

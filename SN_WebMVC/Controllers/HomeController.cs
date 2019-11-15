@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Core.Models;
+using Newtonsoft.Json;
 using SN_WebMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -14,22 +15,31 @@ namespace SN_WebMVC.Controllers {
 
         private static string base_url = "http://localhost:56435";
 
-        public async Task<ActionResult> UploadDeFoto()
+        public async Task<ActionResult> UploadDeFoto(PictureViewModel foto)
         {
             var access_email = Session["user_name"];
+
+            var data = new Dictionary<string, string>
+            {
+                { "grant_type", "password" },
+                { "Foto", foto.Url}
+            };
+
 
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(base_url);
 
-                var response = await client.GetAsync($"Api/upload/foto?user={access_email}");
-
-                if (response.IsSuccessStatusCode)
+                using (var requestContent = new FormUrlEncodedContent(data))
                 {
-                    return null;
+                    var response = await client.PostAsync($"Api/upload/foto?user={access_email}", requestContent);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return null;
+                    }
+                    return View("Edit");
                 }
-                return View("Edit");
-                
             }
         }
 

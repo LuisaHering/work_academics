@@ -1,6 +1,7 @@
 ﻿using Core.Models;
 using Core.Services;
 using Data.Services;
+using SN_WebApi.Models;
 using SN_WebApi.Service;
 using SN_WebApi.ServicosExternos;
 using System;
@@ -28,9 +29,11 @@ namespace SN_WebApi.Controllers
 
             var usuario = UsersService.FindByEmail(email);
 
-            Picture fotoUsuario = new Picture();
+            PictureBindingModel fotoUsuario = new PictureBindingModel();
             fotoUsuario.Url = "https://gabrielcouto26.blob.core.windows.net/teste/"+$"{foto.FileName}";
             fotoUsuario.User = usuario;
+
+            usuario.Foto = fotoUsuario.Url;
 
             return Ok();
         }

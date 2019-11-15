@@ -223,6 +223,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Laboratorio\LaboratoryBindingModel.cs" />
     <Compile Include="Models\Laboratorio\LaboratoryReturnBindingModels.cs" />
+    <Compile Include="Models\PictureBindingModel.cs" />
     <Compile Include="Models\Projeto\ProjectCreateBindingModel.cs" />
     <Compile Include="Models\Projeto\ProjectReturnBindingModel.cs" />
     <Compile Include="Models\Usuario\UserChangePassword.cs" />
