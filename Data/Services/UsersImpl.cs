@@ -36,10 +36,7 @@ namespace Data.Services {
                         break;
                     }
                 }
-
-                //return (User)usuarios.Where(x => x.Email == Email).FirstOrDefault();
             }
-            //.Where(x => x.Email == email);
             return localizado;
         }
 

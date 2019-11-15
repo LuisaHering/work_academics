@@ -8,6 +8,10 @@
 <h2>Meus laboratórios</h2>
 
 <p>
+    @Html.ActionLink("Encontrar laboratório", "Search")
+</p>
+
+<p>
     @Html.ActionLink("Novo laboratório", "Create")
 </p>
 
@@ -25,8 +29,7 @@
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            | @Html.ActionLink("Entrar", "Details", new { id=item.Id }) |
         </td>
     </tr>
 }

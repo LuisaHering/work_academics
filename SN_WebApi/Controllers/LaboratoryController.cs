@@ -40,6 +40,7 @@ namespace SN_WebApi.Controllers {
             Laboratory laboratory = new Laboratory() {
                 Descricao = bindingModel.Descricao,                
             };
+
             laboratory.Adiciona(oldUser);
 
             oldUser.Adiciona(laboratory);
@@ -64,8 +65,17 @@ namespace SN_WebApi.Controllers {
 
         [HttpGet]
         [Route("busca")]
-        public IHttpActionResult FindLabs(string email) {
-            List<Laboratory> labs = GetLaboratory.FindAll(email);
+        public IHttpActionResult FindLaboratory(string email) {
+            List<Laboratory> labs = GetLaboratory.FindByEmail(email);
+            var aux = new LaboratoryReturnBindingModels();
+            var result = aux.convert(labs);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("search")]
+        public IHttpActionResult FindLaboratories(string description) {
+            List<Laboratory> labs = GetLaboratory.SearchLaboratoryBy(description);
             var aux = new LaboratoryReturnBindingModels();
             var result = aux.convert(labs);
             return Ok(result);
