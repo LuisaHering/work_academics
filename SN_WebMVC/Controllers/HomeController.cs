@@ -18,9 +18,6 @@ namespace SN_WebMVC.Controllers {
         {
             var access_email = Session["user_name"];
 
-            // find user id para passar como paremetro para pegar foto certa
-            // findbyemail? 
-
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(base_url);
