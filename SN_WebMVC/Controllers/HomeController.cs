@@ -14,9 +14,26 @@ namespace SN_WebMVC.Controllers {
 
         private static string base_url = "http://localhost:56435";
 
-        public Task<ActionResult> UploadDeFoto()
+        public async Task<ActionResult> UploadDeFoto()
         {
-            return null;
+            var access_email = Session["user_name"];
+
+            // find user id para passar como paremetro para pegar foto certa
+            // findbyemail? 
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(base_url);
+
+                var response = await client.GetAsync($"Api/upload/foto?user={access_email}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+                return View("Edit");
+                
+            }
         }
 
         public ActionResult Index() {
@@ -89,6 +106,7 @@ namespace SN_WebMVC.Controllers {
 
                     { "grant_type", "password" },
                     { "Email", collection["Email"]},
+                    //{ "Foto", collection["Foto"]},
                     { "Nome", collection["Nome"] },
                     { "Universidade", collection["Universidade"] },
                     { "Curso", collection["Curso"] },
