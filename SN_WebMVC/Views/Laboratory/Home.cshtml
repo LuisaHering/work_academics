@@ -7,31 +7,35 @@
 <h2>Home</h2>
 
 
-@using (Html.BeginForm()) 
-{
+@using(Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>LaboratoryViewModel</h4>
+
+    <div class="form-horizontal" style="border: 5px solid yellow;">
+
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group" style="border: 5px solid black;">
+            @Html.Label("Nome:", htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "control-label col-md-1"} })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="control-label col-md-offset-3" style="border:5px solid green;">
+            <div class="form-group" style="border: 5px solid blue; width: 450px;">
+                <h1>Membros</h1>
+                @foreach(var usuario in Model.Users) {
+                    <div class="membros" style="height:100px; display: flex; flex-direction: row; margin: 0; padding:0; border: 5px solid red;">
+                        @Html.DisplayFor(model => usuario.Nome, new { htmlAttributes = new { @class = "control-label col-md-1"} }) <br />
+                    </div>
+                }
             </div>
         </div>
+
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+@*<div>
+        @Html.ActionLink("Retornar", "Index")
+    </div>*@
 
