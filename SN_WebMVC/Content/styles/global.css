@@ -1,4 +1,9 @@
 ﻿/*overwrite*/
+.btn-primary {
+    color: #fff;
+    background-color: #ad4a9c !important;
+    border-color: #ad4a9c !important;
+}
 .wa-btn-group .btn {
     font-size: 16px; 
 }
