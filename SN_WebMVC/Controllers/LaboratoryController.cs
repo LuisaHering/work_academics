@@ -85,8 +85,19 @@ namespace SN_WebMVC.Controllers {
             return View(laboratorios);
         }
 
-        public ActionResult Home(int id) {
-            return View();
+        public async Task<ActionResult> Home(int id) {
+            var laboratory = new FullLaboratory();
+
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/Laboratory/home?id={ id }");
+
+                if(response.IsSuccessStatusCode) {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    laboratory = JsonConvert.DeserializeObject<FullLaboratory>(responseContent);
+                }
+            }
+            return View(laboratory);
         }
     }
 }
