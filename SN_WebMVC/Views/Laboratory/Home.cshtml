@@ -10,18 +10,18 @@
 @using(Html.BeginForm()) {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal" style="border: 5px solid yellow;">
+    <div style="border: 5px solid yellow;">
 
         <hr />
-        <div class="form-group" style="border: 5px solid black;">
+        <div style="border: 5px solid black;">
             @Html.Label("Nome:", htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "control-label col-md-1"} })
             </div>
         </div>
 
-        <div class="control-label col-md-offset-3" style="border:5px solid green;">
-            <div class="form-group" style="border: 5px solid blue; width: 450px;">
+        <div style="border:5px solid green;">
+            <div style="border: 5px solid blue; width: 450px;">
                 <h1>Membros</h1>
                 @foreach(var usuario in Model.Users) {
                     <div class="membros" style="height:100px; display: flex; flex-direction: row; margin: 0; padding:0; border: 5px solid red;">
@@ -34,8 +34,9 @@
     </div>
 }
 
+<br />
 
-@*<div>
-        @Html.ActionLink("Retornar", "Index")
-    </div>*@
+<div>
+    @Html.ActionLink("Retornar", "Index")
+</div>
 
