@@ -84,5 +84,9 @@ namespace SN_WebMVC.Controllers {
 
             return View(laboratorios);
         }
+
+        public ActionResult Home(int id) {
+            return View();
+        }
     }
 }

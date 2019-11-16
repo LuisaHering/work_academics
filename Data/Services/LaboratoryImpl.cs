@@ -1,11 +1,12 @@
 ﻿using Core.Models;
 using Core.Services;
-using Data.Context;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Database = Data.Context.Database;
 
 namespace Data.Services {
     public class LaboratoryImpl : ILaboratory {
@@ -35,6 +36,17 @@ namespace Data.Services {
                 }
             }
             return myLabs;
+        }
+
+        public async Task<Laboratory> FindByIdAsync(int id) {
+            List<Laboratory> list = await Database.GetInstance.Laboratories.ToListAsync();
+
+            foreach(Laboratory laboratory in list) {
+                if(laboratory.Id == id) {
+                    return laboratory;
+                }
+            }
+           return null;
         }
 
         public List<Laboratory> SearchLaboratoryBy(string description) {

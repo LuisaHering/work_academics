@@ -28,9 +28,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
+
+        
         <td>
-            | @Html.ActionLink("Entrar", "Details", new { id=item.Id }) |
+            <form action="/Laboratory/Home/@item.Id" method="get">
+                <button type="submit" class="btn btn-link">| Entrar | </button>
+            </form>
         </td>
+
+        
     </tr>
 }
 

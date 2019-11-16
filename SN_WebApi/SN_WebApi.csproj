@@ -221,6 +221,7 @@
     <Compile Include="Models\Laboratorio\FindLaboratories.cs" />
     <Compile Include="Models\Laboratorio\FindLaboratoryModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Laboratorio\FullLaboratoryBindingModel.cs" />
     <Compile Include="Models\Laboratorio\LaboratoryBindingModel.cs" />
     <Compile Include="Models\Laboratorio\LaboratoryReturnBindingModels.cs" />
     <Compile Include="Models\Projeto\ProjectCreateBindingModel.cs" />

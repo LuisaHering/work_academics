@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Core.Services {
     public interface ILaboratory {
-        //bool CreateAsync(Laboratory laboratory);
         Task<bool> Create(Laboratory laboratory);
 
         List<Laboratory> FindByEmail(string userEmail);
+
+        Task<Laboratory> FindByIdAsync(int id);
 
         List<Laboratory> SearchLaboratoryBy(string description);
     }

@@ -24,22 +24,6 @@ namespace Data.Services {
             return false;
         }
 
-        //public User FindByEmail(string Email) {
-        //    List<User> usuarios = Database.GetInstance.Users.ToList();
-        //    User localizado = null;
-
-
-        //    if(usuarios.Count > 0) {
-        //        foreach(User u in usuarios) {
-        //            if(u.Email == Email) {
-        //                localizado = u; 
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    return localizado;
-        //}
-
         public async Task<User> FindByEmail(string email) {
             List<User> users = await Database.GetInstance.Users.ToListAsync();
 

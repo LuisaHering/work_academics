@@ -19,6 +19,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
 using SN_WebApi.Models;
+using SN_WebApi.Models.Laboratorio;
 using SN_WebApi.Providers;
 using SN_WebApi.Results;
 using SN_WebApi.Service;
@@ -71,6 +72,14 @@ namespace SN_WebApi.Controllers {
             var aux = new LaboratoryReturnBindingModels();
             var result = aux.convert(labs);
             return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("home")]
+        public async Task<IHttpActionResult> HomeAsync(int id) {
+            Laboratory lab = await GetLaboratory.FindByIdAsync(id);
+            var convertido = new FullLaboratoryBindingModel().Convert(lab);
+            return Ok(convertido);
         }
 
         [HttpGet]
