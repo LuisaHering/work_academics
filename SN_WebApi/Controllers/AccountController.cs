@@ -153,6 +153,13 @@ namespace SN_WebApi.Controllers {
                 updatedUser.Curso = model.Curso;
                 updatedUser.Email = model.Email;
                 updatedUser.setUrlFoto(model.CodeIMG);
+
+                Picture picture = new Picture();
+                picture.Url = updatedUser.getUrlFoto();
+                picture.User = updatedUser;
+
+                updatedUser.Pictures.Add(picture);
+
                 usuarioAux = UsersService.UpdateEF2(updatedUser);
                 /////////////////////////////////////////////////
                 applicationUser.Email = model.Email;

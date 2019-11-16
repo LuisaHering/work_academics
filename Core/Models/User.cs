@@ -75,5 +75,9 @@ namespace Core.Models {
         public void setUrlFoto(string code) {
             this.UrlFoto = @"https://bankcarlos.blob.core.windows.net/api-amigo-fotos/" + code+".png";
         }
+
+        public string getUrlFoto() {
+            return this.UrlFoto;
+        }
     }
 }
