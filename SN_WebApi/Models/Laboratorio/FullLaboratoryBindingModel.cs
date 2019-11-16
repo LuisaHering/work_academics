@@ -51,7 +51,7 @@ namespace SN_WebApi.Models.Laboratorio {
                     Curso = u.Curso,
                     DataInicio = u.DataInicio,
                     Email = u.Email,
-                    Foto = u.Foto,
+                    Foto = u.UrlFoto,
                     Nascimento = u.Nascimento,
                     Nome = u.Nome,
                     Universidade = u.Universidade

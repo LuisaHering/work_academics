@@ -66,7 +66,7 @@ namespace Data.Services {
              */
             string query = $"Update dbo.Users Set " +
                             $"Nome = '{user.Nome}', " +
-                            $"Foto = '{user.Foto}', " +
+                            $"Foto = '{user.UrlFoto}', " +
                             $"Email = '{user.Email}', " +
                             $"Universidade = '{user.Universidade}', " +
                             $"Curso = '{user.Curso}', " +
