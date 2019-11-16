@@ -7,13 +7,11 @@
 
 <h2>Meus laboratórios</h2>
 
-<p>
-    @Html.ActionLink("Encontrar laboratório", "Search")
-</p>
+<div style="display:flex;flex-direction:row;padding: 10px 0;justify-content:flex-start;">
+    <a href="/Laboratory/Create" class="btn btn-primary" style="text-decoration:none;margin-right:20px;">Novo laboratório</a>
+    <a href="/Laboratory/Search" class="btn btn-default" style="text-decoration:none;margin-right:20px;">Encontrar laboratório</a>
+</div>
 
-<p>
-    @Html.ActionLink("Novo laboratório", "Create")
-</p>
 
 <table class="table">
     <tr>
