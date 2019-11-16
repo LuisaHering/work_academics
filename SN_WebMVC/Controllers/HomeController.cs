@@ -90,8 +90,15 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(FormCollection collection) {
+        public async Task<ActionResult> Upload(HttpPostedFileBase foto) {
 
+            Console.WriteLine();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(FormCollection collection, HttpPostedFileBase foto) {
+            
             var access_token = Session["access_token"];
             var access_email = Session["user_name"];
 
