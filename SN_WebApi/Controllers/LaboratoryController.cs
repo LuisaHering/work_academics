@@ -67,8 +67,8 @@ namespace SN_WebApi.Controllers {
 
         [HttpGet]
         [Route("busca")]
-        public IHttpActionResult FindLaboratory(string email) {
-            List<Laboratory> labs = GetLaboratory.FindByEmail(email);
+        public async Task<IHttpActionResult> FindLaboratory(string email) {
+            List<Laboratory> labs = await GetLaboratory.FindByEmail(email);
             var aux = new LaboratoryReturnBindingModels();
             var result = aux.convert(labs);
             return Ok(result);

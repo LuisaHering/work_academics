@@ -22,11 +22,11 @@ namespace Data.Services {
             return false;
         }
 
-        public List<Laboratory> FindByEmail(string userEmail) {
-            List<Laboratory> labs = new List<Laboratory>();
+        public async Task<List<Laboratory>> FindByEmail(string userEmail) {
+            List<Laboratory> labs = await Database.GetInstance.Laboratories.ToListAsync();
             List<Laboratory> myLabs = new List<Laboratory>();
 
-            labs.AddRange(Database.GetInstance.Laboratories.ToList());
+            //labs.AddRange(Database.GetInstance.Laboratories.ToList());
 
             foreach(Laboratory lab in labs) {
                 foreach(User user in lab.Users) {
