@@ -44,5 +44,6 @@ namespace SN_WebApi.Controllers {
             var convertido = new UserBindModel().Convert(usuario);
             return Ok(convertido);
         }
+
     }
 }

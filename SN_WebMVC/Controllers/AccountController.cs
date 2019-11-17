@@ -71,7 +71,7 @@ namespace SN_WebMVC.Controllers {
                     client.BaseAddress = new Uri("http://localhost:56435");
 
                     using(var requestContent = new FormUrlEncodedContent(data)) {
-                        var verificaEmail = await client.GetAsync($"/api/account/findUser?email={model.Email}");
+                        var verificaEmail = await client.GetAsync($"/api/user/findUser?email={model.Email}");
 
                         if(verificaEmail.IsSuccessStatusCode) {
                             ViewBag.Error = "Este email já está sendo usado.";
@@ -123,7 +123,7 @@ namespace SN_WebMVC.Controllers {
 
                     using(var requestContent = new FormUrlEncodedContent(data)) {
                         var response = await client.PostAsync("/Token", requestContent);
-                        var response_user_data = await client.GetAsync($"/api/account/findUser?email={model.Username}");
+                        var response_user_data = await client.GetAsync($"/api/user/findUser?email={model.Username}");
 
                         if(response_user_data.IsSuccessStatusCode) {
                             var responseUser = await response_user_data.Content.ReadAsStringAsync();

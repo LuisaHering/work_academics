@@ -82,20 +82,6 @@ namespace SN_WebApi.Controllers {
         }
 
         [AllowAnonymous]
-        [Route("FindUser")]
-        [HttpGet]
-        public async Task<IHttpActionResult> FindUserByEmailAsync(string email) {
-            var usuario = await UsersService.FindByEmail(email);
-
-            if(usuario == null) {
-                return BadRequest("Usuário não localizado");
-            }
-
-            var convertido = new UserBindModel().Convert(usuario);
-            return Ok(convertido);
-        }
-
-        [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model) {
             if(!ModelState.IsValid) {

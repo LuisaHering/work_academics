@@ -26,7 +26,7 @@ namespace SN_WebMVC.Controllers {
 
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
-                var response = await cliente.GetAsync($"/api/account/findUser?email={access_email}");
+                var response = await cliente.GetAsync($"/api/user/findUser?email={access_email}");
 
                 if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
@@ -51,7 +51,7 @@ namespace SN_WebMVC.Controllers {
 
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
-                var response = await cliente.GetAsync($"/api/account/findUser?email={access_email}");
+                var response = await cliente.GetAsync($"/api/user/findUser?email={access_email}");
 
                 if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
@@ -78,7 +78,7 @@ namespace SN_WebMVC.Controllers {
 
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
-                var response = await cliente.GetAsync($"/api/account/findUser?email={access_email}");
+                var response = await cliente.GetAsync($"/api/user/findUser?email={access_email}");
 
                 if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
@@ -101,9 +101,12 @@ namespace SN_WebMVC.Controllers {
             var access_token = Session["access_token"];
             var access_email = Session["user_name"];
 
-            var code_img = Guid.NewGuid().ToString();
+            string code_img = null;
 
-            new ServidorDeArquivo().UploadDeArquivo(foto.InputStream, $"{code_img}.png");
+            if(foto != null) {
+                code_img =  Guid.NewGuid().ToString();
+                new ServidorDeArquivo().UploadDeArquivo(foto.InputStream, $"{code_img}.png");
+            }
 
             if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
