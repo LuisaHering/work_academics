@@ -1,7 +1,7 @@
 ﻿@model SN_WebMVC.Models.ProjectViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Projeto";
     Html.RenderPartial("_SideBar");
 }
 
@@ -39,14 +39,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Criar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Retornar", "Index")
+    <a href="/Project/Index" class="btn btn-link">Retornar</a>
 </div>
 
 @section Scripts {

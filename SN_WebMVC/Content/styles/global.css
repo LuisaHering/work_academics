@@ -1,4 +1,18 @@
 ﻿/*overwrite*/
+a {
+    color: #000 !important;
+    text-decoration:none;
+}
+
+a:hover {
+    color: #ad4a9c !important;
+}
+
+.btn-default:hover {
+    color: #fff !important;
+    background-color: #ad4a9c !important;
+    border-color: #ad4a9c !important;
+}
 .btn-primary {
     color: #fff;
     background-color: #ad4a9c !important;

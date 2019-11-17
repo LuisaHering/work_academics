@@ -1,12 +1,12 @@
 ﻿﻿<!DOCTYPE html>
-﻿<link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Work Academics</title>
 
-    <link rel="stylesheet" type="text/css" href="../Content/styles/global.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/Content/styles/global.css" media="screen" />
+    <link rel="shortcut icon" href="/Content/images/Logo_favicon.ico" />
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -19,12 +19,12 @@
                 @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
                 {
                     <a href="/Home/Index">
-                        <img src="../Content/images/logo1_3.svg" alt="logo" class="wa-logo-header" />
+                        <img src="/Content/images/logo1_3.svg" alt="logo" class="wa-logo-header" />
                     </a>
                 }
                 else
                 {
-                    <img src="../Content/images/logo1_3.svg" alt="logo" class="wa-logo-header" />
+                    <img src="/Content/images/logo1_3.svg" alt="logo" class="wa-logo-header" />
                 }
             </div>
 
@@ -38,7 +38,7 @@
 
                     <form action="/Account/Logout" method="post">
                         @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-default navbar-btn navbar-right">Logout</button>
+                        <button type="submit" class="btn btn-default navbar-btn navbar-right" style="margin-right:20px;">Logout</button>
                     </form>
                 }
             </div>
@@ -47,9 +47,8 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
         @*<footer>
-            <img src="../Content/images/wa-logo-inline-azul.jpeg" alt="logo" class="wa-logo-footer" />
+            <img src="/Content/images/wa-logo-inline-azul.jpeg" alt="logo" class="wa-logo-footer" />
         </footer>*@
     </div>
 

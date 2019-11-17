@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Perfil";
-
+    Html.RenderPartial("_SideBar");
 }
 <div class="wa-container">
 
@@ -57,7 +57,7 @@
 
         <div style="display:flex;flex-direction:row;margin:40px 0;">
             <form action="/Home/Edit" method="get">
-                <button class="btn btn-primary">Editar perfil</button>
+                <button class="btn btn-default">Editar perfil</button>
             </form>
             <button class="btn btn-link" style="margin-bottom:1em;">@Html.ActionLink("Voltar", "Index")</button>
         </div>
