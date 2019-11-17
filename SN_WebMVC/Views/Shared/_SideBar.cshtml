@@ -1,6 +1,11 @@
 ﻿<div class="wa-sidebar">
 
-    <img src="..\Content\images\default-profile-pic.png" alt="default-picture" class="wa-profile-pic" />
+    @if(Session["picture_profile"] != null) {
+        var url = Session["picture_profile"];
+        <img src=@url alt="profile" class="wa-profile-pic" />
+    } else {
+        <img src="..\Content\images\default-profile-pic.png" alt="default-picture" class="wa-profile-pic" />
+    }
 
     <ul class="nav nav-stacked">
 
