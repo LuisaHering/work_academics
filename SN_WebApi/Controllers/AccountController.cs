@@ -35,7 +35,6 @@ namespace SN_WebApi.Controllers {
 
         private IUsers UsersService = ServiceLocator.GetInstanceOf<UsersImpl>();
 
-
         public AccountController() {
         }
 
@@ -86,7 +85,6 @@ namespace SN_WebApi.Controllers {
         [Route("FindUser")]
         [HttpGet]
         public async Task<IHttpActionResult> FindUserByEmailAsync(string email) {
-            //UserBindModel usuario = new UserBindModel(); 
             var usuario = await UsersService.FindByEmail(email);
 
             if(usuario == null) {
@@ -94,9 +92,6 @@ namespace SN_WebApi.Controllers {
             }
 
             var convertido = new UserBindModel().Convert(usuario);
-
-
-
             return Ok(convertido);
         }
 
@@ -140,7 +135,7 @@ namespace SN_WebApi.Controllers {
 
         [Route("update")]
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateAsync(UpdateBindingModel model) {
+        public async Task<IHttpActionResult> Update(UpdateBindingModel model) {
 
             var updatedUser = await UsersService.FindByEmail(model.Email);
             ApplicationUser applicationUser = UserManager.FindByName(model.Email);
@@ -185,8 +180,6 @@ namespace SN_WebApi.Controllers {
             base.Dispose(disposing);
         }
 
-        #region Helpers
-
         private IAuthenticationManager Authentication {
             get {
                 return Request.GetOwinContext().Authentication;
@@ -214,6 +207,5 @@ namespace SN_WebApi.Controllers {
 
             return null;
         }
-        #endregion
     }
 }
