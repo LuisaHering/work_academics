@@ -10,6 +10,8 @@ namespace Core.Services {
 
         Task<User> FindByEmail(string email);
 
+        Task<List<User>> FindUsersByName(string name);
+
         bool Create(User user);
 
         bool Update(User user);

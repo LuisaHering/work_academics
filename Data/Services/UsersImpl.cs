@@ -25,7 +25,7 @@ namespace Data.Services {
         }
 
         public async Task<User> FindByEmail(string email) {
-            List<User> users = await Database.GetInstance.Users.ToListAsync();
+            List<User> users = await Database.GetInstance.Users.Where(x => x.Email == email).ToListAsync();
 
             User localizado = null;
 
@@ -38,7 +38,11 @@ namespace Data.Services {
                 }
             }
             return localizado;
+        }
 
+        public async Task<List<User>> FindUsersByName(string name) {
+            List<User> users = await Database.GetInstance.Users.Where(x => x.Nome.Contains(name)).ToListAsync();
+            return users;
         }
 
         public bool UpdateEF2(User user) {
