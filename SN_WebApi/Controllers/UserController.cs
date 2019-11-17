@@ -34,7 +34,7 @@ namespace SN_WebApi.Controllers {
         [AllowAnonymous]
         [Route("FindUser")]
         [HttpGet]
-        public async Task<IHttpActionResult> FindUserByEmailAsync(string email) {
+        public async Task<IHttpActionResult> FindUserByEmail(string email) {
             var usuario = await UsersService.FindByEmail(email);
 
             if(usuario == null) {
@@ -45,5 +45,13 @@ namespace SN_WebApi.Controllers {
             return Ok(convertido);
         }
 
+        [AllowAnonymous]
+        [Route("search")]
+        [HttpGet]
+        public async Task<IHttpActionResult> FindUsersByName(string name) {
+            List<User> users = await UsersService.FindUsersByName(name);
+            var convertido = new UserBindModel().Convert(users);
+            return Ok(convertido);
+        }
     }
 }

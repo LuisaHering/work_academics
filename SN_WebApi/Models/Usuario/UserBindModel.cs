@@ -63,5 +63,13 @@ namespace SN_WebApi.Models {
             }
             return null;
         }
+
+        public List<UserBindModel> Convert(List<User> users) {
+            List<UserBindModel> convertido = new List<UserBindModel>();
+            foreach(User user in users) {
+                convertido.Add(Convert(user));
+            }
+            return convertido;
+        }
     }
 }
