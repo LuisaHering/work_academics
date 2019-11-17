@@ -22,5 +22,9 @@ namespace SN_WebMVC.Models
         public System.Data.Entity.DbSet<SN_WebMVC.Models.ProjectViewModel> ProjectViewModels {
             get; set;
         }
+
+        public System.Data.Entity.DbSet<SN_WebMVC.Models.ProfileViewModel> ProfileViewModels {
+            get; set;
+        }
     }
 }

@@ -5,7 +5,7 @@
     Html.RenderPartial("_SideBar");
 }
 
-<form>
+<form action="/search/Search" method="post">
 
     <div class="Localizar membros" style="margin-top: 30px; display:flex;">
         @Html.Editor("Pesquisar", new { htmlAttributes = new { @class = "form-control", } })
