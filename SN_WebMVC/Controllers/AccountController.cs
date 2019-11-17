@@ -57,7 +57,6 @@ namespace SN_WebMVC.Controllers {
         public async Task<ActionResult> Register(RegisterViewModel model) {
 
             if(ModelState.IsValid) {
-
                 var data = new Dictionary<string, string> {
 
                     { "grant_type", "password" },
@@ -69,11 +68,9 @@ namespace SN_WebMVC.Controllers {
                 };
 
                 using(var client = new HttpClient()) {
-
                     client.BaseAddress = new Uri("http://localhost:56435");
 
                     using(var requestContent = new FormUrlEncodedContent(data)) {
-
                         var verificaEmail = await client.GetAsync($"/api/account/findUser?email={model.Email}");
 
                         if(verificaEmail.IsSuccessStatusCode) {
@@ -82,7 +79,6 @@ namespace SN_WebMVC.Controllers {
                         }
 
                         var response = await client.PostAsync("Api/Account/Register", requestContent);
-
                         if(response.IsSuccessStatusCode) {
                             return RedirectToAction("Login");
                         } else {
@@ -97,16 +93,13 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Logout() {
-
             var access_token = Session["access_token"];
 
             using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
-
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 var response = await cliente.GetAsync("/api/Account/Logout");
-
                 if(response.IsSuccessStatusCode) {
                     return RedirectToAction("Login", "Account");
                 }
@@ -135,8 +128,8 @@ namespace SN_WebMVC.Controllers {
                         if(response_user_data.IsSuccessStatusCode) {
                             var responseUser = await response_user_data.Content.ReadAsStringAsync();
                             ProfileViewModel profileView = new ProfileViewModel();
-                            profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseUser);
 
+                            profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseUser);
                             Session.Add("picture_profile", profileView.Foto);
                         }
 
