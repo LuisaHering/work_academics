@@ -2,24 +2,24 @@
 
 @{
     ViewBag.Title = "Home";
+    Html.RenderPartial("_SideBar");
 }
 
-@using(Html.BeginForm()) {
+@using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
 
-    <div style="display:flex;flex-direction:column;margin:20px;">
+    <div style="display:flex;flex-direction:column;">
 
-        <hr />
         <div>
-            @Html.Label("Nome:", htmlAttributes: new { @class = "control-label col-md-1" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "control-label col-md-1"} })
-            </div>
+            <h1>
+                Laboratório:
+                @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "control-label" } })
+            </h1>
         </div>
 
         <div>
-            <div style="width: 450px;">
-                <h1>Membros</h1>
+            <div>
+                <h3>Membros</h3>
                 @foreach(var usuario in Model.Users) {
                     <div class="membros" style="height:100px; display: flex; flex-direction: row; margin: 0; padding:0;">
                         @Html.DisplayFor(model => usuario.Nome, new { htmlAttributes = new { @class = "control-label col-md-1"} }) <br />
