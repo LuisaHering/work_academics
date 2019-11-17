@@ -20,19 +20,10 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nascimento)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Universidade)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Curso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataInicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Biografia)
         </th>
         <th></th>
     </tr>
@@ -49,22 +40,13 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nascimento)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Universidade)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Curso)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Biografia)
-            </td>
-            <td>
-                @Html.ActionLink("Acessar", "Profile", new { id=item.Id }) |
+                @Html.ActionLink("Acessar", "Profile", new { id=item.Id })
             </td>
         </tr>
     }
