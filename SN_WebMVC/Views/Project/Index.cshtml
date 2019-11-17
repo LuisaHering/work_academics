@@ -36,10 +36,14 @@
             @Html.DisplayFor(modelItem => item.DataCriacao)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
         </td>
     </tr>
 }
 
 </table>
+
+<div >
+    <a href="/Home/Index" class="btn btn-link">Retornar</a>
+</div>
