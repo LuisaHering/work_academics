@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SN_WebMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -129,15 +130,22 @@ namespace SN_WebMVC.Controllers {
 
                     using(var requestContent = new FormUrlEncodedContent(data)) {
                         var response = await client.PostAsync("/Token", requestContent);
+                        var response_user_data = await client.GetAsync($"/api/account/findUser?email={model.Username}");
+
+                        if(response_user_data.IsSuccessStatusCode) {
+                            var responseUser = await response_user_data.Content.ReadAsStringAsync();
+                            ProfileViewModel profileView = new ProfileViewModel();
+                            profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseUser);
+
+                            Session.Add("picture_profile", profileView.Foto);
+                        }
 
                         if(response.IsSuccessStatusCode) {
                             var responseContent = await response.Content.ReadAsStringAsync();
-
                             var tokenData = JObject.Parse(responseContent);
 
                             Session.Add("access_token", tokenData["access_token"]);
                             Session.Add("user_name", model.Username);
-
                             return RedirectToAction("Index", "Home");
                         }
                         return View("Error");
