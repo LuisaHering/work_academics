@@ -13,9 +13,30 @@ using System.Web.Mvc;
 namespace SN_WebMVC.Controllers {
     public class HomeController : Controller {
 
-        private static string base_url      = "http://localhost:56435";
-                
-        public ActionResult Index() {
+        private static string base_url = "http://localhost:56435";
+
+        public async Task<ActionResult> Index() {
+            var access_email = Session["user_name"];
+            var access_token = Session["access_token"];
+
+            ProfileViewModel profileView = new ProfileViewModel();
+
+            using(var cliente = new HttpClient()) {
+                cliente.BaseAddress = new Uri(base_url);
+
+                cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                var response = await cliente.GetAsync($"/api/account/findUser?email={access_email}");
+
+                if(response.IsSuccessStatusCode) {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
+                }
+            }
+
+            Session.Add("picture_profile", profileView.Foto);
+
             return View();
         }
 

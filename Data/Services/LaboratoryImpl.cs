@@ -46,16 +46,18 @@ namespace Data.Services {
                     return laboratory;
                 }
             }
-           return null;
+            return null;
         }
 
         public List<Laboratory> SearchLaboratoryBy(string description) {
             List<Laboratory> labs = new List<Laboratory>();
             var matches = Database.GetInstance.Laboratories.ToList();
 
-            foreach(Laboratory lab in matches) {
-                if(lab.Descricao.Contains(description)) {
-                    labs.Add(lab);
+            if(description != null) {
+                foreach(Laboratory lab in matches) {
+                    if(lab.Descricao.Contains(description)) {
+                        labs.Add(lab);
+                    }
                 }
             }
 
