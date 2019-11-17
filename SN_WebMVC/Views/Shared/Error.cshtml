@@ -1,4 +1,5 @@
 ﻿@{ 
+    ViewBag.Title = "Ops";
     var erro = ViewBag.Error;
 }
 <!DOCTYPE html>
@@ -11,6 +12,8 @@
     <div style="display:flex;flex-direction:column;align-items:center;margin: 50px 0;">
         <h1>Ops...</h1>
         <h2>@(erro == null ? "Tivemos um problema" : erro)</h2>
+        <img src="~/Content/images/Logo1_5.png" alt="Logo" height="50" style="margin:5px;"/>
     </div>
+
 </body>
 </html>
