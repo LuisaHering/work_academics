@@ -12,5 +12,6 @@ namespace SN_WebApi.Models
         public string Biografia { get; set; }
         public string Universidade { get; set; }
         public string Curso { get; set; }
+        public string CodeIMG { get; set; }
     }
 }

@@ -52,7 +52,7 @@ namespace SN_WebApi.Models {
                 UserBindModel convertido = new UserBindModel();
                 convertido.Id = user.Id;
                 convertido.Nome = user.Nome;
-                convertido.Foto = user.Foto;
+                convertido.Foto = user.UrlFoto;
                 convertido.Email = user.Email;
                 convertido.Universidade = user.Universidade;
                 convertido.Curso = user.Curso;

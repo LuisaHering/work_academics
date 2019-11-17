@@ -18,7 +18,7 @@ namespace Core.Models {
             get; set;
         }
 
-        public string Foto {
+        public string UrlFoto {
             get; set;
         }
 
@@ -70,6 +70,14 @@ namespace Core.Models {
 
         public bool haveRole() {
             return this.Role != null;
+        }
+
+        public void setUrlFoto(string code) {
+            this.UrlFoto = @"https://bankcarlos.blob.core.windows.net/api-amigo-fotos/" + code+".png";
+        }
+
+        public string getUrlFoto() {
+            return this.UrlFoto;
         }
     }
 }

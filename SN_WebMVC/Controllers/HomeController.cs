@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SN_WebMVC.Models;
+using SN_WebMVC.UploadExterno;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +13,8 @@ using System.Web.Mvc;
 namespace SN_WebMVC.Controllers {
     public class HomeController : Controller {
 
-        private static string base_url = "http://localhost:56435";
-
-        public void UploadDeFoto(HttpPostedFileBase foto)
-        {
-            //ServidorDeArquivos servidorDeArquivos = new ServidorDeArquivos();
-
-            //servidorDeArquivos.UploadDeArquivo(foto.InputStream, foto.FileName);
-
-            //if (ModelState.IsValid)
-            //{
-            //    db.Pessoas.Add(pessoa);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(pessoa);
-        }
-
+        private static string base_url      = "http://localhost:56435";
+                
         public ActionResult Index() {
             return View();
         }
@@ -90,17 +75,14 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> Upload(HttpPostedFileBase foto) {
-
-            Console.WriteLine();
-            return View();
-        }
-
-        [HttpPost]
         public async Task<ActionResult> Edit(FormCollection collection, HttpPostedFileBase foto) {
-            
+
             var access_token = Session["access_token"];
             var access_email = Session["user_name"];
+
+            var code_img = Guid.NewGuid().ToString();
+
+            new ServidorDeArquivo().UploadDeArquivo(foto.InputStream, $"{code_img}.png");
 
             if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
@@ -111,6 +93,7 @@ namespace SN_WebMVC.Controllers {
                     { "Universidade", collection["Universidade"] },
                     { "Curso", collection["Curso"] },
                     { "Biografia", collection["Biografia"] },
+                    { "CodeIMG", code_img },
                 };
 
                 using(var client = new HttpClient()) {
@@ -129,13 +112,10 @@ namespace SN_WebMVC.Controllers {
                     }
                 }
             }
-
             Session.Add("access_token", access_token);
             Session.Add("access_email", access_email);
 
             return View();
-
         }
-
     }
 }
