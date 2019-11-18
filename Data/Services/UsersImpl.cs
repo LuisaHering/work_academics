@@ -24,6 +24,20 @@ namespace Data.Services {
             return false;
         }
 
+        public async Task<User> FindById(string user_id) {
+            User user = null;
+
+            List<User> users = await Database.GetInstance.Users.Where(x => x.Id.ToString().Equals(user_id)).ToListAsync();
+
+            foreach(User u in users) {
+                if(u.Id.ToString().Equals(user_id)) {
+                    user = u;
+                    break;
+                }
+            }
+            return user;
+        }
+
         public async Task<User> FindByEmail(string email) {
             List<User> users = await Database.GetInstance.Users.Where(x => x.Email == email).ToListAsync();
 

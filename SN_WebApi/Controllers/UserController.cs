@@ -46,6 +46,20 @@ namespace SN_WebApi.Controllers {
         }
 
         [AllowAnonymous]
+        [Route("FindUser")]
+        [HttpGet]
+        public async Task<IHttpActionResult> FindUserById(string user_id) {
+            var usuario = await UsersService.FindById(user_id);
+
+            if(usuario == null) {
+                return BadRequest("Usuário não localizado");
+            }
+
+            var convertido = new UserBindModel().Convert(usuario);
+            return Ok(convertido);
+        }
+        
+        [AllowAnonymous]
         [Route("search")]
         [HttpGet]
         public async Task<IHttpActionResult> FindUsersByName(string name) {

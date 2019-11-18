@@ -197,6 +197,7 @@
     <Content Include="Views\Laboratory\Search.cshtml" />
     <Content Include="Views\Laboratory\Home.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

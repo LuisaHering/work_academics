@@ -12,6 +12,8 @@ namespace Core.Services {
 
         Task<List<User>> FindUsersByName(string name);
 
+        Task<User> FindById(string id);
+
         bool Create(User user);
 
         bool Update(User user);

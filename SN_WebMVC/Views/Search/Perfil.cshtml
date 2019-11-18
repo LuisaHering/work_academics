@@ -1,0 +1,83 @@
+﻿@model SN_WebMVC.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Perfil</h2>
+
+<div>
+    <h4>ProfileViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Universidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Universidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Curso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Biografia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Biografia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

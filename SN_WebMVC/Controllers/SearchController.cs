@@ -30,5 +30,22 @@ namespace SN_WebMVC.Controllers {
 
             return View(profiles);
         }
+
+        public async Task<ActionResult> Perfil(string id) {
+
+            ProfileViewModel profile = new ProfileViewModel();
+
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/user/FindUser?user_id={id}");
+
+                if(response.IsSuccessStatusCode) {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    profile = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
+                }
+            }
+
+            return View(profile);
+        }
     }
 }
