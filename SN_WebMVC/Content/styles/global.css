@@ -72,7 +72,6 @@ a:hover {
     margin-top: 15px;
 }
 
-  /*SIDEBAR*/
 .wa-sidebar {
     position: fixed;
     left: 0;
@@ -85,10 +84,9 @@ a:hover {
 .wa-profile-pic {
     width: 100px;
     border-radius: 50%;
-    margin: 10px;
-    margin-bottom: 50px;
+    margin: 15px;
+    margin-bottom:30px;
 }
- /*FIM SIDEBAR*/
 
 .wa-titulo {
     font-size: 36px;
