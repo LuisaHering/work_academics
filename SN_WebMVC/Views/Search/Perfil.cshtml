@@ -1,83 +1,83 @@
 ﻿@model SN_WebMVC.Models.ProfileViewModel
 
 @{
-    ViewBag.Title = "Perfil";
+    ViewBag.Title = "Busca";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Perfil</h2>
+<div class="wa-container">
 
-<div>
-    <h4>ProfileViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
+    <h2>Perfil</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
+    <div style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-end;">
+        <ul class="wa-list" style="margin:40px;">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <li class="wa-perfil-info">
+                <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" />
+            </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <li class="wa-perfil-label">
+                @Html.DisplayNameFor(model => model.Nome)
+            </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nascimento)
-        </dt>
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Nome)
+            </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nascimento)
-        </dd>
+            <li class="wa-perfil-label">
+                @Html.DisplayNameFor(model => model.Email)
+            </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Universidade)
-        </dt>
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Email)
+            </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Universidade)
-        </dd>
+            <li class="wa-perfil-label">
+                Data de nascimento
+            </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Curso)
-        </dt>
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Nascimento)
+            </li>
+        </ul>
+        <ul class="wa-list" style="margin:40px;">
+            <li class="wa-perfil-label">
+                @Html.DisplayNameFor(model => model.Universidade)
+            </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Curso)
-        </dd>
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Universidade)
+            </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataInicio)
-        </dt>
+            <li class="wa-perfil-label">
+                @Html.DisplayNameFor(model => model.Curso)
+            </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataInicio)
-        </dd>
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Curso)
+            </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Biografia)
-        </dt>
+            <li class="wa-perfil-label">
+                Data de entrada
+            </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Biografia)
-        </dd>
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.DataInicio)
+            </li>
 
-    </dl>
+            <li class="wa-perfil-label">
+                @Html.DisplayNameFor(model => model.Biografia)
+            </li>
+
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Biografia)
+            </li>
+
+        </ul>
+    </div>
+    <div>
+        <button class="btn btn-link" style="margin: 30px 0;">@Html.ActionLink("Retornar", "Search")</button>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

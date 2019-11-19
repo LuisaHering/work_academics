@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<SN_WebMVC.Models.ProfileViewModel>
 
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Busca";
     Html.RenderPartial("_SideBar");
 }
 
 <h2>Localizados</h2>
-
 
 <table class="table">
     <tr>
@@ -46,7 +45,7 @@
                 @Html.DisplayFor(modelItem => item.Curso)
             </td>
             <td>
-                @Html.ActionLink("Acessar", "Perfil", new { id=item.Id })
+                @Html.ActionLink("Ver perfil", "Perfil", new { id=item.Id })
             </td>
         </tr>
     }
