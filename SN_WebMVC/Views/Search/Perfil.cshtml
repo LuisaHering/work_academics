@@ -14,35 +14,48 @@
     <div style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-end;">
         <ul class="wa-list" style="margin:40px;">
 
+
             <li class="wa-perfil-info">
-                <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" />
+                <div class="picture">
+                    <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" style="width:150px;height:150px;margin-bottom:10px;" />
+                </div>
             </li>
 
             <li class="wa-perfil-label">
-                @Html.DisplayNameFor(model => model.Nome)
+                <div>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </div>
             </li>
 
             <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.Nome)
+                <div>
+                    @Html.DisplayFor(model => model.Nome)
+                </div>
             </li>
 
             <li class="wa-perfil-label">
-                @Html.DisplayNameFor(model => model.Email)
+                <div>
+                    @Html.DisplayNameFor(model => model.Email)
+                </div>
             </li>
 
             <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.Email)
+                <div>
+                    @Html.DisplayFor(model => model.Email)
+                </div>
             </li>
 
             <li class="wa-perfil-label">
+                <div>
+                </div>
                 Data de nascimento
             </li>
 
             <li class="wa-perfil-info">
                 @Html.DisplayFor(model => model.Nascimento)
             </li>
-        </ul>
-        <ul class="wa-list" style="margin:40px;">
+
+
             <li class="wa-perfil-label">
                 @Html.DisplayNameFor(model => model.Universidade)
             </li>
@@ -74,10 +87,15 @@
             <li class="wa-perfil-info">
                 @Html.DisplayFor(model => model.Biografia)
             </li>
-
         </ul>
+
+
+        <div>
+            <input type="submit" value="Editar" class="btn btn-default" />
+        </div>
+
     </div>
     <div>
-        <button class="btn btn-link" style="margin: 30px 0;"><a href="/Home/Index">Retornar</a></button>
+        <button class="btn btn-link">Seguir</button>
     </div>
 </div>
