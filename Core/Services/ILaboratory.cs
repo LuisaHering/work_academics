@@ -10,7 +10,6 @@ namespace Core.Services {
         Task<bool> Create(Laboratory laboratory);
 
         Task<List<Laboratory>> FindByEmail(string userEmail);
-        //List<Laboratory> FindByEmail(string userEmail);
 
         Task<Laboratory> FindByIdAsync(int id);
 
