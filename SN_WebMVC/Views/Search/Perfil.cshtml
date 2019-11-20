@@ -9,10 +9,11 @@
 
     <h2>Perfil</h2>
 
-    <div style="display:flex;flex-direction:row;justify-content:space-around;align-items:flex-end;">
+    <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;">
 
-        <div style="margin:40px 20px 40px 0">
-            <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" style="width:150px;height:150px;" />
+        <div  style="display:flex;flex-direction:column;margin:40px 20px 40px 0">
+            <img src="\Content\images\default-profile-pic.png" alt="Foto" style="width:150px;height:150px;margin-bottom:15px;" />
+            <input type="submit" value="Seguir" class="btn btn-default" />
         </div>
 
         <ul class="wa-list" style="margin:40px;">
@@ -80,9 +81,6 @@
     </div>
 
     <div>
-        <input type="submit" value="Seguir" class="btn btn-default" />
-    </div>
-    <div>
-        <button class="btn btn-link">Seguir</button>
+        <a href="/Home/Index" class="btn btn-link">Retornar</a>
     </div>
 </div>
