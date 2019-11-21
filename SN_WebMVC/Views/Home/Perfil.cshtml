@@ -10,10 +10,20 @@
     <hr />
 
     <ul class="wa-list">
-        <li style="display:flex;flex-direction:column;margin-bottom:30px;">
-            @*if(model != null)*@
-            <img src=@Html.DisplayFor(model => model.Foto) alt="default-picture" style="width:150px;height:150px;margin-bottom:10px;" />
-        </li>
+   
+        @if (Session["picture_profile"] != null)
+        {
+            var url = Session["picture_profile"];
+            <li>
+                <img src=@url alt="foto" style="width:150px;height:150px;margin-bottom:10px;" />
+            </li>
+        }
+        else
+        {
+            <li>
+                <img src="\Content\images\default-profile-pic.png" alt="default-picture" style="width:150px;height:150px;margin-bottom:10px;" />
+            </li>
+        }
 
         <li class="wa-perfil-label">
             Nome
