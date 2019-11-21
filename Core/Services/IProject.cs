@@ -9,5 +9,7 @@ namespace Core.Services {
     public interface IProject {
 
         Task<List<Project>> BuscarProjetosDoUsuarios(string email);
+
+        Task<bool> Create(Project project);
     }
 }

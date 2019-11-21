@@ -23,7 +23,7 @@ namespace Core.Models {
             get; set;
         }
 
-        public virtual ICollection<Project> Projects {
+        public ICollection<Project> Projects {
             get; set;
         }
 
@@ -34,6 +34,10 @@ namespace Core.Models {
 
         public void Adiciona(User user) {            
             this.Users.Add(user);                
+        }
+
+        public void Adiciona(Project projeto) {
+            this.Projects.Add(projeto);
         }
     }
 }

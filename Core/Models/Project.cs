@@ -22,12 +22,14 @@ namespace Core.Models {
         public DateTime DataCriacao {
             get; set;
         }
-        public DateTime DataFinalizacao {
+        public DateTime? DataFinalizacao {
             get; set;
         }
 
-        public Laboratory Laboratory {
+        public virtual Laboratory Laboratory {
             get; set;
         }
+
+
     }
 }

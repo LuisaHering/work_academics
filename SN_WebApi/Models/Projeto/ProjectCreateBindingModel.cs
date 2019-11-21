@@ -12,5 +12,9 @@ namespace SN_WebApi.Models.Projeto {
         public string Descricao {
             get; set;
         }
+
+        public int IdLaboratory {
+            get; set;
+        }
     }
 }

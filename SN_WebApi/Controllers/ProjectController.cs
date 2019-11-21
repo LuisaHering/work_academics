@@ -39,5 +39,25 @@ namespace SN_WebApi.Controllers {
             var convertido = new ProjectReturnBindingModel().Convert(projects);
             return Ok(convertido);
         }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<IHttpActionResult> Create(ProjectCreateBindingModel bindingModel) {
+
+            Laboratory laboratory = await GetLaboratory.FindByIdAsync(bindingModel.IdLaboratory);
+
+            Project project = new Project {
+                Titulo = bindingModel.Titulo,
+                Descricao = bindingModel.Descricao,
+                Laboratory = laboratory,
+                DataCriacao = DateTime.Now,
+                DataFinalizacao = null,
+            };
+
+            laboratory.Adiciona(project);
+
+            var atualizou = await GetLaboratory.Update(laboratory);
+            return Ok();
+        }
     }
 }
