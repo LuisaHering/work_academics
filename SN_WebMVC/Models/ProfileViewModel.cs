@@ -26,13 +26,11 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
-        public string Universidade
-        {
+        public string Universidade {
             get; set;
         }
 
-        public string Curso
-        {
+        public string Curso {
             get; set;
         }
 
@@ -42,6 +40,16 @@ namespace SN_WebMVC.Models {
 
         public string Biografia {
             get; set;
+        }
+
+        public List<ProfileViewModel> RemoverUsuarioLogado(string emailUsuarioLogado, List<ProfileViewModel> profiles) {
+            List<ProfileViewModel> semUsuarioLogado = new List<ProfileViewModel>();
+            foreach(ProfileViewModel profile in profiles) {
+                if(!profile.Email.Contains(emailUsuarioLogado)) {
+                    semUsuarioLogado.Add(profile);
+                }
+            }
+            return semUsuarioLogado;
         }
     }
 }
