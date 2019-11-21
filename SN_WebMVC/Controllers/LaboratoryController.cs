@@ -38,7 +38,8 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(FormCollection collection) {
+        public async Task<ActionResult> Create(FormCollection collection)
+        {
             var Descricao = collection["Descricao"];
             var access_token = (Session["access_token"]);
             var EmailUsuario = (Session["user_name"]).ToString();

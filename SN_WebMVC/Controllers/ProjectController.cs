@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -58,13 +59,48 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Create(ProjectViewModel projeto) {
-            // colocar dados no dicionario
-            // abrir httpclient
-            // dar um post em /api/project/create
-            
+        public async Task<ActionResult> Create(ProjectViewModel projeto)
+        {
+            if (ModelState.IsValid)
+            {
+                string criacaoData = $"{projeto.DataCriacao.Day}-{projeto.DataCriacao.Month}-{projeto.DataCriacao.Year}";
 
-            return RedirectToAction("Index");
+                var access_token = (Session["access_token"]);
+
+
+                //FIXME: Não sei como ou onde colocar a IdLaboratory, também n entendo como fica salvo qual usuário que criou o projeto
+                var data = new Dictionary<string, string>
+                {
+
+
+                    { "Titulo", projeto.Titulo },
+                    { "Descrição", projeto.Descricao},
+                    { "Data Criação", criacaoData },
+
+                };
+
+                using (var cliente = new HttpClient())
+                {
+                    cliente.BaseAddress = new Uri(base_url);
+                    cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                    using (var requestContent = new FormUrlEncodedContent(data))
+                    {
+                        var response = await cliente.PostAsync("api/Project/create", requestContent);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return RedirectToAction("Index");
+                        }
+                    }
+                }
+
+                return View();
+                // colocar dados no dicionario
+                // abrir httpclient
+                // dar um post em /api/project/create
+            }
         }
+        
     }
 }
