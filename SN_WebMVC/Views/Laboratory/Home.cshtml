@@ -40,8 +40,8 @@
             <h3>Projetos do laboratório</h3>
             <div class="wa-list" style="height:100px;">
                 <ul>
-                    @*@foreach (var projeto in Model.Projetos)
-                    {*@
+                    @foreach (var projeto in Model.Projetos)
+                    {
                         <li style="list-style-type:none;border-bottom:1px solid #ededed;">
                             <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end;">
                                 <h3>
@@ -57,7 +57,7 @@
                                 @*@Html.DisplayFor(model => projeto.Descricao)*@
                             </div>
                         </li>
-                    @*}*@
+                    }
                 </ul>
             </div>
         </div>
