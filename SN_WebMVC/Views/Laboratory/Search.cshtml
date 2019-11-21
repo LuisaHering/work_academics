@@ -5,52 +5,53 @@
     ViewBag.Title = "Laboratório";
     Html.RenderPartial("_SideBar");
 }
+<div class="wa-container">
 
-<h2>Buscar Laboratório</h2>
+    <h2>Buscar Laboratório</h2>
 
-@using(Html.BeginForm()) {
-    <div class="form-horizontal">
-        <br />
+    @using(Html.BeginForm()) {
+        <div class="form-horizontal">
+            <br />
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="text" name="description" />
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="text" name="description" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="submit" value="Buscar" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Buscar" class="btn btn-default" />
+                </div>
             </div>
+
+            <br />
         </div>
-
-        <br />
-    </div>
-}
-
-<br />
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach(var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                | @Html.ActionLink("Entrar", "Edit", new {  id=item.Id }) |
-            </td>
-        </tr>
     }
 
-</table>
+    <br />
 
-<p>
-    <a href="/Laboratory/Index" class="btn btn-link">Retornar</a>
-</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach(var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    | @Html.ActionLink("Entrar", "Edit", new {  id=item.Id }) |
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        <a href="/Laboratory/Index" class="btn btn-link">Retornar</a>
+    </div>
+</div>

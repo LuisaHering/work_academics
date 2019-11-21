@@ -4,50 +4,52 @@
     ViewBag.Title = "Busca";
     Html.RenderPartial("_SideBar");
 }
+<div class="wa-container">
 
-<h2>Localizados</h2>
+    <h2>Localizados</h2>
 
-<table class="table">
-    <tr>
-        <th>
-
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Universidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Curso)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach(var item in Model) {
+    <table class="table">
         <tr>
-            <td>
-                <img src=@item.Foto alt="profile" class="wa-profile-pic" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Universidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Curso)
-            </td>
-            <td>
-                @Html.ActionLink("Ver perfil", "Perfil", new { id=item.Id })
-            </td>
-        </tr>
-    }
+            <th>
 
-</table>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Universidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curso)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach(var item in Model) {
+            <tr>
+                <td>
+                    <img src=@item.Foto alt="profile" class="wa-profile-pic" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Universidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curso)
+                </td>
+                <td>
+                    @Html.ActionLink("Ver perfil", "Perfil", new { id=item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
