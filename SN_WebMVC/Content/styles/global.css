@@ -28,9 +28,11 @@ a:hover {
     margin-right: 10px;
 }
 /*fim-overwrite*/
+.wa-border-top{
+    border-top: 1px solid #ededed;
+}
 
-
-.wa-post-botoes button{
+.wa-post-botoes button {
     margin: 10px;
 }
 
@@ -43,6 +45,7 @@ a:hover {
 .wa-post-conteudo {
     margin: 15px 10px;
     padding: 0 30px;
+    text-align: justify;
 }
 
 .wa-post-info h3{
@@ -63,7 +66,7 @@ a:hover {
     padding: 10px;
     margin: 10px;
     margin-right: 30px;
-    border-bottom: 1px solid #ededed;
+    border-bottom: 2px solid #ededed;
 }
 
 .wa-feed {
@@ -72,6 +75,8 @@ a:hover {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
+    margin-right:20px;
+    border-right: 2px solid #ededed;
 }
 
 .wa-select{
