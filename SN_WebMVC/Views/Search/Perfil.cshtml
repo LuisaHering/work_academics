@@ -7,54 +7,43 @@
 
 <div class="wa-container">
 
-
-
     <h2>Perfil</h2>
 
-    <div style="display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-end;">
+    <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;">
+
+        <div  style="display:flex;flex-direction:column;margin:40px 20px 40px 0">
+            <img src="\Content\images\default-profile-pic.png" alt="Foto" style="width:150px;height:150px;margin-bottom:15px;" />
+            <input type="submit" value="Seguir" class="btn btn-default" />
+        </div>
+
         <ul class="wa-list" style="margin:40px;">
 
-
-            <li class="wa-perfil-info">
-                <div class="picture">
-                    <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" style="width:150px;height:150px;margin-bottom:10px;" />
-                </div>
-            </li>
-
             <li class="wa-perfil-label">
-                <div>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </div>
+                @Html.DisplayNameFor(model => model.Nome)
             </li>
 
             <li class="wa-perfil-info">
-                <div>
-                    @Html.DisplayFor(model => model.Nome)
-                </div>
+                @Html.DisplayFor(model => model.Nome)
             </li>
 
             <li class="wa-perfil-label">
-                <div>
-                    @Html.DisplayNameFor(model => model.Email)
-                </div>
+                @Html.DisplayNameFor(model => model.Email)
             </li>
 
             <li class="wa-perfil-info">
-                <div>
-                    @Html.DisplayFor(model => model.Email)
-                </div>
+                @Html.DisplayFor(model => model.Email)
             </li>
 
             <li class="wa-perfil-label">
-                <div>
-                </div>
                 Data de nascimento
             </li>
 
             <li class="wa-perfil-info">
                 @Html.DisplayFor(model => model.Nascimento)
             </li>
+        </ul>
 
+        <ul class="wa-list" style="margin:40px;">
 
             <li class="wa-perfil-label">
                 @Html.DisplayNameFor(model => model.Universidade)
@@ -89,13 +78,9 @@
             </li>
         </ul>
 
-
-        <div>
-            <input type="submit" value="Editar" class="btn btn-default" />
-        </div>
-
     </div>
+
     <div>
-        <button class="btn btn-link">Seguir</button>
+        <a href="/Home/Index" class="btn btn-link">Retornar</a>
     </div>
 </div>
