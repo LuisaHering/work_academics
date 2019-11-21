@@ -14,33 +14,29 @@
         <a href="/Laboratory/Search" class="btn btn-default" style="text-decoration:none;margin-right:20px;">Encontrar laboratório</a>
     </div>
 
+    <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
 
-    <table class="table">
-        <tr>
-            <th>
-                Descrição
-            </th>
-            <th></th>
-        </tr>
+        @foreach (var item in Model)
+        {
+            <div style="display:flex;flex-direction:column;justify-content:space-around;border: 2px solid #ededed;padding:15px;margin:25px 5px;">
+                <div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;margin:50px 25px;">
+                    <p style="margin-bottom:0px !important;">Laboratório:</p>
+                    <h2 style="margin-top:0px !important;">
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </h2>
 
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-        
-            <td>
-                <form action="/Laboratory/Home/@item.Id" method="get">
-                    <button type="submit" class="btn btn-default">Entrar</button>
-                </form>
-            </td>
-        
-        </tr>
-    }
+                </div>
+                <div class="text-center">
+                    <form action="/Laboratory/Home/@item.Id" medivod="get">
+                        <button type="submit" class="btn btn-default">Entrar</button>
+                    </form>
+                </div>
 
-    </table>
-
-    <div class="form-group">
-        <a href="/Home/Index">Retornar</a>
+            </div>
+        }
     </div>
-</div>
+
+        <div class="form-group">
+            <a href="/Home/Index">Retornar</a>
+        </div>
+    </div>
