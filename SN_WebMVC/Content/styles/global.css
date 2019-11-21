@@ -28,6 +28,16 @@ a:hover {
     margin-right: 10px;
 }
 /*fim-overwrite*/
+.wa-post-conteudo{
+    margin: 15px 10px;
+}
+.wa-post-info{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    margin: 5px 10px;
+}
+
 .wa-feed{
     width: 70%;
     display:flex;
