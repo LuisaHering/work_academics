@@ -59,7 +59,10 @@ namespace SN_WebMVC.Controllers {
 
         [HttpPost]
         public ActionResult Create(ProjectViewModel projeto) {
-
+            // colocar dados no dicionario
+            // abrir httpclient
+            // dar um post em /api/project/create
+            
 
             return RedirectToAction("Index");
         }
