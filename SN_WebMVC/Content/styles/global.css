@@ -28,7 +28,13 @@ a:hover {
     margin-right: 10px;
 }
 /*fim-overwrite*/
-
+.wa-feed{
+    width: 70%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:flex-start;
+}
 
 .wa-select{
     width: 100% !important;

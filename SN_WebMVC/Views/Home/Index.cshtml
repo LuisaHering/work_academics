@@ -6,12 +6,18 @@
 }
 <div class="wa-container">
 
-    <form action="/search/Search" method="post">
-
-        <div class="Localizar membros" style="margin-top: 30px; display:flex;">
-            @Html.Editor("Pesquisar", new { htmlAttributes = new { @class = "form-control", } })
-            <input type="submit" value="Pesquisar" class="btn btn-default" style="margin-left: 2px;"/>
+    <div style="display:flex;flex-direction:row; margin: 30px 20px;">
+        <div class="wa-feed">
+            <h2>Feed</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:30%;">
+            <h4>Buscar membros</h4>
+            <form action="/search/Search" method="post">
+                <input class="form-control" id="Pesquisar" name="Pesquisar" type="text" value="Digite um nome">
+                <input type="submit" value="Pesquisar" class="btn btn-default" style="margin: 10px 0;" />
+            </form>
         </div>
 
-    </form>
+    </div>
+
 </div>
