@@ -8,70 +8,75 @@
 
     <h2>Perfil</h2>
     <hr />
-
-    <ul class="wa-list">
-   
-        @if (Session["picture_profile"] != null)
-        {
-            var url = Session["picture_profile"];
-            <li>
-                <img src=@url alt="foto" style="width:150px;height:150px;margin-bottom:10px;" />
-            </li>
-        }
-        else
-        {
-            <li>
-                <img src="\Content\images\default-profile-pic.png" alt="default-picture" style="width:150px;height:150px;margin-bottom:10px;" />
-            </li>
-        }
-
-        <li class="wa-perfil-label">
-            Nome
-        </li>
-
-        <li class="wa-perfil-info">
-            @Html.DisplayFor(model => model.Nome)
-        </li>
-
-        <li class="wa-perfil-label">
-            Email
-        </li>
-
-        <li class="wa-perfil-info">
-            @Html.DisplayFor(model => model.Email)
-        </li>
-
-        <li class="wa-perfil-label">
-            Universidade
-        </li>
-
-        <li class="wa-perfil-info">
-            @Html.DisplayFor(model => model.Universidade)
-        </li>
-
-        <li class="wa-perfil-label">
-            Curso
-        </li>
-
-        <li class="wa-perfil-info">
-            @Html.DisplayFor(model => model.Curso)
-        </li>
-
-        <li class="wa-perfil-label">
-            Biografia
-        </li>
-
-        <li class="wa-perfil-info">
-            @Html.DisplayFor(model => model.Biografia)
-        </li>
-
-        <div style="display:flex;flex-direction:row;margin:40px 0;">
-            <form action="/Home/Edit" method="get">
-                <button class="btn btn-default">Editar perfil</button>
-            </form>
-            <button class="btn btn-link" style="margin-bottom:1em;">@Html.ActionLink("Retornar", "Index")</button>
+    <div style="display:flex;flex-direction:row;margin: 0 30px;">
+        <div style="margin: 0 30px;">
+            @if (Session["picture_profile"] != null)
+            {
+                var url = Session["picture_profile"];
+                <div>
+                    <img src=@url alt="foto" style="width:150px;height:150px;margin-bottom:10px;" />
+                </div>
+            }
+            else
+            {
+                <div>
+                    <img src="\Content\images\default-profile-pic.png" alt="default-picture" style="width:150px;height:150px;margin-bottom:10px;" />
+                </div>
+            }
+            <div>
+                <form action="/Home/Edit" method="get">
+                    <button class="btn btn-default">Editar perfil</button>
+                </form>
+            </div>
         </div>
-    </ul>
-    
+
+        <ul class="wa-list" style="margin: 0 30px;">
+
+            <li class="wa-perfil-label">
+                Nome
+            </li>
+
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Nome)
+            </li>
+
+            <li class="wa-perfil-label">
+                Email
+            </li>
+
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Email)
+            </li>
+
+            <li class="wa-perfil-label">
+                Universidade
+            </li>
+
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Universidade)
+            </li>
+
+            <li class="wa-perfil-label">
+                Curso
+            </li>
+
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Curso)
+            </li>
+
+            <li class="wa-perfil-label">
+                Biografia
+            </li>
+
+            <li class="wa-perfil-info">
+                @Html.DisplayFor(model => model.Biografia)
+            </li>
+
+        </ul>
+    </div>
+    <div>
+        <button class="btn btn-link" style="margin-bottom:1em;">@Html.ActionLink("Retornar", "Index")</button>
+    </div>
+
 </div>
 
