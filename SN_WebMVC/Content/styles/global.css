@@ -163,8 +163,8 @@ a:hover {
 .wa-logo-header {
     width: 300px;
     height: auto;
-    padding: 5px;
-    margin: 0px;
+    margin:0;
+    margin-right:10px;
 }
 
 .wa-logo-footer {

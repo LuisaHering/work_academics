@@ -13,7 +13,14 @@
         @foreach(var item in Model) {
         <div style="display:flex;flex-direction:column;justify-content:space-around;border: 2px solid #ededed;padding:15px;margin:5px;">
             <div style="text-align:center;">
-                <img src=@item.Foto alt="profile" class="wa-profile-pic" />
+                @if (item.Foto != null)
+                {
+                    <img src=@item.Foto alt="profile" class="wa-profile-pic" />
+                }
+                else
+                {
+                    <img src="/Content/images/default-profile-pic.png" alt="profile" class="wa-profile-pic" />
+                }
             </div>
             <div>
                 @Html.DisplayNameFor(model => model.Nome):
