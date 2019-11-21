@@ -1,13 +1,13 @@
 ﻿@model SN_WebMVC.Models.ProjectViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Projetos";
     Html.RenderPartial("_SideBar");
 }
 
 <div class="wa-container">
 
-    <h2>Create</h2>
+    <h2>Criar projeto</h2>
 
     @using(Html.BeginForm()) {
         @Html.AntiForgeryToken()
@@ -34,9 +34,9 @@
             </div>
 
             <div class="form-group">
-
+                <label class="control-label col-md-2">Laboratórios</label>
                 <div class="col-md-10">
-                    @Html.DropDownListFor(m => Model.IdLaboratory, null, "-- selecione --")
+                    @Html.DropDownListFor(m => Model.IdLaboratory, null, "-- selecione --", new { @class = "wa-select"})
                 </div>
             </div>
 

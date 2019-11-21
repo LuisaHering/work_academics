@@ -29,6 +29,11 @@ a:hover {
 }
 /*fim-overwrite*/
 
+
+.wa-select{
+    width: 100% !important;
+    height: 34px !important;
+}
 .wa-container{
     margin-top: 40px;
 }
