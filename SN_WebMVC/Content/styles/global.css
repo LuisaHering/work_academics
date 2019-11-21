@@ -28,22 +28,50 @@ a:hover {
     margin-right: 10px;
 }
 /*fim-overwrite*/
-.wa-post-conteudo{
-    margin: 15px 10px;
+
+
+.wa-post-botoes button{
+    margin: 10px;
 }
-.wa-post-info{
-    display:flex;
-    flex-direction:row;
-    justify-content:flex-start;
+
+.wa-post-botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.wa-post-conteudo {
+    margin: 15px 10px;
+    padding: 0 30px;
+}
+
+.wa-post-info h3{
+    margin:10px;
+}
+
+.wa-post-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     margin: 5px 10px;
 }
 
-.wa-feed{
+.wa-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    margin: 10px;
+    margin-right: 30px;
+    border-bottom: 1px solid #ededed;
+}
+
+.wa-feed {
     width: 70%;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-around;
-    align-items:flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 
 .wa-select{
