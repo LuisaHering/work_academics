@@ -25,6 +25,7 @@ using SN_WebApi.Results;
 using SN_WebApi.Service;
 
 namespace SN_WebApi.Controllers {
+
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController {

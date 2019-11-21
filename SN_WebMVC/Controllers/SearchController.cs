@@ -37,6 +37,8 @@ namespace SN_WebMVC.Controllers {
 
         public async Task<ActionResult> Perfil(string id) {
 
+            Session["profile_visita"] = id;
+
             ProfileViewModel profile = new ProfileViewModel();
 
             using(var client = new HttpClient()) {
@@ -50,6 +52,16 @@ namespace SN_WebMVC.Controllers {
             }
 
             return View(profile);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Seguir() {
+            var id_seguido = (Session["profile_visita"]).ToString();
+            
+
+
+
+            return View();
         }
     }
 }
