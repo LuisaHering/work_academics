@@ -6,7 +6,7 @@ using System.Web;
 namespace SN_WebMVC.Models {
     public class ProjectViewModel {
 
-        public int Id {
+        public string Id {
             get; set;
         }
 
