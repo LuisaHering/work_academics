@@ -238,7 +238,7 @@ a:hover {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-left: 6em;;
+        margin-left: 6em;
     }
     .navbar-toggle{
         margin-right: 0px;
