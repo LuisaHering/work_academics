@@ -4,34 +4,43 @@
     ViewBag.Title = "Laboratório";
     Html.RenderPartial("_SideBar");
 }
+<div class="container">
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+    <div style="display:flex;flex-direction:row;">
+        <div style="display:flex;flex-direction:column;width:50%;">
 
-    <div style="display:flex;flex-direction:column;">
-
-        <div style="margin: 20px 0 40px 0;">
-            <h4 style="margin-bottom:0px !important;">
-                Laboratório
-            </h4>
-            <h1 style="margin:5px 0 10px 10px !important;font-size:50px;">
-                @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "control-label" } })
-            </h1>
-        </div>
-
-        <div style="margin: 10px 0 20px 0;">
-            <h4>Membros</h4>
-            @foreach(var usuario in Model.Users) {
-            <div class="membros" style="height:100px; display: flex; flex-direction: row; margin: 0 0 0 10px; padding:0;">
-                @Html.DisplayFor(model => usuario.Nome, new { htmlAttributes = new { @class = "control-label col-md-1" } }) <br />
+            <div style="margin: 20px 0 40px 0;">
+                <h4 style="margin-bottom:0px !important;">
+                    Laboratório
+                </h4>
+                <h1 style="margin:5px 0 10px 10px !important;font-size:50px;">
+                    @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "control-label" } })
+                </h1>
             </div>
-            }
+
+            <div style="margin: 10px 0 20px 0;">
+                <h4>Membros</h4>
+                @foreach (var usuario in Model.Users)
+                {
+                    <div class="membros" style="height:100px; display: flex; flex-direction: row; margin: 0 0 0 10px; padding:0;">
+                        @Html.DisplayFor(model => usuario.Nome, new { htmlAttributes = new { @class = "control-label col-md-1" } }) <br />
+                    </div>
+                }
+            </div>
+
         </div>
-
+        <div style="width:50%;margin: 20px 40px;">
+            <ul>
+                <li>projetos listados</li>
+            </ul>
+        </div>
     </div>
-}
+    }
 
-<div>
-    <a href="/Laboratory/Index" class="btn btn-link">Retornar</a>
+    <div>
+        <a href="/Laboratory/Index" class="btn btn-link">Retornar</a>
+    </div>
+
 </div>
-
