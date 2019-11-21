@@ -5,21 +5,19 @@
     Html.RenderPartial("_SideBar");
 }
 
-<h2>Index</h2>
+<h2>Meus projetos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<a href="/Project/Create" class="btn btn-default" style="margin:10px 0 20px 0;">Novo projeto</a>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Titulo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descricao)
+            Descrição
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataCriacao)
+            Data de criação
         </th>
         <th></th>
     </tr>
@@ -44,3 +42,6 @@
 }
 
 </table>
+<div class="form-group">
+    <a href="/Home/Index">Retornar</a>
+</div>
