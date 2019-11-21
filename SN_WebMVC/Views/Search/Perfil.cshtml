@@ -7,76 +7,82 @@
 
 <div class="wa-container">
 
-    <h2>Perfil</h2>
+    <h2>Busca</h2>
+    <div style="display:flex;flex-direction:row;justify-content:flex-start;">
 
-    <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:center;">
-
-        <div  style="display:flex;flex-direction:column;margin:40px 20px 40px 0">
-            <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" style="width:150px;height:150px;margin-bottom:15px;" />
+        <div style="display:flex;flex-direction:column;justify-content:flex-start;margin:30px 50px 30px 0;">
             <input type="submit" value="Seguir" class="btn btn-default" />
+            <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" style="width:150px;height:150px;margin:30px 0;" />
+        </div>
+        <div style="margin: 10px 30px;">
+            <h3>Informações pessoais</h3>
+            <ul class="wa-list" style="margin:20px 0;">
+
+                <li class="wa-perfil-label">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </li>
+
+                <li class="wa-perfil-info">
+                    @Html.DisplayFor(model => model.Nome)
+                </li>
+
+                <li class="wa-perfil-label">
+                    @Html.DisplayNameFor(model => model.Email)
+                </li>
+
+                <li class="wa-perfil-info">
+                    @Html.DisplayFor(model => model.Email)
+                </li>
+
+                <li class="wa-perfil-label">
+                    Data de nascimento
+                </li>
+
+                <li class="wa-perfil-info">
+                    @Html.DisplayFor(model => model.Nascimento)
+                </li>
+
+                <li class="wa-perfil-label">
+                    @Html.DisplayNameFor(model => model.Biografia)
+                </li>
+
+                <li class="wa-perfil-info">
+                    @Html.DisplayFor(model => model.Biografia)
+                </li>
+
+            </ul>
         </div>
 
-        <ul class="wa-list" style="margin:40px;">
+        <div style="margin: 10px 30px;">
+            <h3>Informações acadêmicas</h3>
+            <ul class="wa-list" style="margin:20px 0;">
 
-            <li class="wa-perfil-label">
-                @Html.DisplayNameFor(model => model.Nome)
-            </li>
+                <li class="wa-perfil-label">
+                    @Html.DisplayNameFor(model => model.Universidade)
+                </li>
 
-            <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.Nome)
-            </li>
+                <li class="wa-perfil-info">
+                    @Html.DisplayFor(model => model.Universidade)
+                </li>
 
-            <li class="wa-perfil-label">
-                @Html.DisplayNameFor(model => model.Email)
-            </li>
+                <li class="wa-perfil-label">
+                    @Html.DisplayNameFor(model => model.Curso)
+                </li>
 
-            <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.Email)
-            </li>
+                <li class="wa-perfil-info">
+                    @Html.DisplayFor(model => model.Curso)
+                </li>
 
-            <li class="wa-perfil-label">
-                Data de nascimento
-            </li>
+                <li class="wa-perfil-label">
+                    Data de entrada
+                </li>
 
-            <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.Nascimento)
-            </li>
-        </ul>
+                <li class="wa-perfil-info">
+                    @Html.DisplayFor(model => model.DataInicio)
+                </li>
 
-        <ul class="wa-list" style="margin:40px;">
-
-            <li class="wa-perfil-label">
-                @Html.DisplayNameFor(model => model.Universidade)
-            </li>
-
-            <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.Universidade)
-            </li>
-
-            <li class="wa-perfil-label">
-                @Html.DisplayNameFor(model => model.Curso)
-            </li>
-
-            <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.Curso)
-            </li>
-
-            <li class="wa-perfil-label">
-                Data de entrada
-            </li>
-
-            <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.DataInicio)
-            </li>
-
-            <li class="wa-perfil-label">
-                @Html.DisplayNameFor(model => model.Biografia)
-            </li>
-
-            <li class="wa-perfil-info">
-                @Html.DisplayFor(model => model.Biografia)
-            </li>
-        </ul>
+            </ul>
+        </div>
 
     </div>
 
