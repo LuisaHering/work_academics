@@ -15,6 +15,10 @@ namespace SN_WebApi.Service {
             [typeof(ILaboratory)] = typeof(LaboratoryImpl)
         };
 
+        private static Dictionary<Type, Type> Projeto = new Dictionary<Type, Type> {
+            [typeof(IProject)] = typeof(ProjectImpl)
+        };
+
         internal static T GetInstanceOf<T>() {
             return Activator.CreateInstance<T>();
         }

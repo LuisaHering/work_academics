@@ -23,12 +23,19 @@ namespace SN_WebApi.Models.Projeto {
             get; set;
         }
 
-        public ProjectReturnBindingModel() {
+        public List<ProjectReturnBindingModel> Convert(List<Project> projects) {
+            List<ProjectReturnBindingModel> convertidos = new List<ProjectReturnBindingModel>();
 
-        }
-
-        public List<ProjectCreateBindingModel> Convert(List<Project> projetos) {
-            return null;
+            foreach(Project project in projects) {
+                ProjectReturnBindingModel bindingModel = new ProjectReturnBindingModel {
+                    Id = project.Id,
+                    Titulo = project.Titulo,
+                    Descricao = project.Descricao,
+                    DataCriacao = project.DataCriacao
+                };
+                convertidos.Add(bindingModel);
+            }
+            return convertidos;
         }
     }
 }

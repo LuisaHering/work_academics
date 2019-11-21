@@ -9,8 +9,9 @@ namespace Core.Services {
     public interface ILaboratory {
         Task<bool> Create(Laboratory laboratory);
 
+        Task<bool> Update(Laboratory laboratory);
+
         Task<List<Laboratory>> FindByEmail(string userEmail);
-        //List<Laboratory> FindByEmail(string userEmail);
 
         Task<Laboratory> FindByIdAsync(int id);
 

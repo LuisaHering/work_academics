@@ -1,11 +1,11 @@
 ﻿@model SN_WebMVC.Models.ProjectViewModel
 
 @{
-    ViewBag.Title = "Projeto";
+    ViewBag.Title = "Create";
     Html.RenderPartial("_SideBar");
 }
 
-<h2>Novo projeto</h2>
+<h2>Create</h2>
 
 
 @using(Html.BeginForm()) {
@@ -14,6 +14,8 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -31,22 +33,22 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Laboratório", htmlAttributes: new { @class = "control-label col-md-2"})
+
             <div class="col-md-10">
-                @Html.DropDownList("Id", String.Empty)
+                @Html.DropDownListFor(m => Model.IdLaboratory, null, "-- selecione --")
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Criar" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    <a href="/Project/Index" class="btn btn-link">Retornar</a>
+    @Html.ActionLink("Retornar", "Index")
 </div>
 
 @section Scripts {

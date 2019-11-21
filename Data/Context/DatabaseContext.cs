@@ -21,17 +21,16 @@ namespace Data.Context {
         }
 
         public DbSet<Project> Project {
-            get; set; 
+            get; set;
         }
 
         public DatabaseContext() : base("DefaultConnection") {
             Configuration.LazyLoadingEnabled = true;
-            Configuration.ProxyCreationEnabled = true;            
+            Configuration.ProxyCreationEnabled = true;
         }
 
         public static DatabaseContext Create() {
             return new DatabaseContext();
         }
-        
     }
 }

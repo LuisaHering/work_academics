@@ -22,11 +22,21 @@ namespace Data.Services {
             return false;
         }
 
+        public async Task<bool> Update(Laboratory laboratory) {
+            try {
+                Database.GetInstance.Entry<Laboratory>(laboratory).State = EntityState.Modified;
+                await Database.GetInstance.SaveChangesAsync();
+                return true;
+            } catch(Exception e) {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                return false;
+            }
+        }
+
         public async Task<List<Laboratory>> FindByEmail(string userEmail) {
             List<Laboratory> labs = await Database.GetInstance.Laboratories.ToListAsync();
             List<Laboratory> myLabs = new List<Laboratory>();
-
-            //labs.AddRange(Database.GetInstance.Laboratories.ToList());
 
             foreach(Laboratory lab in labs) {
                 foreach(User user in lab.Users) {
