@@ -32,15 +32,24 @@ namespace SN_WebMVC.Controllers {
             return View(lista);
         }
 
-        public ActionResult Create() {
+        public async Task<ActionResult> Create() {
 
-            var labs = new List<LaboratoryViewModel> {
-                new LaboratoryViewModel { Id = 1, Descricao = "Codigods avancados C#" },
-                new LaboratoryViewModel { Id = 2, Descricao = "Codigods avancados python" },
-            };
+            var laboratories = new List<LaboratoryViewModel>();
+
+            var email = (Session["user_name"]).ToString();
+
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/Laboratory/busca?email={email}");
+
+                if(response.IsSuccessStatusCode) {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    laboratories = JsonConvert.DeserializeObject<List<LaboratoryViewModel>>(responseContent);
+                }
+            }
 
             ViewBag.IdLaboratory = new SelectList(
-                labs,
+                laboratories,
                 "Id",
                 "Descricao"
             );
