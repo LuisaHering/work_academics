@@ -11,7 +11,9 @@
     <div style="display:flex;flex-direction:row;justify-content:flex-start;">
 
         <div style="display:flex;flex-direction:column;justify-content:flex-start;margin:30px 50px 30px 0;">
-            <input type="submit" value="Seguir" class="btn btn-default" />
+            <form action="/Search/Seguir" method="post">
+                <input type="submit" value="Seguir" class="btn btn-default" />
+            </form>
             <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" style="width:150px;height:150px;margin:30px 0;" />
         </div>
         <div style="margin: 10px 30px;padding: 0 50px;border-right: 2px solid #ededed;border-left:2px solid #ededed;">

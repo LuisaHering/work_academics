@@ -62,7 +62,6 @@ namespace SN_WebMVC.Controllers {
         public async Task<ActionResult> Create(ProjectViewModel projeto) {
             var access_token = (Session["access_token"]);
 
-            //FIXME: Não sei como ou onde colocar a IdLaboratory, também n entendo como fica salvo qual usuário que criou o projeto
             var data = new Dictionary<string, string> {
                 { "Titulo", projeto.Titulo },
                 { "Descrição", projeto.Descricao},

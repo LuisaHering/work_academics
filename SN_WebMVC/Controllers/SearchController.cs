@@ -16,7 +16,9 @@ namespace SN_WebMVC.Controllers {
 
         [HttpPost]
         public async Task<ActionResult> Search(string pesquisar) {
-            List<ProfileViewModel> profiles = new List<ProfileViewModel>();
+            var profiles = new List<ProfileViewModel>();
+
+            var usuario_logado = (Session["user_name"]).ToString();
 
             using(var client = new HttpClient()) {
                 client.BaseAddress = new Uri(base_url);
@@ -28,10 +30,14 @@ namespace SN_WebMVC.Controllers {
                 }
             }
 
-            return View(profiles);
+            var lista_tratada = new ProfileViewModel().RemoverUsuarioLogado(usuario_logado, profiles);
+
+            return View(lista_tratada);
         }
 
         public async Task<ActionResult> Perfil(string id) {
+
+            Session["profile_visita"] = id;
 
             ProfileViewModel profile = new ProfileViewModel();
 
@@ -46,6 +52,16 @@ namespace SN_WebMVC.Controllers {
             }
 
             return View(profile);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Seguir() {
+            var id_seguido = (Session["profile_visita"]).ToString();
+            
+
+
+
+            return View();
         }
     }
 }
