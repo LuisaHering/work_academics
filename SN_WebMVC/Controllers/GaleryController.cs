@@ -20,7 +20,7 @@ namespace SN_WebMVC.Controllers {
 
             using(var client = new HttpClient()) {
                 client.BaseAddress = new Uri(base_url);
-                var response = await client.GetAsync($"api/picture/user?id_user={"9b587d78-268a-46cb-a25c-873df8e6f0d7"}");
+                var response = await client.GetAsync($"api/picture/user?id_user={"3acb80bb-3532-4b28-9353-232821658bab"}");
 
                 if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
