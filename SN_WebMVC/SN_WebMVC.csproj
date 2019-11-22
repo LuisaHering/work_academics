@@ -200,7 +200,6 @@
     <Content Include="Views\Search\Perfil.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Project\Create.cshtml" />
-    <Content Include="Views\Home\Galery.cshtml" />
     <Content Include="Views\Galery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
