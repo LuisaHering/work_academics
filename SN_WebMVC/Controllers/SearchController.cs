@@ -73,7 +73,7 @@ namespace SN_WebMVC.Controllers {
             // ps: crie dois ou mais usuarios para testar
 
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
