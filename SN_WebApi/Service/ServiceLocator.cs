@@ -19,6 +19,14 @@ namespace SN_WebApi.Service {
             [typeof(IProject)] = typeof(ProjectImpl)
         };
 
+        private static Dictionary<Type, Type> Conexao = new Dictionary<Type, Type> {
+            [typeof(IConection)] = typeof(ConexaoImpl)
+        };
+
+        private static Dictionary<Type, Type> Picture = new Dictionary<Type, Type> {
+            [typeof(IPicture)] = typeof(PictureImpl)
+        };
+
         internal static T GetInstanceOf<T>() {
             return Activator.CreateInstance<T>();
         }

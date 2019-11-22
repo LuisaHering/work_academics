@@ -24,6 +24,14 @@ namespace Data.Context {
             get; set;
         }
 
+        public DbSet<Conection> Conection {
+            get; set;
+        }
+
+        public DbSet<Picture> Pictures {
+            get; set;
+        }
+
         public DatabaseContext() : base("DefaultConnection") {
             Configuration.LazyLoadingEnabled = true;
             Configuration.ProxyCreationEnabled = true;

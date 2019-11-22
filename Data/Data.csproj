@@ -54,7 +54,9 @@
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ConexaoImpl.cs" />
     <Compile Include="Services\LaboratoryImpl.cs" />
+    <Compile Include="Services\PictureImpl.cs" />
     <Compile Include="Services\ProjectImpl.cs" />
     <Compile Include="Services\UsersImpl.cs" />
   </ItemGroup>
