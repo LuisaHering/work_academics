@@ -1,29 +1,22 @@
 ﻿@model IEnumerable<SN_WebMVC.Models.GaleryViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Galeria";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="wa-container">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th></th>
-    </tr>
+    <h2>Galeria de fotos</h2>
 
-    @foreach(var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-        </tr>
-    }
+    <div style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap">
+        @foreach(var item in Model)
+        {
+            <div style="max-width:300px;max-height:300px;">
+                <img src=@item.ImageUrl alt="Foto" />
+            </div>
+        }
+    </div>
 
-</table>
+</div>
+
