@@ -139,6 +139,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\FullLaboratory.cs" />
+    <Compile Include="Models\FullProjectViewModel.cs" />
     <Compile Include="Models\GaleryViewModel.cs" />
     <Compile Include="Models\LaboratoryViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
@@ -202,6 +203,7 @@
     <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Home\Galery.cshtml" />
     <Content Include="Views\Galery\Index.cshtml" />
+    <Content Include="Views\Project\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

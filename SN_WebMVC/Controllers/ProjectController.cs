@@ -82,5 +82,32 @@ namespace SN_WebMVC.Controllers {
 
             return View("Error");
         }
+
+        public async Task<ActionResult> Home(int id) {
+
+            var usuarios = new List<string>();
+            usuarios.Add("carlos@gmail.com");
+            usuarios.Add("gabriel@gmail.com");
+            usuarios.Add("rafael@gmail.com");
+            usuarios.Add("lu@lu.com.br");
+
+            var documentos = new List<string>();
+            documentos.Add("carlos@gmail.com");
+            documentos.Add("gabriel@gmail.com");
+            documentos.Add("rafael@gmail.com");
+            documentos.Add("lu@lu.com.br");
+
+            FullProjectViewModel projeto = new FullProjectViewModel() {
+                Documentos = documentos,
+                Membros = usuarios,
+                DataCriacao = DateTime.Now,
+                Descricao = "descricao mockada",
+                Id = "1",
+                Titulo = "titulo mockado",
+                IdLaboratory = 1
+            };
+
+            return View(projeto);
+        }
     }
 }
