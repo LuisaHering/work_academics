@@ -56,9 +56,21 @@ namespace SN_WebMVC.Controllers {
 
         [HttpPost]
         public async Task<ActionResult> Seguir() {
-            var id_seguido = (Session["profile_visita"]).ToString();
-            
 
+            // buscar id do usuario logado
+
+
+            // esse é o id do usuario que eu quero seguir
+            var id_seguido = (Session["profile_visita"]).ToString();
+
+            // modelo do json que vc precisa criar { "IdSeguidor": "id usuario logado", "IdSeguido": "id do seguido" }
+
+
+            // realizar requisicao para endpoint api/Follow
+
+            // retornar para home/index
+
+            // ps: crie dois ou mais usuarios para testar
 
 
             return View();

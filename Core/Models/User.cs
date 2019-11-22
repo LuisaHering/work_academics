@@ -50,8 +50,11 @@ namespace Core.Models {
             get; set;
         }
 
-        public virtual ICollection<Picture> Pictures
-        {
+        public virtual ICollection<Picture> Pictures {
+            get; set;
+        }
+
+        public virtual ICollection<User> Friends {
             get; set;
         }
 
@@ -62,10 +65,15 @@ namespace Core.Models {
         public User() {
             Laboratories = new HashSet<Laboratory>();
             Pictures = new HashSet<Picture>();
+            Friends = new HashSet<User>();
         }
 
         public void Adiciona(Laboratory laboratory) {
             this.Laboratories.Add(laboratory);
+        }
+
+        public void Seguir(User friend) {
+            this.Friends.Add(friend);
         }
 
         public bool haveRole() {
@@ -73,7 +81,7 @@ namespace Core.Models {
         }
 
         public void setUrlFoto(string code) {
-            this.UrlFoto = @"https://bankcarlos.blob.core.windows.net/api-amigo-fotos/" + code+".png";
+            this.UrlFoto = @"https://bankcarlos.blob.core.windows.net/api-amigo-fotos/" + code + ".png";
         }
 
         public string getUrlFoto() {
