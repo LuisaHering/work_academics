@@ -138,6 +138,16 @@ a:hover {
     margin-top: 15px;
 }
 
+.wa-resize-left {
+    margin: 0 5px 15px 5px !important;
+}
+
+.wa-left-btn-resize {
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+}
+
 .wa-sidebar {
     position: fixed;
     left: 0;
@@ -145,6 +155,7 @@ a:hover {
     width: 12em;
     border-right: 1px solid #ccc;
     height: 100%;
+    background-color: #f8f8f8;
 }
 
 .wa-profile-pic {
