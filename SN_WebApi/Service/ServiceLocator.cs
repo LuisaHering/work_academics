@@ -23,6 +23,10 @@ namespace SN_WebApi.Service {
             [typeof(IConection)] = typeof(ConexaoImpl)
         };
 
+        private static Dictionary<Type, Type> Picture = new Dictionary<Type, Type> {
+            [typeof(IPicture)] = typeof(PictureImpl)
+        };
+
         internal static T GetInstanceOf<T>() {
             return Activator.CreateInstance<T>();
         }
