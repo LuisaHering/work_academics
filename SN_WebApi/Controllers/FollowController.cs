@@ -33,22 +33,23 @@ namespace SN_WebApi.Controllers {
 
         private IUsers UsersService = ServiceLocator.GetInstanceOf<UsersImpl>();
 
+        private IConection ConectionService = ServiceLocator.GetInstanceOf<ConexaoImpl>();
+
         [AllowAnonymous]
         [HttpPost]
         public async Task<IHttpActionResult> Follow(DataToFollowing inputModel) {
 
             User usuarioLogado = await UsersService.FindById(inputModel.IdSeguidor);
 
-            User friend = await UsersService.FindById(inputModel.IdSeguido);
+            User usuarioSeguido = await UsersService.FindById(inputModel.IdSeguido);
 
-            if(usuarioLogado != null && friend != null) {
-                usuarioLogado.Seguir(friend);
-            }
+            if(usuarioLogado != null && usuarioSeguido != null) {
+                var conexao = new Conection().Conectar(usuarioLogado, usuarioSeguido);
+                var conectou = await ConectionService.Conectar(conexao);
 
-            var seguiu = UsersService.UpdateEF2(usuarioLogado);
-
-            if(seguiu) {
-                return Ok();
+                if(conectou) {
+                    return Ok();
+                }
             }
 
             return BadRequest("Erro ao processar solicitaçao");
