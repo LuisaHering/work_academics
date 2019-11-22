@@ -9,41 +9,28 @@
     <h2>Meus projetos</h2>
 
     <a href="/Project/Create" class="btn btn-default" style="margin:10px 0 20px 0;">Novo projeto</a>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                Descrição
-            </th>
-            <th>
-                Data de criação
-            </th>
-            <th></th>
-        </tr>
+    <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
+        @foreach(var item in Model)
+        {
+            <div style="display:flex;flex-direction:column;border:2px solid #ededed;padding:15px;margin:25px 10px;">
+                <div style="display:flex;flex-direction:column;justify-content:flex-start;">
+                    <p style="margin-bottom:0px !important;">Laboratório:</p>
+                    <h2 style="margin-top:0px !important;">@item.Titulo</h2>
+                </div>
+                <p>@item.Descricao</p>
+                <p>@item.DataCriacao</p>
+                <div class="text-center">
+                    <form action="/Home/Index/@item.Id" method="get">
+                        <button class="btn btn-default">
+                            Entrar
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCriacao)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
-    }
-
-    </table>
-    <div class="form-group">
-        <a href="/Home/Index">Retornar</a>
+        }
     </div>
-</div>
+        <div class="form-group">
+            <a href="/Home/Index">Retornar</a>
+        </div>
+    </div>
