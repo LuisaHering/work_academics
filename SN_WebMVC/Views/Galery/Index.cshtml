@@ -8,14 +8,15 @@
 <div class="wa-container">
 
     <h2>Galeria de fotos</h2>
-
-    <div style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap">
-        @foreach(var item in Model)
-        {
-            <div style="max-width:300px;max-height:300px;">
-                <img src=@item.ImageUrl alt="Foto" />
-            </div>
-        }
+    <div style="display:flex;flex-direction:column;justify-content:space-around;">
+        <div style="display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap">
+            @foreach(var item in Model)
+            {
+                <div>
+                    <img src="@item.UrlImg" alt="Foto" style="max-width:300px;max-height:300px;" />
+                </div>
+            }
+        </div>
     </div>
 
 </div>

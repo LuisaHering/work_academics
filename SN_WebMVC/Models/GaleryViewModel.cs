@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SN_WebMVC.Models {
     public class GaleryViewModel {
-        public string ImageUrl {
+        public string UrlImg {
             get; set;
         }
     }
