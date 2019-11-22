@@ -17,10 +17,19 @@ namespace SN_WebMVC.Controllers {
         public async Task<ActionResult> Index() {
 
             var fotos = new List<GaleryViewModel>();
+            var user_email = (Session["user_name"]).ToString();
+            var profileView = new ProfileViewModel();
 
             using(var client = new HttpClient()) {
                 client.BaseAddress = new Uri(base_url);
-                var response = await client.GetAsync($"api/picture/user?id_user={"9b587d78-268a-46cb-a25c-873df8e6f0d7"}");
+                var user_response = await client.GetAsync($"/api/user/findUser?email={user_email}");
+                var responseContent = await user_response.Content.ReadAsStringAsync();
+                profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
+            }
+
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/picture/user?id_user={profileView.Id}");
 
                 if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
