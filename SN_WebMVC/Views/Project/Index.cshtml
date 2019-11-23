@@ -12,13 +12,12 @@
     <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
         @foreach(var item in Model)
         {
-            <div style="display:flex;flex-direction:column;border:2px solid #ededed;padding:15px;margin:25px 10px;">
+            <div style="display:flex;flex-direction:column;border:2px solid #ededed;padding:15px;margin:25px 10px;padding:30px;">
                 <div style="display:flex;flex-direction:column;justify-content:flex-start;">
-                    <p style="margin-bottom:0px !important;">Laboratório:</p>
+                    <p style="margin-bottom:0px !important;">Projeto:</p>
                     <h2 style="margin-top:0px !important;">@item.Titulo</h2>
                 </div>
                 <p>@item.Descricao</p>
-                <p>@item.DataCriacao</p>
                 <div class="text-center">
                     <form action="/Project/Home/@item.Id" method="get">
                         <button class="btn btn-default">
