@@ -1,18 +1,30 @@
 ﻿@model SN_WebMVC.Models.FullProjectViewModel
 
 @{
-    Layout = null;
+    ViewBag.Title = "Projeto";
+    Html.RenderPartial("_SideBar");
 }
+<div class="wa-container">
 
-<!DOCTYPE html>
+    <h2>Projeto</h2>
+    <hr />
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Home</title>
-</head>
-<body>
-    <div>
+    <div style="display:flex;flex-direction:column;justify-content:space-around;">
+
+        <div style="display:flex;flex-direction:row;justify-content:flex-start;align-items:baseline;">
+            <h3 style="margin: 0 20px;">Titulo</h3>
+            <h4 style="margin: 0 20px;">Descricao</h4>
+        </div>
+
+        <div style="display:flex;flex-direction:row;justify-content:flex-start;margin:40px 0;">
+            <input type="text" name="name" placeholder="Comentários" />
+            <button class="btn btn-default">
+                Upload
+            </button>
+        </div>
+
     </div>
-</body>
-</html>
+
+
+
+</div>
