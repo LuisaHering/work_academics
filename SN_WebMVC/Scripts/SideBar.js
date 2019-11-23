@@ -1,9 +1,9 @@
 ﻿var btn1 = document.getElementById('btn-resize-to-small')
-var btn2 = document.getElementById('btn-resize-to-small')
+var btn2 = document.getElementById('btn-resize-to-full')
 
 btn1.addEventListener('click', function () {
-    var small = document.querySelectorAll("wa-sidebar-list-small"); 
-    var full = document.querySelectorAll("wa-sidebar-list-full");
+    var small = document.querySelectorAll(".wa-sidebar-list-small"); 
+    var full = document.querySelectorAll(".wa-sidebar-list-full");
 
     for (var i = 0; i <= small.length; i++) {
         small[i].style.display = "block";
@@ -14,9 +14,9 @@ btn1.addEventListener('click', function () {
     }
 })
 
-btn1.addEventListener('click', function () {
-    var small = document.querySelectorAll("wa-sidebar-list-small");
-    var full = document.querySelectorAll("wa-sidebar-list-full");
+btn2.addEventListener('click', function () {
+    var small = document.querySelectorAll(".wa-sidebar-list-small");
+    var full = document.querySelectorAll(".wa-sidebar-list-full");
 
     for (var i = 0; i <= small.length; i++) {
         small[i].style.display = "none";
