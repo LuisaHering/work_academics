@@ -47,10 +47,9 @@
                                 <h3>
                                     @Html.DisplayFor(model => projeto.Titulo)
                                 </h3>
-                                <form action="/Project/Home/@projeto.Id" method="get"></form>
-                                    <button class="btn btn-default" style="margin-right:40px;">
-                                        Entrar
-                                    </button>
+                                <div>
+                                    <a href="/Project/Home/@projeto.Id" class="btn btn-default" style="margin-right:40px;text-decoration:none;">Entrar</a>
+                                </div>
                             </div>
                             <div>
                                 @Html.DisplayFor(model => projeto.Descricao)

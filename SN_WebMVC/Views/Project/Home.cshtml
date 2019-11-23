@@ -6,16 +6,14 @@
 }
 <div class="wa-container">
 
-    <h2>Projeto</h2>
-    <hr />
-    <div style="display:flex;flex-direction:row;justify-content:space-around;width:100%;">
+    <h2>@Html.DisplayFor(model => model.Titulo)</h2>
+    <div style="display:flex;flex-direction:row;justify-content:space-around;width:100%;margin-top:50px;">
 
         <div style="display:flex;flex-direction:column;justify-content:space-around;width:80%;">
 
             <div style="display:flex;flex-direction:row;justify-content:space-between;">
                 <div style="display:flex;flex-direction:column;margin: 0 50px;">
                     <div style="display:flex;flex-direction:column;justify-content:flex-start;">
-                        <h3>@Html.DisplayFor(model => model.Titulo)</h3>
                         <h4>@Html.DisplayFor(model => model.Descricao)</h4>
                         <h4>@Html.DisplayFor(model => model.DataCriacao.Day) /
                             @Html.DisplayFor(model => model.DataCriacao.Month) /
@@ -31,8 +29,8 @@
                     </div>
                     <input type="file" name="arquivo" />
                 </div>
-                <div style="display:flex;flex-direction:column;justify-content:flex-start;margin: 0 100px;">
-                    <h4>Membros</h4>
+                <div style="display:flex;flex-direction:column;justify-content:flex-start;margin: 0 100px;padding-left:30px;border-left:2px solid #ededed;">
+                    <h3>Membros</h3>
                     @foreach(var membro in Model.Membros)
                     {
                         <p>@membro</p>
@@ -56,6 +54,8 @@
         </div>
 
     </div>
-
+    <div class="form-group" style="margin-top:40px;">
+        <a href="/Home/Index" class="btn btn-link">Retornar</a>
+    </div>
 
 </div>
