@@ -28,8 +28,13 @@ a:hover {
     margin-right: 10px;
 }
 /*fim-overwrite*/
-.wa-border-top{
-    border-top: 1px solid #ededed;
+
+.wa-sidebar-list-full {
+    display:block;
+}
+
+.wa-sidebar-list-small {
+    display:none;
 }
 
 .wa-post-botoes button {
