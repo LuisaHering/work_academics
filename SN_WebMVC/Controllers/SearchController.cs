@@ -57,7 +57,7 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         public async Task<ActionResult> Seguir() {
 
-            var email_logado = (Session["user_email"]).ToString();
+            var email_logado = (Session["user_name"]).ToString();
 
             var id_seguido = (Session["profile_visita"]).ToString();
 
