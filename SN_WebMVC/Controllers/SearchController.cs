@@ -57,23 +57,45 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         public async Task<ActionResult> Seguir() {
 
-            // buscar id do usuario logado
+            var email_logado = (Session["user_email"]).ToString();
 
-
-            // esse é o id do usuario que eu quero seguir
             var id_seguido = (Session["profile_visita"]).ToString();
 
-            // modelo do json que vc precisa criar { "IdSeguidor": "id usuario logado", "IdSeguido": "id do seguido" }
+            var userProfile = new ProfileViewModel();
 
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/user/FindUser?email={email_logado}");
 
-            // realizar requisicao para endpoint api/Follow
+                var respondeContent = await response.Content.ReadAsStringAsync();
+                userProfile = JsonConvert.DeserializeObject<ProfileViewModel>(respondeContent);
+            }
 
-            // retornar para home/index
+            var data = new Dictionary<string, string>
+            {
+                {"IdSeguidor", userProfile.Id},
+                {"IdSeguido", id_seguido}
+            };
 
-            // ps: crie dois ou mais usuarios para testar
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(base_url);
 
+                using (var requestContent = new FormUrlEncodedContent(data))
+                {
+                    var response = await client.PostAsync("api/Follow", requestContent);
 
-            return RedirectToAction("Index", "Home");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Session.Remove("profile_visita");
+                        //TODO: Mudar home para conexões
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }
+
+            return View("Error");
         }
     }
 }
