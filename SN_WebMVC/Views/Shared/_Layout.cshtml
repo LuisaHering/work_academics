@@ -64,13 +64,13 @@
         {
             var url = Session["picture_profile"];
             <a href="/Home/Perfil">
-                <img src=@url alt="profile" class="wa-profile-pic wa-profile-pic-grande" />
+                <img src=@url alt="profile" class="wa-profile-pic wa-profile-pic-grande" title="Perfil"/>
             </a>
         }
         else
         {
             <a href="/Home/Perfil">
-                <img src="\Content\images\default-profile-pic.png" alt="default-picture" class="wa-profile-pic wa-profile-pic-grande" />
+                <img src="\Content\images\default-profile-pic.png" alt="default-picture" title="Perfil" class="wa-profile-pic wa-profile-pic-grande" />
             </a>
         }
 
