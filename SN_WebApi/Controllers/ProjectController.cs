@@ -34,10 +34,21 @@ namespace SN_WebApi.Controllers {
 
         [HttpGet]
         [Route("busca")]
-        public async Task<IHttpActionResult> FindLaboratoryBy(string email) {
-            List<Project> projects = await GetProject.BuscarProjetosDoUsuarios(email);
+        public async Task<IHttpActionResult> FindProjectBy(string email) {
+            List<Project> projects = await GetProject.BuscarProjetosPor(email);
             var convertido = new ProjectReturnBindingModel().Convert(projects);
             return Ok(convertido);
+        }
+
+        [HttpGet]
+        [Route("busca")]
+        public IHttpActionResult FindProjectBy(int id) {
+            Project projeto = GetProject.BuscaProjetoPor(id);
+
+            if(projeto != null) {
+                return Ok(new ProjectReturnBindingModel().Convert(projeto));
+            }
+            return BadRequest("Projeto inexistente");
         }
 
         [HttpPost]

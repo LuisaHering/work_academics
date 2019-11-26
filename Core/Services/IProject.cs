@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 namespace Core.Services {
     public interface IProject {
 
-        Task<List<Project>> BuscarProjetosDoUsuarios(string email);
+        Task<List<Project>> BuscarProjetosPor(string email);
+
+        Project BuscaProjetoPor(int id);
 
         Task<bool> Create(Project project);
     }

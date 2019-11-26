@@ -85,18 +85,22 @@ namespace SN_WebMVC.Controllers {
 
         public async Task<ActionResult> Home(int id) {
 
+            // buscar usuarios do projeto
             var usuarios = new List<string>();
             usuarios.Add("carlos@gmail.com");
             usuarios.Add("gabriel@gmail.com");
             usuarios.Add("rafael@gmail.com");
             usuarios.Add("lu@lu.com.br");
 
+
+            // buscar documentos do projeto
             var documentos = new List<string>();
             documentos.Add("carlos@gmail.com");
             documentos.Add("gabriel@gmail.com");
             documentos.Add("rafael@gmail.com");
             documentos.Add("lu@lu.com.br");
 
+            // buscar projeto
             FullProjectViewModel projeto = new FullProjectViewModel() {
                 Documentos = documentos,
                 Membros = usuarios,

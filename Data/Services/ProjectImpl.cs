@@ -11,7 +11,20 @@ using Database = Data.Context.Database;
 namespace Data.Services {
 
     public class ProjectImpl : IProject {
-        public async Task<List<Project>> BuscarProjetosDoUsuarios(string email) {
+        public Project BuscaProjetoPor(int idDaBusca) {
+            //var projeto = (Project)Database.GetInstance.Project.ToList().Where(x => x.Id == id);
+
+            var projetos = Database.GetInstance.Project.ToList();
+
+            foreach(Project p in projetos) {
+                if(p.Id == idDaBusca) {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        public async Task<List<Project>> BuscarProjetosPor(string email) {
             List<Project> allProjects = await Database.GetInstance.Project.ToListAsync();
 
             List<Project> myProjects = new List<Project>();
