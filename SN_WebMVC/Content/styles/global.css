@@ -24,9 +24,13 @@ a:hover {
 .body-content{
     margin-left: 12em !important;
 }
-.navbar-right{
-    margin-right: 10px;
+.wa-sidebar hr{
+    margin: 10px 0 !important;
 }
+.nav li a {
+    padding: 10px !important;
+}
+
 /*fim-overwrite*/
 
 .wa-sidebar-list-full {
@@ -155,7 +159,7 @@ a:hover {
 .wa-sidebar {
     position: fixed;
     left: 0;
-    padding: 40px 20px;
+    padding: 20px 20px;
     width: 12em;
     border-right: 1px solid #ccc;
     height: 100%;
@@ -167,7 +171,6 @@ a:hover {
     height: 100px;
     border-radius: 50%;
     margin: 15px;
-    margin-bottom:30px;
 }
 
 .wa-titulo {

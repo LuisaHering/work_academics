@@ -51,23 +51,25 @@
     {
         <div class="wa-sidebar">
 
-            @*<div>
-                <button id="btn-resize-to-small" class="btn">
+            <div class="text-center">
+                <button id="btn-resize" class="btn">
                     <i class="material-icons">sync_alt</i>
                 </button>
-            </div>*@
+            </div>
 
             @if (Session["picture_profile"] != null)
             {
                 var url = Session["picture_profile"];
                 <img src=@url alt="profile" class="wa-profile-pic wa-sidebar-list-full" />
-                <img src=@url alt="profile" class="wa-sidebar-list-small" style="width:30px;height:30px;margin:10px;border-radius:50%;" />
+                <img src=@url alt="profile" class="wa-sidebar-list-small" style="width:30px;height:30px;margin:.5em;border-radius:50%;" />
             }
             else
             {
                 <img src="\Content\images\default-profile-pic.png" alt="default-picture" class="wa-profile-pic wa-sidebar-list-full" />
                 <form action="/Home/Perfil" method="get" class="text-center wa-sidebar-list-small">
-                    <img src="\Content\images\default-profile-pic.png" alt="default-picture" class="wa-sidebar-list-small" style="width:30px;height:30px;margin:10px;border-radius:50%;" />
+                    <a href="/Home/Perfil">
+                        <img src="\Content\images\default-profile-pic.png" alt="default-picture" class="wa-sidebar-list-small" style="width:30px;height:30px;margin:.5em;border-radius:50%;" />
+                    </a>
                 </form>
             }
 
@@ -119,7 +121,7 @@
 
             <hr />
 
-            <img src="~/Content/images/Logo1_5.png" alt="Logo" height="50" style="margin:20px 35px;" />
+            <img src="~/Content/images/Logo1_5.png" id="mini-logo-sidebar" alt="Logo" height="50" style="margin:20px 35px;" />
 
         </div>
     }
