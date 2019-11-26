@@ -21,10 +21,11 @@ a:hover {
 .wa-btn-group .btn {
     font-size: 16px; 
 }
-.body-content{
-    margin-left: 12em !important;
+
+.wa-hr-pequeno {
+    margin: inherit;
 }
-.wa-sidebar hr{
+.wa-hr-grande {
     margin: 10px 0 !important;
 }
 .nav li a {
@@ -33,13 +34,6 @@ a:hover {
 
 /*fim-overwrite*/
 
-.wa-sidebar-list-full {
-    display:block;
-}
-
-.wa-sidebar-list-small {
-    display:none;
-}
 
 .wa-post-botoes button {
     margin: 10px;
@@ -146,32 +140,86 @@ a:hover {
     margin-top: 15px;
 }
 
-.wa-resize-left {
-    margin: 0 5px 15px 5px !important;
+/* INICIO SIDEBAR */
+
+.wa-body-content-margin12 {
+    margin-left: 12em !important;
 }
 
-.wa-left-btn-resize {
-    display:flex;
-    flex-direction:row;
-    justify-content:flex-end;
+.wa-body-content-margin6 {
+    margin-left: 6em !important;
+}
+
+.wa-resize-btn-none {
+    display: none !important;
+}
+
+.wa-sidebar-list-pequeno a {
+    color: #808080 !important;
+}
+
+.wa-sidebar-list-pequeno {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wa-sidebar-list-grande {
+    display: block;
+}
+
+.wa-perfil-btn-none {
+    display: none;
+}
+
+.wa-mini-logo-pequeno {
+    height: 40px;
+}
+
+.wa-mini-logo-grande {
+    margin: 5px 0;
+    height: 50px;
+}
+
+.wa-profile-pic-grande {
+    width: 100px;
+    height: 100px;
+    margin: 20px 0;
+}
+
+.wa-profile-pic-pequeno {
+    width: 50px;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.wa-profile-pic {
+    border-radius: 50%;
+}
+
+.wa-sidebar-grande {
+    width: 12em;
+}
+
+.wa-sidebar-pequeno {
+    display: none;
+    width: 6em;
 }
 
 .wa-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     position: fixed;
     left: 0;
     padding: 20px 20px;
-    width: 12em;
     border-right: 1px solid #ccc;
     height: 100%;
     background-color: #f8f8f8;
 }
 
-.wa-profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 15px;
-}
+/* FIM SIDEBAR */
 
 .wa-titulo {
     font-size: 36px;
