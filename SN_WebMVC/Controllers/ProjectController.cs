@@ -64,7 +64,7 @@ namespace SN_WebMVC.Controllers {
 
             var data = new Dictionary<string, string> {
                 { "Titulo", projeto.Titulo },
-                { "Descrição", projeto.Descricao},
+                { "Descricao", projeto.Descricao},
                 { "IdLaboratory", projeto.IdLaboratory.ToString() }
             };
 

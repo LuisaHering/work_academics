@@ -76,8 +76,10 @@ namespace SN_WebApi.Controllers {
 
         [HttpGet]
         [Route("home")]
-        public async Task<IHttpActionResult> HomeAsync(int id) {
+        public async Task<IHttpActionResult> Home(int id) {
             Laboratory lab = await GetLaboratory.FindByIdAsync(id);
+            
+
             var convertido = new FullLaboratoryBindingModel().Convert(lab);
             return Ok(convertido);
         }
