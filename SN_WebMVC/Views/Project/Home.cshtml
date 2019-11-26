@@ -28,28 +28,37 @@
                     </div>
                     <input type="file" name="arquivo" />
                 </div>
-                <div style="display:flex;flex-direction:column;justify-content:flex-start;margin: 0 100px;padding-left:30px;border-left:2px solid #ededed;">
-                    <h3>Membros</h3>
-                    @foreach(var membro in Model.Membros)
-                    {
-                        <p>@membro</p>
-                    }
-                </div>
             </div>
 
-            <div class="wa-publicacoes-projeto" style="margin-top:40px;display:block;border:2px solid #ededed;height:300px;">
+            <div class="wa-publicacoes-projeto" style="margin-top:40px;display:block;border-top:2px solid #ededed;height:300px;">
                 <div style="padding:20px;">
                     <h4>Publicações?</h4>
                 </div>
             </div>
 
         </div>
-        <div style="width:20%;display:flex;flex-direction:column;align-items:flex-start;border-left:2px solid #ededed;padding:0 30px;">
-            <h3>Documentos</h3>
-            @foreach(var documento in Model.Documentos)
-            {
-                <p>@documento</p>
-            }
+        <div style="width:20%;display:flex;flex-direction:column;align-items:center;border-left:2px solid #ededed;padding:0 30px;">
+
+            <div style="display:flex;flex-direction:column;justify-content:flex-start;">
+                <h3>Membros</h3>
+                <div style="padding:0 10px;">
+                    @foreach (var membro in Model.Membros)
+                    {
+                        <p>@membro</p>
+                    }
+                </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;justify-content:flex-start;">
+                <h3>Documentos</h3>
+                <div style="padding:0 10px;">
+                    @foreach (var documento in Model.Documentos)
+                    {
+                        <p>@documento</p>
+                    }
+                </div>
+            </div>
+
         </div>
 
     </div>

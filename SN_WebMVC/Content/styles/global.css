@@ -140,6 +140,13 @@ a:hover {
     margin-top: 15px;
 }
 
+.wa-profile-search-pic {
+    width: 100px;
+    height: 100px;
+    margin: 20px 0;
+    border-radius: 50%;
+}
+
 /* INICIO SIDEBAR */
 
 .wa-body-content-margin12 {
