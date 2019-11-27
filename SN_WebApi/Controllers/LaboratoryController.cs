@@ -39,7 +39,7 @@ namespace SN_WebApi.Controllers {
             User oldUser = await GetUsers.FindByEmail(bindingModel.EmailUsuario);
 
             Laboratory laboratory = new Laboratory() {
-                Descricao = bindingModel.Descricao,                
+                Descricao = bindingModel.Descricao,
             };
 
             laboratory.Adiciona(oldUser);
@@ -96,9 +96,9 @@ namespace SN_WebApi.Controllers {
 
         // RECEBER ID DO LAB DESTINO
         // RECEBER ID DO USUARIO
-        // VERIFICAR SE USUARIO N ESTA NO LABORATORIO
         // BUSCAR USUARIO NO BANCO
         // BUSCAR LABORATORIO 
+        // VERIFICAR SE USUARIO N ESTA NO LABORATORIO
         // ADICIONAR USUARIO NA LISTA DE MEMBROS DO LABORATORIO
         // ATUALIZAR LABORATORIO
     }
