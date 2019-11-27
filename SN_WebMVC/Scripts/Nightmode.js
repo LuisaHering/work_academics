@@ -6,6 +6,8 @@ var container = document.querySelector(".container")
 var sidebar = document.querySelector(".wa-sidebar")
 var navbar = document.querySelector(".navbar")
 
+var i = 0
+
 
 btn_nightmode.addEventListener('click', function () {
 
@@ -16,6 +18,11 @@ btn_nightmode.addEventListener('click', function () {
 
     sidebar.classList.add("nightmode")
     navbar.classList.add("navbar-nightmode")
+
+    while (i == 0) {
+        alert('eu sei q ta incompleto cala a boca')
+        i++;
+    }
 
 })
 
