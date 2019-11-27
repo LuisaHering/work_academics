@@ -1,4 +1,8 @@
 ﻿/*overwrite*/
+body {
+    padding-bottom: 0 !important;
+}
+
 a {
     color: #000 !important;
     text-decoration:none;
@@ -31,9 +35,81 @@ a:hover {
 .nav li a {
     padding: 10px !important;
 }
-
 /*fim-overwrite*/
 
+/* INICIO NIGHTMODE */
+#btn-lightmode {
+    background-color: #b4b4b4 !important;
+}
+
+.btn-nightmode-none {
+    display:none !important;
+}
+
+.nightmode input {
+    background: transparent;
+    color: #b4b4b4 !important
+}
+
+.nightmode button {
+    background-color: #ad4a9c;
+    color: white;
+}
+
+.nightmode button:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.nightmode a {
+    color: white !important;
+}
+
+.nightmode a:hover {
+    color: white !important;
+    background-color: #ad4a9c !important;
+}
+
+.nightmode p,
+.nightmode h1,
+.nightmode h2,
+.nightmode h3,
+.nightmode h4,
+.nightmode li {
+    color: #b4b4b4 !important;
+}
+
+.navbar-nightmode {
+    background-color: #1e1e26 !important;
+}
+
+.nightmode {
+    background-color: #282830 !important;
+}
+
+/* FIM NIGHTMODE */
+
+/* MATERIAL ICONS */
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* FIM MATERIAL ICONS*/
 
 .wa-post-botoes button {
     margin: 10px;
@@ -104,7 +180,11 @@ a:hover {
 
 .wa-nav-container {
     margin-left: 12em !important;
-    padding: 5px;
+    margin: 5px 0;
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items:center;
 }
 
 .wa-logo-entrada {

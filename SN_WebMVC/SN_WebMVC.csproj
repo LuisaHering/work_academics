@@ -164,6 +164,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Nightmode.js" />
     <Content Include="Scripts\SideBar.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -190,7 +191,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
-    <Content Include="Views\Shared\_SideBar.cshtml" />
     <Content Include="Views\Shared\_Logo.cshtml" />
     <Content Include="Views\Home\Perfil.cshtml" />
     <Content Include="Views\Laboratory\Index.cshtml" />
