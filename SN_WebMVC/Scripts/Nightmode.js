@@ -20,7 +20,7 @@ btn_nightmode.addEventListener('click', function () {
     navbar.classList.add("navbar-nightmode")
 
     while (i == 0) {
-        alert('eu sei q ta incompleto cala a boca')
+        alert('em desenvolvimento')
         i++;
     }
 
