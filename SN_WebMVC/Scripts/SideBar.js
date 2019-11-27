@@ -1,13 +1,13 @@
 ﻿// botoes de açao
-var btnDiminui = document.getElementById('btn-resize1')
-var btnCresce = document.getElementById('btn-resize2')
+var btnDiminui = document.getElementById('btn-resize-diminui')
+var btnCresce = document.getElementById('btn-resize-cresce')
 
 // elementos da sidebar
 var waSideBar = document.getElementById("wa-sidebar-id")
 var profilePic = document.querySelector(".wa-profile-pic")
 var perfilBtn = document.querySelector(".wa-perfil-btn")
-var listaTexto = document.querySelector(".wa-sidebar-list-grande")
-var listaIcones = document.querySelector(".wa-sidebar-list-pequeno")
+var listaTexto = document.querySelector(".wa-sidebar-list-texto")
+var listaIcones = document.querySelector(".wa-sidebar-list-icones")
 var waHr = document.querySelector(".wa-hr")
 var miniLogo = document.getElementById("mini-logo-sidebar")
 
@@ -26,8 +26,8 @@ btnDiminui.addEventListener('click', function (event) {
 
     perfilBtn.classList.add("wa-perfil-btn-none")
 
-    listaTexto.style.display = "none"
-    listaIcones.style.display = "block"
+    listaIcones.classList.remove("wa-sidebar-list-none")
+    listaTexto.classList.add("wa-sidebar-list-none")
 
     waHr.classList.remove("wa-hr-grande")
     waHr.classList.add("wa-hr-pequeno")
@@ -35,8 +35,8 @@ btnDiminui.addEventListener('click', function (event) {
     miniLogo.classList.remove("wa-mini-logo-grande")
     miniLogo.classList.add("wa-mini-logo-pequeno")
 
-    bodyContent.classList.remove("wa-body-content-margin12")
-    bodyContent.classList.add("wa-body-content-margin6")
+    //bodyContent.classList.remove("wa-body-content-margin12")
+    //bodyContent.classList.add("wa-body-content-margin6")
 
     btnDiminui.classList.add("wa-resize-btn-none")
 
@@ -57,8 +57,8 @@ btnCresce.addEventListener('click', function (event) {
 
     perfilBtn.classList.remove("wa-perfil-btn-none")
 
-    listaTexto.style.display = "block"
-    listaIcones.style.display = "none"
+    listaTexto.classList.remove("wa-sidebar-list-none")
+    listaIcones.classList.add("wa-sidebar-list-none")
 
     waHr.classList.remove("wa-hr-pequeno")
     waHr.classList.add("wa-hr-grande")
@@ -66,8 +66,8 @@ btnCresce.addEventListener('click', function (event) {
     miniLogo.classList.remove("wa-mini-logo-pequeno")
     miniLogo.classList.add("wa-mini-logo-grande")
 
-    bodyContent.classList.remove("wa-body-content-margin6")
-    bodyContent.classList.add("wa-body-content-margin12")
+    //bodyContent.classList.remove("wa-body-content-margin6")
+    //bodyContent.classList.add("wa-body-content-margin12")
 
     btnCresce.classList.add("wa-resize-btn-none")
 

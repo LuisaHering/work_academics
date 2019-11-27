@@ -89,28 +89,6 @@ a:hover {
 
 /* FIM NIGHTMODE */
 
-/* MATERIAL ICONS */
-
-/* Rules for using icons as black on a light background. */
-.material-icons.md-dark {
-    color: rgba(0, 0, 0, 0.54);
-}
-
-.material-icons.md-dark.md-inactive {
-    color: rgba(0, 0, 0, 0.26);
-}
-
-/* Rules for using icons as white on a dark background. */
-.material-icons.md-light {
-    color: rgba(255, 255, 255, 1);
-}
-
-.material-icons.md-light.md-inactive {
-    color: rgba(255, 255, 255, 0.3);
-}
-
-/* FIM MATERIAL ICONS*/
-
 .wa-post-botoes button {
     margin: 10px;
 }
@@ -178,12 +156,17 @@ a:hover {
     margin-top: 40px;
 }
 
+.wa-nav-botoes {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+}
+
 .wa-nav-container {
-    margin-left: 12em !important;
     margin: 5px 0;
     display:flex;
     flex-direction:row;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items:center;
 }
 
@@ -197,7 +180,7 @@ a:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .wa-entrada-box {
@@ -246,14 +229,8 @@ a:hover {
     color: #808080 !important;
 }
 
-.wa-sidebar-list-pequeno {
+.wa-sidebar-list-none{
     display: none;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.wa-sidebar-list-grande {
-    display: block;
 }
 
 .wa-perfil-btn-none {
@@ -261,6 +238,7 @@ a:hover {
 }
 
 .wa-mini-logo-pequeno {
+    margin: 20px 0;
     height: 40px;
 }
 
@@ -286,11 +264,11 @@ a:hover {
 }
 
 .wa-sidebar-grande {
+    display:none;
     width: 12em;
 }
 
 .wa-sidebar-pequeno {
-    display: none;
     width: 6em;
 }
 

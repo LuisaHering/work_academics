@@ -32,39 +32,40 @@
             <button class="btn navbar-toggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">Menu</span>
             </button>
-
-            <div style="margin: 0 15em;">
-                <button class="btn" id="btn-nightmode">
-                    <i class="material-icons">brightness_2</i>
-                </button>
-                <button class="btn btn-nightmode-none" id="btn-lightmode">
-                    <i class="material-icons md-light">wb_sunny</i>
-                </button>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
-                {
-                    <form action="/Account/Logout" method="post">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-default navbar-btn navbar-right" style="margin-right:30px;">
-                            Logout
+            @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
+            {
+                <div class="wa-nav-botoes">
+                    <div>
+                        <button class="btn" id="btn-nightmode">
+                            <i class="material-icons">brightness_2</i>
                         </button>
-                    </form>
-                }
-            </div>
+                        <button class="btn btn-nightmode-none" id="btn-lightmode">
+                            <i class="material-icons md-light">wb_sunny</i>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <form action="/Account/Logout" method="post">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-default navbar-btn navbar-right" style="margin-right:30px;">
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 
     @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
     {
-        <div id="wa-sidebar-id" class="wa-sidebar wa-sidebar-grande">
+        <div id="wa-sidebar-id" class="wa-sidebar wa-sidebar-pequeno">
 
             <div class="text-center" style="margin-top: 20px;">
-                <button id="btn-resize1" class="btn">
+                <button id="btn-resize-diminui" class="btn wa-resize-btn-none">
                     <i class="material-icons">skip_previous</i>
                 </button>
-                <button id="btn-resize2" class="btn wa-resize-btn-none">
+                <button id="btn-resize-cresce" class="btn">
                     <i class="material-icons">skip_next</i>
                 </button>
             </div>
@@ -73,22 +74,22 @@
             {
                 var url = Session["picture_profile"];
                 <a href="/Home/Perfil">
-                    <img src=@url alt="profile" class="wa-profile-pic wa-profile-pic-grande" title="Perfil" />
+                    <img src=@url alt="profile" class="wa-profile-pic wa-profile-pic-pequeno" title="Perfil" />
                 </a>
             }
             else
             {
                 <a href="/Home/Perfil">
-                    <img src="\Content\images\default-profile-pic.png" alt="default-picture" title="Perfil" class="wa-profile-pic wa-profile-pic-grande" />
+                    <img src="\Content\images\default-profile-pic.png" alt="default-picture" title="Perfil" class="wa-profile-pic wa-profile-pic-pequeno" />
                 </a>
             }
 
-            <form action="/Home/Perfil" method="get" class="text-center wa-perfil-btn">
+            <form action="/Home/Perfil" method="get" class="text-center wa-perfil-btn wa-perfil-btn-none">
                 <button type="submit" class="btn btn-default">Ver perfil</button>
             </form>
 
-            <hr class="wa-hr wa-hr-grande" />
-            <ul class="nav nav-stacked text-center wa-sidebar-list-grande">
+            <hr class="wa-hr wa-hr-pequeno" />
+            <ul class="nav nav-stacked text-center wa-sidebar-list-texto wa-sidebar-list-none">
 
                 <li class="nav-item">
                     <a href="/Home/Index">Home</a>
@@ -108,7 +109,7 @@
 
             </ul>
 
-            <ul class="nav nav-stacked text-center wa-sidebar-list-pequeno">
+            <ul class="nav nav-stacked text-center wa-sidebar-list-icones">
 
                 <li class="nav-item">
                     <a href="/Home/Index" title="Home"><i class="material-icons">home</i></a>
@@ -128,15 +129,15 @@
 
             </ul>
 
-            <hr class="wa-hr wa-hr-grande" />
+            <hr class="wa-hr wa-hr-pequeno" />
             <div class="text-center">
-                <img src="~/Content/images/Logo1_5.png" id="mini-logo-sidebar" class="wa-mini-logo-grande" alt="Logo" />
+                <img src="~/Content/images/Logo1_5.png" id="mini-logo-sidebar" class="wa-mini-logo-pequeno" alt="Logo" />
             </div>
 
         </div>
     }
 
-    <div class="container body-content wa-body-content-margin12">
+    <div class="container body-content wa-body-content-margin6">
         @RenderBody()
     </div>
 
