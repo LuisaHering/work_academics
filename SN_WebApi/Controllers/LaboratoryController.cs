@@ -39,7 +39,7 @@ namespace SN_WebApi.Controllers {
             User oldUser = await GetUsers.FindByEmail(bindingModel.EmailUsuario);
 
             Laboratory laboratory = new Laboratory() {
-                Descricao = bindingModel.Descricao,                
+                Descricao = bindingModel.Descricao,
             };
 
             laboratory.Adiciona(oldUser);
@@ -78,8 +78,6 @@ namespace SN_WebApi.Controllers {
         [Route("home")]
         public async Task<IHttpActionResult> Home(int id) {
             Laboratory lab = await GetLaboratory.FindByIdAsync(id);
-            
-
             var convertido = new FullLaboratoryBindingModel().Convert(lab);
             return Ok(convertido);
         }
@@ -92,5 +90,16 @@ namespace SN_WebApi.Controllers {
             var result = aux.convert(labs);
             return Ok(result);
         }
+
+        //TODO 
+        // IMPLEMENTAR FORMA DE USUARIO ENTRAR EM LABORATORIO
+
+        // RECEBER ID DO LAB DESTINO
+        // RECEBER ID DO USUARIO
+        // BUSCAR USUARIO NO BANCO
+        // BUSCAR LABORATORIO 
+        // VERIFICAR SE USUARIO N ESTA NO LABORATORIO
+        // ADICIONAR USUARIO NA LISTA DE MEMBROS DO LABORATORIO
+        // ATUALIZAR LABORATORIO
     }
 }
