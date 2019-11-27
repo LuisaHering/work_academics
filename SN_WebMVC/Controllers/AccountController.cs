@@ -54,10 +54,8 @@ namespace SN_WebMVC.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-            if(ModelState.IsValid)
-            {
+        public async Task<ActionResult> Register(RegisterViewModel model) {
+            if(ModelState.IsValid) {
                 var data = new Dictionary<string, string> {
 
                     { "grant_type", "password" },
@@ -142,7 +140,7 @@ namespace SN_WebMVC.Controllers {
                             Session.Add("user_name", model.Username);
                             return RedirectToAction("Index", "Home");
                         }
-                        return View("Error");
+                        //return View();
                     }
                 }
             }
