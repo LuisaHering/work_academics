@@ -93,7 +93,6 @@ namespace SN_WebApi.Controllers {
 
         //TODO 
         // IMPLEMENTAR FORMA DE USUARIO ENTRAR EM LABORATORIO
-
         // RECEBER ID DO LAB DESTINO
         // RECEBER ID DO USUARIO
         // BUSCAR USUARIO NO BANCO
@@ -101,5 +100,23 @@ namespace SN_WebApi.Controllers {
         // VERIFICAR SE USUARIO N ESTA NO LABORATORIO
         // ADICIONAR USUARIO NA LISTA DE MEMBROS DO LABORATORIO
         // ATUALIZAR LABORATORIO
+
+        [HttpPost]
+        [Route("Entrar")]
+        public async Task<IHttpActionResult> EntrarNoLaboratorioAsync(EntrarNoLaboratorio request) {
+
+            var laboratorio = (Laboratory)await GetLaboratory.FindByIdAsync(request.IdLaratorio);
+            var usuario = (User)await GetUsers.FindById(request.IdUsuario);
+
+            // se o usuario n esta no laboratorio
+            if(!usuario.estaNoLaboratorio(laboratorio, usuario.Id.ToString())) {
+                laboratorio.Adiciona(usuario);
+                var atualizou = await GetLaboratory.Update(laboratorio);
+                if(atualizou)
+                    return Ok();
+            }
+
+            return BadRequest("Erro ao processar a solicitacao");
+        }
     }
 }

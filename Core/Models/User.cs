@@ -9,6 +9,33 @@ using System.Threading.Tasks;
 namespace Core.Models {
     public class User {
 
+        public void Adiciona(Laboratory laboratory) {
+            this.Laboratories.Add(laboratory);
+        }
+
+        public bool haveRole() {
+            return this.Role != null;
+        }
+
+        public bool estaNoLaboratorio(Laboratory laboratory, string idUsuario) {
+
+            foreach(User usuario in laboratory.Users) {
+                if(usuario.Id.Equals(idUsuario)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void setUrlFoto(string code) {
+            this.UrlFoto = @"https://bankcarlos.blob.core.windows.net/api-amigo-fotos/" + code + ".png";
+        }
+
+        public string getUrlFoto() {
+            return this.UrlFoto;
+        }
+
         [Key]
         public Guid Id {
             get; set;
@@ -61,22 +88,6 @@ namespace Core.Models {
         public User() {
             Laboratories = new HashSet<Laboratory>();
             Pictures = new HashSet<Picture>();
-        }
-
-        public void Adiciona(Laboratory laboratory) {
-            this.Laboratories.Add(laboratory);
-        }
-
-        public bool haveRole() {
-            return this.Role != null;
-        }
-
-        public void setUrlFoto(string code) {
-            this.UrlFoto = @"https://bankcarlos.blob.core.windows.net/api-amigo-fotos/" + code + ".png";
-        }
-
-        public string getUrlFoto() {
-            return this.UrlFoto;
         }
     }
 }
