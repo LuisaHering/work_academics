@@ -30,10 +30,23 @@
                 </div>
             </div>
 
-            <div class="wa-publicacoes-projeto" style="margin-top:40px;display:block;border-top:2px solid #ededed;height:300px;">
-                <div style="padding:20px;">
-                    <h4>Publicações?</h4>
-                </div>
+            <div class="wa-publicacoes-projeto">
+                <h3>Publicações</h3>
+                @foreach (var post in Model.Posts)
+                {
+                    <div style="border-bottom: 2px solid #ededed;margin-top:10px;">
+                        <div class="wa-publi-info">
+                            <h4>@post.Autor</h4>
+                            <p style="margin-left:20px;">@post.DataDePublicacao</p>
+                        </div>
+                        <div class="wa-publi-conteudo">
+                            <p>@post.Mensagem</p>
+                        </div>
+                        <div class="wa-publi-documento">
+                            <p>@post.UrlDocumento</p>
+                        </div>
+                    </div>
+                }
             </div>
 
         </div>
@@ -52,10 +65,10 @@
             <div style="display:flex;flex-direction:column;justify-content:flex-start;">
                 <h3>Documentos</h3>
                 <div style="padding:0 10px;">
-                    @foreach (var documento in Model.Documentos)
+                    @*@foreach (var documento in Model.Documentos)
                     {
                         <p>@documento</p>
-                    }
+                    }*@
                 </div>
             </div>
 
