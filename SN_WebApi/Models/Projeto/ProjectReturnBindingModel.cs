@@ -1,4 +1,5 @@
 ﻿using Core.Models;
+using SN_WebApi.Models.Post;
 using SN_WebApi.Models.Usuario;
 using System;
 using System.Collections.Generic;
@@ -32,9 +33,14 @@ namespace SN_WebApi.Models.Projeto {
             get; set;
         }
 
+        public List<PostBindModel> Posts {
+            get; set;
+        }
+
         public ProjectReturnBindingModel() {
             laboratory = new LaboratoryReturnBindingModels();
             Membros = new List<UserSimple>();
+            Posts = new List<PostBindModel>();
         }
 
         public ProjectReturnBindingModel Convert(Project project) {
@@ -53,6 +59,8 @@ namespace SN_WebApi.Models.Projeto {
 
                 var membros = new List<UserSimple>();
 
+                var posts = new List<PostBindModel>();
+
                 foreach(User u in project.Laboratory.Users) {
                     UserSimple simpleUser = new UserSimple();
                     simpleUser.Id = u.Id;
@@ -61,6 +69,18 @@ namespace SN_WebApi.Models.Projeto {
                     membros.Add(simpleUser);
                 }
 
+                foreach(Core.Models.Post p in project.Posts) {
+                    PostBindModel post = new PostBindModel() {
+                        Id = p.Id.ToString(),
+                        Mensagem = p.Mensagem,
+                        NomeAutor = p.Autor.Nome,
+                        UrlDocumento = p.UrlDocumento,
+                        DataPublicacao = p.DataPublicacao
+                    };
+                    posts.Add(post);
+                }
+
+                projeto.Posts = posts;
                 projeto.Membros = membros;
                 projeto.laboratory = laboratory;
                 return projeto;

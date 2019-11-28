@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 
 namespace Core.Models {
     public class Project {
+
+        public Project() {
+            Posts = new List<Post>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id {
