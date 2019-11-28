@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace Core.Services {
     public interface IPost {
 
-        void Postar(Post post);
+        Task<bool> Postar(Post post);
     }
 }

@@ -23,7 +23,7 @@ namespace Core.Models {
             get; set;
         }
 
-        public virtual List<Project> Project {
+        public virtual List<Project> Projects {
             get; set;
         }
 
@@ -33,6 +33,26 @@ namespace Core.Models {
 
         public DateTime DataPublicacao {
             get; set;
+        }
+
+        public Post() {
+            var posts = new List<Project>();
+        }
+
+        public Post CriarPost(string mensagem, User autor, string urlDocumento, Project projeto, Laboratory laboratory, DateTime datapublicacao) {
+            var projetos = new List<Project>();
+            projetos.Add(projeto);
+
+            var post = new Post() {
+                Id = Guid.NewGuid(),
+                Autor = autor,
+                Laboratory = laboratory,
+                Projects = projetos,
+                DataPublicacao = DateTime.Now,
+                Mensagem = mensagem,
+                UrlDocumento = urlDocumento
+            };
+            return post;
         }
     }
 }
