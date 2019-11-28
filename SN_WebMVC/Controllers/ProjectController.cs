@@ -93,16 +93,22 @@ namespace SN_WebMVC.Controllers {
             usuarios.Add("lu@lu.com.br");
 
 
+            var post = new PostViewModel() {
+                Id = "1",
+                Autor = "gabriel",
+                DataDePublicacao = DateTime.Now,
+                Mensagem = "conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo ",
+                UrlDocumento = "https://i.pinimg.com/originals/64/ed/5c/64ed5cee404ecd2f620426ba3788ab5f.jpg"
+            };
+
             // buscar documentos do projeto
-            var documentos = new List<string>();
-            documentos.Add("carlos@gmail.com");
-            documentos.Add("gabriel@gmail.com");
-            documentos.Add("rafael@gmail.com");
-            documentos.Add("lu@lu.com.br");
+            var posts = new List<PostViewModel>();
+            posts.Add(post);
+            posts.Add(post);
 
             // buscar projeto
             FullProjectViewModel projeto = new FullProjectViewModel() {
-                Documentos = documentos,
+                Posts = posts,
                 Membros = usuarios,
                 DataCriacao = DateTime.Now,
                 Descricao = "descricao mockada",

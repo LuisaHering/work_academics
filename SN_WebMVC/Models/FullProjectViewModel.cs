@@ -29,13 +29,13 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
-        public List<string> Documentos {
+        public List<PostViewModel> Posts {
             get; set;
         }
 
         public FullProjectViewModel() {
             Membros = new List<string>();
-            Documentos = new List<string>();
+            Posts = new List<PostViewModel>();
         }
     }
 }
