@@ -214,6 +214,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LaboratoryController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,6 +230,7 @@
     <Compile Include="Models\Laboratorio\FullLaboratoryBindingModel.cs" />
     <Compile Include="Models\Laboratorio\LaboratoryBindingModel.cs" />
     <Compile Include="Models\Laboratorio\LaboratoryReturnBindingModels.cs" />
+    <Compile Include="Models\Post\InputPostBindModel.cs" />
     <Compile Include="Models\Post\PostBindModel.cs" />
     <Compile Include="Models\ProfilePicture\ProfilePictureBindModel.cs" />
     <Compile Include="Models\Projeto\ProjectCreateBindingModel.cs" />
@@ -304,6 +306,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Follow\" />
     <Folder Include="Views\Picture\" />
+    <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
