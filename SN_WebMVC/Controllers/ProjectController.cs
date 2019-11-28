@@ -92,7 +92,16 @@ namespace SN_WebMVC.Controllers {
             usuarios.Add("rafael@gmail.com");
             usuarios.Add("lu@lu.com.br");
 
+            // documentos
+            var documentos = new List<string>();
+            documentos.Add("Documento 1");
+            documentos.Add("Documento 2");
+            documentos.Add("Documento 3");
+            documentos.Add("Documento 4");
+            documentos.Add("Documento 5");
+            documentos.Add("Documento 6");
 
+            // posts
             var post = new PostViewModel() {
                 Id = "1",
                 Autor = "gabriel",
@@ -109,6 +118,7 @@ namespace SN_WebMVC.Controllers {
             // buscar projeto
             FullProjectViewModel projeto = new FullProjectViewModel() {
                 Posts = posts,
+                Documentos = documentos,
                 Membros = usuarios,
                 DataCriacao = DateTime.Now,
                 Descricao = "descricao mockada",

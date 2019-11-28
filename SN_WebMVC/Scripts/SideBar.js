@@ -35,8 +35,8 @@ btnDiminui.addEventListener('click', function (event) {
     miniLogo.classList.remove("wa-mini-logo-grande")
     miniLogo.classList.add("wa-mini-logo-pequeno")
 
-    //bodyContent.classList.remove("wa-body-content-margin12")
-    //bodyContent.classList.add("wa-body-content-margin6")
+    bodyContent.classList.remove("wa-body-content-margin12")
+    bodyContent.classList.add("wa-body-content-margin6")
 
     btnDiminui.classList.add("wa-resize-btn-none")
 
@@ -66,8 +66,8 @@ btnCresce.addEventListener('click', function (event) {
     miniLogo.classList.remove("wa-mini-logo-pequeno")
     miniLogo.classList.add("wa-mini-logo-grande")
 
-    //bodyContent.classList.remove("wa-body-content-margin6")
-    //bodyContent.classList.add("wa-body-content-margin12")
+    bodyContent.classList.remove("wa-body-content-margin6")
+    bodyContent.classList.add("wa-body-content-margin12")
 
     btnCresce.classList.add("wa-resize-btn-none")
 

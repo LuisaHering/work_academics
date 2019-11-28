@@ -31,25 +31,14 @@
 
             @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
             {
-                <div class="wa-nav-botoes">
-                    <div>
-                        <button class="btn" id="btn-nightmode">
-                            <i class="material-icons">brightness_2</i>
-                        </button>
-                        <button class="btn btn-nightmode-none" id="btn-lightmode">
-                            <i class="material-icons md-light">wb_sunny</i>
-                        </button>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <form action="/Account/Logout" method="post">
-                            @Html.AntiForgeryToken()
-                            <button type="submit" class="btn btn-default navbar-btn navbar-right" style="margin:0 30px;">
-                                Logout
-                            </button>
-                        </form>
-                    </div>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form action="/Account/Logout" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-default navbar-btn navbar-right" style="margin:0 30px;">
+                        Logout
+                    </button>
+                </form>
+            </div>
             }
         </div>
     </div>
@@ -58,7 +47,7 @@
     {
         <div id="wa-sidebar-id" class="wa-sidebar wa-sidebar-pequeno">
 
-            <div class="text-center" style="margin-top: 20px;">
+            <div class="text-center" style="margin:20px 0;">
                 <button id="btn-resize-diminui" class="btn wa-resize-btn-none">
                     <i class="material-icons">skip_previous</i>
                 </button>
