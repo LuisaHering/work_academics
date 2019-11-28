@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Models {
-    public class Project {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id {
+    public class Post {
+
+        public Guid Id {
             get; set;
         }
-        public string Titulo {
+
+        public string Mensagem {
             get; set;
         }
-        public string Descricao {
+
+        public User Autor {
             get; set;
         }
-        public DateTime DataCriacao {
+
+        public string UrlDocumento {
             get; set;
         }
-        public DateTime? DataFinalizacao {
+
+        public virtual List<Project> Project {
             get; set;
         }
 
@@ -30,7 +31,7 @@ namespace Core.Models {
             get; set;
         }
 
-        public virtual List<Post> Posts {
+        public DateTime DataPublicacao {
             get; set;
         }
     }

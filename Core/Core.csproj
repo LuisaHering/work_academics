@@ -54,6 +54,7 @@
     <Compile Include="Models\Conection.cs" />
     <Compile Include="Models\Laboratory.cs" />
     <Compile Include="Models\Picture.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Services\IConection.cs" />
     <Compile Include="Services\ILaboratory.cs" />
     <Compile Include="Services\IPicture.cs" />
+    <Compile Include="Services\IPost.cs" />
     <Compile Include="Services\IProject.cs" />
     <Compile Include="Services\IUsers.cs" />
   </ItemGroup>

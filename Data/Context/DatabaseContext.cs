@@ -32,6 +32,10 @@ namespace Data.Context {
             get; set;
         }
 
+        public DbSet<Post> Posts {
+            get; set;
+        }
+
         public DatabaseContext() : base("DefaultConnection") {
             Configuration.LazyLoadingEnabled = true;
             Configuration.ProxyCreationEnabled = true;
