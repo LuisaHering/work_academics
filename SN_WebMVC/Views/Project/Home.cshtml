@@ -31,18 +31,20 @@
             </div>
 
             <div class="wa-publicacoes-projeto">
+                <h3>Publicações</h3>
                 @foreach (var post in Model.Posts)
                 {
-                    <h3>Publicações</h3>
-                    <div class="wa-publi-info">
-                        <h4>@post.Autor</h4>
-                        <p>@post.DataDePublicacao</p>
-                    </div>
-                    <div class="wa-publi-conteudo">
-                        <p>@post.Mensagem</p>
-                    </div>
-                    <div class="wa-publi-documento">
-                        <p>@post.UrlDocumento</p>
+                    <div style="border-bottom: 2px solid #ededed;margin-top:10px;">
+                        <div class="wa-publi-info">
+                            <h4>@post.Autor</h4>
+                            <p style="margin-left:20px;">@post.DataDePublicacao</p>
+                        </div>
+                        <div class="wa-publi-conteudo">
+                            <p>@post.Mensagem</p>
+                        </div>
+                        <div class="wa-publi-documento">
+                            <p>@post.UrlDocumento</p>
+                        </div>
                     </div>
                 }
             </div>
