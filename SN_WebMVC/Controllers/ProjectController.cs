@@ -83,6 +83,7 @@ namespace SN_WebMVC.Controllers {
             return View("Error");
         }
 
+        [HttpGet]
         public async Task<ActionResult> Home(int id) {
             var projeto = new ProjetoOutputModel();
 
@@ -97,39 +98,7 @@ namespace SN_WebMVC.Controllers {
                 }
             }
 
-            //// buscar usuarios do projeto
-            //var usuarios = new List<string>();
-            //usuarios.Add("carlos@gmail.com");
-            //usuarios.Add("gabriel@gmail.com");
-            //usuarios.Add("rafael@gmail.com");
-            //usuarios.Add("lu@lu.com.br");
-
-
-            //var post = new PostViewModel() {
-            //    Id = "1",
-            //    Autor = "gabriel",
-            //    DataDePublicacao = DateTime.Now,
-            //    Mensagem = "conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo ",
-            //    UrlDocumento = "https://i.pinimg.com/originals/64/ed/5c/64ed5cee404ecd2f620426ba3788ab5f.jpg"
-            //};
-
-            //// buscar documentos do projeto
-            //var posts = new List<PostViewModel>();
-            //posts.Add(post);
-            //posts.Add(post);
-
-            //// buscar projeto
-            //FullProjectViewModel projeto = new FullProjectViewModel() {
-            //    Posts = posts,
-            //    Membros = usuarios,
-            //    DataCriacao = DateTime.Now,
-            //    Descricao = "descricao mockada",
-            //    Id = "1",
-            //    Titulo = "titulo mockado",
-            //    IdLaboratory = 1
-            //};
-
-            return View("Error");
+            return View();
         }
     }
 }

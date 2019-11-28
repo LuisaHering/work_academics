@@ -4,78 +4,66 @@
     ViewBag.Title = "Projeto";
 }
 <div class="wa-container">
-
-    <h2>@Html.DisplayFor(model => model.Titulo)</h2>
+    <h2 style="padding: 0 20px;">@Html.DisplayFor(model => model.Titulo)</h2>
     <div style="display:flex;flex-direction:row;justify-content:space-around;width:100%;margin-top:50px;">
-
         <div style="display:flex;flex-direction:column;justify-content:space-around;width:80%;">
-
             <div style="display:flex;flex-direction:row;justify-content:space-between;">
                 <div style="display:flex;flex-direction:column;margin: 0 50px;">
                     <div style="display:flex;flex-direction:column;justify-content:flex-start;">
                         <h4>@Html.DisplayFor(model => model.Descricao)</h4>
                         <h4>
                             @Html.DisplayFor(model => model.DataCriacao.Day) /
-                        @Html.DisplayFor(model => model.DataCriacao.Month) /
-                        @Html.DisplayFor(model => model.DataCriacao.Year)
-                    </h4>
+                            @Html.DisplayFor(model => model.DataCriacao.Month) /
+                            @Html.DisplayFor(model => model.DataCriacao.Year)
+                        </h4>
+                    </div>
+                    <div style="display:flex;flex-direction:row;justify-content:flex-start;margin:50px 0 0 0;">
+                        <input type="text" name="texto" placeholder="Comentários" />
+                        <button class="btn btn-default">
+                            Postar
+                        </button>
+                    </div>
+                    <input type="file" name="arquivo" />
                 </div>
-
-                <div style="display:flex;flex-direction:row;justify-content:flex-start;margin:50px 0 0 0;">
-                    <input type="text" name="texto" placeholder="Comentários" />
-                    <button class="btn btn-default">
-                        Upload
-                    </button>
-                </div>
-                <input type="file" name="arquivo" />
             </div>
-        </div>
-
-        <div class="wa-publicacoes-projeto">
-            <h3>Publicações</h3>
-            @foreach(var post in Model.Posts) {
-                <div style="border-bottom: 2px solid #ededed;margin-top:10px;">
-                    <div class="wa-publi-info">
-                        <h4>@post.Autor</h4>
-                        <p style="margin-left:20px;">@post.DataDePublicacao</p>
+            <div class="wa-publicacoes-projeto">
+                <h3>Publicações</h3>
+                @foreach(var post in Model.Posts) {
+                    <div style="border-bottom: 2px solid #ededed;margin-top:10px;padding: 0 10px;">
+                        <div class="wa-publi-info">
+                            <h4>@post.Autor</h4>
+                            <p style="margin-left:20px;">@post.DataDePublicacao</p>
+                        </div>
+                        <div class="wa-publi-conteudo">
+                            <p>@post.Mensagem</p>
+                        </div>
+                        <div class="wa-publi-documento">
+                            <p>@post.UrlDocumento</p>
+                        </div>
                     </div>
-                    <div class="wa-publi-conteudo">
-                        <p>@post.Mensagem</p>
-                    </div>
-                    <div class="wa-publi-documento">
-                        <p>@post.UrlDocumento</p>
-                    </div>
-                </div>
-            }
-        </div>
-
-    </div>
-    <div style="width:20%;display:flex;flex-direction:column;align-items:center;border-left:2px solid #ededed;padding:0 30px;">
-
-        <div style="display:flex;flex-direction:column;justify-content:flex-start;">
-            <h3>Membros</h3>
-            <div style="padding:0 10px;">
-                @foreach(var membro in Model.Membros) {
-                    <p>@membro</p>
                 }
             </div>
         </div>
-
-        <div style="display:flex;flex-direction:column;justify-content:flex-start;">
-            <h3>Documentos</h3>
-            <div style="padding:0 10px;">
-                @*@foreach (var documento in Model.Documentos)
-                    {
+        <div style="width:20%;display:flex;flex-direction:column;align-items:center;border-left:2px solid #ededed;padding:0 30px;">
+            <div style="display:flex;flex-direction:column;justify-content:flex-start;">
+                <h3>Membros</h3>
+                <div style="padding:0 10px;">
+                    @foreach(var membro in Model.Membros) {
+                        <p>@membro</p>
+                    }
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:flex-start;">
+                <h3>Documentos</h3>
+                <div style="padding:0 10px;">
+                    @*@foreach(var documento in Model.Documentos) {
                         <p>@documento</p>
                     }*@
+                </div>
             </div>
         </div>
-
     </div>
-
-</div>
-<div class="form-group" style="margin-top:40px;">
-    <a href="/Home/Index" class="btn btn-link">Retornar</a>
-</div>
-
+    <div class="form-group" style="margin-top:40px;">
+        <a href="/Home/Index" class="btn btn-link">Retornar</a>
+    </div>
 </div>

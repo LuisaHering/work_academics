@@ -29,6 +29,10 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        public List<string> Documentos {
+            get; set;
+        }
+
         public List<PostViewModel> Posts {
             get; set;
         }
@@ -36,6 +40,7 @@ namespace SN_WebMVC.Models {
         public FullProjectViewModel() {
             Membros = new List<string>();
             Posts = new List<PostViewModel>();
+            Documentos = new List<string>();
         }
     }
 }
