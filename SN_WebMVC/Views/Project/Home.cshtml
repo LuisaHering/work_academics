@@ -5,7 +5,7 @@
 }
 <div class="wa-container">
 
-    <h2>@Html.DisplayFor(model => model.Titulo)</h2>
+    <h2 style="padding: 0 20px;">@Html.DisplayFor(model => model.Titulo)</h2>
     <div style="display:flex;flex-direction:row;justify-content:space-around;width:100%;margin-top:50px;">
 
         <div style="display:flex;flex-direction:column;justify-content:space-around;width:80%;">
@@ -34,7 +34,7 @@
                 <h3>Publicações</h3>
                 @foreach (var post in Model.Posts)
                 {
-                    <div style="border-bottom: 2px solid #ededed;margin-top:10px;">
+                    <div style="border-bottom: 2px solid #ededed;margin-top:10px;padding: 0 10px;">
                         <div class="wa-publi-info">
                             <h4>@post.Autor</h4>
                             <p style="margin-left:20px;">@post.DataDePublicacao</p>

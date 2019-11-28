@@ -83,51 +83,73 @@ namespace SN_WebMVC.Controllers {
             return View("Error");
         }
 
+        [HttpGet]
         public async Task<ActionResult> Home(int id) {
 
-            // buscar usuarios do projeto
-            var usuarios = new List<string>();
-            usuarios.Add("carlos@gmail.com");
-            usuarios.Add("gabriel@gmail.com");
-            usuarios.Add("rafael@gmail.com");
-            usuarios.Add("lu@lu.com.br");
+            var access_token = (Session["access_token"]);
 
-            // documentos
-            var documentos = new List<string>();
-            documentos.Add("Documento 1");
-            documentos.Add("Documento 2");
-            documentos.Add("Documento 3");
-            documentos.Add("Documento 4");
-            documentos.Add("Documento 5");
-            documentos.Add("Documento 6");
+            var projeto = new FullProjectViewModel();
 
-            // posts
-            var post = new PostViewModel() {
-                Id = "1",
-                Autor = "gabriel",
-                DataDePublicacao = DateTime.Now,
-                Mensagem = "conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo ",
-                UrlDocumento = "https://i.pinimg.com/originals/64/ed/5c/64ed5cee404ecd2f620426ba3788ab5f.jpg"
-            };
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/project/busca?id={id}");
 
-            // buscar documentos do projeto
-            var posts = new List<PostViewModel>();
-            posts.Add(post);
-            posts.Add(post);
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    projeto = JsonConvert.DeserializeObject<FullProjectViewModel>(responseContent);
+                    return View(projeto);
+                }
+            }
 
-            // buscar projeto
-            FullProjectViewModel projeto = new FullProjectViewModel() {
-                Posts = posts,
-                Documentos = documentos,
-                Membros = usuarios,
-                DataCriacao = DateTime.Now,
-                Descricao = "descricao mockada",
-                Id = "1",
-                Titulo = "titulo mockado",
-                IdLaboratory = 1
-            };
+            return View();
 
-            return View(projeto);
+
+            //// buscar usuarios do projeto
+            //var usuarios = new List<string>();
+            //usuarios.Add("carlos@gmail.com");
+            //usuarios.Add("gabriel@gmail.com");
+            //usuarios.Add("rafael@gmail.com");
+            //usuarios.Add("lu@lu.com.br");
+
+            //// documentos
+            //var documentos = new List<string>();
+            //documentos.Add("Documento 1");
+            //documentos.Add("Documento 2");
+            //documentos.Add("Documento 3");
+            //documentos.Add("Documento 4");
+            //documentos.Add("Documento 5");
+            //documentos.Add("Documento 6");
+
+            //// posts
+            //var post = new PostViewModel()
+            //{
+            //    Id = "1",
+            //    Autor = "gabriel",
+            //    DataDePublicacao = DateTime.Now,
+            //    Mensagem = "conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo ",
+            //    UrlDocumento = "https://i.pinimg.com/originals/64/ed/5c/64ed5cee404ecd2f620426ba3788ab5f.jpg"
+            //};
+
+            //// add posts
+            //var posts = new List<PostViewModel>();
+            //posts.Add(post);
+            //posts.Add(post);
+
+            //// buscar projeto
+            //FullProjectViewModel projeto = new FullProjectViewModel() {
+            //    Posts = posts,
+            //    Documentos = documentos,
+            //    Membros = usuarios,
+            //    DataCriacao = DateTime.Now,
+            //    Descricao = "descricao mockada",
+            //    Id = "1",
+            //    Titulo = "titulo mockado",
+            //    IdLaboratory = 1
+            //};
+
+            //return View(projeto);
         }
     }
 }
