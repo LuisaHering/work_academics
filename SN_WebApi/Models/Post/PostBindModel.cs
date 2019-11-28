@@ -17,11 +17,11 @@ namespace SN_WebApi.Models.Post {
             get; set;
         }
 
-        public DateTime DataPublicacao {
+        public DateTime DataDePublicacao {
             get; set;
         }
 
-        public string NomeAutor {
+        public string Autor {
             get; set;
         }
     }

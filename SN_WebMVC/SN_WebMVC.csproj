@@ -142,10 +142,12 @@
     <Compile Include="Models\FullProjectViewModel.cs" />
     <Compile Include="Models\GaleryViewModel.cs" />
     <Compile Include="Models\LaboratoryViewModel.cs" />
+    <Compile Include="Models\MembrosOutputModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProjectViewModel.cs" />
+    <Compile Include="Models\ProjetoOutputModel.cs" />
     <Compile Include="Models\RecoverPassword.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\SN_WebMVCContext.cs" />

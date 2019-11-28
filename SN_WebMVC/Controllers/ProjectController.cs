@@ -84,40 +84,52 @@ namespace SN_WebMVC.Controllers {
         }
 
         public async Task<ActionResult> Home(int id) {
+            var projeto = new ProjetoOutputModel();
 
-            // buscar usuarios do projeto
-            var usuarios = new List<string>();
-            usuarios.Add("carlos@gmail.com");
-            usuarios.Add("gabriel@gmail.com");
-            usuarios.Add("rafael@gmail.com");
-            usuarios.Add("lu@lu.com.br");
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(base_url);
+                var response = await client.GetAsync($"api/project/busca?id={id}");
+
+                if(response.IsSuccessStatusCode) {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    projeto = JsonConvert.DeserializeObject<ProjetoOutputModel>(responseContent);
+                    return View(projeto);
+                }
+            }
+
+            //// buscar usuarios do projeto
+            //var usuarios = new List<string>();
+            //usuarios.Add("carlos@gmail.com");
+            //usuarios.Add("gabriel@gmail.com");
+            //usuarios.Add("rafael@gmail.com");
+            //usuarios.Add("lu@lu.com.br");
 
 
-            var post = new PostViewModel() {
-                Id = "1",
-                Autor = "gabriel",
-                DataDePublicacao = DateTime.Now,
-                Mensagem = "conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo ",
-                UrlDocumento = "https://i.pinimg.com/originals/64/ed/5c/64ed5cee404ecd2f620426ba3788ab5f.jpg"
-            };
+            //var post = new PostViewModel() {
+            //    Id = "1",
+            //    Autor = "gabriel",
+            //    DataDePublicacao = DateTime.Now,
+            //    Mensagem = "conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo conteudo ",
+            //    UrlDocumento = "https://i.pinimg.com/originals/64/ed/5c/64ed5cee404ecd2f620426ba3788ab5f.jpg"
+            //};
 
-            // buscar documentos do projeto
-            var posts = new List<PostViewModel>();
-            posts.Add(post);
-            posts.Add(post);
+            //// buscar documentos do projeto
+            //var posts = new List<PostViewModel>();
+            //posts.Add(post);
+            //posts.Add(post);
 
-            // buscar projeto
-            FullProjectViewModel projeto = new FullProjectViewModel() {
-                Posts = posts,
-                Membros = usuarios,
-                DataCriacao = DateTime.Now,
-                Descricao = "descricao mockada",
-                Id = "1",
-                Titulo = "titulo mockado",
-                IdLaboratory = 1
-            };
+            //// buscar projeto
+            //FullProjectViewModel projeto = new FullProjectViewModel() {
+            //    Posts = posts,
+            //    Membros = usuarios,
+            //    DataCriacao = DateTime.Now,
+            //    Descricao = "descricao mockada",
+            //    Id = "1",
+            //    Titulo = "titulo mockado",
+            //    IdLaboratory = 1
+            //};
 
-            return View(projeto);
+            return View("Error");
         }
     }
 }

@@ -73,9 +73,9 @@ namespace SN_WebApi.Models.Projeto {
                     PostBindModel post = new PostBindModel() {
                         Id = p.Id.ToString(),
                         Mensagem = p.Mensagem,
-                        NomeAutor = p.Autor.Nome,
+                        Autor = p.Autor.Nome,
                         UrlDocumento = p.UrlDocumento,
-                        DataPublicacao = p.DataPublicacao
+                        DataDePublicacao = p.DataPublicacao
                     };
                     posts.Add(post);
                 }
