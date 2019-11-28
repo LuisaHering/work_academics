@@ -5,12 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace SN_WebApi.ServicosExternos
-{
-    public class ServidorDeArquivos
-    {
-        public void UploadDeArquivo(Stream reader, string nomeDoArquivo)
-        {
+namespace SN_WebApi.ServicosExternos {
+    public class ServidorDeArquivos {
+        public void UploadDeArquivo(Stream reader, string nomeDoArquivo) {
             string connectionString = @"DefaultEndpointsProtocol=https;AccountName=gabrielcouto26;AccountKey=GVZpPG9E+BGF1jV8PkMTMOR9gOvEb0wbTQPVlA7Ea+PjbhuZf153uQwv/m5zqgY3kKwf38o9WdiljROtl/+fIg==;EndpointSuffix=core.windows.net";
 
             CloudStorageAccount cloudStorageAccount = null;
@@ -28,8 +25,7 @@ namespace SN_WebApi.ServicosExternos
             cloudBlockBlob.UploadFromStream(reader);
         }
 
-        public void UploadDeArquivo(FileStream reader, string nomeDoArquivo)
-        {
+        public void UploadDeArquivo(FileStream reader, string nomeDoArquivo) {
             string connectionString = @"DefaultEndpointsProtocol=https;AccountName=gabrielcouto26;AccountKey=GVZpPG9E+BGF1jV8PkMTMOR9gOvEb0wbTQPVlA7Ea+PjbhuZf153uQwv/m5zqgY3kKwf38o9WdiljROtl/+fIg==;EndpointSuffix=core.windows.net";
 
             CloudStorageAccount cloudStorageAccount = null;
