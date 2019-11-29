@@ -127,8 +127,7 @@ namespace SN_WebMVC.Controllers {
                     var response = await cliente.PostAsync("api/Post", requestContent);
 
                     if(response.IsSuccessStatusCode) {
-                        RedirectToAction($"Home/{id_projeto}", "Home");
-
+                        await Home(id_projeto);
                     }
                 }
             }
