@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using SN_WebMVC.Models;
+using SN_WebMVC.UploadExterno;
 
 namespace SN_WebMVC.Controllers {
     public class ProjectController : Controller {
@@ -105,23 +106,31 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> Publicar(FormCollection collection) {
+        public async Task<ActionResult> Home(FormCollection collection, HttpPostedFileBase Arquivo) {
 
             var id_projeto = Convert.ToInt32(TempData["IdProjeto"]);
             var id_laboratorio = Convert.ToInt32(TempData["IdLaboratorio"]);
             var email_usuario = (Session["user_name"]).ToString();
 
+
+            string code_pdf = null;
+            if(Arquivo != null) {
+                code_pdf = Guid.NewGuid().ToString();
+                new ServidorDeArquivo().UploadDeArquivo(Arquivo.InputStream, $"{code_pdf}.pdf");
+            }
+
+
+
             var data = new Dictionary<string, string> {
                 { "Mensagem", collection["Mensagem"] },
                 { "EmailUsuario", email_usuario},
-                { "UrlDocumento", collection["Arquivo"] },
+                { "UrlDocumento", code_pdf },
                 { "IdProjeto", id_projeto.ToString() },
                 { "IdLaboratorio", id_laboratorio.ToString() }
             };
 
             using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
-                //cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
                     var response = await cliente.PostAsync("api/post", requestContent);

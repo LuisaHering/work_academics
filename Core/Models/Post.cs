@@ -40,7 +40,7 @@ namespace Core.Models {
             var projects = new List<Project>();
         }
 
-        public Post CriarPost(string mensagem, User autor, string urlDocumento, Laboratory laboratory) {
+        public Post CriarPost(string mensagem, User autor, string idDocumento, Laboratory laboratory) {
 
             var post = new Post() {
                 Id = Guid.NewGuid(),
@@ -48,9 +48,13 @@ namespace Core.Models {
                 Laboratory = laboratory,
                 DataPublicacao = DateTime.Now,
                 Mensagem = mensagem,
-                UrlDocumento = urlDocumento
+                UrlDocumento = SetUrlDocumento(idDocumento)
             };
             return post;
+        }
+
+        private string SetUrlDocumento(string IdDocumento) {
+            return @"https://gabrielcouto26.blob.core.windows.net/api-amigo-fotos/" + IdDocumento + ".pdf";
         }
     }
 }
