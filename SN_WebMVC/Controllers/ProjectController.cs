@@ -112,9 +112,9 @@ namespace SN_WebMVC.Controllers {
             var email_usuario = (Session["user_name"]).ToString();
 
             var data = new Dictionary<string, string> {
-                { "Mensagem", "MENSAGEM FIXADA NO CONTROLER DO MVC" },
+                { "Mensagem", collection["Mensagem"] },
                 { "EmailUsuario", email_usuario},
-                { "UrlDocumento", "url-do-documento-fixada-no-controler-mvc.com.br" },
+                { "UrlDocumento", collection["Arquivo"] },
                 { "IdProjeto", id_projeto.ToString() },
                 { "IdLaboratorio", id_laboratorio.ToString() }
             };
@@ -124,7 +124,7 @@ namespace SN_WebMVC.Controllers {
                 //cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
-                    var response = await cliente.PostAsync("api/Post", requestContent);
+                    var response = await cliente.PostAsync("api/post", requestContent);
 
                     if(response.IsSuccessStatusCode) {
                         await Home(id_projeto);
