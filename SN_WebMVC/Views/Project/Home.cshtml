@@ -38,9 +38,12 @@
                         <div class="wa-publi-conteudo">
                             <p>@post.Mensagem</p>
                         </div>
-                        <div class="wa-publi-documento">
-                            <a href="@post.UrlDocumento">C de Clica aqui Carlos Cabaço</a>
-                        </div>
+                        @if(post.UrlDocumento != null)
+                        {
+                            <div class="wa-publi-documento">
+                                <a href="@post.UrlDocumento">C de Clica aqui Carlos Cabaço</a>
+                            </div>
+                        }
                     </div>
                 }
             </div>
