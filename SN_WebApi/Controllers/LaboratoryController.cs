@@ -31,6 +31,7 @@ namespace SN_WebApi.Controllers {
 
         private IUsers GetUsers = ServiceLocator.GetInstanceOf<UsersImpl>();
         private ILaboratory GetLaboratory = ServiceLocator.GetInstanceOf<LaboratoryImpl>();
+        private IProject GetProject = ServiceLocator.GetInstanceOf<ProjectImpl>();
 
         [HttpPost]
         [Route("create")]

@@ -13,5 +13,7 @@ namespace Core.Services {
         Project BuscaProjetoPor(int id);
 
         Task<bool> Create(Project project);
+
+        Task<bool> Editar(Project project);
     }
 }

@@ -23,6 +23,7 @@ namespace Core.Models {
             get; set;
         }
 
+        // tabela muitos para muitos
         public virtual List<Project> Projects {
             get; set;
         }
@@ -36,18 +37,15 @@ namespace Core.Models {
         }
 
         public Post() {
-            var posts = new List<Project>();
+            var projects = new List<Project>();
         }
 
-        public Post CriarPost(string mensagem, User autor, string urlDocumento, Project projeto, Laboratory laboratory, DateTime datapublicacao) {
-            var projetos = new List<Project>();
-            projetos.Add(projeto);
+        public Post CriarPost(string mensagem, User autor, string urlDocumento, Laboratory laboratory) {
 
             var post = new Post() {
                 Id = Guid.NewGuid(),
                 Autor = autor,
                 Laboratory = laboratory,
-                Projects = projetos,
                 DataPublicacao = DateTime.Now,
                 Mensagem = mensagem,
                 UrlDocumento = urlDocumento

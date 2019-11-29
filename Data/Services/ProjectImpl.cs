@@ -12,8 +12,6 @@ namespace Data.Services {
 
     public class ProjectImpl : IProject {
         public Project BuscaProjetoPor(int idDaBusca) {
-            //var projeto = (Project)Database.GetInstance.Project.ToList().Where(x => x.Id == id);
-
             var projetos = Database.GetInstance.Project.ToList();
 
             foreach(Project p in projetos) {
@@ -48,6 +46,18 @@ namespace Data.Services {
                 Console.WriteLine(e.Message);
             }
             return false;
+        }
+
+        public async Task<bool> Editar(Project project) {
+            try {
+                Database.GetInstance.Entry<Project>(project).State = EntityState.Modified;
+                await Database.GetInstance.SaveChangesAsync();
+                return true;
+            } catch(Exception e) {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                return false;
+            }
         }
     }
 }

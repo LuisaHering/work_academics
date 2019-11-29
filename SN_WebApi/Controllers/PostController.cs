@@ -20,6 +20,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using SN_WebApi.Models;
 using SN_WebApi.Models.Follow;
+using SN_WebApi.Models.Post;
 using SN_WebApi.Models.Usuario;
 using SN_WebApi.Providers;
 using SN_WebApi.Results;
@@ -33,7 +34,9 @@ namespace SN_WebApi.Controllers {
 
         private IUsers UsersService = ServiceLocator.GetInstanceOf<UsersImpl>();
         private IConection ConectionService = ServiceLocator.GetInstanceOf<ConexaoImpl>();
-        private IPost PostService = ServiceLocator.GetInstanceOf<PostImpl>();
+        private IPost GetPost = ServiceLocator.GetInstanceOf<PostImpl>();
+        private ILaboratory GetLaboratory = ServiceLocator.GetInstanceOf<LaboratoryImpl>();
+        private IProject GetProject = ServiceLocator.GetInstanceOf<ProjectImpl>();
 
         [HttpGet]
         public async Task<IHttpActionResult> Index(DataToFollowing inputModel) {
@@ -42,9 +45,24 @@ namespace SN_WebApi.Controllers {
 
 
         [HttpPost]
-        public async Task<IHttpActionResult> Create(DataToFollowing inputModel) {
-            return Ok();
-        }
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> Create(InputPostBindModel inputModel) {
+            var usuario = await UsersService.FindById(inputModel.IdAutor);
+            var laboratorio = await GetLaboratory.FindByIdAsync(inputModel.IdLaboratorio);
+            var projeto = GetProject.BuscaProjetoPor(inputModel.IdProjeto);
 
+            var novo_post = new Post().CriarPost(inputModel.Mensagem, usuario, inputModel.UrlDocumento, laboratorio);
+            projeto.Posts.Add(novo_post);
+
+            var post_salvo = await GetPost.Postar(novo_post);
+
+            var editou = await GetProject.Editar(projeto);
+
+            if(post_salvo && editou) {
+                return Ok();
+            }
+
+            return BadRequest("Erro ao editar ou salvar o projeto");
+        }
     }
 }
