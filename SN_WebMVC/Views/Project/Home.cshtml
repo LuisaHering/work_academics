@@ -18,9 +18,7 @@
                         </h4>
                     </div>
                     <div style="display:flex;flex-direction:row;justify-content:flex-start;margin:50px 0 0 0;">
-                        @*<input type="text" name="texto" placeholder="Comentários" />*@
-                        @Html.EditorFor(model => model.Post, new { htmlAttributes = new { @class = "form-control" } })
-
+                        <input type="text" name="texto" placeholder="Comentários" />
                         <form action="/Project/Publicar" method="post" style="margin: 5px 0;">
                             <button class="btn btn-default" style="width:100%;">Publicar</button>
                         </form>
@@ -57,11 +55,11 @@
             </div>
             <div style="display:flex;flex-direction:column;justify-content:flex-start;">
                 <h3>Documentos</h3>
-                <div style="padding:0 10px;">
-                    @*@foreach(var documento in Model.Documentos) {
-                            <p>@documento</p>
-                        }*@
-                </div>
+                @*<div style="padding:0 10px;">
+                    @foreach(var documento in Model.Documentos) {
+                        <p>@documento</p>
+                    }
+                </div>*@
             </div>
         </div>
     </div>
