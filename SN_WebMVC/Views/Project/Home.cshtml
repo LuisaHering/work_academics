@@ -22,6 +22,7 @@
                         <form action="/Project/Home" method="post" enctype="multipart/form-data" style="margin: 5px 0;">
                             <input type="text" name="Mensagem" placeholder="Comentários" />
                             <button type="submit" class="btn btn-default">Publicar</button>
+                            <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
                             <input type="file" accept=".pdf" name="Arquivo" />
                         </form>
                     </div>
@@ -41,7 +42,7 @@
                         @if(post.UrlDocumento != null)
                         {
                             <div class="wa-publi-documento">
-                                <a href="@post.UrlDocumento">C de Clica aqui Carlos Cabaço</a>
+                                <a href="@post.UrlDocumento" target="_blank">C de Clica aqui Carlos Cabaço</a>
                             </div>
                         }
                     </div>
