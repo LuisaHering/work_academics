@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Projeto";
-    var azure = "https://gabrielcouto26.blob.core.windows.net/api-amigo-fotos/";
+    var i = 1;
 }
 <div class="wa-container">
     <h2 style="padding: 0 20px;">@Html.DisplayFor(model => model.Titulo)</h2>
@@ -61,11 +61,14 @@
             </div>
             <div style="display:flex;flex-direction:column;justify-content:flex-start;">
                 <h3>Documentos</h3>
-                @*<div style="padding:0 10px;">
-                    @foreach(var documento in Model.Documentos) {
-                        <p>@documento</p>
+                <div style="padding:0 10px;">
+                    @foreach(var documento in ViewBag.Documentos) {
+                        string documentoX = $"Documento {i}";
+                        <a href="@documento.Url">@documentoX</a>
+                        i++;
+
                     }
-                </div>*@
+                </div>
             </div>
         </div>
     </div>
