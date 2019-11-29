@@ -47,7 +47,7 @@ namespace SN_WebApi.Controllers {
         [HttpPost]
         [AllowAnonymous]
         public async Task<IHttpActionResult> Create(InputPostBindModel inputModel) {
-            var usuario = await UsersService.FindById(inputModel.IdAutor);
+            var usuario =  await UsersService.FindById(inputModel.IdAutor);
             var laboratorio = await GetLaboratory.FindByIdAsync(inputModel.IdLaboratorio);
             var projeto = GetProject.BuscaProjetoPor(inputModel.IdProjeto);
 
