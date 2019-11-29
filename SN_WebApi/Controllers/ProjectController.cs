@@ -18,6 +18,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using SN_WebApi.Models;
+using SN_WebApi.Models.Docs;
 using SN_WebApi.Models.Projeto;
 using SN_WebApi.Providers;
 using SN_WebApi.Results;
@@ -70,5 +71,13 @@ namespace SN_WebApi.Controllers {
             var atualizou = await GetLaboratory.Update(laboratory);
             return Ok();
         }
+
+        [Route("docs")]
+        [HttpGet]
+        public async Task<IHttpActionResult> DocumentosDoLaboratorio(int idlaboratorio) {
+            Project projeto = GetProject.BuscaProjetoPor(idlaboratorio);
+            return Ok(new DocumentoOutputModel().Converter(projeto));
+        }
+
     }
 }

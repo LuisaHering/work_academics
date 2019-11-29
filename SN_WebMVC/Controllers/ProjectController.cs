@@ -8,12 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using SN_WebMVC.Models;
+using SN_WebMVC.Service.Projeto;
 using SN_WebMVC.UploadExterno;
 
 namespace SN_WebMVC.Controllers {
     public class ProjectController : Controller {
 
-        private static string base_url = "http://localhost:56435";
+        private static string base_url = null;
+        ProjetoService GetProjetoService = null;
+
+        public ProjectController() {
+            base_url = "http://localhost:56435";
+            GetProjetoService = new ProjetoService();
+        }
 
         public async Task<ActionResult> Index() {
 
@@ -97,8 +104,14 @@ namespace SN_WebMVC.Controllers {
                     var responseContent = await response.Content.ReadAsStringAsync();
 
                     projeto = JsonConvert.DeserializeObject<ProjetoOutputModel>(responseContent);
+                    var documentos = GetProjetoService.ListaDocumentos(projeto);
+
                     TempData["IdProjeto"] = projeto.Id;
                     TempData["IdLaboratorio"] = projeto.laboratory.Id;
+
+                    // GABRIEL EU TO COLOCANDO OS DOCS AQUI
+                    ViewBag.Documentos = documentos;
+
                     return View(projeto);
                 }
             }

@@ -138,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DocumentosViewModel.cs" />
     <Compile Include="Models\FullLaboratory.cs" />
     <Compile Include="Models\FullProjectViewModel.cs" />
     <Compile Include="Models\GaleryViewModel.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\SN_WebMVCContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Projeto\ProjetoService.cs" />
     <Compile Include="UploadExterno\ServidorDeArquivo.cs" />
   </ItemGroup>
   <ItemGroup>
