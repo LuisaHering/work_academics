@@ -80,6 +80,7 @@ namespace SN_WebApi.Models.Projeto {
                     posts.Add(post);
                 }
 
+                posts.Reverse();
                 projeto.Posts = posts;
                 projeto.Membros = membros;
                 projeto.laboratory = laboratory;
