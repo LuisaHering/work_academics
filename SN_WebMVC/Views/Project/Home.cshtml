@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Projeto";
+    var azure = "https://bankcarlos.blob.core.windows.net/api-amigo-fotos/";
 }
 <div class="wa-container">
     <h2 style="padding: 0 20px;">@Html.DisplayFor(model => model.Titulo)</h2>
@@ -38,7 +39,8 @@
                             <p>@post.Mensagem</p>
                         </div>
                         <div class="wa-publi-documento">
-                            <p>@post.UrlDocumento</p>
+                            <a>@post.UrlDocumento</a>
+                            <img src="@azure@post.UrlDocumento" alt="Documento" />
                         </div>
                     </div>
                 }
@@ -48,8 +50,10 @@
             <div style="display:flex;flex-direction:column;justify-content:flex-start;">
                 <h3>Membros</h3>
                 <div style="padding:0 10px;">
-                    @foreach(var membro in Model.Membros) {
+                    @foreach (var membro in Model.Membros)
+                    {
                         <p>@membro.Nome</p>
+                        <p>@membro.Email</p>
                     }
                 </div>
             </div>
