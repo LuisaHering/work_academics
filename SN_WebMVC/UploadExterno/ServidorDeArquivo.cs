@@ -8,7 +8,7 @@ using System.Web;
 namespace SN_WebMVC.UploadExterno {
     public class ServidorDeArquivo {
 
-        private static string connection = @"DefaultEndpointsProtocol=https;AccountName=bankcarlos;AccountKey=ZLhWijJnGIexBsget05vIK8XhgT/zI5xJMSnonsI/+qqv9lojHBi9V5O7OJUEB0kNe+otzxYMBnBPywHjOpnFQ==;EndpointSuffix=core.windows.net";
+        private static string connection = @"DefaultEndpointsProtocol=https;AccountName=gabrielcouto26;AccountKey=GVZpPG9E+BGF1jV8PkMTMOR9gOvEb0wbTQPVlA7Ea+PjbhuZf153uQwv/m5zqgY3kKwf38o9WdiljROtl/+fIg==;EndpointSuffix=core.windows.net";
 
         public void UploadDeArquivo(FileStream reader, string nomeDoArquivo) {
 
