@@ -10,7 +10,7 @@ namespace SN_WebApi.Models.Post {
             get; set;
         }
 
-        public string IdAutor {
+        public string EmailUsuario {
             get; set;
         }
 
@@ -18,11 +18,11 @@ namespace SN_WebApi.Models.Post {
             get; set;
         }
 
-        public int IdProjeto {
+        public string IdProjeto {
             get; set;
         }
 
-        public int IdLaboratorio {
+        public string IdLaboratorio {
             get; set;
         }
     }

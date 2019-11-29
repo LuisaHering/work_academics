@@ -38,5 +38,9 @@ namespace SN_WebMVC.Models {
         public List<PostViewModel> Posts {
             get; set;
         }
+
+        public string Post {
+            get; set;
+        }
     }
 }

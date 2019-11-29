@@ -206,6 +206,11 @@
     <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Galery\Index.cshtml" />
     <Content Include="Views\Project\Home.cshtml" />
+    <Content Include="Views\PostViewModels\Create.cshtml" />
+    <Content Include="Views\PostViewModels\Delete.cshtml" />
+    <Content Include="Views\PostViewModels\Details.cshtml" />
+    <Content Include="Views\PostViewModels\Edit.cshtml" />
+    <Content Include="Views\PostViewModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
