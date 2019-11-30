@@ -223,6 +223,7 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Docs\DocumentoOutputModel.cs" />
+    <Compile Include="Models\Follow\ConexoesBindingModel.cs" />
     <Compile Include="Models\Follow\DataToFollowing.cs" />
     <Compile Include="Models\Laboratorio\EntrarNoLaboratorio.cs" />
     <Compile Include="Models\Laboratorio\FindLaboratories.cs" />

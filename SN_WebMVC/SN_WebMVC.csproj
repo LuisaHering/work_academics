@@ -213,6 +213,7 @@
     <Content Include="Views\PostViewModels\Details.cshtml" />
     <Content Include="Views\PostViewModels\Edit.cshtml" />
     <Content Include="Views\PostViewModels\Index.cshtml" />
+    <Content Include="Views\Search\Conexoes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

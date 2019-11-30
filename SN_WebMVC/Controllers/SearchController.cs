@@ -84,18 +84,58 @@ namespace SN_WebMVC.Controllers {
 
                 using (var requestContent = new FormUrlEncodedContent(data))
                 {
-                    var response = await client.PostAsync("api/Follow", requestContent);
+                    var response = await client.PostAsync("api/following/Follow", requestContent);
 
                     if (response.IsSuccessStatusCode)
                     {
                         Session.Remove("profile_visita");
                         //TODO: Mudar home para conexões
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Conexoes");
                     }
                 }
             }
 
             return View("Error");
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Conexoes()
+        {
+            var access_token = Session["access_token"];
+            var access_email = Session["user_name"];
+
+            List<ProfileViewModel> conexoes = new List<ProfileViewModel>();
+
+            var userProfile = new ProfileViewModel();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(base_url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                var response = await client.GetAsync($"api/user/FindUser?email={access_email}");
+
+                var respondeContent = await response.Content.ReadAsStringAsync();
+                userProfile = JsonConvert.DeserializeObject<ProfileViewModel>(respondeContent);
+            }
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(base_url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                var response = await client.GetAsync($"api/following/Conexoes?idUsuario={userProfile.Id.ToString()}");
+                // converter list<connectionsReturn> em user
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    conexoes = JsonConvert.DeserializeObject<List<ProfileViewModel>>(responseContent);
+                    return View(conexoes);
+                }
+            }
+
+            return View("Error");
+        }
+
     }
 }

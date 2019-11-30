@@ -10,6 +10,9 @@ using Database = Data.Context.Database;
 
 namespace Data.Services {
     public class ConexaoImpl : IConection {
+
+        private UsersImpl UserService = new UsersImpl();
+
         public async Task<bool> Conectar(Conection conexao) {
             try {
                 Database.GetInstance.Conection.Add(conexao);
@@ -31,5 +34,14 @@ namespace Data.Services {
             }
             return false;
         }
+
+        public async Task<List<Conection>> ListaConexoes(string idUsuario)
+        {
+            List<Conection> seguidores = await Database.GetInstance.Conection.Where(x => x.Seguidor.Id.ToString().Equals(idUsuario)).ToListAsync();
+
+            return seguidores;
+        }
+
+
     }
 }

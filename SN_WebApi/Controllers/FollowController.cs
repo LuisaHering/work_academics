@@ -35,6 +35,7 @@ namespace SN_WebApi.Controllers {
         private IConection ConectionService = ServiceLocator.GetInstanceOf<ConexaoImpl>();
 
         [AllowAnonymous]
+        [Route("Follow")]
         [HttpPost]
         public async Task<IHttpActionResult> Follow(DataToFollowing inputModel) {
 
@@ -58,13 +59,21 @@ namespace SN_WebApi.Controllers {
             return BadRequest("Erro ao processar solicitaçao");
         }
 
-        [AllowAnonymous]
+        [Authorize]
+        [Route("Conexoes")]
         [HttpGet]
-        public async Task<IHttpActionResult> Conexoes(ConexoesBindingModel dadosUsuario)
+        public async Task<IHttpActionResult> Conexoes(string idUsuario)
         {
+           if(idUsuario != null)
+            {
+                List<Conection> connectionSeguidores = await ConectionService.ListaConexoes(idUsuario);
 
-            User usuario = await UsersService.FindById(dadosUsuario.IdUsuario);
-           
+                var aux = new ConnectionReturn();
+
+                List<ConnectionReturn> usuariosSeguidores = aux.convert(connectionSeguidores);
+
+                return Ok(usuariosSeguidores);
+            }
 
             return BadRequest("Erro ao processar solicitaçao");
         }
