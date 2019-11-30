@@ -32,6 +32,9 @@ namespace SN_WebMVC.Controllers {
                     var responseContent = await response.Content.ReadAsStringAsync();
 
                     profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
+
+                    var resposta = await cliente.GetAsync($"api/Post?iduser={profileView.Id.ToString()}");
+                    //criar classe de bind
                 }
             }
 
@@ -104,7 +107,7 @@ namespace SN_WebMVC.Controllers {
             string code_img = null;
 
             if(foto != null) {
-                code_img =  Guid.NewGuid().ToString();
+                code_img = Guid.NewGuid().ToString();
                 new ServidorDeArquivo().UploadDeArquivo(foto.InputStream, $"{code_img}.png");
             }
 
