@@ -7,7 +7,6 @@
 
     <div style="display:flex;flex-direction:row; margin: 0 20px;">
         <div class="wa-feed">
-            <h2>Feed</h2>
             <div class="wa-list wa-border-top">
                 @*--inicio foreach--*@
 
@@ -25,11 +24,12 @@
                             <p>
                                 <h3>@post.Mensagem</h3>
                             </p>
+                            <p>
+                                <h4>@post.DataDePublicacao</h4>
+                            </p>
                         </div>
                         <div class="wa-post-botoes">
-                            <button class="btn btn-default">Botao1</button>
-                            <button class="btn btn-default">Botao2</button>
-                            <button class="btn btn-default">Botao3</button>
+                            <button class="btn btn-default">Laboratório</button>
                         </div>
                     </div>
                 }
