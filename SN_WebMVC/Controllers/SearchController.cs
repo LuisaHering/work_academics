@@ -8,11 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SN_WebMVC.App_Start;
 
 namespace SN_WebMVC.Controllers {
     public class SearchController : Controller {
-
-        private static string base_url = "http://localhost:56435";
 
         [HttpPost]
         public async Task<ActionResult> Search(string pesquisar) {
@@ -21,7 +20,7 @@ namespace SN_WebMVC.Controllers {
             var usuario_logado = (Session["user_name"]).ToString();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/user/search?name={pesquisar}");
 
                 if(response.IsSuccessStatusCode) {
@@ -42,7 +41,7 @@ namespace SN_WebMVC.Controllers {
             ProfileViewModel profile = new ProfileViewModel();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/user/FindUser?user_id={id}");
 
                 if(response.IsSuccessStatusCode) {
@@ -50,7 +49,6 @@ namespace SN_WebMVC.Controllers {
                     profile = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
                 }
             }
-
             return View(profile);
         }
 
@@ -63,9 +61,8 @@ namespace SN_WebMVC.Controllers {
 
             var userProfile = new ProfileViewModel();
 
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(base_url);
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/user/FindUser?email={email_logado}");
 
                 var respondeContent = await response.Content.ReadAsStringAsync();
@@ -78,23 +75,19 @@ namespace SN_WebMVC.Controllers {
                 {"IdSeguido", id_seguido}
             };
 
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(base_url);
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(BaseUrl.URL);
 
-                using (var requestContent = new FormUrlEncodedContent(data))
-                {
+                using(var requestContent = new FormUrlEncodedContent(data)) {
                     var response = await client.PostAsync("api/Follow", requestContent);
 
-                    if (response.IsSuccessStatusCode)
-                    {
+                    if(response.IsSuccessStatusCode) {
                         Session.Remove("profile_visita");
                         //TODO: Mudar home para conexões
                         return RedirectToAction("Index", "Home");
                     }
                 }
             }
-
             return View("Error");
         }
     }

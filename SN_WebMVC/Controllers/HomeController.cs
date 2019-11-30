@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SN_WebMVC.App_Start;
 using SN_WebMVC.Models;
 using SN_WebMVC.UploadExterno;
 using System;
@@ -13,12 +14,8 @@ using System.Web.Mvc;
 namespace SN_WebMVC.Controllers {
     public class HomeController : Controller {
 
-        public string base_url {
-            get; set;
-        }
-
         public HomeController() {
-            this.base_url = @"http://localhost:56435";
+            
         }
 
         public async Task<ActionResult> Index() {
@@ -26,7 +23,7 @@ namespace SN_WebMVC.Controllers {
             ProfileViewModel profileView = new ProfileViewModel();
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 var response = await cliente.GetAsync($"/api/user/findUser?email={access_email}");
 
@@ -44,7 +41,7 @@ namespace SN_WebMVC.Controllers {
             List<PostViewModel> posts = new List<PostViewModel>();
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 var resposta = await cliente.GetAsync($"api/Post?iduser={profileid}");
                 if(resposta.IsSuccessStatusCode) {
@@ -62,7 +59,7 @@ namespace SN_WebMVC.Controllers {
             ProfileViewModel profileView = new ProfileViewModel();
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
@@ -89,7 +86,7 @@ namespace SN_WebMVC.Controllers {
             ProfileViewModel profileView = new ProfileViewModel();
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
