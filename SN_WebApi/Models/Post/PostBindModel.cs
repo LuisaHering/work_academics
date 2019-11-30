@@ -25,6 +25,10 @@ namespace SN_WebApi.Models.Post {
             get; set;
         }
 
+        public string NomeLaboratorio {
+            get; set;
+        }
+
         public List<PostBindModel> Convert(List<Core.Models.Post> posts) {
             List<PostBindModel> convertido = new List<PostBindModel>();
 
@@ -34,7 +38,8 @@ namespace SN_WebApi.Models.Post {
                     Autor = post.Autor.Nome,
                     DataDePublicacao = post.DataPublicacao,
                     Mensagem = post.Mensagem,
-                    UrlDocumento = post.UrlDocumento
+                    UrlDocumento = post.UrlDocumento,
+                    NomeLaboratorio = post.Laboratory.Descricao
                 };
                 convertido.Add(model);
             }

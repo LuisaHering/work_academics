@@ -20,6 +20,7 @@ namespace SN_WebMVC.Controllers {
             var access_token = Session["access_token"];
 
             ProfileViewModel profileView = new ProfileViewModel();
+            List<PostViewModel> posts = new List<PostViewModel>();
 
             using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
@@ -30,11 +31,15 @@ namespace SN_WebMVC.Controllers {
 
                 if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
-
                     profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
 
-                    var resposta = await cliente.GetAsync($"api/Post?iduser={profileView.Id.ToString()}");
-                    //criar classe de bind
+                    var resposta = await cliente.GetAsync($"api/Post?iduser={profileView.Id}");
+                    if(resposta.IsSuccessStatusCode) {
+                        var conteudoDaRespost = await resposta.Content.ReadAsStringAsync();
+                        posts = JsonConvert.DeserializeObject<List<PostViewModel>>(conteudoDaRespost);
+                        ViewBag.Posts = posts;
+                    }
+
                 }
             }
 

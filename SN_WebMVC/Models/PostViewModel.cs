@@ -21,5 +21,8 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        public string NomeLaboratorio {
+            get; set;
+        }
     }
 }
