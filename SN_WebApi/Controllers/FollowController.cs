@@ -32,7 +32,6 @@ namespace SN_WebApi.Controllers {
     public class FollowController : ApiController {
 
         private IUsers UsersService = ServiceLocator.GetInstanceOf<UsersImpl>();
-
         private IConection ConectionService = ServiceLocator.GetInstanceOf<ConexaoImpl>();
 
         [AllowAnonymous]
@@ -58,5 +57,18 @@ namespace SN_WebApi.Controllers {
 
             return BadRequest("Erro ao processar solicitaçao");
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IHttpActionResult> Conexoes(ConexoesBindingModel dadosUsuario)
+        {
+
+            User usuario = await UsersService.FindById(dadosUsuario.IdUsuario);
+           
+
+            return BadRequest("Erro ao processar solicitaçao");
+        }
+
+
     }
 }
