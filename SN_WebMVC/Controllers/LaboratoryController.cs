@@ -103,6 +103,8 @@ namespace SN_WebMVC.Controllers {
         {
             var access_token = (Session["access_token"]);
 
+            TempData["IdLaboratorio"] = id;
+
             var laboratory = new FullLaboratory();
 
             using (var client = new HttpClient())
@@ -122,17 +124,21 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> EntrarNoLaboratorio(int labId)
+        public async Task<ActionResult> EntrarNoLaboratorio()
         {
+            var laboratory = new FullLaboratory();
+
             var access_token = (Session["access_token"]);
 
             var EmailUsuario = (Session["user_name"]).ToString();
-
+            var labId = TempData["IdLaboratorio"];
             var data = new Dictionary<string, string>()
             {
                 {"IdLaboratorio", labId.ToString() },
                 {"IdUsuario", EmailUsuario },
             };
+
+            laboratory.Id = (int)labId;
 
 
             using (var client = new HttpClient())
@@ -145,7 +151,7 @@ namespace SN_WebMVC.Controllers {
                     var response = await client.PostAsync("api/Laboratory/Entrar", requestContent);
                     if (response.IsSuccessStatusCode)
                     {
-                        return View("Home");
+                        return View("Home", laboratory.Id);
                     }
                 }
             }
