@@ -44,14 +44,13 @@ namespace SN_WebApi.Controllers {
             return Ok(publicacoes);
         }
 
-
         [HttpPost]
         [AllowAnonymous]
         public async Task<IHttpActionResult> Create(InputPostBindModel inputModel) {
 
             var usuario = await UsersService.FindByEmail(inputModel.EmailUsuario);
             var laboratorio = await GetLaboratory.FindByIdAsync(Convert.ToInt32(inputModel.IdLaboratorio));
-            var projeto = (Project) await GetProject.BuscaProjetoPor(Convert.ToInt32(inputModel.IdProjeto));
+            var projeto = (Project)await GetProject.BuscaProjetoPor(Convert.ToInt32(inputModel.IdProjeto));
 
             var novo_post = new Post().CriarPost(inputModel.Mensagem, usuario, inputModel.UrlDocumento, laboratorio);
             projeto.Posts.Add(novo_post);

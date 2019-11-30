@@ -39,18 +39,20 @@ namespace Data.Services {
         }
 
         public async Task<User> FindByEmail(string email) {
-            List<User> users = await Database.GetInstance.Users.Where(x => x.Email == email).ToListAsync();
-
+            List<User> users = null;
             User localizado = null;
 
-            if(users.Count > 0) {
+            try {
+                users = Database.GetInstance.Users.Where(x => x.Email == email).ToList();
                 foreach(User u in users) {
-                    if(u.Email == email) {
+                    if(u.Email.Equals(email)) {
                         localizado = u;
-                        break;
                     }
                 }
+            } catch(Exception e) {
+                Console.WriteLine(e.Message);
             }
+
             return localizado;
         }
 
