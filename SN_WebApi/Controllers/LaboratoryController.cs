@@ -99,7 +99,7 @@ namespace SN_WebApi.Controllers {
             var laboratorio = (Laboratory)await GetLaboratory.FindByIdAsync(request.IdLaboratorio);
             var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
 
-           
+
             if(!usuario.estaNoLaboratorio(laboratorio, usuario.Id.ToString())) {
                 laboratorio.Adiciona(usuario);
                 var atualizou = await GetLaboratory.Update(laboratorio);

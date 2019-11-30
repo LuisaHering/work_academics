@@ -28,13 +28,10 @@ namespace Core.Models {
             return false;
         }
 
-        public bool estaNoProjeto(Project projeto, string idUsuario)
-        {
+        public bool estaNoProjeto(Project projeto, string idUsuario) {
 
-            foreach (User usuario in projeto.Users)
-            {
-                if (usuario.Id.ToString() == idUsuario)
-                {
+            foreach(User usuario in projeto.Users) {
+                if(usuario.Id.ToString() == idUsuario) {
                     return true;
                 }
             }
@@ -48,6 +45,11 @@ namespace Core.Models {
 
         public string getUrlFoto() {
             return this.UrlFoto;
+        }
+
+        public User() {
+            Laboratories = new HashSet<Laboratory>();
+            Pictures = new HashSet<Picture>();
         }
 
         [Key]
@@ -97,11 +99,6 @@ namespace Core.Models {
 
         public virtual Role Role {
             get; set;
-        }
-
-        public User() {
-            Laboratories = new HashSet<Laboratory>();
-            Pictures = new HashSet<Picture>();
         }
     }
 }

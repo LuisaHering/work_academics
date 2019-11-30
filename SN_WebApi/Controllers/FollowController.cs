@@ -44,12 +44,16 @@ namespace SN_WebApi.Controllers {
             User usuarioSeguido = await UsersService.FindById(inputModel.IdSeguido);
 
             if(usuarioLogado != null && usuarioSeguido != null) {
-                var conexao = new Conection().Conectar(usuarioLogado, usuarioSeguido);
-                var conectou = await ConectionService.Conectar(conexao);
 
-                if(conectou) {
-                    return Ok();
+                if(!usuarioLogado.Id.Equals(usuarioSeguido.Id)) {
+                    var conexao = new Conection().Conectar(usuarioLogado, usuarioSeguido);
+                    var conectou = await ConectionService.Conectar(conexao);
+
+                    if(conectou) {
+                        return Ok();
+                    }
                 }
+                
             }
 
             return BadRequest("Erro ao processar solicitaçao");
