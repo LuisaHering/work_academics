@@ -40,8 +40,9 @@ namespace SN_WebApi.Controllers {
         [HttpGet]
         [AllowAnonymous]
         public async Task<IHttpActionResult> Index(string iduser) {
-            var publicacoes = GetPost.Publicacoes(iduser);
-            return Ok(publicacoes);
+            var publicacoes = await GetPost.Publicacoes(iduser);
+            var retorno = new PostBindModel().Convert(publicacoes);
+            return Ok(retorno);
         }
 
         [HttpPost]
