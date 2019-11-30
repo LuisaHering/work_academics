@@ -126,20 +126,16 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         public async Task<ActionResult> EntrarNoLaboratorio()
         {
-            var laboratory = new FullLaboratory();
-
             var access_token = (Session["access_token"]);
 
             var EmailUsuario = (Session["user_name"]).ToString();
             var labId = TempData["IdLaboratorio"];
+
             var data = new Dictionary<string, string>()
             {
                 {"IdLaboratorio", labId.ToString() },
                 {"IdUsuario", EmailUsuario },
             };
-
-            laboratory.Id = (int)labId;
-
 
             using (var client = new HttpClient())
             {
@@ -151,28 +147,26 @@ namespace SN_WebMVC.Controllers {
                     var response = await client.PostAsync("api/Laboratory/Entrar", requestContent);
                     if (response.IsSuccessStatusCode)
                     {
-                        return View("Home", laboratory.Id);
+                        return RedirectToAction("Index");
                     }
                 }
             }
-
             return View("Error");
 
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<ActionResult> SairDoLaboratorio()
         {
             var access_token = (Session["access_token"]);
             var EmailUsuario = (Session["user_name"]).ToString();
-            var id_laboratorio = Convert.ToInt32(TempData["IdLaboratorio"]);
+            var labId = TempData["IdLaboratorio"];
 
             var data = new Dictionary<string, string>()
             {
-                {"IdLaboratorio", id_laboratorio.ToString() },
+                {"IdLaboratorio", labId.ToString() },
                 {"IdUsuario", EmailUsuario  },
             };
-
 
             using (var client = new HttpClient())
             {
@@ -182,6 +176,7 @@ namespace SN_WebMVC.Controllers {
                 using (var requestContent = new FormUrlEncodedContent(data))
                 {
                     var response = await client.PutAsync("api/Laboratory/Sair", requestContent);
+
                     if (response.IsSuccessStatusCode)
                     {
                         return RedirectToAction("Index");

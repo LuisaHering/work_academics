@@ -118,9 +118,6 @@ namespace SN_WebApi.Controllers {
             var laboratorio = (Laboratory)await GetLaboratory.FindByIdAsync(request.IdLaboratorio);
             var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
 
-            // verificar se o usuario está no laboratorio
-            // se tiver remover
-            // mandar atualizar
             if(usuario.estaNoLaboratorio(laboratorio, usuario.Id.ToString())) {
                 laboratorio.Remove(usuario);
                 var atualizou = await GetLaboratory.Update(laboratorio);

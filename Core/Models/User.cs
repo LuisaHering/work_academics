@@ -20,7 +20,7 @@ namespace Core.Models {
         public bool estaNoLaboratorio(Laboratory laboratory, string idUsuario) {
 
             foreach(User usuario in laboratory.Users) {
-                if(usuario.Id.Equals(idUsuario)) {
+                if(usuario.Id.ToString() == idUsuario) {
                     return true;
                 }
             }
