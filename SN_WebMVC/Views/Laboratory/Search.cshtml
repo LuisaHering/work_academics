@@ -6,53 +6,36 @@
 }
 <div class="wa-container">
 
-    <h2>Buscar Laboratório</h2>
+    <h2>Buscar laboratório</h2>
 
-    @using(Html.BeginForm()) {
-        <div class="form-horizontal">
-            <br />
+    <div style="display:flex;flex-direction:row;padding: 10px 0;justify-content:flex-start;margin-bottom:10px;">
+        <a href="/Laboratory/Create" class="btn btn-default" style="text-decoration:none;margin-right:20px;">Novo laboratório</a>
+        <a href="/Laboratory/Search" class="btn btn-default" style="text-decoration:none;margin-right:20px;">Encontrar laboratório</a>
+    </div>
 
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="text" name="description" />
+    <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
+
+        @foreach (var item in Model)
+        {
+            <div style="display:flex;flex-direction:column;justify-content:space-around;border: 2px solid #ededed;padding:15px;margin:25px 10px;">
+                <div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;margin:50px 25px;">
+                    <p style="margin-bottom:0px !important;">Laboratório:</p>
+                    <h2 style="margin-top:0px !important;">
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </h2>
+
                 </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Buscar" class="btn btn-default" />
-                </div>
-            </div>
-
-            <br />
-        </div>
-    }
-
-    <br />
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach(var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
-                <td>
-                      <form action="/Laboratory/Home/@item.Id" medivod="get">
+                <div class="text-center">
+                    <form action="/Laboratory/Home/@item.Id" medivod="get">
                         <button type="submit" class="btn btn-default">Entrar</button>
                     </form>
-                </td>
-            </tr>
-        }
+                </div>
 
-    </table>
-    <div>
-        <a href="/Laboratory/Index" class="btn btn-link">Retornar</a>
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <a href="/Home/Index">Retornar</a>
     </div>
 </div>
