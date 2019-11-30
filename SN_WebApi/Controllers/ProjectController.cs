@@ -43,8 +43,8 @@ namespace SN_WebApi.Controllers {
 
         [HttpGet]
         [Route("busca")]
-        public IHttpActionResult FindProjectBy(int id) {
-            Project projeto = GetProject.BuscaProjetoPor(id);
+        public async Task<IHttpActionResult> FindProjectBy(int id) {
+            Project projeto = await GetProject.BuscaProjetoPor(id);
 
             if(projeto != null) {
                 return Ok(new ProjectReturnBindingModel().Convert(projeto));
@@ -75,8 +75,47 @@ namespace SN_WebApi.Controllers {
         [Route("docs")]
         [HttpGet]
         public async Task<IHttpActionResult> DocumentosDoLaboratorio(int idlaboratorio) {
-            Project projeto = GetProject.BuscaProjetoPor(idlaboratorio);
+            Project projeto = await GetProject.BuscaProjetoPor(idlaboratorio);
             return Ok(new DocumentoOutputModel().Converter(projeto));
+        }
+
+        [HttpPost]
+        [Route("Entrar")]
+        public async Task<IHttpActionResult> EntrarNoProjetoAsync(EntrarNoProjeto request)
+        {
+
+            var projeto = (Project)await GetProject.BuscaProjetoPor(request.IdProjeto);
+            var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
+
+
+            if (!usuario.estaNoProjeto(projeto, usuario.Id.ToString()))
+            {
+                projeto.Adiciona(usuario);
+                var atualizou = await GetProject.Update(projeto);
+                if (atualizou)
+                    return Ok();
+            }
+
+            return BadRequest("Erro ao processar a solicitacao");
+        }
+
+        [HttpPut]
+        [Route("Sair")]
+        public async Task<IHttpActionResult> SairDoProjetoAsync(EntrarNoProjeto request)
+        {
+
+            var projeto = (Project)await GetProject.BuscaProjetoPor(request.IdProjeto);
+            var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
+
+            if (usuario.estaNoProjeto(projeto, usuario.Id.ToString()))
+            {
+                projeto.Remove(usuario);
+                var atualizou = await GetProject.Update(projeto);
+                if (atualizou)
+                    return Ok();
+            }
+
+            return BadRequest("Erro ao processar a solicitacao");
         }
 
     }

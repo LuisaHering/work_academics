@@ -10,10 +10,13 @@ namespace Core.Services {
 
         Task<List<Project>> BuscarProjetosPor(string email);
 
-        Project BuscaProjetoPor(int id);
+        Task<Project> BuscaProjetoPor(int id);
 
         Task<bool> Create(Project project);
 
         Task<bool> Editar(Project project);
+
+        Task<bool> Update(Project project);
+
     }
 }

@@ -109,7 +109,6 @@ namespace SN_WebMVC.Controllers {
                     TempData["IdProjeto"] = projeto.Id;
                     TempData["IdLaboratorio"] = projeto.laboratory.Id;
 
-                    // GABRIEL EU TO COLOCANDO OS DOCS AQUI
                     ViewBag.Documentos = documentos;
 
                     return View(projeto);
@@ -132,8 +131,6 @@ namespace SN_WebMVC.Controllers {
                 new ServidorDeArquivo().UploadDeArquivo(Arquivo.InputStream, $"{code_pdf}.pdf");
             }
 
-
-
             var data = new Dictionary<string, string> {
                 { "Mensagem", collection["Mensagem"] },
                 { "EmailUsuario", email_usuario},
@@ -154,6 +151,72 @@ namespace SN_WebMVC.Controllers {
                 }
             }
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EntrarNoProjeto()
+        {
+            var access_token = (Session["access_token"]);
+
+            var EmailUsuario = (Session["user_name"]).ToString();
+            var projetoId = TempData["IdProjeto"];
+
+            var data = new Dictionary<string, string>()
+            {
+                {"IdProjeto", projetoId.ToString() },
+                {"IdUsuario", EmailUsuario },
+            };
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(base_url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                using (var requestContent = new FormUrlEncodedContent(data))
+                {
+                    var response = await client.PostAsync("api/project/Entrar", requestContent);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+            return View("Error");
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SairDoProjeto()
+        {
+            var access_token = (Session["access_token"]);
+
+            var EmailUsuario = (Session["user_name"]).ToString();
+            var projetoId = TempData["IdProjeto"];
+
+            var data = new Dictionary<string, string>()
+            {
+                {"IdProjeto", projetoId.ToString() },
+                {"IdUsuario", EmailUsuario },
+            };
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(base_url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                using (var requestContent = new FormUrlEncodedContent(data))
+                {
+                    var response = await client.PutAsync("api/project/Sair", requestContent);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+
+                }
+
+                return View("Error");
+            }
         }
     }
 }

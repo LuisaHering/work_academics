@@ -44,26 +44,26 @@ namespace SN_WebApi.Controllers {
         }
 
 
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IHttpActionResult> Create(InputPostBindModel inputModel) {
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public async Task<IHttpActionResult> Create(InputPostBindModel inputModel) {
 
-            var usuario = await UsersService.FindByEmail(inputModel.EmailUsuario);
-            var laboratorio = await GetLaboratory.FindByIdAsync(Convert.ToInt32(inputModel.IdLaboratorio));
-            var projeto = GetProject.BuscaProjetoPor(Convert.ToInt32(inputModel.IdProjeto));
+        //    var usuario = await UsersService.FindByEmail(inputModel.EmailUsuario);
+        //    var laboratorio = await GetLaboratory.FindByIdAsync(Convert.ToInt32(inputModel.IdLaboratorio));
+        //    var projeto = GetProject.BuscaProjetoPor(Convert.ToInt32(inputModel.IdProjeto));
 
-            var novo_post = new Post().CriarPost(inputModel.Mensagem, usuario, inputModel.UrlDocumento, laboratorio);
-            projeto.Posts.Add(novo_post);
+        //    var novo_post = new Post().CriarPost(inputModel.Mensagem, usuario, inputModel.UrlDocumento, laboratorio);
+        //    projeto.Posts.Add(novo_post);
 
-            var post_salvo = await GetPost.Postar(novo_post);
+        //    var post_salvo = await GetPost.Postar(novo_post);
 
-            var editou = await GetProject.Editar(projeto);
+        //    var editou = await GetProject.Editar(projeto);
 
-            if(post_salvo && editou) {
-                return Ok();
-            }
+        //    if(post_salvo && editou) {
+        //        return Ok();
+        //    }
 
-            return BadRequest("Erro ao editar ou salvar o projeto");
-        }
+        //    return BadRequest("Erro ao editar ou salvar o projeto");
+        //}
     }
 }

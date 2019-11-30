@@ -28,6 +28,20 @@ namespace Core.Models {
             return false;
         }
 
+        public bool estaNoProjeto(Project projeto, string idUsuario)
+        {
+
+            foreach (User usuario in projeto.Users)
+            {
+                if (usuario.Id.ToString() == idUsuario)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public void setUrlFoto(string code) {
             this.UrlFoto = @"https://gabrielcouto26.blob.core.windows.net/api-amigo-fotos/" + code + ".png";
         }

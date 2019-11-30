@@ -234,6 +234,7 @@
     <Compile Include="Models\Post\InputPostBindModel.cs" />
     <Compile Include="Models\Post\PostBindModel.cs" />
     <Compile Include="Models\ProfilePicture\ProfilePictureBindModel.cs" />
+    <Compile Include="Models\Projeto\EntrarNoProjeto.cs" />
     <Compile Include="Models\Projeto\ProjectCreateBindingModel.cs" />
     <Compile Include="Models\Projeto\ProjectReturnBindingModel.cs" />
     <Compile Include="Models\Usuario\UserChangePassword.cs" />

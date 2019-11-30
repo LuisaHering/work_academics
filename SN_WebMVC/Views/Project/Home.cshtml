@@ -5,6 +5,18 @@
     var i = 1;
 }
 <div class="wa-container">
+
+    <div style="display:flex;flex-direction:row;">
+        <div>
+            <form action="/Project/EntrarNoProjeto" method="post">
+                <button type="submit" class="btn btn-default">Vincular projeto</button>
+            </form>
+        </div>  <div>
+            <form action="/Project/SairDoProjeto" method="post">
+                <button type="submit" class="btn btn-default">Desvincular projeto</button>
+            </form>
+        </div>
+    </div>
     <h2 style="padding: 0 20px;">@Html.DisplayFor(model => model.Titulo)</h2>
     <div style="display:flex;flex-direction:row;justify-content:space-around;width:100%;margin-top:50px;">
         <div style="display:flex;flex-direction:column;justify-content:space-around;width:60%;">
@@ -29,7 +41,8 @@
             </div>
             <div class="wa-publicacoes-projeto">
                 <h3>Publicações</h3>
-                @foreach(var post in Model.Posts) {
+                @foreach (var post in Model.Posts)
+                {
                     <div style="border-bottom: 2px solid #ededed;margin-top:10px;padding: 0 10px;">
                         <div class="wa-publi-info">
                             <h4>@post.Autor</h4>
@@ -38,7 +51,7 @@
                         <div class="wa-publi-conteudo">
                             <p>@post.Mensagem</p>
                         </div>
-                        @if(post.UrlDocumento != null)
+                        @if (post.UrlDocumento != null)
                         {
                             <div class="wa-publi-documento">
                                 <a href="@post.UrlDocumento" target="_blank">C de Clica aqui Carlos Cabaço</a>
@@ -62,7 +75,8 @@
             <div style="display:flex;flex-direction:column;justify-content:flex-start;">
                 <h3>Documentos</h3>
                 <div style="padding:0 10px;">
-                    @foreach(var documento in ViewBag.Documentos) {
+                    @foreach (var documento in ViewBag.Documentos)
+                    {
                         string documentoX = $"Documento {i}";
                         <a href="@documento.Url">@documentoX</a><br />
                         i++;

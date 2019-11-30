@@ -25,5 +25,9 @@ namespace SN_WebMVC.Models {
         public int IdLaboratory {
             get; set;
         }
+
+        public List<ProfileViewModel> Membros {
+            get; set;
+        }
     }
 }

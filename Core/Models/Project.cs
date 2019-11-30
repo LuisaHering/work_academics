@@ -11,6 +11,7 @@ namespace Core.Models {
 
         public Project() {
             Posts = new List<Post>();
+            Users = new HashSet<User>();
         }
 
         [Key]
@@ -38,5 +39,21 @@ namespace Core.Models {
         public virtual List<Post> Posts {
             get; set;
         }
+
+        public virtual ICollection<User> Users
+        {
+            get; set;
+        }
+
+        public void Adiciona(User user)
+        {
+            this.Users.Add(user);
+        }
+
+        public void Remove(User user)
+        {
+            this.Users.Remove(user);
+        }
+
     }
 }
