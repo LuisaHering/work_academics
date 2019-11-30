@@ -7,7 +7,7 @@
 <div class="wa-container">
     <h2 style="padding: 0 20px;">@Html.DisplayFor(model => model.Titulo)</h2>
     <div style="display:flex;flex-direction:row;justify-content:space-around;width:100%;margin-top:50px;">
-        <div style="display:flex;flex-direction:column;justify-content:space-around;width:80%;">
+        <div style="display:flex;flex-direction:column;justify-content:space-around;width:60%;">
             <div style="display:flex;flex-direction:row;justify-content:space-between;">
                 <div style="display:flex;flex-direction:column;margin: 0 50px;">
                     <div style="display:flex;flex-direction:column;justify-content:flex-start;">
@@ -48,13 +48,13 @@
                 }
             </div>
         </div>
-        <div style="width:20%;display:flex;flex-direction:column;align-items:center;border-left:2px solid #ededed;padding:0 30px;">
+        <div style="width:40%;display:flex;flex-direction:column;align-items:flex-start;border-left:2px solid #ededed;padding:0 30px;">
             <div style="display:flex;flex-direction:column;justify-content:flex-start;">
                 <h3>Membros</h3>
                 <div style="padding:0 10px;">
                     @foreach (var membro in Model.Membros)
                     {
-                        <p style="margin-bottom: 0 !important;">@membro.Nome</p>
+                        <p style="margin-bottom: 0 !important;font-size:16px;">@membro.Nome</p>
                         <p>@membro.Email</p>
                     }
                 </div>
@@ -64,9 +64,8 @@
                 <div style="padding:0 10px;">
                     @foreach(var documento in ViewBag.Documentos) {
                         string documentoX = $"Documento {i}";
-                        <a href="@documento.Url">@documentoX</a>
+                        <a href="@documento.Url">@documentoX</a><br />
                         i++;
-
                     }
                 </div>
             </div>
