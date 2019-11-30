@@ -10,11 +10,11 @@ namespace SN_WebApi.Models.Follow
     {
         public string IdUsuario { get; set; }
 
-        public List<ConnectionReturn> convert(List<Conection> listaConnections)
+        public List<ConnectionReturn> convert(List<Conection> conexoes)
         {
             List<ConnectionReturn> result = new List<ConnectionReturn>();
 
-            foreach (Conection obj in listaConnections)
+            foreach (Conection obj in conexoes)
             {
                 ConnectionReturn aux = new ConnectionReturn()
                 {
