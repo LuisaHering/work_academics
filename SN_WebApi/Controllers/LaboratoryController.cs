@@ -109,5 +109,27 @@ namespace SN_WebApi.Controllers {
 
             return BadRequest("Erro ao processar a solicitacao");
         }
+
+
+        [HttpPut]
+        [Route("Entrar")]
+        //criar outra classe sairDoLaborario igual a entrar
+        public async Task<IHttpActionResult> SairNoLaboratorioAsync(EntrarNoLaboratorio request) {
+
+            var laboratorio = (Laboratory)await GetLaboratory.FindByIdAsync(request.IdLaratorio);
+            var usuario = (User)await GetUsers.FindById(request.IdUsuario);
+
+            // verificar se o usuario está no laboratorio
+            // se tiver remover
+            // mandar atualizar
+            if(!usuario.estaNoLaboratorio(laboratorio, usuario.Id.ToString())) {
+                laboratorio.Adiciona(usuario);
+                var atualizou = await GetLaboratory.Update(laboratorio);
+                if(atualizou)
+                    return Ok();
+            }
+
+            return BadRequest("Erro ao processar a solicitacao");
+        }
     }
 }
