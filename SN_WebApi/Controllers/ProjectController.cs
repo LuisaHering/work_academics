@@ -87,7 +87,6 @@ namespace SN_WebApi.Controllers {
             var projeto = (Project)await GetProject.BuscaProjetoPor(request.IdProjeto);
             var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
 
-
             if (!usuario.estaNoProjeto(projeto, usuario.Id.ToString()))
             {
                 projeto.Adiciona(usuario);
@@ -103,7 +102,6 @@ namespace SN_WebApi.Controllers {
         [Route("Sair")]
         public async Task<IHttpActionResult> SairDoProjetoAsync(EntrarNoProjeto request)
         {
-
             var projeto = (Project)await GetProject.BuscaProjetoPor(request.IdProjeto);
             var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
 

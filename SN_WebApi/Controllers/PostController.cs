@@ -47,7 +47,8 @@ namespace SN_WebApi.Controllers {
 
         //[HttpPost]
         //[AllowAnonymous]
-        //public async Task<IHttpActionResult> Create(InputPostBindModel inputModel) {
+        //public async Task<IHttpActionResult> Create(InputPostBindModel inputModel)
+        //{
 
         //    var usuario = await UsersService.FindByEmail(inputModel.EmailUsuario);
         //    var laboratorio = await GetLaboratory.FindByIdAsync(Convert.ToInt32(inputModel.IdLaboratorio));
@@ -60,7 +61,8 @@ namespace SN_WebApi.Controllers {
 
         //    var editou = await GetProject.Editar(projeto);
 
-        //    if(post_salvo && editou) {
+        //    if (post_salvo && editou)
+        //    {
         //        return Ok();
         //    }
 
