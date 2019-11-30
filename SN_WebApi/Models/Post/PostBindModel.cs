@@ -24,5 +24,21 @@ namespace SN_WebApi.Models.Post {
         public string Autor {
             get; set;
         }
+
+        public List<PostBindModel> Convert(List<Core.Models.Post> posts) {
+            List<PostBindModel> convertido = new List<PostBindModel>();
+
+            foreach(Core.Models.Post post in posts) {
+                PostBindModel model = new PostBindModel() {
+                    Id = post.Id.ToString(),
+                    Autor = post.Autor.Nome,
+                    DataDePublicacao = post.DataPublicacao,
+                    Mensagem = post.Mensagem,
+                    UrlDocumento = post.UrlDocumento
+                };
+                convertido.Add(model);
+            }
+            return convertido;
+        }
     }
 }
