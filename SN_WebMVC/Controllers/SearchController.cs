@@ -104,7 +104,7 @@ namespace SN_WebMVC.Controllers {
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 var response = await client.GetAsync($"api/user/FindUser?email={access_email}");
@@ -115,11 +115,11 @@ namespace SN_WebMVC.Controllers {
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 var response = await client.GetAsync($"api/following/Conexoes?idUsuario={userProfile.Id.ToString()}");
-                // converter list<connectionsReturn> em user
+                // converter list<connectionsReturn> em profileview
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
