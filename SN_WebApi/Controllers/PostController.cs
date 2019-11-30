@@ -33,14 +33,15 @@ namespace SN_WebApi.Controllers {
     public class PostController : ApiController {
 
         private IUsers UsersService = ServiceLocator.GetInstanceOf<UsersImpl>();
-        private IConection ConectionService = ServiceLocator.GetInstanceOf<ConexaoImpl>();
         private IPost GetPost = ServiceLocator.GetInstanceOf<PostImpl>();
         private ILaboratory GetLaboratory = ServiceLocator.GetInstanceOf<LaboratoryImpl>();
         private IProject GetProject = ServiceLocator.GetInstanceOf<ProjectImpl>();
 
         [HttpGet]
-        public async Task<IHttpActionResult> Index(DataToFollowing inputModel) {
-            return Ok();
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> Index(string iduser) {
+            var publicacoes = GetPost.Publicacoes(iduser);
+            return Ok(publicacoes);
         }
 
 

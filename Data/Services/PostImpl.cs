@@ -12,19 +12,25 @@ using Database = Data.Context.Database;
 
 namespace Data.Services {
     public class PostImpl : IPost {
+
+        string connection_string = null;
         private UsersImpl UserService = new UsersImpl();
         private LaboratoryImpl LaboratoryService = new LaboratoryImpl();
         private ProjectImpl ProjectService = new ProjectImpl();
 
-        public async Task<List<Post>> PicturesByUser(string idUser) {
+        public PostImpl() {
+            this.connection_string = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-SN_WebApi-20191007082158;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        }
+
+        public async Task<List<Post>> Publicacoes(string idUser) {
             List<Post> posts = new List<Post>();
 
-            using(SqlConnection conn = new SqlConnection("DefaultConnection")) {
+            using(SqlConnection conn = new SqlConnection(connection_string)) {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = "Publicacoes";
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
+                cmd.Parameters.AddWithValue("id_user", idUser);
                 conn.Open();
 
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
@@ -41,9 +47,7 @@ namespace Data.Services {
                     };
                     posts.Add(post);
                 }
-
             }
-
             return posts;
         }
 

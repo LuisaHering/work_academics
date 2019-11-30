@@ -10,6 +10,6 @@ namespace Core.Services {
 
         Task<bool> Postar(Post post);
 
-        Task<List<Post>> PicturesByUser(string idUser);
+        Task<List<Post>> Publicacoes(string idUser);
     }
 }
