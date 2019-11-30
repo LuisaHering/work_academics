@@ -9,5 +9,7 @@ namespace Core.Services {
     public interface IPost {
 
         Task<bool> Postar(Post post);
+
+        Task<List<Post>> PicturesByUser(string idUser);
     }
 }
