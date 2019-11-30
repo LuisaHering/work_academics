@@ -39,7 +39,6 @@ namespace SN_WebMVC.Controllers {
                         posts = JsonConvert.DeserializeObject<List<PostViewModel>>(conteudoDaRespost);
                         ViewBag.Posts = posts;
                     }
-
                 }
             }
 
