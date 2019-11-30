@@ -39,5 +39,10 @@ namespace Core.Models {
         public void Adiciona(Project projeto) {
             this.Projects.Add(projeto);
         }
+
+        public void Remove(User user)
+        {
+            this.Users.Remove(user);
+        }
     }
 }

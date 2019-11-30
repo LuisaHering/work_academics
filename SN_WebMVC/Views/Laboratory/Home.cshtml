@@ -2,71 +2,80 @@
 
 @{
     ViewBag.Title = "Laboratório";
+    var lab = Model;
 }
 <div class="wa-container">
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
     <div style="display:flex;flex-direction:row;">
-        <div style="display:flex;flex-direction:column;width:50%;">
+        <div>
+            <form action="/Laboratory/EntrarNoLaboratorio" method="post">
+                <button type="submit" class="btn btn-default">Vincular laboratório</button>
+            </form>
+        </div>  <div>
+            <form action="/Laboratory/SairDoLaboratorio/@lab.Id" method="post">
+                <button type="submit" class="btn btn-default">Desvincular laboratório</button>
+            </form>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div style="display:flex;flex-direction:row;">
+            <div style="display:flex;flex-direction:column;width:50%;">
 
-            <div style="margin: 20px 0 40px 0;">
-                <h3 style="margin-bottom:0px !important;margin-top:20px !important;">
-                    Laboratório:
-                </h3>
-                <h1 style="margin:5px 0 10px 10px !important;font-size:50px;">
-                    @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "control-label" } })
-                </h1>
+                <div style="margin: 20px 0 40px 0;">
+                    <h3 style="margin-bottom:0px !important;margin-top:20px !important;">
+                        Laboratório:
+                    </h3>
+                    <h1 style="margin:5px 0 10px 10px !important;font-size:50px;">
+                        @Html.DisplayFor(model => model.Descricao, new { htmlAttributes = new { @class = "control-label" } })
+                    </h1>
+                </div>
+
+                <div style="margin: 10px 0 20px 0;">
+                    <h4>Membros</h4>
+                    <div class="wa-list">
+                        <ul>
+                            @foreach (var usuario in Model.Users)
+                            {
+                                <li>
+                                    @Html.DisplayFor(model => usuario.Nome)
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+
             </div>
-
-            <div style="margin: 10px 0 20px 0;">
-                <h4>Membros</h4>
-                <div class="wa-list">
-                    <ul>
-                        @foreach (var usuario in Model.Users)
+            <div style="width:50%;margin: 20px 40px;">
+                <h3>Projetos do laboratório</h3>
+                <div class="wa-list" style="height:100px;">
+                    <ul style="padding-left:15px !important;">
+                        @foreach (var projeto in Model.Projetos)
                         {
-                            <li>
-                                @Html.DisplayFor(model => usuario.Nome)
+                            <li style="list-style-type:none;border-bottom:1px solid #ededed;">
+                                <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end;">
+                                    <h3>
+                                        @Html.DisplayFor(model => projeto.Titulo)
+                                    </h3>
+                                    <div>
+                                        <a href="/Project/Home/@projeto.Id" class="btn btn-default" style="margin-right:20px;text-decoration:none;">Entrar</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4>
+                                        @Html.DisplayFor(model => projeto.Descricao)
+                                    </h4>
+                                </div>
                             </li>
                         }
                     </ul>
-
                 </div>
             </div>
-
         </div>
-        <div style="width:50%;margin: 20px 40px;">
-            <h3>Projetos do laboratório</h3>
-            <div class="wa-list" style="height:100px;">
-                <ul style="padding-left:15px !important;">
-                    @foreach (var projeto in Model.Projetos)
-                    {
-                        <li style="list-style-type:none;border-bottom:1px solid #ededed;">
-                            <div style="display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end;">
-                                <h3>
-                                    @Html.DisplayFor(model => projeto.Titulo)
-                                </h3>
-                                <div>
-                                    <a href="/Project/Home/@projeto.Id" class="btn btn-default" style="margin-right:20px;text-decoration:none;">Entrar</a>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>
-                                    @Html.DisplayFor(model => projeto.Descricao)
-                                </h4>
-                            </div>
-                        </li>
-                    }
-                </ul>
-            </div>
-        </div>
-    </div>
     }
-    <div>
-        <form action="/" method="post">
-            <button type="submit" class="btn btn-default">Desvincular laboratório</button>
-        </form>
-    </div>
+
     <div>
         <a href="/Laboratory/Index" class="btn btn-link">Retornar</a>
     </div>

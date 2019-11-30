@@ -96,8 +96,8 @@ namespace SN_WebApi.Controllers {
         [Route("Entrar")]
         public async Task<IHttpActionResult> EntrarNoLaboratorioAsync(EntrarNoLaboratorio request) {
 
-            var laboratorio = (Laboratory)await GetLaboratory.FindByIdAsync(request.IdLaratorio);
-            var usuario = (User)await GetUsers.FindById(request.IdUsuario);
+            var laboratorio = (Laboratory)await GetLaboratory.FindByIdAsync(request.IdLaboratorio);
+            var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
 
            
             if(!usuario.estaNoLaboratorio(laboratorio, usuario.Id.ToString())) {
@@ -112,18 +112,17 @@ namespace SN_WebApi.Controllers {
 
 
         [HttpPut]
-        [Route("Entrar")]
-        //criar outra classe sairDoLaborario igual a entrar
-        public async Task<IHttpActionResult> SairNoLaboratorioAsync(EntrarNoLaboratorio request) {
+        [Route("Sair")]
+        public async Task<IHttpActionResult> SairDoLaboratorioAsync(EntrarNoLaboratorio request) {
 
-            var laboratorio = (Laboratory)await GetLaboratory.FindByIdAsync(request.IdLaratorio);
-            var usuario = (User)await GetUsers.FindById(request.IdUsuario);
+            var laboratorio = (Laboratory)await GetLaboratory.FindByIdAsync(request.IdLaboratorio);
+            var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
 
             // verificar se o usuario está no laboratorio
             // se tiver remover
             // mandar atualizar
-            if(!usuario.estaNoLaboratorio(laboratorio, usuario.Id.ToString())) {
-                laboratorio.Adiciona(usuario);
+            if(usuario.estaNoLaboratorio(laboratorio, usuario.Id.ToString())) {
+                laboratorio.Remove(usuario);
                 var atualizou = await GetLaboratory.Update(laboratorio);
                 if(atualizou)
                     return Ok();

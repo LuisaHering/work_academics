@@ -44,7 +44,9 @@
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </td>
                 <td>
-                    | @Html.ActionLink("Entrar", "Edit", new {  id=item.Id }) |
+                      <form action="/Laboratory/Home/@item.Id" medivod="get">
+                        <button type="submit" class="btn btn-default">Entrar</button>
+                    </form>
                 </td>
             </tr>
         }

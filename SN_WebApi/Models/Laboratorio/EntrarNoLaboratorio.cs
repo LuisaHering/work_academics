@@ -9,7 +9,7 @@ namespace SN_WebApi.Models.Laboratorio {
             get; set;
         }
 
-        public int IdLaratorio {
+        public int IdLaboratorio {
             get; set;
         }
     }
