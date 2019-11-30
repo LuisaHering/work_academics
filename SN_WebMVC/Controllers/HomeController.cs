@@ -13,38 +13,46 @@ using System.Web.Mvc;
 namespace SN_WebMVC.Controllers {
     public class HomeController : Controller {
 
-        private static string base_url = "http://localhost:56435";
+        public string base_url {
+            get; set;
+        }
+
+        public HomeController() {
+            this.base_url = @"http://localhost:56435";
+        }
 
         public async Task<ActionResult> Index() {
             var access_email = Session["user_name"];
-            var access_token = Session["access_token"];
-
             ProfileViewModel profileView = new ProfileViewModel();
-            List<PostViewModel> posts = new List<PostViewModel>();
 
             using(var cliente = new HttpClient()) {
                 cliente.BaseAddress = new Uri(base_url);
-
-                cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 var response = await cliente.GetAsync($"/api/user/findUser?email={access_email}");
 
                 if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
                     profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
-
-                    var resposta = await cliente.GetAsync($"api/Post?iduser={profileView.Id}");
-                    if(resposta.IsSuccessStatusCode) {
-                        var conteudoDaRespost = await resposta.Content.ReadAsStringAsync();
-                        posts = JsonConvert.DeserializeObject<List<PostViewModel>>(conteudoDaRespost);
-                        ViewBag.Posts = posts;
-                    }
+                    await ConsultarPost(profileView.Id);
                 }
             }
-
             Session.Add("picture_profile", profileView.Foto);
-
             return View();
+        }
+
+        private async Task ConsultarPost(string profileid) {
+            List<PostViewModel> posts = new List<PostViewModel>();
+
+            using(var cliente = new HttpClient()) {
+                cliente.BaseAddress = new Uri(base_url);
+
+                var resposta = await cliente.GetAsync($"api/Post?iduser={profileid}");
+                if(resposta.IsSuccessStatusCode) {
+                    var conteudoDaRespost = await resposta.Content.ReadAsStringAsync();
+                    posts = JsonConvert.DeserializeObject<List<PostViewModel>>(conteudoDaRespost);
+                    ViewBag.Posts = posts;
+                }
+            }
         }
 
         public async Task<ActionResult> Perfil() {
