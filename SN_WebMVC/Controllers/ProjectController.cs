@@ -69,11 +69,13 @@ namespace SN_WebMVC.Controllers {
         [HttpPost]
         public async Task<ActionResult> Create(ProjectViewModel projeto) {
             var access_token = (Session["access_token"]);
+            var email = (Session["user_name"]).ToString();
 
             var data = new Dictionary<string, string> {
                 { "Titulo", projeto.Titulo },
                 { "Descricao", projeto.Descricao},
-                { "IdLaboratory", projeto.IdLaboratory.ToString() }
+                { "IdLaboratory", projeto.IdLaboratory.ToString() },
+                { "EmailUsuario", email}
             };
 
             using(var cliente = new HttpClient()) {

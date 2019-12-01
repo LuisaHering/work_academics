@@ -16,5 +16,9 @@ namespace SN_WebApi.Models.Projeto {
         public int IdLaboratory {
             get; set;
         }
+
+        public string EmailUsuario {
+            get; set;
+        }
     }
 }

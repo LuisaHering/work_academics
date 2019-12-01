@@ -50,6 +50,7 @@ namespace Core.Models {
         public User() {
             Laboratories = new HashSet<Laboratory>();
             Pictures = new HashSet<Picture>();
+            Projects = new HashSet<Project>();
         }
 
         [Key]
@@ -94,6 +95,10 @@ namespace Core.Models {
         }
 
         public virtual ICollection<Picture> Pictures {
+            get; set;
+        }
+
+        public virtual ICollection<Project> Projects {
             get; set;
         }
 

@@ -57,6 +57,7 @@ namespace SN_WebApi.Controllers {
         public async Task<IHttpActionResult> Create(ProjectCreateBindingModel bindingModel) {
 
             Laboratory laboratory = await GetLaboratory.FindByIdAsync(bindingModel.IdLaboratory);
+            User usuario = await GetUsers.FindByEmail(bindingModel.EmailUsuario);
 
             Project project = new Project {
                 Titulo = bindingModel.Titulo,
@@ -65,6 +66,7 @@ namespace SN_WebApi.Controllers {
                 DataCriacao = DateTime.Now,
                 DataFinalizacao = null,
             };
+            project.Users.Add(usuario);
 
             laboratory.Adiciona(project);
 
@@ -81,17 +83,15 @@ namespace SN_WebApi.Controllers {
 
         [HttpPost]
         [Route("Entrar")]
-        public async Task<IHttpActionResult> EntrarNoProjetoAsync(EntrarNoProjeto request)
-        {
+        public async Task<IHttpActionResult> EntrarNoProjetoAsync(EntrarNoProjeto request) {
 
             var projeto = (Project)await GetProject.BuscaProjetoPor(request.IdProjeto);
             var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
 
-            if (!usuario.estaNoProjeto(projeto, usuario.Id.ToString()))
-            {
+            if(!usuario.estaNoProjeto(projeto, usuario.Id.ToString())) {
                 projeto.Adiciona(usuario);
                 var atualizou = await GetProject.Update(projeto);
-                if (atualizou)
+                if(atualizou)
                     return Ok();
             }
 
@@ -100,16 +100,17 @@ namespace SN_WebApi.Controllers {
 
         [HttpPut]
         [Route("Sair")]
-        public async Task<IHttpActionResult> SairDoProjetoAsync(EntrarNoProjeto request)
-        {
+        public async Task<IHttpActionResult> SairDoProjetoAsync(EntrarNoProjeto request) {
             var projeto = (Project)await GetProject.BuscaProjetoPor(request.IdProjeto);
             var usuario = (User)await GetUsers.FindByEmail(request.IdUsuario);
 
-            if (usuario.estaNoProjeto(projeto, usuario.Id.ToString()))
-            {
+            if(usuario.estaNoProjeto(projeto, usuario.Id.ToString())) {
+
                 projeto.Remove(usuario);
-                var atualizou = await GetProject.Update(projeto);
-                if (atualizou)
+                usuario.Projects.Remove(projeto);
+                var atualizou_projeto = await GetProject.Update(projeto);
+                var atualizou_usuario = await GetProject.Update(projeto);
+                if(atualizou_projeto && atualizou_usuario)
                     return Ok();
             }
 
