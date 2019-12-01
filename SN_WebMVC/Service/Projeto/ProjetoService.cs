@@ -11,10 +11,12 @@ namespace SN_WebMVC.Service.Projeto {
             List<DocumentosViewModel> docs = new List<DocumentosViewModel>();
 
             foreach(PostViewModel p in projeto.Posts) {
-                DocumentosViewModel doc = new DocumentosViewModel() {
-                    Url = p.UrlDocumento
-                };
-                docs.Add(doc);
+                if(p.UrlDocumento != null) {
+                    DocumentosViewModel doc = new DocumentosViewModel() {
+                        Url = p.UrlDocumento
+                    };
+                    docs.Add(doc);
+                }
             }
             return docs;
         }
