@@ -53,7 +53,7 @@ namespace SN_WebApi.Controllers {
                         return Ok();
                     }
                 }
-                
+
             }
 
             return BadRequest("Erro ao processar solicitaçao");
@@ -62,19 +62,12 @@ namespace SN_WebApi.Controllers {
         [Authorize]
         [Route("Conexoes")]
         [HttpGet]
-        public async Task<IHttpActionResult> Conexoes(string idUsuario)
-        {
-           if(idUsuario != null)
-            {
-                List<Conection> connectionSeguidores = await ConectionService.ListaConexoes(idUsuario);
-
-                var aux = new ConnectionReturn();
-
-                List<ConnectionReturn> usuariosSeguidores = aux.convert(connectionSeguidores);
-
-                return Ok(usuariosSeguidores);
+        public async Task<IHttpActionResult> Conexoes(string idUsuario) {
+            if(idUsuario != null) {
+                List<User> amigos = await ConectionService.Amigos(idUsuario);
+                var convertidos = new UserBindModel().Convert(amigos);
+                return Ok(convertidos);
             }
-
             return BadRequest("Erro ao processar solicitaçao");
         }
 

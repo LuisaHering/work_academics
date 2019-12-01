@@ -49,3 +49,21 @@ where			( 1 = 1 )
 RETURN 0
 
 ```
+
+## ADICIONAR STORED PROCEDURE AO BANCO DE DADOS
+``` script
+
+CREATE PROCEDURE [dbo].[Conexoes]
+	@id_user as nvarchar(max)
+as
+select		*
+from		dbo.Users						as u
+where		(1=1)
+and		u.[Id] in 	(
+					select	c.[Seguido_Id]
+					from	dbo.[Conections]	as c
+					where	(1=1)
+					and	c.[Seguidor_Id] = @id_user
+				)
+
+```
