@@ -75,7 +75,7 @@ namespace SN_WebMVC.Controllers {
             }
 
             foreach(ProfileViewModel p in conexoes) {
-                if(p.Id.Equals(profile.Id)) {
+                if(p.Id.Equals(id)) {
                     Session["ehAmigo"] = true;
                 }
             }
