@@ -15,7 +15,6 @@ values				('ADMIN'),
 ```
 
 ## ADICIONAR STORED PROCEDURE AO BANCO DE DADOS
-<h4>Esse script é respostavel por retornar a lista de `publicações` do usuário</h4>
 ``` script
 CREATE PROCEDURE [dbo].[Publicacoes]
 @id_user as nvarchar(max)
@@ -48,7 +47,6 @@ or		p.[Autor_Id]
 				)
 order by	p.DataPublicacao DESC
 RETURN 0
-
 ```
 
 ## ADICIONAR STORED PROCEDURE AO BANCO DE DADOS
