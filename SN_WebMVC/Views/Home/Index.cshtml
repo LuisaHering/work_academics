@@ -8,33 +8,43 @@
     <div style="display:flex;flex-direction:row; margin: 0 20px;">
         <div class="wa-feed">
             <div class="wa-list wa-border-top">
-                @*--inicio foreach--*@
 
                 @foreach(var post in ViewBag.Posts) {
-                    <div class="wa-post">
-                        <div class="wa-post-header">
-                            <div class="wa-post-autor">
-                                <h4></h4>
+                    <div class="wa-post" style="display:flex; flex-direction:row;">
+                        <div>
+                            <h1>foto</h1>
+                        </div>
+
+                        <div>
+                            <div class="wa-post-header">
+                                <div class="wa-post-info">
+                                    <h3>Laboratorio - @post.NomeLaboratorio</h3>
+                                </div>
                             </div>
-                            <div class="wa-post-info">
-                                <h3>Laboratorio - @post.NomeLaboratorio</h3>
+                            <div class="wa-post-conteudo">
+                                <p>
+
+                                    <h3><b>@post.Mensagem</b></h3>
+                                </p>
+                                <p>
+                                    <h4>@post.Autor</h4>
+                                </p>
+                                <p>
+                                    <h5>@post.DataDePublicacao</h5>
+                                </p>
                             </div>
+
+                            <div class="wa-post-botoes">
+                                <form>
+                                    <button class="btn btn-default">Laboratório</button>
+                                </form>
+                            </div>
+
                         </div>
-                        <div class="wa-post-conteudo">
-                            <p>
-                                <h3>@post.Mensagem</h3>
-                            </p>
-                            <p>
-                                <h4>@post.DataDePublicacao</h4>
-                            </p>
-                        </div>
-                        <div class="wa-post-botoes">
-                            <button class="btn btn-default">Laboratório</button>
-                        </div>
+
                     </div>
                 }
 
-                @*--fim foreach--*@
             </div>
         </div>
         <div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:30%;">
