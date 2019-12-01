@@ -6,17 +6,20 @@
 }
 <div class="wa-container">
 
-    <h2>Buscar laboratório</h2>
+    <h2>Localizar laboratório</h2>
 
     <div style="display:flex;flex-direction:row;padding: 10px 0;justify-content:flex-start;margin-bottom:10px;">
-        <a href="/Laboratory/Create" class="btn btn-default" style="text-decoration:none;margin-right:20px;">Novo laboratório</a>
-        <a href="/Laboratory/Search" class="btn btn-default" style="text-decoration:none;margin-right:20px;">Encontrar laboratório</a>
+        <form action="/Laboratory/Search/" method="post">
+            <label>Nome do laboratório</label>
+            <input type="text" name="description" />
+            <button type="submit" class="btn btn-default">Pesquisar</button>
+
+        </form>
     </div>
 
     <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
 
-        @foreach (var item in Model)
-        {
+        @foreach(var item in Model) {
             <div style="display:flex;flex-direction:column;justify-content:space-around;border: 2px solid #ededed;padding:15px;margin:25px 10px;">
                 <div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;margin:50px 25px;">
                     <p style="margin-bottom:0px !important;">Laboratório:</p>
@@ -26,7 +29,7 @@
 
                 </div>
                 <div class="text-center">
-                    <form action="/Laboratory/Home/@item.Id" medivod="get">
+                    <form action="/Laboratory/Home/@item.Id" method="get">
                         <button type="submit" class="btn btn-default">Entrar</button>
                     </form>
                 </div>
