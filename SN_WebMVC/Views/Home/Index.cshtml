@@ -16,11 +16,10 @@
 
                                 <a href="/Home/Perfil"
                                    style="margin-top:70px; margin-left:-46px;">
-                                    <img 
-                                         style="margin-left: 10px;"
-                                         src=@post.ImgAutor 
-                                         alt="profile" 
-                                         class="wa-profile-search-pic" 
+                                    <img style="margin-left: 10px;"
+                                         src=@post.ImgAutor
+                                         alt="profile"
+                                         class="wa-profile-search-pic"
                                          title="Perfil" />
                                 </a>
 
@@ -56,10 +55,12 @@
                             </div>
 
                             <div>
-                                <a style="margin-left:21px;"
-                                   href=@post.UrlDocumento>
-                                    Documento
-                                </a>
+                                @if(post.UrlDocumento != "") {
+                                    <a style="margin-left:21px;"
+                                       href=@post.UrlDocumento>
+                                        Documento
+                                    </a>
+                                }
                             </div>
 
                         </div>
