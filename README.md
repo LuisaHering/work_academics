@@ -50,7 +50,6 @@ RETURN 0
 ```
 
 ## ADICIONAR STORED PROCEDURE AO BANCO DE DADOS
-<h4>Esse script é respostavel por retornar a lista de `conexões` do usuário</h4>
 ``` script
 
 CREATE PROCEDURE [dbo].[Conexoes]
