@@ -8,6 +8,10 @@ namespace SN_WebMVC.Models {
         public string Id {
             get; set;
         }
+
+        public string ImgAutor {
+            get; set;
+        }
         public string Autor {
             get; set;
         }
@@ -18,6 +22,10 @@ namespace SN_WebMVC.Models {
             get; set;
         }
         public string UrlDocumento {
+            get; set;
+        }
+
+        public int IdLaboratorio {
             get; set;
         }
 
