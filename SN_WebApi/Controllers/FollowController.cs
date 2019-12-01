@@ -32,10 +32,10 @@ namespace SN_WebApi.Controllers {
     public class FollowController : ApiController {
 
         private IUsers UsersService = ServiceLocator.GetInstanceOf<UsersImpl>();
-
         private IConection ConectionService = ServiceLocator.GetInstanceOf<ConexaoImpl>();
 
         [AllowAnonymous]
+        [Route("Follow")]
         [HttpPost]
         public async Task<IHttpActionResult> Follow(DataToFollowing inputModel) {
 
@@ -53,10 +53,24 @@ namespace SN_WebApi.Controllers {
                         return Ok();
                     }
                 }
-                
+
             }
 
             return BadRequest("Erro ao processar solicitaçao");
         }
+
+        [Authorize]
+        [Route("Conexoes")]
+        [HttpGet]
+        public async Task<IHttpActionResult> Conexoes(string idUsuario) {
+            if(idUsuario != null) {
+                List<User> amigos = await ConectionService.Amigos(idUsuario);
+                var convertidos = new UserBindModel().Convert(amigos);
+                return Ok(convertidos);
+            }
+            return BadRequest("Erro ao processar solicitaçao");
+        }
+
+
     }
 }

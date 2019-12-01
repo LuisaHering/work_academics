@@ -11,5 +11,7 @@ namespace Data.Services {
         Task<bool> Conectar(Conection conexao);
 
         Task<bool> Desconectar(Conection conexao);
+
+        Task<List<User>> Amigos(string idUsuario);
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using SN_WebMVC.App_Start;
 using SN_WebMVC.Models;
 using SN_WebMVC.Service.Projeto;
 using SN_WebMVC.UploadExterno;
@@ -14,11 +15,10 @@ using SN_WebMVC.UploadExterno;
 namespace SN_WebMVC.Controllers {
     public class ProjectController : Controller {
 
-        private static string base_url = null;
+
         ProjetoService GetProjetoService = null;
 
         public ProjectController() {
-            base_url = "http://localhost:56435";
             GetProjetoService = new ProjetoService();
         }
 
@@ -29,7 +29,7 @@ namespace SN_WebMVC.Controllers {
             var projetos = new List<ProjectViewModel>();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/project/busca?email={email}");
 
                 if(response.IsSuccessStatusCode) {
@@ -48,7 +48,7 @@ namespace SN_WebMVC.Controllers {
             var email = (Session["user_name"]).ToString();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/Laboratory/busca?email={email}");
 
                 if(response.IsSuccessStatusCode) {
@@ -77,7 +77,7 @@ namespace SN_WebMVC.Controllers {
             };
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
                     var response = await cliente.PostAsync("api/Project/create", requestContent);
@@ -97,7 +97,7 @@ namespace SN_WebMVC.Controllers {
             var projeto = new ProjetoOutputModel();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/project/busca?id={id}");
 
                 if(response.IsSuccessStatusCode) {
@@ -141,7 +141,7 @@ namespace SN_WebMVC.Controllers {
             };
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
                     var response = await cliente.PostAsync("api/post", requestContent);
@@ -155,8 +155,7 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> EntrarNoProjeto()
-        {
+        public async Task<ActionResult> EntrarNoProjeto() {
             var access_token = (Session["access_token"]);
 
             var EmailUsuario = (Session["user_name"]).ToString();
@@ -168,16 +167,13 @@ namespace SN_WebMVC.Controllers {
                 {"IdUsuario", EmailUsuario },
             };
 
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(base_url);
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
-                using (var requestContent = new FormUrlEncodedContent(data))
-                {
+                using(var requestContent = new FormUrlEncodedContent(data)) {
                     var response = await client.PostAsync("api/project/Entrar", requestContent);
-                    if (response.IsSuccessStatusCode)
-                    {
+                    if(response.IsSuccessStatusCode) {
                         return RedirectToAction("Index");
                     }
                 }
@@ -187,8 +183,7 @@ namespace SN_WebMVC.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> SairDoProjeto()
-        {
+        public async Task<ActionResult> SairDoProjeto() {
             var access_token = (Session["access_token"]);
 
             var EmailUsuario = (Session["user_name"]).ToString();
@@ -200,22 +195,17 @@ namespace SN_WebMVC.Controllers {
                 {"IdUsuario", EmailUsuario },
             };
 
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(base_url);
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
-                using (var requestContent = new FormUrlEncodedContent(data))
-                {
+                using(var requestContent = new FormUrlEncodedContent(data)) {
                     var response = await client.PutAsync("api/project/Sair", requestContent);
 
-                    if (response.IsSuccessStatusCode)
-                    {
+                    if(response.IsSuccessStatusCode) {
                         return RedirectToAction("Index");
                     }
-
                 }
-
                 return View("Error");
             }
         }

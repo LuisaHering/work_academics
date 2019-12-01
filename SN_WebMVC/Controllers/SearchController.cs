@@ -8,11 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SN_WebMVC.App_Start;
 
 namespace SN_WebMVC.Controllers {
     public class SearchController : Controller {
-
-        private static string base_url = "http://localhost:56435";
 
         [HttpPost]
         public async Task<ActionResult> Search(string pesquisar) {
@@ -21,7 +20,7 @@ namespace SN_WebMVC.Controllers {
             var usuario_logado = (Session["user_name"]).ToString();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/user/search?name={pesquisar}");
 
                 if(response.IsSuccessStatusCode) {
@@ -42,7 +41,7 @@ namespace SN_WebMVC.Controllers {
             ProfileViewModel profile = new ProfileViewModel();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/user/FindUser?user_id={id}");
 
                 if(response.IsSuccessStatusCode) {
@@ -50,7 +49,6 @@ namespace SN_WebMVC.Controllers {
                     profile = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
                 }
             }
-
             return View(profile);
         }
 
@@ -63,9 +61,8 @@ namespace SN_WebMVC.Controllers {
 
             var userProfile = new ProfileViewModel();
 
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(base_url);
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/user/FindUser?email={email_logado}");
 
                 var respondeContent = await response.Content.ReadAsStringAsync();
@@ -78,24 +75,61 @@ namespace SN_WebMVC.Controllers {
                 {"IdSeguido", id_seguido}
             };
 
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(base_url);
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(BaseUrl.URL);
 
                 using (var requestContent = new FormUrlEncodedContent(data))
                 {
-                    var response = await client.PostAsync("api/Follow", requestContent);
+                    var response = await client.PostAsync("api/following/Follow", requestContent);
 
-                    if (response.IsSuccessStatusCode)
-                    {
+                    if(response.IsSuccessStatusCode) {
                         Session.Remove("profile_visita");
                         //TODO: Mudar home para conexões
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Conexoes");
                     }
+                }
+            }
+            return View("Error");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Conexoes()
+        {
+            var access_token = Session["access_token"];
+            var access_email = Session["user_name"];
+
+            List<ProfileViewModel> conexoes = new List<ProfileViewModel>();
+
+            var userProfile = new ProfileViewModel();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUrl.URL);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                var response = await client.GetAsync($"api/user/FindUser?email={access_email}");
+
+                var respondeContent = await response.Content.ReadAsStringAsync();
+                userProfile = JsonConvert.DeserializeObject<ProfileViewModel>(respondeContent);
+            }
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(BaseUrl.URL);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+
+                var response = await client.GetAsync($"api/following/Conexoes?idUsuario={userProfile.Id.ToString()}");
+                // converter list<connectionsReturn> em profileview
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    conexoes = JsonConvert.DeserializeObject<List<ProfileViewModel>>(responseContent);
+                    return View(conexoes);
                 }
             }
 
             return View("Error");
         }
+
     }
 }

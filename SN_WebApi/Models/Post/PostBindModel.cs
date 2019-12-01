@@ -21,7 +21,18 @@ namespace SN_WebApi.Models.Post {
             get; set;
         }
 
+        public string ImgAutor {
+            get; set;
+        }
         public string Autor {
+            get; set;
+        }
+
+        public int IdLaboratorio {
+            get; set;
+        }
+
+        public string NomeLaboratorio {
             get; set;
         }
 
@@ -32,9 +43,12 @@ namespace SN_WebApi.Models.Post {
                 PostBindModel model = new PostBindModel() {
                     Id = post.Id.ToString(),
                     Autor = post.Autor.Nome,
+                    ImgAutor = post.Autor.UrlFoto,
                     DataDePublicacao = post.DataPublicacao,
                     Mensagem = post.Mensagem,
-                    UrlDocumento = post.UrlDocumento
+                    UrlDocumento = post.UrlDocumento,
+                    IdLaboratorio = post.Laboratory.Id,
+                    NomeLaboratorio = post.Laboratory.Descricao
                 };
                 convertido.Add(model);
             }

@@ -7,52 +7,67 @@
 
     <div style="display:flex;flex-direction:row; margin: 0 20px;">
         <div class="wa-feed">
-            <h2>Feed</h2>
             <div class="wa-list wa-border-top">
-                @*--inicio foreach--*@
-                <div class="wa-post">
-                    <div class="wa-post-header">
-                        <div class="wa-post-autor">
-                            <h4>Autor</h4>
+
+                @foreach(var post in ViewBag.Posts) {
+                    <div class="wa-post" style="display:flex; flex-direction:row;">
+                        <div>
+                            @if(post.ImgAutor != null) {
+
+                                <a href="/Home/Perfil"
+                                   style="margin-top:70px; margin-left:-46px;">
+                                    <img style="margin-left: 10px;"
+                                         src=@post.ImgAutor
+                                         alt="profile"
+                                         class="wa-profile-search-pic"
+                                         title="Perfil" />
+                                </a>
+
+                            } else {
+                                <a href="/Home/Perfil">
+                                    <img src="\Content\images\default-profile-pic.png"
+                                         alt="default-picture"
+                                         title="Perfil"
+                                         class="wa-profile-pic wa-profile-pic-pequeno"
+                                         style="margin-top: 70px; margin-left:-46px;" />
+                                </a>
+                            }
                         </div>
-                        <div class="wa-post-info">
-                            <h3>Titulo do post -</h3>
-                            <h3>Laboratorio</h3>
+
+                        <div>
+                            <div class="wa-post-header">
+                                <p>
+                                    <h1>@post.Autor</h1>
+                                </p>
+
+                                <div class="wa-post-info">
+                                    <h3>Laboratorio - @post.NomeLaboratorio</h3>
+                                </div>
+                            </div>
+                            <div class="wa-post-conteudo">
+                                <p>
+                                    <h3><b>@post.Mensagem</b></h3>
+                                </p>
+
+                                <p>
+                                    <h5>@post.DataDePublicacao</h5>
+                                </p>
+                            </div>
+
+                            <div>
+                                @if(post.UrlDocumento != "") {
+                                    <a style="margin-left:21px;"
+                                       href=@post.UrlDocumento>
+                                        Documento
+                                    </a>
+                                }
+                            </div>
+
                         </div>
+
                     </div>
-                    <div class="wa-post-conteudo">
-                        <p>
-                            Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post.
-                        </p>
-                    </div>
-                    <div class="wa-post-botoes">
-                        <button class="btn btn-default">Botao1</button>
-                        <button class="btn btn-default">Botao2</button>
-                        <button class="btn btn-default">Botao3</button>
-                    </div>
-                </div>
-                @*--fim foreach--*@
-                <div class="wa-post">
-                    <div class="wa-post-header">
-                        <div class="wa-post-autor">
-                            <h4>Autor</h4>
-                        </div>
-                        <div class="wa-post-info">
-                            <h3>Titulo do post -</h3>
-                            <h3>Laboratorio</h3>
-                        </div>
-                    </div>
-                    <div class="wa-post-conteudo">
-                        <p>
-                            Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post. Conteudo do post.
-                        </p>
-                    </div>
-                    <div class="wa-post-botoes">
-                        <button class="btn btn-default">Botao1</button>
-                        <button class="btn btn-default">Botao2</button>
-                        <button class="btn btn-default">Botao3</button>
-                    </div>
-                </div>
+                }
+
             </div>
         </div>
         <div style="display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:30%;">
@@ -61,9 +76,6 @@
                 <input class="form-control" id="Pesquisar" name="Pesquisar" type="text" placeholder="Digite um nome">
                 <button type="submit" class="btn btn-default" style="margin: 10px 0;">Pesquisar</button>
             </form>
-            @*<img src="\Content\images\gabigordo.jpg" style="width:200px;" title="hello" />*@
         </div>
-
     </div>
-
 </div>

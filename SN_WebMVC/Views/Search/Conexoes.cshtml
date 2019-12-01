@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SN_WebMVC.Models.ProfileViewModel>
+
+@{
+    ViewBag.Title = "Conexoes";
+}
+
+<div class="wa-container">
+
+    <h2 style="margin:20px 0;">Conexões</h2>
+
+    <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
+
+        @foreach (var item in Model)
+        {
+            <div style="display:flex;flex-direction:column;justify-content:space-around;border: 2px solid #ededed;padding:15px;margin:5px;">
+                <div style="text-align:center;">
+                    @if (item.Foto != null)
+                    {
+                        <img src=@item.Foto alt="profile" class="wa-profile-pic" />
+                    }
+                    else
+                    {
+                        <img src="/Content/images/default-profile-pic.png" alt="profile" class="wa-profile-search-pic" />
+                    }
+                </div>
+                <div>
+                    @Html.DisplayNameFor(model => model.Nome):
+                </div>
+                <h4 style="padding-left:5px;">
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </h4>
+                <div>
+                    @Html.DisplayNameFor(model => model.Email):
+                </div>
+                <h4 style="padding-left:5px;">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </h4>
+                <div>
+                    @Html.DisplayNameFor(model => model.Universidade):
+                </div>
+                <h4 style="padding-left:5px;">
+                    @Html.DisplayFor(modelItem => item.Universidade)
+                </h4>
+                <div>
+                    @Html.DisplayNameFor(model => model.Curso):
+                </div>
+                <h4 style="padding-left:5px;">
+                    @Html.DisplayFor(modelItem => item.Curso)
+                </h4>
+                <form action="/search/Perfil/@item.Id" method="post" class="btn">
+                    <button class="btn btn-default">
+                        Ver perfil
+                    </button>
+                </form>
+            </div>
+        }
+
+    </div>
+</div>

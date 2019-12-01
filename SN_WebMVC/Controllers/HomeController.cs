@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SN_WebMVC.App_Start;
 using SN_WebMVC.Models;
 using SN_WebMVC.UploadExterno;
 using System;
@@ -13,34 +14,42 @@ using System.Web.Mvc;
 namespace SN_WebMVC.Controllers {
     public class HomeController : Controller {
 
-        private static string base_url = "http://localhost:56435";
+        public HomeController() {
+            
+        }
 
         public async Task<ActionResult> Index() {
             var access_email = Session["user_name"];
-            var access_token = Session["access_token"];
-
             ProfileViewModel profileView = new ProfileViewModel();
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
-
-                cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 var response = await cliente.GetAsync($"/api/user/findUser?email={access_email}");
 
                 if(response.IsSuccessStatusCode) {
                     var responseContent = await response.Content.ReadAsStringAsync();
-
                     profileView = JsonConvert.DeserializeObject<ProfileViewModel>(responseContent);
-
-                    var resposta = await cliente.GetAsync($"api/Post?iduser={profileView.Id.ToString()}");
-                    //criar classe de bind
+                    await ConsultarPost(profileView.Id);
                 }
             }
-
             Session.Add("picture_profile", profileView.Foto);
-
             return View();
+        }
+
+        private async Task ConsultarPost(string profileid) {
+            List<PostViewModel> posts = new List<PostViewModel>();
+
+            using(var cliente = new HttpClient()) {
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
+
+                var resposta = await cliente.GetAsync($"api/Post?iduser={profileid}");
+                if(resposta.IsSuccessStatusCode) {
+                    var conteudoDaRespost = await resposta.Content.ReadAsStringAsync();
+                    posts = JsonConvert.DeserializeObject<List<PostViewModel>>(conteudoDaRespost);
+                    ViewBag.Posts = posts;
+                }
+            }
         }
 
         public async Task<ActionResult> Perfil() {
@@ -50,7 +59,7 @@ namespace SN_WebMVC.Controllers {
             ProfileViewModel profileView = new ProfileViewModel();
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
@@ -77,7 +86,7 @@ namespace SN_WebMVC.Controllers {
             ProfileViewModel profileView = new ProfileViewModel();
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
 
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 

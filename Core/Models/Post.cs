@@ -54,7 +54,10 @@ namespace Core.Models {
         }
 
         private string SetUrlDocumento(string IdDocumento) {
-            return @"https://gabrielcouto26.blob.core.windows.net/api-amigo-fotos/" + IdDocumento + ".pdf";
+            if(IdDocumento != null)
+                return @"https://gabrielcouto26.blob.core.windows.net/api-amigo-fotos/" + IdDocumento + ".pdf";
+
+            return null;
         }
     }
 }

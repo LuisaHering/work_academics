@@ -8,11 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SN_WebMVC.App_Start;
 
 namespace SN_WebMVC.Controllers {
     public class LaboratoryController : Controller {
-
-        private static string base_url = "http://localhost:56435";
 
         public async Task<ActionResult> Index() {
             var laboratories = new List<LaboratoryViewModel>();
@@ -21,7 +20,7 @@ namespace SN_WebMVC.Controllers {
             var email = (Session["user_name"]).ToString();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/Laboratory/busca?email={email}");
 
                 if(response.IsSuccessStatusCode) {
@@ -49,7 +48,7 @@ namespace SN_WebMVC.Controllers {
             };
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
@@ -73,7 +72,7 @@ namespace SN_WebMVC.Controllers {
             var laboratorios = new List<LaboratoryViewModel>();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/Laboratory/search?description={ description }");
 
                 if(response.IsSuccessStatusCode) {
@@ -94,7 +93,7 @@ namespace SN_WebMVC.Controllers {
             var laboratory = new FullLaboratory();
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 var response = await client.GetAsync($"api/Laboratory/home?id={ id }");
@@ -121,7 +120,7 @@ namespace SN_WebMVC.Controllers {
             };
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
@@ -148,7 +147,7 @@ namespace SN_WebMVC.Controllers {
             };
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
@@ -157,9 +156,7 @@ namespace SN_WebMVC.Controllers {
                     if(response.IsSuccessStatusCode) {
                         return RedirectToAction("Index");
                     }
-
                 }
-
                 return View("Error");
             }
         }

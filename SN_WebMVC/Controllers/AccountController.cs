@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SN_WebMVC.App_Start;
 using SN_WebMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,6 @@ using System.Web.Mvc;
 
 namespace SN_WebMVC.Controllers {
     public class AccountController : Controller {
-
-        private static string base_url = "http://localhost:56435";
 
         public ActionResult RecuperarSenha() {
             return View();
@@ -34,7 +33,7 @@ namespace SN_WebMVC.Controllers {
             };
 
             using(var client = new HttpClient()) {
-                client.BaseAddress = new Uri(base_url);
+                client.BaseAddress = new Uri(BaseUrl.URL);
 
                 using(var requestContent = new FormUrlEncodedContent(data)) {
                     var response = await client.PostAsync("/api/Account/change", requestContent);
@@ -95,7 +94,7 @@ namespace SN_WebMVC.Controllers {
             var access_token = Session["access_token"];
 
             using(var cliente = new HttpClient()) {
-                cliente.BaseAddress = new Uri(base_url);
+                cliente.BaseAddress = new Uri(BaseUrl.URL);
                 cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", $"{access_token}");
 
                 var response = await cliente.GetAsync("/api/Account/Logout");
