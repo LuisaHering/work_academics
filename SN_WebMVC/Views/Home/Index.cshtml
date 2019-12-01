@@ -12,7 +12,13 @@
                 @foreach(var post in ViewBag.Posts) {
                     <div class="wa-post" style="display:flex; flex-direction:row;">
                         <div>
-                            <h1>foto</h1>
+                            <a href="/Home/Perfil">
+                                <img src="\Content\images\default-profile-pic.png"
+                                     alt="default-picture"
+                                     title="Perfil"
+                                     class="wa-profile-pic wa-profile-pic-pequeno"
+                                     style="margin-top: 70px; margin-left:-46px;" />
+                            </a>
                         </div>
 
                         <div>
@@ -34,10 +40,11 @@
                                 </p>
                             </div>
 
-                            <div class="wa-post-botoes">
-                                <form>
-                                    <button class="btn btn-default">Laboratório</button>
-                                </form>
+                            <div>
+                                <a style="margin-left:21px;"
+                                   href=@post.UrlDocumento>
+                                    Documento
+                                </a>
                             </div>
 
                         </div>
@@ -53,9 +60,6 @@
                 <input class="form-control" id="Pesquisar" name="Pesquisar" type="text" placeholder="Digite um nome">
                 <button type="submit" class="btn btn-default" style="margin: 10px 0;">Pesquisar</button>
             </form>
-            @*<img src="\Content\images\gabigordo.jpg" style="width:200px;" title="hello" />*@
         </div>
-
     </div>
-
 </div>
