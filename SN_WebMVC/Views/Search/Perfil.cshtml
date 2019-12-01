@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Busca";
-    var ehAmigo = (bool) Session["ehAmigo"];
+    var ehAmigo = (bool)Session["ehAmigo"];
 }
 
 <div class="wa-container">
@@ -20,6 +20,7 @@
                     <input type="submit" value="Unfollow" class="btn btn-default" />
                 </form>
             }
+
             <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" style="width:150px;height:150px;margin:30px 0;" />
         </div>
         <div style="margin: 10px 30px;padding: 0 50px;border-right: 2px solid #ededed;border-left:2px solid #ededed;">
