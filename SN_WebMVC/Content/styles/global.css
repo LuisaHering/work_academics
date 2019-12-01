@@ -37,6 +37,10 @@ a:hover {
 }
 /*fim-overwrite*/
 
+.wa-input-none {
+    display: none !important;
+}
+
 .wa-publi-documento {
     padding: 0 10px;
 }

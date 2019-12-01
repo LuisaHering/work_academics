@@ -11,7 +11,10 @@
 
         <div style="display:flex;flex-direction:column;justify-content:flex-start;margin:30px 50px 30px 0;">
             <form action="/Search/Seguir" method="post">
-                <input type="submit" value="Seguir" class="btn btn-default" />
+                <input type="submit" value="Seguir" class="btn btn-default" id="btnSeguir" />
+            </form>
+            <form action="/Search/Seguir" method="post">
+                <input type="submit" value="Desseguir" class="btn btn-default wa-input-none" id="btnDesseguir" />
             </form>
             <img src="@Html.DisplayFor(model => model.Foto)" alt="Foto" style="width:150px;height:150px;margin:30px 0;" />
         </div>

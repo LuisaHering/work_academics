@@ -19,7 +19,7 @@ namespace SN_WebMVC.Controllers {
 
             var usuario_logado = (Session["user_name"]).ToString();
 
-            using(var client = new HttpClient()) {
+            using (var client = new HttpClient()) {
                 client.BaseAddress = new Uri(BaseUrl.URL);
                 var response = await client.GetAsync($"api/user/search?name={pesquisar}");
 
