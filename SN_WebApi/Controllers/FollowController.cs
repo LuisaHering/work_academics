@@ -59,6 +59,30 @@ namespace SN_WebApi.Controllers {
             return BadRequest("Erro ao processar solicitaçao");
         }
 
+        [AllowAnonymous]
+        [Route("unfollow")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Unfollow(DataToFollowing inputModel) {
+
+            User usuarioLogado = await UsersService.FindById(inputModel.IdSeguidor);
+
+            User usuarioSeguido = await UsersService.FindById(inputModel.IdSeguido);
+
+            if(usuarioLogado != null && usuarioSeguido != null) {
+
+                if(!usuarioLogado.Id.Equals(usuarioSeguido.Id)) {
+                    var conexao = new Conection().Conectar(usuarioLogado, usuarioSeguido);
+
+                    var desconectou = await ConectionService.Desconectar(conexao);
+
+                    if(desconectou) {
+                        return Ok();
+                    }
+                }
+            }
+            return BadRequest("Erro ao processar solicitaçao");
+        }
+
         [Authorize]
         [Route("Conexoes")]
         [HttpGet]

@@ -36,13 +36,25 @@ namespace Data.Services {
         }
 
         public async Task<bool> Desconectar(Conection conexao) {
+            List<Conection> conections = Database.GetInstance.Conection.ToList();
+            Conection conection = null;
+
+            foreach(Conection c in conections) {
+                if(conexao.Seguido.Id.Equals(c.Seguido.Id) 
+                    && conexao.Seguidor.Id.Equals(c.Seguidor.Id)) {
+                    conection = c;
+                    break;
+                }
+            }
+
             try {
-                Database.GetInstance.Conection.Remove(conexao);
+                Database.GetInstance.Conection.Remove(conection);
                 await Database.GetInstance.SaveChangesAsync();
                 return true;
             } catch(Exception e) {
                 Console.WriteLine(e.Message);
             }
+
             return false;
         }
 

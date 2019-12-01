@@ -84,7 +84,44 @@ namespace SN_WebMVC.Controllers {
 
                     if(response.IsSuccessStatusCode) {
                         Session.Remove("profile_visita");
-                        //TODO: Mudar home para conexões
+                        return RedirectToAction("Conexoes");
+                    }
+                }
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Unfollow() {
+
+            var email_logado = (Session["user_name"]).ToString();
+
+            var id_seguido = (Session["profile_visita"]).ToString();
+
+            var userProfile = new ProfileViewModel();
+
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(BaseUrl.URL);
+                var response = await client.GetAsync($"api/user/FindUser?email={email_logado}");
+
+                var respondeContent = await response.Content.ReadAsStringAsync();
+                userProfile = JsonConvert.DeserializeObject<ProfileViewModel>(respondeContent);
+            }
+
+            var data = new Dictionary<string, string>
+            {
+                {"IdSeguidor", userProfile.Id},
+                {"IdSeguido", id_seguido}
+            };
+
+            using(var client = new HttpClient()) {
+                client.BaseAddress = new Uri(BaseUrl.URL);
+
+                using(var requestContent = new FormUrlEncodedContent(data)) {
+                    var response = await client.PostAsync("api/following/Unfollow", requestContent);
+
+                    if(response.IsSuccessStatusCode) {
+                        Session.Remove("profile_visita");
                         return RedirectToAction("Conexoes");
                     }
                 }
