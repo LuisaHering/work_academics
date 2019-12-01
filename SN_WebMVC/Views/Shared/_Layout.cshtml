@@ -17,7 +17,7 @@
         <div class="wa-nav-container">
 
             <div class="navbar-header">
-                @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
+                @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar" && ViewBag.Title != "Suporte")
                 {
                     <a href="/Home/Index">
                         <img src="/Content/images/logo1_6.jpg" alt="logo" class="wa-logo-header" />
@@ -29,7 +29,7 @@
                 }
             </div>
 
-            @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar")
+            @if (ViewBag.Title != "Login" && ViewBag.Title != "Cadastrar" && ViewBag.Title != "Suporte")
             {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <form action="/Account/Logout" method="post">
