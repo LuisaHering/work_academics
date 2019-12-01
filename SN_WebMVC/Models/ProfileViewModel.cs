@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,7 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         public string Nome {
             get; set;
         }
@@ -18,6 +20,7 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         public string Email {
             get; set;
         }
@@ -26,10 +29,12 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         public string Universidade {
             get; set;
         }
 
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         public string Curso {
             get; set;
         }
@@ -38,6 +43,7 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         public string Biografia {
             get; set;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,10 +11,12 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         public string Titulo {
             get; set;
         }
 
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         public string Descricao {
             get; set;
         }
@@ -22,6 +25,7 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         public int IdLaboratory {
             get; set;
         }

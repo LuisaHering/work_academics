@@ -30,10 +30,10 @@
                             @Html.DisplayFor(model => model.DataCriacao.Year)
                         </h4>
                     </div>
-                    <div style="margin:50px 0 0 0;">
+                    <div style="margin:50px 0 0 0;" >
                         <form action="/Project/Home" method="post" enctype="multipart/form-data" style="margin: 5px 0;">
-                            <input type="text" name="Mensagem" placeholder="Comentários" />
-                            <button type="submit" class="btn btn-default">Publicar</button>
+                            <input type="text" class="form-control"  name="Mensagem" placeholder="Comentários" required="true"/>
+                            <button type="submit" class="btn btn-default"  style="margin: 10px 0;">Publicar</button>
                             <input type="file" accept=".pdf" max="2000000" name="Arquivo" />
                         </form>
                     </div>
@@ -44,9 +44,9 @@
                 @foreach (var post in Model.Posts)
                 {
                     <div style="border-bottom: 2px solid #ededed;margin-top:10px;padding: 0 10px;">
-                        <div class="wa-publi-info">
-                            <h4>@post.Autor</h4>
-                            <p style="margin-left:20px;">@post.DataDePublicacao</p>
+                        <div class="wa-publi-info" style="font-size: 18px;">
+                            <h4 style="font-size: 18px;">@post.Autor</h4>
+                            <p style="margin-left:15px;">@post.DataDePublicacao</p>
                         </div>
                         <div class="wa-publi-conteudo">
                             <p>@post.Mensagem</p>

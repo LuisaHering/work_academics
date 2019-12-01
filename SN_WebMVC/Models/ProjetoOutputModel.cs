@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -39,6 +40,7 @@ namespace SN_WebMVC.Models {
             get; set;
         }
 
+        [Required(ErrorMessage ="Teste")]
         public string Post {
             get; set;
         }
